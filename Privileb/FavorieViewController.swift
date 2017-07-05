@@ -19,12 +19,22 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     var selectedOffer:favourite?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+
+        
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
 
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
-
+        if let txfSearchField = self.searchDisplayController?.searchBar.value(forKey: "_searchField") as? UITextField {
+            txfSearchField.borderStyle = .none
+            txfSearchField.backgroundColor = UIColor.white
+            txfSearchField.layer.cornerRadius = 3
+            txfSearchField.layer.masksToBounds = true
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -127,4 +137,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         return true
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

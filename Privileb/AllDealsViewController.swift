@@ -69,9 +69,13 @@ class AllDealsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         cell.dateLabel.text = "\(self.offers[indexPath.row].issue_date!) to \(self.offers[indexPath.row].expiry_date!)"
         cell.supervisedByLabel.text = self.offers[indexPath.row].retailer_name
         cell.offerLabel.text = self.offers[indexPath.row].offer_name
-        cell.load_image(urlString: self.offers[indexPath.row].featured_cropped)
+        
+        if self.offers[indexPath.row].featured_croppedImage != nil {
+            cell.logoImage.image = self.offers[indexPath.row].featured_croppedImage
+        }else{
+            cell.load_image(urlString: self.offers[indexPath.row].featured_cropped)
+        }
         cell.sliderLabel.text = self.offers[indexPath.row].frequency
-
         return cell
     }
     

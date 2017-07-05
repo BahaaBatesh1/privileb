@@ -80,7 +80,7 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
             
             if fromCategories {
                 if section == 0 {
-                    lable.text = "SELECTED Category"
+                    lable.text = "SELECTED CATEGORY"
                 }else{
                     lable.text = "SEARCH BY"
                 }
@@ -91,9 +91,9 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
                     lable.text = "SEARCH BY"
                 }
             }
-            lable.textColor = UIColor.gray
+            lable.textColor = UIColor.darkGray
             view.backgroundColor = UIColor(red: 248, green: 248, blue: 248)
-            lable.font = UIFont(name: "System", size: 3.0)
+            lable.font = lable.font.withSize(12)
             view.addSubview(lable)
             return view
         }

@@ -33,6 +33,10 @@ class offer_details {
     var url : String!
     var gallery : [String]?
     var gallery_cropped : [String]?
+    
+    var galleryImage : [UIImage] = []
+    var gallery_croppedImage : [UIImage] = []
+    
     var featured : String!
     var featured_cropped : String!
 
@@ -220,7 +224,22 @@ class offer_details {
         
     }
     
-
+    func load_image(urlString:String,onComplete: @escaping (_ image:UIImage?,_ status:String) -> Void)
+    {
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
+        let session = URLSession.shared
+        request.httpMethod = "GET"
+        let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+            if error == nil && data != nil {
+                if let im = UIImage(data: data!) {
+                    onComplete(im,"ok")
+                }
+            }else{
+                onComplete(nil,"error")
+            }
+        })
+        task.resume()
+    }
 
 
 }

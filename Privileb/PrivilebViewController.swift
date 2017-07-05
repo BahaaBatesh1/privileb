@@ -12,13 +12,9 @@ class PrivilebViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let filterBtn = UIBarButtonItem(image: UIImage(named :"filter_mark2"), style: .plain, target: self, action: #selector(PrivilebViewController.onFilter(_:)))
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        let filterBtn = UIBarButtonItem(image: UIImage(named :"filter_mark2"), style: .plain, target: self, action: #selector(PrivilebViewController.onFilter(_:)))
-
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationItem.rightBarButtonItem = filterBtn
         // Do any additional setup after loading the view.
     }
@@ -27,7 +23,6 @@ class PrivilebViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
 

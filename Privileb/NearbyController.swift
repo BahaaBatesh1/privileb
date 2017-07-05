@@ -24,6 +24,9 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+
         
         //Check for Location Services
         if (CLLocationManager.locationServicesEnabled()) {

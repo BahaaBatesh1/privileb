@@ -13,7 +13,9 @@ class branch {
     var name :String!
     var latitude : Double!
     var longtude : Double!
-    
+    var branchMobile:String!
+    var branchPhone:String!
+    var location:String!
     init(result : [String : Any]){
         if let id = result["id"] as? Int{
             self.id = id
@@ -21,12 +23,30 @@ class branch {
         else{
             self.id = 0
         }
-        
         if let name = result["name"] as? String{
             self.name = name
         }
         else{
-            self.name = ""
+            if let name = result["branch_name"] as? String{
+                self.name = name
+            }else{
+                self.name = ""
+            }
+        }
+        if let phone = result["branch_phone_number"] as? String{
+            self.branchPhone = phone
+        }else{
+            self.branchPhone = ""
+        }
+        if let mobile = result["branch_mobile_number"] as? String{
+            self.branchMobile = mobile
+        }else{
+            self.branchMobile = ""
+        }
+        if let location = result["branch_location"] as? String{
+            self.location = location
+        }else{
+            self.location = ""
         }
         if let latitude = Double((result["latitude"] as? String)!){
             self.latitude = latitude
@@ -34,15 +54,12 @@ class branch {
         else{
             self.latitude = 0.0
         }
-
         if let longtude = Double((result["longitude"] as? String)!){
             self.longtude = longtude
         }
         else{
             self.longtude = 0.0
         }
-
-        
     }
 
 }

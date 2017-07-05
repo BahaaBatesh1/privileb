@@ -15,6 +15,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
     @IBOutlet weak var forgetView: UIView!
     @IBOutlet weak var userNameTextField: UITextField!
     
+    @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     var services = services_calls()
     var user:user?
@@ -25,6 +26,24 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         userNameTextField.delegate = self
         passwordTextField.delegate = self
 
+        loginBtn.layer.cornerRadius = 3
+        
+        if let navigationBar = self.navigationController?.navigationBar {
+            let firstFrame = CGRect(x: navigationBar.frame.width/2 - 35, y: navigationBar.frame.height / 2 - 12.5 , width: 25, height: 25)
+            let secondFrame = CGRect(x: navigationBar.frame.width/2, y: 0, width: navigationBar.frame.width/2, height: navigationBar.frame.height)
+            
+            let imageView = UIImageView(frame: firstFrame)
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = UIImage(named: "login")
+            let secondLabel = UILabel(frame: secondFrame)
+            secondLabel.textColor = UIColor.white
+            secondLabel.font.withSize(20)
+            secondLabel.text = "LOG IN"
+            navigationBar.addSubview(imageView)
+            navigationBar.addSubview(secondLabel)
+        }
+        
+        
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)

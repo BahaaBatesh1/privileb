@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MapKit
+class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,MKMapViewDelegate{
 
-class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource{
-
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var branchesCollectionView: UICollectionView!
+    @IBOutlet weak var getDirectionBtn: UIButton!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -29,6 +32,8 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     var loader: MaterialLoadingIndicator!
     var offerImages:[String] = []
     @IBOutlet weak var validatyValueLabel: UILabel!
+    var branches : [branch] = []
+    var selectedBranch:branch?
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.contentSize=CGSize(width: 320,height: 2100);
@@ -36,6 +41,12 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
 
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.mapType = MKMapType.standard
+
+
+        
         // if not favorite
         favoritBtnRight.setImage(UIImage(named: "offer_favorite3"), for: .normal)
         
@@ -66,7 +77,21 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                     self.validatyValueLabel.text = self.detailedOffer.validity
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
+                    self.branches = self.detailedOffer.branches
+                    self.selectedBranch = self.branches[0]
+                    if self.selectedBranch != nil {
+                        self.locationLabel.text = "Location: " + (self.selectedBranch?.location!)!
+                        let location = CLLocationCoordinate2D(latitude: (self.selectedBranch?.latitude)!,longitude: (self.selectedBranch?.longtude)!)
+                        let span = MKCoordinateSpanMake(0.05, 0.05)
+                        let region = MKCoordinateRegion(center: location, span: span)
+                        self.mapView.setRegion(region, animated: true)
+                        let annotation =  MKPointAnnotation()
+                        annotation.coordinate = CLLocationCoordinate2D(latitude: (self.selectedBranch?.latitude)!,longitude: (self.selectedBranch?.longtude)!)
+                        self.mapView.addAnnotation(annotation)
+                    }
                     self.imagesCollectionView.reloadData()
+                    self.branchesCollectionView.reloadData()
+                    
                 }
 
             }else{
@@ -75,6 +100,17 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                 print("error")
             }
         }
+        
+        let attrs = [
+            NSFontAttributeName : UIFont.systemFont(ofSize: 15.0),
+            NSForegroundColorAttributeName : UIColor.black,
+            NSUnderlineStyleAttributeName : 1] as [String : Any]
+        
+        let attributedString = NSMutableAttributedString(string:"")
+        let buttonTitleStr = NSMutableAttributedString(string:"Get direction", attributes:attrs)
+        attributedString.append(buttonTitleStr)
+        getDirectionBtn.setAttributedTitle(attributedString, for: .normal)
+
         // Do any additional setup after loading the view.
     }
 
@@ -107,6 +143,10 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         }
         self.favoritBtnRight.setImage(UIImage(named: "offer_favorite_selected"), for: .normal)
     }
+    
+    
+    @IBAction func onGetDeirection(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
@@ -121,14 +161,65 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.offerImages.count
+        if collectionView == branchesCollectionView {
+            return self.branches.count
+        }else{
+            return self.offerImages.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailsCollectionCell", for: indexPath) as! ImagesDetailsCollectionViewCell
-        cell.load_image(urlString: offerImages[indexPath.row])
-        return cell
+        
+        if collectionView == branchesCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "branchesDetailsCell", for: indexPath) as! BranchesDetailsCollectionViewCell
+            if selectedBranch != nil {
+                if self.branches[indexPath.row].name == selectedBranch?.name{
+                    cell.branchName.textColor = UIColor.white
+                    cell.branchName.backgroundColor = UIColor(red: 212, green: 172, blue: 92)
+                    cell.branchName.text = self.branches[indexPath.row].name
+                }else{
+                    cell.branchName.textColor =  UIColor(red: 212, green: 172, blue: 92)
+                    cell.branchName.backgroundColor = UIColor.white
+                    cell.branchName.layer.borderColor = UIColor(red: 212, green: 172, blue: 92).cgColor
+                    cell.branchName.layer.borderWidth = 1
+                    cell.branchName.text = self.branches[indexPath.row].name
+                }
+            }
+            return cell
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailsCollectionCell", for: indexPath) as! ImagesDetailsCollectionViewCell
+            cell.load_image(urlString: offerImages[indexPath.row])
+            return cell
+        }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == branchesCollectionView {
+            self.selectedBranch = self.branches[indexPath.row]
+            self.locationLabel.text = "Location: " + (self.selectedBranch?.location!)!
+            let location = CLLocationCoordinate2D(latitude: (self.selectedBranch?.latitude)!,longitude: (self.selectedBranch?.longtude)!)
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegion(center: location, span: span)
+            self.mapView.setRegion(region, animated: true)
+            let annotation =  MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: (self.selectedBranch?.latitude)!,longitude: (self.selectedBranch?.longtude)!)
+            self.mapView.addAnnotation(annotation)
+            self.branchesCollectionView.reloadData()
+        }
+    }
+    
+    
+    @IBAction func onCall(_ sender: Any) {
+        if selectedBranch != nil {
+            if let url = NSURL(string: "tel://" + (self.selectedBranch?.branchPhone!)!) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url as URL, options: ["":""], completionHandler: nil)
+                } else {
+                    _ = UIApplication.shared.openURL(url as URL)
+                }
+            }
+        }
+    }
+    
     func load_image(urlString:String,imageView:UIImageView)
     {
         let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)

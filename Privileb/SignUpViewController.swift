@@ -33,19 +33,11 @@ class SignUpViewController: UIViewController ,UITextFieldDelegate{
     
     func configureStyles()  {
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
-        nameTextField.layer.borderColor = UIColor.lightGray.cgColor
-        nameTextField.layer.borderWidth = 1
-        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
-        emailTextField.layer.borderWidth = 1
-        phoneTextField.layer.borderColor = UIColor.lightGray.cgColor
-        phoneTextField.layer.borderWidth = 1
         signupBtn.layer.cornerRadius = 3
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
-        
-
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

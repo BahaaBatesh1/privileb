@@ -36,9 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let navigationBarAppearace = UINavigationBar.appearance()
         
+
         navigationBarAppearace.tintColor = UIColor.white
         navigationBarAppearace.barTintColor = UIColor(red: 30, green: 30, blue: 30)
         
+        let appearance = UITabBarItem.appearance()
+        let attributes = [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 11)]
+        appearance.setTitleTextAttributes(attributes, for: .normal)
+
         //load categories
         services.get_categories(country_code: "lb") { (categories, status) in
             if status == "ok" {

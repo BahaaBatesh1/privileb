@@ -23,6 +23,9 @@ class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UIC
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
 
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification1, object:nil, queue:nil, using:onFinishLoad)
 
