@@ -31,12 +31,13 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     var detailedOffer : offer_details!
     var loader: MaterialLoadingIndicator!
     var offerImages:[String] = []
+    var offerImagesObject:[GalaryElement] = []
     @IBOutlet weak var validatyValueLabel: UILabel!
     var branches : [branch] = []
     var selectedBranch:branch?
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize=CGSize(width: 320,height: 2100);
+        scrollView.contentSize=CGSize(width: 320,height: 2300);
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
@@ -72,6 +73,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                     self.descriptionLabel.text = "Description: \(self.detailedOffer.description!)"
                     self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
                     self.offerImages = self.detailedOffer.gallery_cropped!
+                    self.offerImagesObject = self.detailedOffer.gallery_croppedObject
                     self.offerLabel.text = self.detailedOffer.offer_name
                     self.load_image(urlString: (self.detailedOffer.retailer_logo)!, imageView: self.supervisedImage)
                     self.validatyValueLabel.text = self.detailedOffer.validity
@@ -164,7 +166,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         if collectionView == branchesCollectionView {
             return self.branches.count
         }else{
-            return self.offerImages.count
+            return self.offerImagesObject.count
         }
     }
     
@@ -188,7 +190,11 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailsCollectionCell", for: indexPath) as! ImagesDetailsCollectionViewCell
-            cell.load_image(urlString: offerImages[indexPath.row])
+            if self.offerImagesObject[indexPath.row].image != nil {
+                cell.cellImage.image = self.offerImagesObject[indexPath.row].image
+            }else{
+                cell.load_image(urlString: self.offerImagesObject[indexPath.row].link)
+            }
             return cell
         }
     }

@@ -10,6 +10,7 @@ import UIKit
 
 class FeaturedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var loveBtn: UIButton!
@@ -17,21 +18,31 @@ class FeaturedTableViewCell: UITableViewCell {
     @IBOutlet weak var sliderImage: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dateImage: UIImageView!
-    @IBOutlet weak var newBtn: UIButton!
     @IBOutlet weak var supervisedByLabel: UILabel!
     @IBOutlet weak var offerLabel: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var containerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        newBtn.layer.borderColor = UIColor(red: 220, green: 189, blue: 134).cgColor
-        newBtn.layer.borderWidth = 1
-        newBtn.layer.cornerRadius = 3
-        
-        containerView.layer.cornerRadius = 8
+        containerView.layer.cornerRadius = 0
         containerView.layer.masksToBounds = true
         topView.layer.masksToBounds = true
         bottomView.layer.masksToBounds = true
+        self.categoryLabel.layer.cornerRadius = 2
+        self.categoryLabel.sizeToFit()
+        self.categoryLabel.layer.masksToBounds = true
+        
+        let mGradient = CAGradientLayer()
+        mGradient.frame = self.logoImage.bounds
+        var colors = [CGColor]()
+        colors.append(UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor)
+        colors.append(UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor)
+        
+        mGradient.startPoint = CGPoint(x: 0.5, y: 0.9)
+        mGradient.endPoint = CGPoint(x: 0.5, y: 0.1)
+        mGradient.colors = colors
+        
+        self.logoImage.layer.addSublayer(mGradient)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

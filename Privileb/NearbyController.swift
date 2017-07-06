@@ -24,9 +24,6 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-
         
         //Check for Location Services
         if (CLLocationManager.locationServicesEnabled()) {
@@ -60,7 +57,7 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
 
         
         // loading nearby7¶¶¶¶
-        services.get_nearby_offers(latitude: currentLocation.coordinate.latitude.description, longtude: currentLocation.coordinate.longitude.description, date: "2017-05-09") { (offers, status) in
+        services.get_nearby_offers(latitude: currentLocation.coordinate.latitude.description, longtude: currentLocation.coordinate.longitude.description, date: NSDate().getToDay()) { (offers, status) in
             if status == "ok"{
                 DispatchQueue.main.async {
                     self.offers = offers!
@@ -120,8 +117,14 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
         cell.dateLabel.text = "\(self.offers[indexPath.row].issue_date!) to \(self.offers[indexPath.row].expiry_date!)"
         cell.supervisedByLabel.text = self.offers[indexPath.row].retailer_name
         cell.offerLabel.text = self.offers[indexPath.row].offer_name
-        cell.load_image(urlString: self.offers[indexPath.row].featured_cropped)
+        if self.offers[indexPath.row].featured_croppedImage != nil {
+            cell.logoImage.image = self.offers[indexPath.row].featured_croppedImage
+        }else{
+            cell.load_image(urlString: self.offers[indexPath.row].featured_cropped)
+        }
         cell.sliderLabel.text = self.offers[indexPath.row].frequency
+        cell.categoryLabel.text = " Beauty & spa  "
+
         return cell
     }
     
@@ -170,6 +173,9 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     /*
     // MARK: - Navigation
 

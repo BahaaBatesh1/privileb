@@ -13,8 +13,6 @@ class PrivilebViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let filterBtn = UIBarButtonItem(image: UIImage(named :"filter_mark2"), style: .plain, target: self, action: #selector(PrivilebViewController.onFilter(_:)))
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationItem.rightBarButtonItem = filterBtn
         // Do any additional setup after loading the view.
     }
@@ -31,7 +29,9 @@ class PrivilebViewController: BaseViewController {
         performSegue(withIdentifier: "filter", sender: self)
     }
 
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
 
     /*

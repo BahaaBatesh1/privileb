@@ -39,9 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         navigationBarAppearace.tintColor = UIColor.white
         navigationBarAppearace.barTintColor = UIColor(red: 30, green: 30, blue: 30)
+        navigationBarAppearace.setBackgroundImage(UIImage(),for:.default)
+        navigationBarAppearace.shadowImage = UIImage()
+        navigationBarAppearace.backgroundColor = UIColor(red: 30, green: 30, blue: 30)
+        navigationBarAppearace.isTranslucent = false
+        UIApplication.shared.statusBarStyle = .lightContent
         
         let appearance = UITabBarItem.appearance()
-        let attributes = [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 11)]
+        let attributes = [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 9)]
         appearance.setTitleTextAttributes(attributes, for: .normal)
 
         //load categories

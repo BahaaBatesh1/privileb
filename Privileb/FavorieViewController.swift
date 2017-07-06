@@ -11,6 +11,7 @@ import UIKit
 class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, UISearchDisplayDelegate{
     var loader: MaterialLoadingIndicator!
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var loaderView: UIView!
     var searchResult : [favourite]?
     var favorites: [favourite] = []
@@ -20,14 +21,10 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-
         
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
-
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
         if let txfSearchField = self.searchDisplayController?.searchBar.value(forKey: "_searchField") as? UITextField {
             txfSearchField.borderStyle = .none
@@ -42,7 +39,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         self.tableView.isHidden = true
         loader.startAnimating()
         self.loaderView.isHidden = false
-        services.get_favourite_list(user_id: "4", date: Date().description) { (favs, status) in
+        services.get_favourite_list(user_id: "4", date: NSDate().getToDay()) { (favs, status) in
             if status == "ok"{
                 self.favorites = favs!
                 DispatchQueue.main.async {

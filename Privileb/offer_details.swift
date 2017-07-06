@@ -34,8 +34,8 @@ class offer_details {
     var gallery : [String]?
     var gallery_cropped : [String]?
     
-    var galleryImage : [UIImage] = []
-    var gallery_croppedImage : [UIImage] = []
+    var galleryObjects : [GalaryElement] = []
+    var gallery_croppedObject : [GalaryElement] = []
     
     var featured : String!
     var featured_cropped : String!
@@ -192,6 +192,12 @@ class offer_details {
         }
 
         if let gallery = result["gallery"] as? [String]!{
+            for el in gallery {
+                let element = GalaryElement()
+                element.link = el
+                element.load_image(urlString: el)
+                self.galleryObjects.append(element)
+            }
             self.gallery = gallery
         }
         else{
@@ -199,6 +205,12 @@ class offer_details {
         }
         
         if let gallery_cropped = result["gallery_cropped"] as? [String]!{
+            for el in gallery_cropped {
+                let element = GalaryElement()
+                element.link = el
+                element.load_image(urlString: el)
+                self.gallery_croppedObject.append(element)
+            }
             self.gallery_cropped = gallery_cropped
         }
         else{

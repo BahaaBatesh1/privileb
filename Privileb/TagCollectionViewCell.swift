@@ -11,4 +11,8 @@ import UIKit
 class TagCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var tagLable: UILabel!
+    override func awakeFromNib() {
+        self.tagLable.layer.cornerRadius = 10
+        self.tagLable.layer.masksToBounds = true
+    }
 }

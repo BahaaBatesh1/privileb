@@ -32,7 +32,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
         self.tableView.isHidden = true
         loader.startAnimating()
         self.loaderView.isHidden = false
-        services.get_featured_offers(country_code: "lb", date: "2017-05-09",onComplete: {
+        services.get_featured_offers(country_code: "lb", date: NSDate().getToDay(),onComplete: {
             (offers , status) -> Void in
             if status == "ok"{
                 self.offers = offers!
@@ -76,6 +76,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
             cell.load_image(urlString: self.offers[indexPath.row].featured_cropped)
         }
         cell.sliderLabel.text = self.offers[indexPath.row].frequency
+        cell.categoryLabel.text = " Beauty & spa  "
         return cell
     }
 

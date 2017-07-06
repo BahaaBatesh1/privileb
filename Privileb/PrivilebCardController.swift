@@ -219,4 +219,8 @@ class PrivilebCardController: BaseViewController {
         })
         task.resume()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

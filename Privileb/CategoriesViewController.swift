@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UICollectionViewDataSource{
+class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var mainImage: UIImageView!
     var displayDic : [Int:CatDisplay] = [:]
@@ -22,9 +22,6 @@ class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
-
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification1, object:nil, queue:nil, using:onFinishLoad)
@@ -73,16 +70,18 @@ class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UIC
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! TagCollectionViewCell
-            cell.tagLable.text = selectedTags[indexPath.row].name
-            cell.tagLable.layer.cornerRadius = 10
-            cell.tagLable.backgroundColor = UIColor(red: 248, green: 248, blue: 248)
+            cell.tagLable.text = " " + selectedTags[indexPath.row].name + " "
+            cell.tagLable.backgroundColor = UIColor(red: 230, green: 230, blue: 230)
+            cell.tagLable.sizeToFit()
             return cell
         }
     }
 
-
-    
-
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let cell = (collectionView.cellForItem(at: indexPath) as! TagCollectionViewCell)
+//        return CGSize(width: cell.tagLable.frame.width, height: cell.frame.height)
+//    }
+//
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = categories[indexPath.row].category_id
         if (self.displayDic[id!]?.isSelected)!{

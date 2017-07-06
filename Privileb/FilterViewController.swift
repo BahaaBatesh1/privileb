@@ -14,11 +14,21 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     var selectedDis : [district] = []
     var services = services_calls()
     var searchResult : [offer] = []
+    var loader: MaterialLoadingIndicator!
+
+    @IBOutlet weak var loaderView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
+        self.loaderView.addSubview(loader)
+
         // Do any additional setup after loading the view.
     }
-
+    override func viewDidDisappear(_ animated: Bool) {
+        self.loader.stopAnimating()
+        self.loaderView.isHidden = true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -118,11 +128,17 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
             }
             j = j + 1
         }
-        
-        services.search_offers(category_ids: category_ids, country_code: "lb", date: "2017-06-12", district_ids: district_ids, keyword: (self.searchDisplayController?.searchBar.text)!) {
+        loader.startAnimating()
+        self.loaderView.isHidden = false
+        services.search_offers(category_ids: category_ids, country_code: "lb", date: NSDate().getToDay(), district_ids: district_ids, keyword: (self.searchDisplayController?.searchBar.text)!) {
             (offers, status) in
             if status == "ok" {
-                self.searchResult = offers!
+                DispatchQueue.main.async {
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    self.searchResult = offers!
+                    self.performSegue(withIdentifier: "toResult", sender: self)
+                }
             }else{
                 print("error service")
             }
@@ -133,6 +149,9 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
         if segue.identifier == "toLocationSearch" {
             let des = segue.destination as! SearchLocationViewController
             des.fromCategories = fromCat
+        }else if segue.identifier == "toResult" {
+            let des = segue.destination as! SearchResultViewController
+            des.result = self.searchResult
         }
     }
     /*
