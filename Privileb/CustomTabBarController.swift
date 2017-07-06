@@ -30,6 +30,7 @@ class CustomTabBarController: UITabBarController {
         menuButton.setImage(UIImage(named: "king_mark"), for: .normal)
         menuButton.setImage(UIImage(named: "king_mark"), for: .selected)
         menuButton.tag = 100
+        
         menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
        menuButton.setBackgroundImage(UIImage(named:"circleTab"), for: .normal)
         view.addSubview(menuButton)
