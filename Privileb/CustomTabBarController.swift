@@ -21,15 +21,17 @@ class CustomTabBarController: UITabBarController {
         menuButtonFrame.origin.x = view.bounds.width/2 - menuButtonFrame.size.width/2
         menuButton.frame = menuButtonFrame
         
-        menuButton.backgroundColor = UIColor.white
-        menuButton.layer.cornerRadius = menuButtonFrame.height/2
+        menuButton.backgroundColor = UIColor.clear
+        //menuButton.layer.cornerRadius = menuButtonFrame.height/2
         
         menuButton.imageView?.frame.origin.y = menuButton.bounds.height
         
-        menuButton.layer.cornerRadius = menuButton.layer.frame.width / 2
+//        menuButton.layer.cornerRadius = menuButton.layer.frame.width / 2
         menuButton.setImage(UIImage(named: "king_mark"), for: .normal)
         menuButton.setImage(UIImage(named: "king_mark"), for: .selected)
+        menuButton.tag = 100
         menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
+       menuButton.setBackgroundImage(UIImage(named:"circleTab"), for: .normal)
         view.addSubview(menuButton)
         view.layoutIfNeeded()
     }
@@ -38,6 +40,15 @@ class CustomTabBarController: UITabBarController {
     // MARK: - Actions
     
     @objc private func menuButtonAction(sender: UIButton) {
+        (self.view.viewWithTag(100) as! UIButton).setBackgroundImage(UIImage(named:"circle_select"), for: .normal)
             selectedIndex = 2
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item == tabBar.items?[2] {
+            (self.view.viewWithTag(100) as! UIButton).setBackgroundImage(UIImage(named:"circle_select"), for: .normal)
+        }else{
+            (self.view.viewWithTag(100) as! UIButton).setBackgroundImage(UIImage(named:"circleTab"), for: .normal)
+        }
     }
 }
