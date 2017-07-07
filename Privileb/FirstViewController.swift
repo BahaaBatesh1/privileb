@@ -29,26 +29,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
         self.loaderView.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.isHidden = true
-        loader.startAnimating()
-        self.loaderView.isHidden = false
-        services.get_featured_offers(country_code: "lb", date: NSDate().getToDay(),onComplete: {
-            (offers , status) -> Void in
-            if status == "ok"{
-                self.offers = offers!
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.loader.stopAnimating()
-                    self.loaderView.isHidden = true
-                    self.tableView.isHidden = false
-                }
-            }else{
-                self.tableView.isHidden = false
-                self.loader.stopAnimating()
-                self.loaderView.isHidden = true
-                print("error")
-            }
-        })
+        callService()
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,5 +73,45 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
         }
     }
     
+    func callService()  {
+        self.tableView.isHidden = true
+        loader.startAnimating()
+        self.loaderView.isHidden = false
+        services.get_featured_offers(country_code: "lb", date: NSDate().getToDay(),onComplete: {
+            (offers , status,postRes) -> Void in
+            if status == "ok"{
+                if postRes?.status == 1{
+                    self.offers = offers!
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        self.tableView.isHidden = false
+                    }
+                }else{
+                    self.tableView.isHidden = false
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+                        self.callService()
+                    })
+                    alertController.addAction(cancel)
+                    alertController.addAction(tryAgain)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }else{
+                self.tableView.isHidden = false
+                self.loader.stopAnimating()
+                self.loaderView.isHidden = true
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+                print("error")
+            }
+        })
+    }
 }
 

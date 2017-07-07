@@ -106,6 +106,20 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     @IBAction func onSearch(_ sender: Any) {
+        callService()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toLocationSearch" {
+            let des = segue.destination as! SearchLocationViewController
+            des.fromCategories = fromCat
+        }else if segue.identifier == "toResult" {
+            let des = segue.destination as! SearchResultViewController
+            des.result = self.searchResult
+        }
+    }
+    
+    func callService()  {
         var category_ids = ""
         var district_ids = ""
         
@@ -131,27 +145,32 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
         loader.startAnimating()
         self.loaderView.isHidden = false
         services.search_offers(category_ids: category_ids, country_code: "lb", date: NSDate().getToDay(), district_ids: district_ids, keyword: (self.searchDisplayController?.searchBar.text)!) {
-            (offers, status) in
+            (offers, status,postRes) in
             if status == "ok" {
-                DispatchQueue.main.async {
-                    self.loader.stopAnimating()
-                    self.loaderView.isHidden = true
-                    self.searchResult = offers!
-                    self.performSegue(withIdentifier: "toResult", sender: self)
+                if postRes?.status == 1 {
+                    DispatchQueue.main.async {
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        self.searchResult = offers!
+                        self.performSegue(withIdentifier: "toResult", sender: self)
+                    }
+                }else{
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+                        self.callService()
+                    })
+                    alertController.addAction(cancel)
+                    alertController.addAction(tryAgain)
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }else{
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
                 print("error service")
             }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toLocationSearch" {
-            let des = segue.destination as! SearchLocationViewController
-            des.fromCategories = fromCat
-        }else if segue.identifier == "toResult" {
-            let des = segue.destination as! SearchResultViewController
-            des.result = self.searchResult
         }
     }
     /*

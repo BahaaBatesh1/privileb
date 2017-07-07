@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.setTitleTextAttributes(attributes, for: .normal)
 
         //load categories
-        services.get_categories(country_code: "lb") { (categories, status) in
+        services.get_categories(country_code: "lb") { (categories, status,postRes) in
             if status == "ok" {
                 self.categories = categories!
                 self.unSelectedCat = categories!
@@ -61,14 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //laod countries
-        services.get_countries { (cos, status) in
+        services.get_countries { (cos, status,postRes) in
             if status == "ok" {
                 self.countries = cos!
             }
         }
         
         //load district
-        services.get_districts(country_code: "lb") { (des, status) in
+        services.get_districts(country_code: "lb") { (des, status,postRes) in
             if status  == "ok"{
                 self.desricts = des!
                 self.unSelectedDis = des!
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //load static pages
-        services.get_static_page(country_code: "lb") { (pages, status) in
+        services.get_static_page(country_code: "lb") { (pages, status,postRes) in
             if status == "ok" {
                 self.fillStatitcPages(pages: pages!)
             }
