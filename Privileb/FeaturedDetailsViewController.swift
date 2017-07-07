@@ -1,15 +1,7 @@
-//
-//  FeaturedDetailsViewController.swift
-//  customTab
-//
-//  Created by SSS on 6/21/17.
-//  Copyright © 2017 omran. All rights reserved.
-//
-
 import UIKit
 import MapKit
 class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,MKMapViewDelegate{
-
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var branchesCollectionView: UICollectionView!
     @IBOutlet weak var getDirectionBtn: UIButton!
@@ -35,22 +27,40 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     @IBOutlet weak var validatyValueLabel: UILabel!
     var branches : [branch] = []
     var selectedBranch:branch?
+    var isLogedIn = false
+    let userDefaults = UserDefaults.standard
+    var uid :Int?
+    var isfav = false
+    var favorite :favourite?
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.contentSize=CGSize(width: 320,height: 2300);
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
-
+        
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.standard
-
-
+        
+        
+        if let log = userDefaults.value(forKey: "isLogedIn") as? Bool{
+            self.isLogedIn = log
+        }
+        
+        if isLogedIn {
+            self.favoritBtnRight.isHidden = false
+            uid = userDefaults.value(forKey: "userId") as! Int
+            isfavorite()
+        }else{
+            self.favoritBtnRight.isHidden = true
+        }
+        
+        
         
         // if not favorite
         favoritBtnRight.setImage(UIImage(named: "offer_favorite3"), for: .normal)
-       
+        
         callService()
         
         let attrs = [
@@ -62,10 +72,10 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         let buttonTitleStr = NSMutableAttributedString(string:"Get direction", attributes:attrs)
         attributedString.append(buttonTitleStr)
         getDirectionBtn.setAttributedTitle(attributedString, for: .normal)
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         self.loader.stopAnimating()
         self.loaderView.isHidden = true
@@ -77,37 +87,74 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     }
     
     @IBAction func onBack(_ sender: Any) {
-       _ =  self.navigationController?.popViewController(animated: true)
+        _ =  self.navigationController?.popViewController(animated: true)
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
-
-
+    
+    
     @IBAction func onShare(_ sender: Any) {
     }
- 
+    
     @IBAction func onFavorite(_ sender: Any) {
-        services.add_to_favourite(user_id: "4", datetime: Date().description, offer_id: self.offerId!.description) { (res,status) in
-            if status == "ok"{
-                print(res?.message ?? 0)
-            }else{
-                print("service error")
+        self.favoritBtnRight.isEnabled = false
+        
+        if isfav{
+            services.remove_from_favourite(favorite_id: (favorite?.favorite_id.description)!, onComplete: { (res, status) in
+                if status == "ok" {
+                    if res?.status == 1 {
+                        DispatchQueue.main.async {
+                            self.favoritBtnRight.setImage(UIImage(named: "offer_favorite3"), for: .normal)
+                            self.isfav = false
+                        }
+                    }
+                }else{
+                    let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                    self.favoritBtnRight.isEnabled = true
+                }
+                self.favoritBtnRight.isEnabled = true
+                
+            })
+        }else{
+            services.add_to_favourite(user_id: (self.uid?.description)!, datetime: Date().description, offer_id: self.offerId!.description) { (res,status) in
+                if status == "ok"{
+                    if res?.status == 1 {
+                        DispatchQueue.main.async {
+                            self.favoritBtnRight.setImage(UIImage(named: "offer_favorite_selected"), for: .normal)
+                        }
+                        self.isfav = true
+                    }else{
+                        DispatchQueue.main.async {
+                            self.favoritBtnRight.setImage(UIImage(named: "offer_favorite3"), for: .normal)
+                        }
+                    }
+                    self.favoritBtnRight.isEnabled = true
+                }else{
+                    let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                    self.favoritBtnRight.isEnabled = true
+                }
             }
         }
-        self.favoritBtnRight.setImage(UIImage(named: "offer_favorite_selected"), for: .normal)
+        
     }
     
     
     @IBAction func onGetDeirection(_ sender: Any) {
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -260,6 +307,31 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                 alertController.addAction(ok)
                 self.present(alertController, animated: true, completion: nil)
                 print("error")
+            }
+        }
+    }
+    
+    func isfavorite()  {
+        services.get_fav_by_uid_oid(user_id: (self.uid?.description)!, offer_id: (self.offerId?.description)!) { (res, status,fav) in
+            if status == "ok" {
+                if res?.status == 1{
+                    DispatchQueue.main.async {
+                        self.favoritBtnRight.setImage(UIImage(named: "offer_favorite_selected"), for: .normal)
+                        self.isfav = true
+                        self.favorite = fav
+                    }
+                }else{
+                    // if not favorite
+                    DispatchQueue.main.async {
+                        self.favoritBtnRight.setImage(UIImage(named: "offer_favorite3"), for: .normal)
+                        self.isfav = false
+                    }
+                }
+            }else{
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }

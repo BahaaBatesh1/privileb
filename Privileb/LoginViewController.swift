@@ -85,7 +85,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         }
     }
     @IBAction func onLogin(_ sender: Any) {
-        
+        self.loginBtn.isEnabled = false
         if self.userNameTextField.text != "" && self.passwordTextField.text != "" {
             loader.startAnimating()
             self.loaderView.isHidden = false
@@ -93,6 +93,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
             services.login(email: userNameTextField.text!, password: passwordTextField.text!) { (user, status,postRes) in
                 if status == "ok"{
                     if user?.response.status == 1 {
+                        self.loginBtn.isEnabled = true
                         self.loader.stopAnimating()
                         self.loaderView.isHidden = true
                         self.user = user
@@ -110,6 +111,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
                             appDelegate?.window!?.rootViewController = controller
                         }
                     }else{
+                        self.loginBtn.isEnabled = true
                         self.loader.stopAnimating()
                         self.loaderView.isHidden = true
                         let alertController = UIAlertController(title: "Somthing went wrong!", message: user?.response?.message, preferredStyle: .alert)
@@ -118,6 +120,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
                         self.present(alertController, animated: true, completion: nil)
                     }
                 }else{
+                    self.loginBtn.isEnabled = true
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
                     let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
@@ -128,6 +131,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
                 }
             }
         }else{
+            self.loginBtn.isEnabled = true
             let alertController = UIAlertController(title: "Empty fields!", message: "Please enter email and password!", preferredStyle: .alert)
             let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
             alertController.addAction(ok)

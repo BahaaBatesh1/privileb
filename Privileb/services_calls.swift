@@ -26,7 +26,7 @@ class services_calls {
     var pages : [static_page] = []
     var favourites : [favourite] = []
     var postRes : postResponse?
-
+    var fav : favourite?
     
     
     func parsUserLogin(JSONData: Data)  {
@@ -381,7 +381,7 @@ class services_calls {
 //        {"user_id":"4","datetime":"2017-05-09 14:21:50","offer_id":"16"}
     }
     
-    func remove_from_favourite(favorite_id : String){
+    func remove_from_favourite(favorite_id : String,onComplete: @escaping (postResponse? ,String) -> Void){
         let parameters: Parameters = [
             "favorite_id": favorite_id
         ]
@@ -391,11 +391,17 @@ class services_calls {
             switch response.result {
             //success
             case .success( _):
-                self.parseData(JSONData: response.data!, class_name: "message")
+                do {
+                    let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                    self.postRes = postResponse(result: readableJSON)
+                    onComplete(self.postRes,"ok")
+                }catch(_) {
+                    onComplete(nil,"error")
+                }            //failure
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                
+                onComplete(nil,"error")
             }}
 
 //    http://privileb.com/webservices/remove_from_favorites.php
@@ -707,7 +713,7 @@ class services_calls {
 //        {"date":"2017-06-12","country_code":"lb","region_id":"85"}
     }
     
-    func get_fav_by_uid_oid(user_id : String , offer_id : String)->[offer]{
+    func get_fav_by_uid_oid(user_id : String , offer_id : String, onComplete: @escaping (postResponse?,String,favourite?) -> Void){
         self.offers.removeAll()
         let parameters: Parameters = [
             "user_id": user_id,
@@ -717,13 +723,25 @@ class services_calls {
             switch response.result {
             //success
             case .success( _):
-                self.parseData(JSONData: response.data!, class_name: "offer")
+                do {
+                    let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                    self.postRes = postResponse(result: readableJSON)
+                    
+                    if let stringArray = readableJSON["data"] as? [[String :Any]]{
+                        let elements = readableJSON["data"] as! [[String: Any]]
+                        for el in elements {
+                         self.fav = favourite(result: el)
+                        }
+                        onComplete(self.postRes,"ok",self.fav)
+                    }
+                }catch(_) {
+                    onComplete(nil,"error",nil)
+                }
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                
+                 onComplete(nil,"error",nil)
             }}
-        return self.offers
 //    http://privileb.com/webservices/get_favorite_by_userid_offerid.php
 //        {"user_id":"4", "offer_id":"126"}
     }

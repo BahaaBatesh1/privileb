@@ -11,16 +11,24 @@ import UIKit
 class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, UISearchDisplayDelegate{
     var loader: MaterialLoadingIndicator!
 
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var notLoginView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var loaderView: UIView!
     var searchResult : [favourite]?
     var favorites: [favourite] = []
     var services = services_calls()
+    let userDefaults = UserDefaults.standard
+    var isLogedIn = false
     @IBOutlet weak var tableView: UITableView!
     var selectedOffer:favourite?
+    var uid :Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        loginBtn.layer.cornerRadius = 3
         
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
@@ -36,7 +44,18 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        callService()
+        
+        if let log = userDefaults.value(forKey: "isLogedIn") as? Bool{
+            self.isLogedIn = log
+        }
+        
+        if isLogedIn {
+            self.notLoginView.isHidden = true
+            uid = userDefaults.value(forKey: "userId") as! Int
+            callService()
+        }else{
+            self.notLoginView.isHidden = false
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -124,7 +143,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         self.tableView.isHidden = true
         loader.startAnimating()
         self.loaderView.isHidden = false
-        services.get_favourite_list(user_id: "4", date: NSDate().getToDay()) { (favs, status,postRes) in
+        services.get_favourite_list(user_id: (self.uid?.description)!, date: NSDate().getToDay()) { (favs, status,postRes) in
             if status == "ok"{
                 if postRes?.status == 1{
                     self.favorites = favs!
@@ -159,4 +178,17 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
             }
         }
     }
+    
+    @IBAction func onLogin(_ sender: Any) {
+        if #available(iOS 10.0, *) {
+            AppDelegate.sharedDelegate().openLogin()
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "loginNav")
+            let rootController = UIApplication.shared.delegate?.window??.rootViewController as! MSSlidingPanelController
+            rootController.centerViewController = controller
+            rootController.closePanel()
+        }
+    }
+    
 }

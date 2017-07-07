@@ -29,9 +29,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         if isLogedIn {
             self.loginBtn.setTitle("Logout", for: .normal)
         }
-        // Do any additional setup after loading the view.
-        
-        // add gestures
+
         
         let call_gesture = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.OnCall))
         let call_Taxi = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.OnCallTaxi))
@@ -187,6 +185,8 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     @IBAction func onLogin(_ sender: Any) {
+        self.loginBtn.isEnabled = false
+        
         if let log = userDefaults.value(forKey: "isLogedIn") as? Bool{
             self.isLogedIn = log
         }
@@ -194,8 +194,9 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         if isLogedIn {
             self.loginBtn.setTitle("Logout", for: .normal)
         }
-
+        
         if  !isLogedIn{
+            self.loginBtn.isEnabled = true
             if #available(iOS 10.0, *) {
                 AppDelegate.sharedDelegate().openLogin()
             } else {
@@ -216,17 +217,20 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                         self.userDefaults.setValue("", forKey: "countryId")
                         self.userDefaults.setValue("", forKey: "userMail")
                         self.loginBtn.setTitle("LogIn", for: .normal)
+                        self.loginBtn.isEnabled = true
                     }else{
                         let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
                         let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                         alertController.addAction(ok)
                         self.present(alertController, animated: true, completion: nil)
+                        self.loginBtn.isEnabled = true
                     }
                 }else{
                     let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                     alertController.addAction(ok)
                     self.present(alertController, animated: true, completion: nil)
+                    self.loginBtn.isEnabled = true
                 }
             })
         }
