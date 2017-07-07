@@ -214,7 +214,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                         }
                         self.cateoryLabel.text = subCat
                         self.dateLabel.text = "From \(self.detailedOffer.issue_date!) To \(self.detailedOffer.expiry_date!)"
-                        self.descriptionLabel.text = "Description: \(self.detailedOffer.description!)"
+                        self.descriptionLabel.text = "\(self.detailedOffer.description!)"
                         self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
                         self.offerImages = self.detailedOffer.gallery_cropped!
                         self.offerImagesObject = self.detailedOffer.gallery_croppedObject

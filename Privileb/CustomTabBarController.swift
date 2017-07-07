@@ -32,7 +32,7 @@ class CustomTabBarController: UITabBarController {
         menuButton.tag = 100
         
         menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
-       menuButton.setBackgroundImage(UIImage(named:"circleTab"), for: .normal)
+       menuButton.setBackgroundImage(UIImage(named:"circle_select"), for: .normal)
         view.addSubview(menuButton)
         view.layoutIfNeeded()
     }
@@ -49,7 +49,7 @@ class CustomTabBarController: UITabBarController {
         if item == tabBar.items?[2] {
             (self.view.viewWithTag(100) as! UIButton).setBackgroundImage(UIImage(named:"circle_select"), for: .normal)
         }else{
-            (self.view.viewWithTag(100) as! UIButton).setBackgroundImage(UIImage(named:"circleTab"), for: .normal)
+            (self.view.viewWithTag(100) as! UIButton).setBackgroundImage(UIImage(named:"circle_select"), for: .normal)
         }
     }
 }

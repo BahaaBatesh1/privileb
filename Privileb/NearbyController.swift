@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,MKMapViewDelegate,CLLocationManagerDelegate{
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    @IBOutlet weak var view_type: UIView!
     var sselectedOffer : offer?
     @IBOutlet weak var mapKitView: MKMapView!
     var offers : [offer] = []
@@ -59,6 +62,11 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
         //load near by
         callService()
         // Do any additional setup after loading the view.
+        
+        //add gesture to view over viewtype buttons
+        
+        let gestture = UITapGestureRecognizer(target: self, action: #selector(NearbyController.onGesture))
+        self.view_type.addGestureRecognizer(gestture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -195,6 +203,15 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
                 print("erorr serveice")
             }
         }
+        
+        
+        
+        
+    }
+    
+    
+    func onGesture (){
+        onViewList(self)
     }
     /*
     // MARK: - Navigation

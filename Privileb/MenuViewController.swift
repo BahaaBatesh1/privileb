@@ -10,6 +10,8 @@ import UIKit
 
 class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
+    @IBOutlet weak var taxi_view: UIView!
+    @IBOutlet weak var call_view: UIView!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var callBtnView: UIView!
     var isFromReg = false
@@ -28,7 +30,17 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             self.loginBtn.setTitle("Logout", for: .normal)
         }
         // Do any additional setup after loading the view.
+        
+        // add gestures
+        
+        let call_gesture = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.OnCall))
+        let call_Taxi = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.OnCallTaxi))
+        
+        self.call_view.addGestureRecognizer(call_gesture)
+        self.taxi_view.addGestureRecognizer(call_Taxi)
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -137,6 +149,22 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     @IBAction func onCall(_ sender: Any) {
+        
+        
+        let alertController = UIAlertController(title: "Call hot line", message: "01697714", preferredStyle: .alert)
+        let call = UIAlertAction(title: "Call", style: .default) { (alert) in
+            if let url = NSURL(string: "tel://01697714") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url as URL, options: ["":""], completionHandler: nil)
+                } else {
+                    _ = UIApplication.shared.openURL(NSURL(string: "tel://01697714") as! URL)
+                }
+            }
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(call)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     
@@ -214,6 +242,16 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             rootController.closePanel()
         }
     }
+    
+    
+    func OnCall(){
+        onCallCharli(self)
+    }
+    
+    
+    func OnCallTaxi() {
+        onCall(self)
+        }
     /*
     // MARK: - Navigation
 
