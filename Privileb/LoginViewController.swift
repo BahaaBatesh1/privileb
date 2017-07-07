@@ -76,10 +76,21 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         }
     }
     @IBAction func onLogin(_ sender: Any) {
-        services.login(email: userNameTextField.text!, password: passwordTextField.text!) { (user, status) in
+        services.login(email: userNameTextField.text!, password: passwordTextField.text!) { (user, status,postRes) in
             if status == "ok"{
-                self.user = user
+                if postRes?.status == 1 {
+                    self.user = user
+                }else{
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }else{
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
                 print("error")
             }
         }

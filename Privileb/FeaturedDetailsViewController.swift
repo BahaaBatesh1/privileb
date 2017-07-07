@@ -50,58 +50,8 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         
         // if not favorite
         favoritBtnRight.setImage(UIImage(named: "offer_favorite3"), for: .normal)
-        
-        loader.startAnimating()
-        self.loaderView.isHidden = false
-        services.get_offer_details(offer_id: "\(self.offerId!)") { (offerD, status) in
-            if status == "ok"{
-                DispatchQueue.main.async {
-                    self.detailedOffer = offerD
-                    
-                    var subCat = ""
-                    var i = 0
-                    for cat in (self.detailedOffer?.sub_categories)!{
-                        if i == (self.detailedOffer?.sub_categories.count)! - 1 {
-                            subCat.append(cat.name)
-                        }else{
-                            subCat = subCat + cat.name + " & "
-                        }
-                        i = i + 1
-                    }
-                    self.cateoryLabel.text = subCat
-                    self.dateLabel.text = "From \(self.detailedOffer.issue_date!) To \(self.detailedOffer.expiry_date!)"
-                    self.descriptionLabel.text = "Description: \(self.detailedOffer.description!)"
-                    self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
-                    self.offerImages = self.detailedOffer.gallery_cropped!
-                    self.offerImagesObject = self.detailedOffer.gallery_croppedObject
-                    self.offerLabel.text = self.detailedOffer.offer_name
-                    self.load_image(urlString: (self.detailedOffer.retailer_logo)!, imageView: self.supervisedImage)
-                    self.validatyValueLabel.text = self.detailedOffer.validity
-                    self.loader.stopAnimating()
-                    self.loaderView.isHidden = true
-                    self.branches = self.detailedOffer.branches
-                    self.selectedBranch = self.branches[0]
-                    if self.selectedBranch != nil {
-                        self.locationLabel.text = "Location: " + (self.selectedBranch?.location!)!
-                        let location = CLLocationCoordinate2D(latitude: (self.selectedBranch?.latitude)!,longitude: (self.selectedBranch?.longtude)!)
-                        let span = MKCoordinateSpanMake(0.05, 0.05)
-                        let region = MKCoordinateRegion(center: location, span: span)
-                        self.mapView.setRegion(region, animated: true)
-                        let annotation =  MKPointAnnotation()
-                        annotation.coordinate = CLLocationCoordinate2D(latitude: (self.selectedBranch?.latitude)!,longitude: (self.selectedBranch?.longtude)!)
-                        self.mapView.addAnnotation(annotation)
-                    }
-                    self.imagesCollectionView.reloadData()
-                    self.branchesCollectionView.reloadData()
-                    
-                }
-
-            }else{
-                self.loader.stopAnimating()
-                self.loaderView.isHidden = true
-                print("error")
-            }
-        }
+       
+        callService()
         
         let attrs = [
             NSFontAttributeName : UIFont.systemFont(ofSize: 15.0),
@@ -241,5 +191,76 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
             }
         })
         task.resume()
+    }
+    
+    func callService()  {
+        
+        loader.startAnimating()
+        self.loaderView.isHidden = false
+        services.get_offer_details(offer_id: "\(self.offerId!)") { (offerD, status,postRes) in
+            if status == "ok"{
+                if postRes?.status == 1{
+                    DispatchQueue.main.async {
+                        self.detailedOffer = offerD
+                        var subCat = ""
+                        var i = 0
+                        for cat in (self.detailedOffer?.sub_categories)!{
+                            if i == (self.detailedOffer?.sub_categories.count)! - 1 {
+                                subCat.append(cat.name)
+                            }else{
+                                subCat = subCat + cat.name + " & "
+                            }
+                            i = i + 1
+                        }
+                        self.cateoryLabel.text = subCat
+                        self.dateLabel.text = "From \(self.detailedOffer.issue_date!) To \(self.detailedOffer.expiry_date!)"
+                        self.descriptionLabel.text = "Description: \(self.detailedOffer.description!)"
+                        self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
+                        self.offerImages = self.detailedOffer.gallery_cropped!
+                        self.offerImagesObject = self.detailedOffer.gallery_croppedObject
+                        self.offerLabel.text = self.detailedOffer.offer_name
+                        self.load_image(urlString: (self.detailedOffer.retailer_logo)!, imageView: self.supervisedImage)
+                        self.validatyValueLabel.text = self.detailedOffer.validity
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        self.branches = self.detailedOffer.branches
+                        self.selectedBranch = self.branches[0]
+                        if self.selectedBranch != nil {
+                            self.locationLabel.text = "Location: " + (self.selectedBranch?.location!)!
+                            let location = CLLocationCoordinate2D(latitude: (self.selectedBranch?.latitude)!,longitude: (self.selectedBranch?.longtude)!)
+                            let span = MKCoordinateSpanMake(0.05, 0.05)
+                            let region = MKCoordinateRegion(center: location, span: span)
+                            self.mapView.setRegion(region, animated: true)
+                            let annotation =  MKPointAnnotation()
+                            annotation.coordinate = CLLocationCoordinate2D(latitude: (self.selectedBranch?.latitude)!,longitude: (self.selectedBranch?.longtude)!)
+                            self.mapView.addAnnotation(annotation)
+                        }
+                        self.imagesCollectionView.reloadData()
+                        self.branchesCollectionView.reloadData()
+                    }
+                }else{
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+                        self.callService()
+                    })
+                    alertController.addAction(cancel)
+                    alertController.addAction(tryAgain)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+                
+            }else{
+                self.loader.stopAnimating()
+                self.loaderView.isHidden = true
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+                print("error")
+            }
+        }
     }
 }

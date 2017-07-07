@@ -56,22 +56,8 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
         }
 
         
-        // loading nearby7¶¶¶¶
-        services.get_nearby_offers(latitude: currentLocation.coordinate.latitude.description, longtude: currentLocation.coordinate.longitude.description, date: NSDate().getToDay()) { (offers, status) in
-            if status == "ok"{
-                DispatchQueue.main.async {
-                    self.offers = offers!
-                    self.tableView.reloadData()
-                    for of in offers! {
-                        let location = CLLocationCoordinate2D(latitude: of.branches[0].latitude,longitude: of.branches[0].longtude )
-                        let annotation = OfferAnnotation(offer: of, coordinate: location, image: UIImage())
-                        self.mapKitView.addAnnotation(annotation)
-                    }
-                }
-            }else{
-                print("erorr serveice")
-            }
-        }
+        //load near by
+        callService()
         // Do any additional setup after loading the view.
     }
 
@@ -175,6 +161,40 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func callService()  {
+        // loading nearby7¶¶¶¶
+        services.get_nearby_offers(latitude: currentLocation.coordinate.latitude.description, longtude: currentLocation.coordinate.longitude.description, date: NSDate().getToDay()) { (offers, status,postRes) in
+            if status == "ok"{
+                if postRes?.status == 1 {
+                    DispatchQueue.main.async {
+                        self.offers = offers!
+                        self.tableView.reloadData()
+                        for of in offers! {
+                            let location = CLLocationCoordinate2D(latitude: of.branches[0].latitude,longitude: of.branches[0].longtude )
+                            let annotation = OfferAnnotation(offer: of, coordinate: location, image: UIImage())
+                            self.mapKitView.addAnnotation(annotation)
+                        }
+                    }
+                }else{
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+                        self.callService()
+                    })
+                    alertController.addAction(cancel)
+                    alertController.addAction(tryAgain)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }else{
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+                print("erorr serveice")
+            }
+        }
     }
     /*
     // MARK: - Navigation

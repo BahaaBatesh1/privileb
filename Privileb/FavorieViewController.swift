@@ -36,25 +36,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.isHidden = true
-        loader.startAnimating()
-        self.loaderView.isHidden = false
-        services.get_favourite_list(user_id: "4", date: NSDate().getToDay()) { (favs, status) in
-            if status == "ok"{
-                self.favorites = favs!
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.loader.stopAnimating()
-                    self.loaderView.isHidden = true
-                    self.tableView.isHidden = false
-                }
-            }else{
-                self.tableView.isHidden = false
-                self.loader.stopAnimating()
-                self.loaderView.isHidden = true
-                print("error")
-            }
-        }
+        callService()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -136,5 +118,45 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func callService()  {
+        self.tableView.isHidden = true
+        loader.startAnimating()
+        self.loaderView.isHidden = false
+        services.get_favourite_list(user_id: "4", date: NSDate().getToDay()) { (favs, status,postRes) in
+            if status == "ok"{
+                if postRes?.status == 1{
+                    self.favorites = favs!
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        self.tableView.isHidden = false
+                    }
+                }else{
+                    self.tableView.isHidden = false
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+                        self.callService()
+                    })
+                    alertController.addAction(cancel)
+                    alertController.addAction(tryAgain)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }else{
+                self.tableView.isHidden = false
+                self.loader.stopAnimating()
+                self.loaderView.isHidden = true
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+                print("error")
+            }
+        }
     }
 }

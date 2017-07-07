@@ -41,6 +41,7 @@ class services_calls {
     func parseData(JSONData: Data , class_name : String) {
         do {
             let readableJSON = try JSONSerialization.jsonObject(with: JSONData, options:.allowFragments) as! [String: Any]
+             self.postRes = postResponse(result: readableJSON)
             if let stringArray = readableJSON["data"] as? [[String :Any]]{
                 let elements = readableJSON["data"] as! [[String: Any]]
 
@@ -121,7 +122,7 @@ class services_calls {
     }
 
     
-    func login(email : String , password : String, onComplete: @escaping (user?,String) -> Void){
+    func login(email : String , password : String, onComplete: @escaping (user?,String,postResponse?) -> Void){
         
         let parameters: Parameters = [
             "email": email,
@@ -133,11 +134,11 @@ class services_calls {
             //success
             case .success( _):
                 self.parsUserLogin(JSONData: response.data!)
-                onComplete(self.user_m,"ok")
+                onComplete(self.user_m,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 //        http://privileb.com/webservices/login.php
 //        {"email":"carla.zaiter@bloomay.com","password":"123456"}
@@ -219,7 +220,7 @@ class services_calls {
     
     }
     
-    func get_nearby_offers(latitude : String , longtude : String , date : String, onComplete: @escaping ([offer]?,String) -> Void){
+    func get_nearby_offers(latitude : String , longtude : String , date : String, onComplete: @escaping ([offer]?,String,postResponse?) -> Void){
         self.offers.removeAll()
         let parameters: Parameters = [
             "latitude": latitude,
@@ -231,11 +232,11 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "offer")
-                onComplete(self.offers,"ok")
+                onComplete(self.offers,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 
 //    http://privileb.com/webservices/nearby_offers.php
@@ -243,7 +244,7 @@ class services_calls {
     
     }
     
-    func get_featured_offers(country_code : String , date : String , onComplete: @escaping ([offer]?,String) -> Void){
+    func get_featured_offers(country_code : String , date : String , onComplete: @escaping ([offer]?,String,postResponse?) -> Void){
         self.offers.removeAll()
         let parameters: Parameters = [
             "country_code": country_code,
@@ -253,18 +254,18 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "offer")
-                onComplete(self.offers,"ok")
+                onComplete(self.offers,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 //    http://privileb.com/webservices/featured_offers.php
 //        {"country_code":"lb","date":"2017-05-09"}
     
     }
     
-    func get_all_offers(country_code : String , date : String, onComplete: @escaping ([offer]?,String) -> Void){
+    func get_all_offers(country_code : String , date : String, onComplete: @escaping ([offer]?,String,postResponse?) -> Void){
         self.offers.removeAll()
         let parameters: Parameters = [
             "country_code": country_code,
@@ -274,18 +275,18 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "offer")
-                onComplete(self.offers,"ok")
+                onComplete(self.offers,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 
 //    http://privileb.com/webservices/offers_list.php
 //    {"country_code":"lb","date":"2017-05-09"}
     }
     //to check
-    func get_offer_details(offer_id : String, onComplete: @escaping (offer_details?,String) -> Void){
+    func get_offer_details(offer_id : String, onComplete: @escaping (offer_details?,String,postResponse?) -> Void){
         let parameters: Parameters = [
             "offer_id": offer_id
             ]
@@ -295,18 +296,18 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "details")
-                onComplete(self.offer_detailss!,"ok")
+                onComplete(self.offer_detailss!,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 
 //        http://privileb.com/webservices/offer_details.php
 //        {"offer_id":"5"}
     }
     //to check
-    func get_static_page(country_code : String ,onComplete: @escaping ([static_page]?,String) -> Void){
+    func get_static_page(country_code : String ,onComplete: @escaping ([static_page]?,String,postResponse?) -> Void){
         self.pages.removeAll()
         let parameters: Parameters = [
             "country_code": country_code
@@ -318,18 +319,18 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "static_page")
-                onComplete(self.pages,"ok")
+                onComplete(self.pages,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 
 //    http://privileb.com/webservices/get_static_pages.php
 //        {"country_code":"lb"}
     
     }
-    func get_favourite_list (user_id : String , date : String, onComplete: @escaping ([favourite]?,String) -> Void){
+    func get_favourite_list (user_id : String , date : String, onComplete: @escaping ([favourite]?,String,postResponse?) -> Void){
         self.favourites.removeAll()
         let parameters: Parameters = [
             "user_id": user_id,
@@ -341,11 +342,11 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "favourite")
-                onComplete(self.favourites,"ok")
+                onComplete(self.favourites,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
         
 //    http://privileb.com/webservices/get_favorites_list.php
@@ -395,7 +396,7 @@ class services_calls {
 //    http://privileb.com/webservices/remove_from_favorites.php
 //        {"favorite_id":"1"}
     }
-    func get_categories(country_code : String, onComplete: @escaping ([categoryy]?,String) -> Void){
+    func get_categories(country_code : String, onComplete: @escaping ([categoryy]?,String,postResponse?) -> Void){
         self.categories.removeAll()
         let parameters: Parameters = [
             "country_code": country_code
@@ -407,11 +408,11 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "category")
-                onComplete(self.categories,"ok")
+                onComplete(self.categories,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 //    http://privileb.com/webservices/get_categories.php
 //        {"country_code":"lb"}
@@ -458,7 +459,7 @@ class services_calls {
 //    {"user_id":"4"}
     }
     
-    func get_countries(onComplete: @escaping ([country]?,String) -> Void){
+    func get_countries(onComplete: @escaping ([country]?,String,postResponse?) -> Void){
         self.countries.removeAll()
         
         Alamofire.request("http://privileb.com/webservices/get_countries.php").responseJSON() { response in
@@ -466,16 +467,16 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "country")
-                onComplete(self.countries,"ok")
+                onComplete(self.countries,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 //    http://privileb.com/webservices/get_countries.php
     }
     
-    func get_districts(country_code : String, onComplete: @escaping ([district]?,String) -> Void){
+    func get_districts(country_code : String, onComplete: @escaping ([district]?,String,postResponse?) -> Void){
         districts.removeAll()
         let parameters: Parameters = [
             "country_code": country_code
@@ -486,11 +487,11 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "district")
-               onComplete(self.districts,"ok")
+               onComplete(self.districts,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 //    http://privileb.com/webservices/get_districts.php
 //        {"country_code":"lb"}
@@ -523,7 +524,7 @@ class services_calls {
         
     }
     
-    func search_offers(category_ids : String ,country_code : String , date : String ,district_ids : String ,keyword : String , onComplete: @escaping ([offer]?,String) -> Void){
+    func search_offers(category_ids : String ,country_code : String , date : String ,district_ids : String ,keyword : String , onComplete: @escaping ([offer]?,String,postResponse?) -> Void){
         self.offers.removeAll()
         let parameters: Parameters = [
             "category_ids": category_ids,
@@ -539,11 +540,11 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "offer")
-                onComplete(self.offers,"ok")
+                onComplete(self.offers,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 //    http://privileb.com/webservices/search_offers.php
 //        {"category_ids":"9,2","country_code":"lb","date":"2017-06-12","district_ids":"17","keyword":"b"}
@@ -611,7 +612,7 @@ class services_calls {
 //        {"category_id":"9"}
     }
     
-    func get_regions(district_id : String, onComplete: @escaping ([region]?,String) -> Void){
+    func get_regions(district_id : String, onComplete: @escaping ([region]?,String,postResponse?) -> Void){
         self.regions.removeAll()
         let parameters: Parameters = [
             "district_id": district_id
@@ -621,11 +622,11 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "region")
-                onComplete(self.regions,"ok")
+                onComplete(self.regions,"ok",self.postRes)
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                onComplete(nil,"Request failed with error: \(error)")
+                onComplete(nil,"Request failed with error: \(error)",nil)
             }}
 //    http://privileb.com/webservices/get_regions.php
 //        {"district_id":"9"}
