@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -254,7 +254,7 @@
                     <tabBarItem key="tabBarItem" title="Favorite" image="tab_favorite3" selectedImage="favorite_select" id="eox-EZ-DCK"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="blackTranslucent" id="gyP-2l-Aye">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="gyP-2l-Aye">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1279,7 +1279,7 @@ Floor</string>
                                                 <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="owS-Zr-jry" id="7of-FD-cCY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lel-is-mAB">
@@ -2692,7 +2692,7 @@ offers, latest brands … and more!</string>
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GJw-Ge-fCi" id="nE6-I7-lSe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqc-cQ-rGD">
@@ -2779,7 +2779,7 @@ offers, latest brands … and more!</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AL5-pb-KdU" id="yrM-MK-Fr8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYI-Ig-SZl">
@@ -3183,7 +3183,7 @@ offers, latest brands … and more!</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFI-op-l29">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="350"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="550"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjz-jp-hmt">
                                                 <rect key="frame" x="10" y="0.0" width="364" height="60"/>
@@ -3216,35 +3216,35 @@ MASSAGE TREATMENTS</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rnb-Pr-ySc">
-                                                <rect key="frame" x="0.0" y="105" width="374" height="150"/>
+                                                <rect key="frame" x="0.0" y="105" width="374" height="400"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="OFm-M6-uWE"/>
+                                                    <constraint firstAttribute="height" constant="400" id="OFm-M6-uWE"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KHG-cf-PmD">
-                                                    <size key="itemSize" width="340" height="150"/>
+                                                    <size key="itemSize" width="371" height="400"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailsCollectionCell" id="XIw-ii-Mi7" customClass="ImagesDetailsCollectionViewCell" customModule="Privileb" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="150"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="371" height="400"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="340" height="150"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="371" height="400"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eOY-ox-3Ht">
-                                                                    <rect key="frame" x="8" y="8" width="324" height="134"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eOY-ox-3Ht">
+                                                                    <rect key="frame" x="0.0" y="8" width="371" height="384"/>
                                                                 </imageView>
                                                             </subviews>
                                                         </view>
                                                         <constraints>
                                                             <constraint firstItem="eOY-ox-3Ht" firstAttribute="top" secondItem="XIw-ii-Mi7" secondAttribute="topMargin" id="1t7-gV-8DG"/>
                                                             <constraint firstAttribute="bottomMargin" secondItem="eOY-ox-3Ht" secondAttribute="bottom" id="Ila-jq-Sam"/>
-                                                            <constraint firstAttribute="trailingMargin" secondItem="eOY-ox-3Ht" secondAttribute="trailing" id="ZSc-ch-Yny"/>
-                                                            <constraint firstItem="eOY-ox-3Ht" firstAttribute="leading" secondItem="XIw-ii-Mi7" secondAttribute="leadingMargin" id="fhn-bJ-pId"/>
+                                                            <constraint firstAttribute="trailing" secondItem="eOY-ox-3Ht" secondAttribute="trailing" id="ZSc-ch-Yny"/>
+                                                            <constraint firstItem="eOY-ox-3Ht" firstAttribute="leading" secondItem="XIw-ii-Mi7" secondAttribute="leading" id="fhn-bJ-pId"/>
                                                         </constraints>
                                                         <connections>
                                                             <outlet property="cellImage" destination="eOY-ox-3Ht" id="z0c-gX-q7n"/>
@@ -3257,13 +3257,13 @@ MASSAGE TREATMENTS</string>
                                                 </connections>
                                             </collectionView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signowns" translatesAutoresizingMaskIntoConstraints="NO" id="rxr-AU-VDt">
-                                                <rect key="frame" x="10" y="265" width="134" height="40"/>
+                                                <rect key="frame" x="10" y="505" width="134" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="dbB-It-Uda"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKH-jS-sBl">
-                                                <rect key="frame" x="264" y="272.5" width="100" height="25"/>
+                                                <rect key="frame" x="264" y="512.5" width="100" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="5fU-eP-aQv"/>
                                                     <constraint firstAttribute="height" constant="25" id="liX-U5-WQX"/>
@@ -3276,7 +3276,7 @@ MASSAGE TREATMENTS</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ta4-k1-C8f">
-                                                <rect key="frame" x="10" y="349" width="354" height="1"/>
+                                                <rect key="frame" x="10" y="549" width="354" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="1dU-kY-uIX"/>
@@ -3293,7 +3293,7 @@ MASSAGE TREATMENTS</string>
                                             <constraint firstItem="80f-4f-5GD" firstAttribute="top" secondItem="Wjz-jp-hmt" secondAttribute="bottom" constant="10" id="Ke3-5k-4M7"/>
                                             <constraint firstItem="rxr-AU-VDt" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="NKm-3O-2qd"/>
                                             <constraint firstAttribute="trailing" secondItem="80f-4f-5GD" secondAttribute="trailing" id="P3a-gC-fPi"/>
-                                            <constraint firstAttribute="height" constant="350" id="WyU-Ox-QXK"/>
+                                            <constraint firstAttribute="height" constant="550" id="WyU-Ox-QXK"/>
                                             <constraint firstItem="Rnb-Pr-ySc" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" id="bQY-sJ-nyl"/>
                                             <constraint firstItem="tng-tb-TZa" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="ewj-Ru-0sG"/>
                                             <constraint firstItem="Wjz-jp-hmt" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="ifK-35-Dsj"/>
@@ -3303,12 +3303,12 @@ MASSAGE TREATMENTS</string>
                                             <constraint firstItem="YKH-jS-sBl" firstAttribute="leading" secondItem="rxr-AU-VDt" secondAttribute="trailing" constant="120" id="s3Y-Vn-JBP"/>
                                             <constraint firstAttribute="trailing" secondItem="ta4-k1-C8f" secondAttribute="trailing" constant="10" id="vIh-0t-I2k"/>
                                             <constraint firstAttribute="trailing" secondItem="Rnb-Pr-ySc" secondAttribute="trailing" id="va1-8Q-2hn"/>
-                                            <constraint firstItem="rxr-AU-VDt" firstAttribute="top" secondItem="Rnb-Pr-ySc" secondAttribute="bottom" constant="10" id="wmA-xZ-1UX"/>
+                                            <constraint firstItem="rxr-AU-VDt" firstAttribute="top" secondItem="Rnb-Pr-ySc" secondAttribute="bottom" id="wmA-xZ-1UX"/>
                                             <constraint firstItem="YKH-jS-sBl" firstAttribute="centerY" secondItem="rxr-AU-VDt" secondAttribute="centerY" id="wmA-z6-7hL"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp5-ne-3Fg">
-                                        <rect key="frame" x="0.0" y="350" width="374" height="490"/>
+                                        <rect key="frame" x="0.0" y="550" width="374" height="490"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bxr-bW-JKh">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="310"/>
@@ -3665,7 +3665,7 @@ Hadath-Baabda Main Road</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnB-fG-wfB">
-                                        <rect key="frame" x="0.0" y="840" width="374" height="400"/>
+                                        <rect key="frame" x="0.0" y="1040" width="374" height="400"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mru-Xj-FSB">
                                                 <rect key="frame" x="20" y="20" width="334" height="60"/>
@@ -3684,8 +3684,18 @@ Hadath-Baabda Main Road</string>
                                                     <constraint firstAttribute="height" constant="1" id="KQB-js-62s"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CP4-as-gFw">
+                                                <rect key="frame" x="20" y="121" width="200" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="29" id="Rnc-b1-TnF"/>
+                                                    <constraint firstAttribute="width" constant="200" id="Uow-6P-7Sk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ov0-Zk-W7Y">
-                                                <rect key="frame" x="20" y="121" width="334" height="259"/>
+                                                <rect key="frame" x="20" y="150" width="334" height="230"/>
                                                 <string key="text">Description:
 Juliano Asmar … Creating Art &amp; Beauty
 As a contemporary artist and a beauty
@@ -3708,14 +3718,16 @@ Télé Liban TV Stations staffs.</string>
                                             <constraint firstItem="Ov0-Zk-W7Y" firstAttribute="leading" secondItem="hnB-fG-wfB" secondAttribute="leading" constant="20" id="0fK-xI-cZJ"/>
                                             <constraint firstItem="mru-Xj-FSB" firstAttribute="top" secondItem="hnB-fG-wfB" secondAttribute="top" constant="20" id="83o-vP-qfT"/>
                                             <constraint firstItem="mru-Xj-FSB" firstAttribute="leading" secondItem="hnB-fG-wfB" secondAttribute="leading" constant="20" id="CvJ-NZ-17U"/>
+                                            <constraint firstItem="CP4-as-gFw" firstAttribute="top" secondItem="1is-fw-5Pz" secondAttribute="bottom" constant="20" id="FSE-tU-lRO"/>
                                             <constraint firstAttribute="trailing" secondItem="1is-fw-5Pz" secondAttribute="trailing" constant="20" id="FyY-z7-ZoD"/>
                                             <constraint firstAttribute="bottom" secondItem="Ov0-Zk-W7Y" secondAttribute="bottom" constant="20" id="Mlx-Rp-7XZ"/>
                                             <constraint firstAttribute="height" constant="400" id="QTf-6r-BBe"/>
                                             <constraint firstAttribute="trailing" secondItem="mru-Xj-FSB" secondAttribute="trailing" constant="20" id="apC-x9-Gwz"/>
+                                            <constraint firstItem="Ov0-Zk-W7Y" firstAttribute="top" secondItem="CP4-as-gFw" secondAttribute="bottom" id="dRj-UR-uZC"/>
                                             <constraint firstItem="1is-fw-5Pz" firstAttribute="top" secondItem="mru-Xj-FSB" secondAttribute="bottom" constant="20" id="g5p-3b-mCA"/>
                                             <constraint firstAttribute="trailing" secondItem="Ov0-Zk-W7Y" secondAttribute="trailing" constant="20" id="lrX-ff-LdB"/>
                                             <constraint firstItem="1is-fw-5Pz" firstAttribute="leading" secondItem="hnB-fG-wfB" secondAttribute="leading" constant="20" id="qfI-lI-4e8"/>
-                                            <constraint firstItem="Ov0-Zk-W7Y" firstAttribute="top" secondItem="1is-fw-5Pz" secondAttribute="bottom" constant="20" id="wKe-0O-Vmp"/>
+                                            <constraint firstItem="CP4-as-gFw" firstAttribute="leading" secondItem="hnB-fG-wfB" secondAttribute="leading" constant="20" id="sDj-bR-0O7"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -3785,7 +3797,7 @@ Télé Liban TV Stations staffs.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pat-Zk-9TG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8286" y="10"/>
+            <point key="canvasLocation" x="8285.6000000000004" y="9.4452773613193415"/>
         </scene>
         <!--All Deals View Controller-->
         <scene sceneID="WAu-fn-9S2">
@@ -3807,7 +3819,7 @@ Télé Liban TV Stations staffs.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sWk-x0-jfl" id="skG-R3-QOm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6c5-XJ-bAg">
