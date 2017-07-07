@@ -145,7 +145,7 @@ class services_calls {
     }
     
     
-    func logout(user_id : String) {
+    func logout(user_id : String, onComplete: @escaping (postResponse?,String) -> Void) {
         let parameters: Parameters = [
             "user_id": user_id       ]
         
@@ -153,11 +153,16 @@ class services_calls {
             switch response.result {
             //success
             case .success( _):
-                self.parseData(JSONData: response.data!, class_name: "user")
-            //failure
+                do {
+                    let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                    self.postRes = postResponse(result: readableJSON)
+                    onComplete(self.postRes,"ok")
+                }catch(_) {
+                    onComplete(nil,"error")
+            }            //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                
+                onComplete(nil,"error")
             }}
         
         

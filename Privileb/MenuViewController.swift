@@ -10,13 +10,23 @@ import UIKit
 
 class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
+    @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var callBtnView: UIView!
     var isFromReg = false
+    let userDefaults = UserDefaults.standard
+    var isLogedIn = false
     override func viewDidLoad() {
         super.viewDidLoad()
         callBtnView.layer.cornerRadius = 2
         callBtnView.layer.borderWidth = 2
         callBtnView.layer.borderColor = UIColor(red: 247, green: 247, blue: 247).cgColor
+        if let log = userDefaults.value(forKey: "isLogedIn") as? Bool{
+            self.isLogedIn = log
+        }
+        
+        if isLogedIn {
+            self.loginBtn.setTitle("Logout", for: .normal)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -149,14 +159,48 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     @IBAction func onLogin(_ sender: Any) {
-        if #available(iOS 10.0, *) {
-            AppDelegate.sharedDelegate().openLogin()
-        } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "loginNav")
-            let rootController = UIApplication.shared.delegate?.window??.rootViewController as! MSSlidingPanelController
-            rootController.centerViewController = controller
-            rootController.closePanel()
+        if let log = userDefaults.value(forKey: "isLogedIn") as? Bool{
+            self.isLogedIn = log
+        }
+        
+        if isLogedIn {
+            self.loginBtn.setTitle("Logout", for: .normal)
+        }
+
+        if  !isLogedIn{
+            if #available(iOS 10.0, *) {
+                AppDelegate.sharedDelegate().openLogin()
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "loginNav")
+                let rootController = UIApplication.shared.delegate?.window??.rootViewController as! MSSlidingPanelController
+                rootController.centerViewController = controller
+                rootController.closePanel()
+            }
+        }else{
+            var service = services_calls()
+            let uid = userDefaults.value(forKey: "userId") as! Int
+            service.logout(user_id: uid.description, onComplete: { (res, status) in
+                if status == "ok" {
+                    if res?.status == 1 {
+                        self.userDefaults.setValue(false, forKey: "isLogedIn")
+                        self.userDefaults.setValue("", forKey: "userId")
+                        self.userDefaults.setValue("", forKey: "countryId")
+                        self.userDefaults.setValue("", forKey: "userMail")
+                        self.loginBtn.setTitle("LogIn", for: .normal)
+                    }else{
+                        let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }else{
+                    let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
         }
     }
     @IBAction func onRegister(_ sender: Any) {

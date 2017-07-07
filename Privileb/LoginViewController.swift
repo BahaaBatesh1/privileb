@@ -10,11 +10,14 @@ import UIKit
 
 class LoginViewController: BaseViewController ,UITextFieldDelegate{
 
+    @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var forgetTextField: GrayTextField!
     @IBOutlet weak var forgetView: UIView!
     @IBOutlet weak var userNameTextField: UITextField!
-    
+    var loader: MaterialLoadingIndicator!
+    let userDefaults = UserDefaults.standard
+
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     var services = services_calls()
@@ -26,6 +29,12 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         userNameTextField.delegate = self
         passwordTextField.delegate = self
 
+        loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
+        loader.circleShapeLayer.strokeColor = UIColor.white.cgColor
+        self.loaderView.addSubview(loader)
+
+        
         loginBtn.layer.cornerRadius = 3
         
         if let navigationBar = self.navigationController?.navigationBar {
@@ -76,24 +85,55 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         }
     }
     @IBAction func onLogin(_ sender: Any) {
-        services.login(email: userNameTextField.text!, password: passwordTextField.text!) { (user, status,postRes) in
-            if status == "ok"{
-                if postRes?.status == 1 {
-                    self.user = user
+        
+        if self.userNameTextField.text != "" && self.passwordTextField.text != "" {
+            loader.startAnimating()
+            self.loaderView.isHidden = false
+            
+            services.login(email: userNameTextField.text!, password: passwordTextField.text!) { (user, status,postRes) in
+                if status == "ok"{
+                    if user?.response.status == 1 {
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        self.user = user
+                        self.userDefaults.setValue(true, forKey: "isLogedIn")
+                        self.userDefaults.setValue(user?.id, forKey: "userId")
+                        self.userDefaults.setValue(user?.country_id, forKey: "countryId")
+                        self.userDefaults.setValue(user?.email, forKey: "userMail")
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "base")
+                        if #available(iOS 10.0, *) {
+                            AppDelegate.sharedDelegate().window?.rootViewController = controller
+                        } else {
+                            let appDelegate = UIApplication.shared.delegate
+                            appDelegate?.window!?.rootViewController = controller
+                        }
+                    }else{
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        let alertController = UIAlertController(title: "Somthing went wrong!", message: user?.response?.message, preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }else{
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                     alertController.addAction(ok)
                     self.present(alertController, animated: true, completion: nil)
+                    print("error")
                 }
-            }else{
-                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-                alertController.addAction(ok)
-                self.present(alertController, animated: true, completion: nil)
-                print("error")
             }
+        }else{
+            let alertController = UIAlertController(title: "Empty fields!", message: "Please enter email and password!", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
         }
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

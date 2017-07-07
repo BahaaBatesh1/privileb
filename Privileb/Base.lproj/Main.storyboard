@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -241,6 +241,7 @@
                     </view>
                     <connections>
                         <outlet property="callBtnView" destination="oqz-fl-vND" id="QJb-OW-BxJ"/>
+                        <outlet property="loginBtn" destination="YPW-2u-Dg2" id="QdC-ZY-hVY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJR-xb-HH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2212,7 +2213,7 @@ offers, latest brands … and more!</string>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbK-Uk-OMe">
                                                 <rect key="frame" x="20" y="306" width="74" height="21"/>
@@ -2231,7 +2232,7 @@ offers, latest brands … and more!</string>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTB-sv-hRX" userLabel="btn_check">
                                                 <rect key="frame" x="20" y="407" width="20" height="20"/>
@@ -2337,6 +2338,14 @@ offers, latest brands … and more!</string>
                                                     <constraint firstAttribute="trailing" secondItem="NTc-GE-GFU" secondAttribute="trailing" id="yxm-sq-Qq7"/>
                                                 </constraints>
                                             </view>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4V-0u-zV4">
+                                                <rect key="frame" x="305" y="455" width="30" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="1U5-97-DoS"/>
+                                                    <constraint firstAttribute="height" constant="30" id="KiK-FA-LyG"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -2356,6 +2365,7 @@ offers, latest brands … and more!</string>
                                             <constraint firstItem="WWe-ma-V8k" firstAttribute="leading" secondItem="Kcb-5W-N8e" secondAttribute="leading" constant="20" id="X05-pO-JnY"/>
                                             <constraint firstItem="8ka-Xe-KUj" firstAttribute="width" secondItem="v84-rH-fdV" secondAttribute="width" constant="-40" id="YsL-DG-1IV"/>
                                             <constraint firstItem="hbK-Uk-OMe" firstAttribute="top" secondItem="hud-bD-owZ" secondAttribute="bottom" constant="25" id="ZiE-3v-3fd"/>
+                                            <constraint firstItem="Y4V-0u-zV4" firstAttribute="trailing" secondItem="M0o-1g-07f" secondAttribute="trailing" constant="-20" id="ag3-M9-Ytd"/>
                                             <constraint firstItem="WWe-ma-V8k" firstAttribute="top" secondItem="hbK-Uk-OMe" secondAttribute="bottom" constant="5" id="cT4-6h-et9"/>
                                             <constraint firstItem="aTB-sv-hRX" firstAttribute="leading" secondItem="Kcb-5W-N8e" secondAttribute="leading" constant="20" id="cjL-Ee-AAG"/>
                                             <constraint firstItem="Yto-B8-RvY" firstAttribute="top" secondItem="v84-rH-fdV" secondAttribute="bottom" constant="25" id="fdX-Ei-g5t"/>
@@ -2367,6 +2377,7 @@ offers, latest brands … and more!</string>
                                             <constraint firstAttribute="height" constant="1000" id="sWp-Ld-0r4"/>
                                             <constraint firstItem="cas-22-yh5" firstAttribute="top" secondItem="WWe-ma-V8k" secondAttribute="bottom" constant="25" id="uMw-Nv-xEZ"/>
                                             <constraint firstItem="v84-rH-fdV" firstAttribute="top" secondItem="Kcb-5W-N8e" secondAttribute="top" id="un7-6w-1eG"/>
+                                            <constraint firstItem="Y4V-0u-zV4" firstAttribute="centerY" secondItem="M0o-1g-07f" secondAttribute="centerY" id="xeT-uT-5O9"/>
                                             <constraint firstAttribute="trailing" secondItem="WWe-ma-V8k" secondAttribute="trailing" constant="20" id="yPc-ia-9hL"/>
                                             <constraint firstItem="v84-rH-fdV" firstAttribute="leading" secondItem="Kcb-5W-N8e" secondAttribute="leading" id="yhd-qO-Bog"/>
                                         </constraints>
@@ -2395,6 +2406,7 @@ offers, latest brands … and more!</string>
                     <connections>
                         <outlet property="forgetTextField" destination="NTc-GE-GFU" id="uJK-9X-3HV"/>
                         <outlet property="forgetView" destination="8ka-Xe-KUj" id="1il-hL-weN"/>
+                        <outlet property="loaderView" destination="Y4V-0u-zV4" id="Pde-OD-gtn"/>
                         <outlet property="loginBtn" destination="M0o-1g-07f" id="k4a-h3-fRk"/>
                         <outlet property="passwordTextField" destination="WWe-ma-V8k" id="kDc-An-7RW"/>
                         <outlet property="scrollView" destination="bS0-h1-eTZ" id="fLN-3I-0qV"/>
@@ -2692,7 +2704,7 @@ offers, latest brands … and more!</string>
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GJw-Ge-fCi" id="nE6-I7-lSe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqc-cQ-rGD">
