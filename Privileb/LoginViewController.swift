@@ -134,7 +134,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
                         self.userDefaults.setValue(user?.id, forKey: "userId")
                         self.userDefaults.setValue(user?.country_id, forKey: "countryId")
                         self.userDefaults.setValue(user?.email, forKey: "userMail")
-                        
+                        AppDelegate.sharedDelegate().loadCard()
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let controller = storyboard.instantiateViewController(withIdentifier: "base")
                         if #available(iOS 10.0, *) {

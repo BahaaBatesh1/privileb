@@ -12,15 +12,26 @@ class card {
     var id : Int!
     var serial_number : String!
     var expiry_date : String!
-    var image_front : String!
-    var image_back : String!
-
+    var cardHolderName: String!
+    var userId:Int
     init(result :[String: Any]) {
         
         if let id = Int((result["id"] as? String)!){
             self.id = id
         }else{
             self.id = 0
+        }
+        
+        if let uid = Int((result["user_id"] as? String)!){
+            self.userId = uid
+        }else{
+            self.userId = 0
+        }
+        
+        if let holder = result["cardholder_name"] as? String{
+            self.cardHolderName = holder
+        }else{
+            self.cardHolderName = ""
         }
         
         if let serial_number = result["serial_number"] as? String{
@@ -34,20 +45,7 @@ class card {
         }else{
             self.expiry_date = ""
         }
-        
-        if let image_front = result["image_front"] as? String{
-            self.image_front = image_front
-        }else{
-            self.image_front = ""
-        }
-        
-        if let image_back = result["image_back"] as? String{
-            self.image_back = image_back
-        }else{
-            self.image_back = ""
-        }
-        
-        
+
         
     }
 
@@ -55,12 +53,10 @@ class card {
 
 
 }
-//
-//"data": {
-//    "id": "3",
-//    "serial_number": "111111111",
-//    "expiry_date": "2018/05",
-//    "image_front": "http://privileb.com/admin_portal/images/cardfront/83e04f5eb626a506e7e2dabeaf654b0d.png",
-//    "image_back": "http://privileb.com/admin_portal/images/cardback/9efa05cf2fee89f462b433fe6e3a8649.png"
-//}
-//}
+//["status_code": 1, "data": {
+//    "cardholder_name" = "Johnny Chawa";
+//    "expiry_date" = "2018/07";
+//    id = 510;
+//    "serial_number" = 123456;
+//    "user_id" = 265;
+//    }, "message": Card get successfully.]

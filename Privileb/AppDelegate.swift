@@ -24,14 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var terms:static_page?
     var joinOur:static_page?
 
-    
+    var card :card?
     var selectedCat : [categoryy] = []
     var selectedDis : [district] = []
 
     var unSelectedCat : [categoryy] = []
     var unSelectedDis : [district] = []
 
-    
+    let userDefaults = UserDefaults.standard
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let navigationBarAppearace = UINavigationBar.appearance()
@@ -49,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let attributes = [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 9)]
         appearance.setTitleTextAttributes(attributes, for: .normal)
 
+        //load card 
+        loadCard()
         //load categories
         services.get_categories(country_code: "lb") { (categories, status,postRes) in
             if status == "ok" {
@@ -169,6 +172,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.binifits = page
             }else if page.id == 5{//our family
                 self.joinOur = page
+            }
+        }
+    }
+    
+    func loadCard() {
+        if let isLogiedIn = self.userDefaults.value(forKey: "isLogedIn") as? Bool {
+            if isLogiedIn {
+                if let uid = self.userDefaults.value(forKey: "userId") as? Int{
+                    services.get_card(user_id: uid.description, onComplete: { (card, status, res) in
+                        if status == "ok" {
+                            if res?.status == 1 {
+                                self.card = card
+                            }
+                        }
+                    })
+                }
             }
         }
     }

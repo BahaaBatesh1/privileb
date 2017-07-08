@@ -12,6 +12,10 @@ import MessageUI
 import MapKit
 class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDelegate ,MKMapViewDelegate{
 
+    @IBOutlet weak var myCardView: UIView!
+    @IBOutlet weak var validationDateLabel: UILabel!
+    @IBOutlet weak var holderNameLabel: UILabel!
+    @IBOutlet weak var cardSerialNumberLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var joinPageLabel: UILabel!
     @IBOutlet weak var joinPageImageView: UIImageView!
@@ -40,10 +44,36 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
     var isdown = false
     var isHaveCard = false
     var joinOur:static_page?
+    let userDefaults = UserDefaults.standard
+    var card : card?
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
 
+
+        if let isLogedIn = userDefaults.value(forKey: "isLogedIn") as? Bool{
+            if isLogedIn {
+                self.card = AppDelegate.sharedDelegate().card
+                self.cardSerialNumberLabel.text = self.card?.serial_number
+                self.holderNameLabel.text = self.card?.cardHolderName
+                self.validationDateLabel.text = self.card?.expiry_date
+                self.currentTitlelabel.text = self.card?.cardHolderName
+                self.myCardView.isHidden = false
+                self.buCardView.isHidden = true
+                isHaveCard = true
+            }else{
+                self.myCardView.isHidden = true
+                self.buCardView.isHidden = false
+                isHaveCard = false
+                self.currentTitlelabel.text = "PRIVILEB CARD"
+            }
+        }else{
+            self.myCardView.isHidden = true
+            self.buCardView.isHidden = false
+            isHaveCard = false
+            self.currentTitlelabel.text = "PRIVILEB CARD"
+        }
+        
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.standard
@@ -88,6 +118,32 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        if let isLogedIn = userDefaults.value(forKey: "isLogedIn") as? Bool{
+            if isLogedIn {
+                self.card = AppDelegate.sharedDelegate().card
+                self.cardSerialNumberLabel.text = self.card?.serial_number
+                self.holderNameLabel.text = self.card?.cardHolderName
+                self.validationDateLabel.text = self.card?.expiry_date
+                self.currentTitlelabel.text = self.card?.cardHolderName
+                self.myCardView.isHidden = false
+                self.buCardView.isHidden = true
+                isHaveCard = true
+            }else{
+                self.myCardView.isHidden = true
+                self.buCardView.isHidden = false
+                isHaveCard = false
+                self.currentTitlelabel.text = "PRIVILEB CARD"
+            }
+        }else{
+            self.myCardView.isHidden = true
+            self.buCardView.isHidden = false
+            isHaveCard = false
+            self.currentTitlelabel.text = "PRIVILEB CARD"
+        }
+
+        
+        
+        
         self.joinOur = AppDelegate.sharedDelegate().joinOur
         if joinOur != nil {
             let attrStr = try! NSAttributedString(
@@ -112,7 +168,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
     }
     @IBAction func onMyCard(_ sender: Any) {
         if isHaveCard{
-            self.currentTitlelabel.text = "MRS. RITA ASSI"
+            self.currentTitlelabel.text = self.card?.cardHolderName
         }else{
             self.currentTitlelabel.text = "PRIVILEB CARD"
         }
@@ -160,7 +216,6 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
         } else {
             slidingPanelController.openLeftPanel()
         }
-
     }
     
     @IBAction func onBuy(_ sender: Any) {

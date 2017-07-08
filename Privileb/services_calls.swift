@@ -20,7 +20,7 @@ class services_calls {
     var districts : [district] = []
     var countries : [country] = []
     var payment_methods : [payment_method] = []
-    var cards : [card] = []
+    var cards : card?
     var sub_categories : [sub_category] = []
     var branches : [branch] = []
     var pages : [static_page] = []
@@ -80,9 +80,9 @@ class services_calls {
                     }
 
                     
-                    if(class_name == "card"){
-                    self.cards.append(card(result: element))
-                    }
+//                    if(class_name == "card"){
+//                    self.cards.append(card(result: element))
+//                    }
 
                     
                     if(class_name == "sub_category"){
@@ -429,7 +429,7 @@ class services_calls {
 //        {"country_code":"lb"}
     }
     
-    func add_to_news_letter(name : String , email : String , mobile_number : String){
+    func add_to_news_letter(name : String , email : String , mobile_number : String, onComplete: @escaping (postResponse?,String) -> Void){
         let parameters: Parameters = [
             "name": name,
             "email" : email,
@@ -440,17 +440,18 @@ class services_calls {
             //success
             case .success( _):
                 self.parseData(JSONData: response.data!, class_name: "message")
+                onComplete(self.postRes,"ok")
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                
+                onComplete(nil,"error")
             }}
 
 //     http://privileb.com/webservices/newsletter.php
 //        {"name":"carla wehbi","email":"carlawehbi@gmail.com","mobile_number":"03696998"}
     }
     //to check
-    func get_card(user_id : String){
+    func get_card(user_id : String,onComplete: @escaping (card?,String,postResponse?) -> Void){
         let parameters: Parameters = [
             "user_id": user_id
         ]
@@ -459,11 +460,18 @@ class services_calls {
             switch response.result {
             //success
             case .success( _):
-                self.parseData(JSONData: response.data!, class_name: "card")
+                do {
+                    let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                    self.cards = card(result: readableJSON["data"] as! [String : Any])
+                        onComplete(self.cards,"ok",self.postRes)
+                }catch(_) {
+                    print("error parsing")
+                    onComplete(nil,"ok",nil)
+                }
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                
+                onComplete(nil,"ok",nil)
             }}
 
 //     http://privileb.com/webservices/get_card.php

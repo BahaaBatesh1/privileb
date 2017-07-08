@@ -10,14 +10,24 @@ import UIKit
 import Foundation
 class SignUpViewController: UIViewController ,UITextFieldDelegate{
 
+    @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var signupBtn: UIButton!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     var firstTime = true
+    var services = services_calls()
+    var loader: MaterialLoadingIndicator!
+    let userDefaults = UserDefaults.standard
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
+        loader.circleShapeLayer.strokeColor = UIColor.white.cgColor
+        self.loaderView.addSubview(loader)
+
         configureStyles()
         // Do any additional setup after loading the view.
     }
@@ -28,7 +38,39 @@ class SignUpViewController: UIViewController ,UITextFieldDelegate{
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-        
+        if self.emailTextField.text != "" && self.phoneTextField.text != "" && self.nameTextField.text != "" {
+            self.loader.startAnimating()
+            self.loaderView.isHidden = false
+            self.signupBtn.isEnabled = false
+
+            services.add_to_news_letter(name: self.nameTextField.text!, email: self.emailTextField.text!, mobile_number: self.phoneTextField.text!, onComplete: { (res, status) in
+                if status == "ok"{
+                    if res?.status == 1 {
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        self.signupBtn.isEnabled = true
+                        self.userDefaults.setValue(true, forKey: "isAddToNews")
+                        self.onSkip(self)
+                    }else{
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        self.signupBtn.isEnabled = true
+                        let alertController = UIAlertController(title: "Failure!", message: res?.message, preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }else{
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    self.signupBtn.isEnabled = true
+                    let alertController = UIAlertController(title: "Connection error!", message: "Please check you internet connection and try again!", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+        }
     }
     
     func configureStyles()  {
