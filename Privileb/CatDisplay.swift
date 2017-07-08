@@ -11,7 +11,7 @@ import Foundation
 class CatDisplay {
     var activeImage :UIImage = UIImage(named:"edu_selected")!
     var inActiveImage: UIImage = UIImage(named:"edu")!
-    var mainImage: UIImage?  = UIImage(named:"background")!
+    var mainImage: UIImage  = UIImage(named:"background")!
     var name:String = "loading"
     var isSelected = false
     
@@ -25,8 +25,6 @@ class CatDisplay {
                 if let im = UIImage(data: data!) {
                     self.activeImage = im
                 }
-            }else{
-                self.activeImage = UIImage(named: "")!
             }
         })
         task.resume()
@@ -42,8 +40,6 @@ class CatDisplay {
                 if let im = UIImage(data: data!) {
                     self.inActiveImage = im
                 }
-            }else{
-                self.inActiveImage = UIImage(named: "")!
             }
         })
         task.resume()
@@ -59,8 +55,6 @@ class CatDisplay {
                 if let im = UIImage(data: data!) {
                     self.mainImage = im
                 }
-            }else{
-                self.mainImage = UIImage(named: "")!
             }
         })
         task.resume()

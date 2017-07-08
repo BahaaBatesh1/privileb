@@ -111,6 +111,9 @@ class AllDealsViewController: UIViewController ,UITableViewDelegate,UITableViewD
             }
         })
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     /*
     // MARK: - Navigation
 

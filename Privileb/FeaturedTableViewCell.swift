@@ -22,6 +22,8 @@ class FeaturedTableViewCell: UITableViewCell {
     @IBOutlet weak var offerLabel: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var containerView: UIView!
+    
+    var logoImageLoaded: UIImage?
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.layer.cornerRadius = 0
@@ -61,10 +63,11 @@ class FeaturedTableViewCell: UITableViewCell {
                 DispatchQueue.main.async(execute: {
                     if let im = UIImage(data: data!) {
                         self.logoImage.image = im
+                        self.logoImageLoaded = im
                     }
                 })
             }else{
-                self.logoImage.image = UIImage(named: "")
+                self.logoImage.image = UIImage(named: "background")
             }
         })
         task.resume()

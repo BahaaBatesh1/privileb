@@ -10,12 +10,15 @@ import UIKit
 
 class LoginViewController: BaseViewController ,UITextFieldDelegate{
 
+    @IBOutlet weak var laoderViewMail: UIView!
+    @IBOutlet weak var keepMeLogedInBtn: UIButton!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var forgetTextField: GrayTextField!
     @IBOutlet weak var forgetView: UIView!
     @IBOutlet weak var userNameTextField: UITextField!
     var loader: MaterialLoadingIndicator!
+    var loaderMail: MaterialLoadingIndicator!
     let userDefaults = UserDefaults.standard
 
     @IBOutlet weak var loginBtn: UIButton!
@@ -23,6 +26,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
     var services = services_calls()
     var user:user?
     var firstTime = true
+    var keepMe = false
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = true
@@ -33,6 +37,11 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         loader.circleShapeLayer.strokeColor = UIColor.white.cgColor
         self.loaderView.addSubview(loader)
+
+        loaderMail = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        loaderMail.center = CGPoint(x: self.laoderViewMail.frame.width/2, y: self.laoderViewMail.frame.height/2)
+        loaderMail.circleShapeLayer.strokeColor = UIColor(red: 212, green: 172, blue: 92).cgColor
+        self.laoderViewMail.addSubview(loaderMail)
 
         
         loginBtn.layer.cornerRadius = 3
@@ -72,24 +81,48 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
     }
 
     @IBAction func onSendForget(_ sender: Any) {
-        services.forgot_password(email: self.forgetTextField.text!) { (res, status) in
-            if status == "ok" {
-                if res?.status == 1 {
-                    print("success")
+        self.forgetTextField.resignFirstResponder()
+        self.laoderViewMail.isHidden = false
+        self.loaderMail.startAnimating()
+        if self.forgetTextField.text != "" {
+            services.forgot_password(email: self.forgetTextField.text!) { (res, status) in
+                if status == "ok" {
+                    if res?.status == 1 {
+                        self.laoderViewMail.isHidden = true
+                        self.loaderMail.stopAnimating()
+                        self.forgetView.isHidden = true
+                        let alertController = UIAlertController(title: "Email sent successfully!", message: "Please check your email!", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }else{
+                        self.laoderViewMail.isHidden = true
+                        self.loaderMail.stopAnimating()
+                        self.forgetView.isHidden = true
+                        let alertController = UIAlertController(title: "Failure!", message: res?.message, preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }else{
+                    self.laoderViewMail.isHidden = true
+                    self.loaderMail.stopAnimating()
+                    self.forgetView.isHidden = true
+                    let alertController = UIAlertController(title: "Failure!", message: res?.message, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
                     self.forgetView.isHidden = true
                 }
-            }else{
-                print("error service")
-                self.forgetView.isHidden = true
             }
         }
     }
     @IBAction func onLogin(_ sender: Any) {
-        self.loginBtn.isEnabled = false
+        loginBtn.isEnabled = false
         if self.userNameTextField.text != "" && self.passwordTextField.text != "" {
             loader.startAnimating()
             self.loaderView.isHidden = false
-            
+
             services.login(email: userNameTextField.text!, password: passwordTextField.text!) { (user, status,postRes) in
                 if status == "ok"{
                     if user?.response.status == 1 {
@@ -160,6 +193,21 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         forgetTextField.resignFirstResponder()
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         firstTime = true
+    }
+    
+    @IBAction func onkeepMe(_ sender: Any) {
+        if keepMe {
+            (sender as! UIButton).backgroundColor = UIColor.white
+            keepMe = false
+        }else{
+            (sender as! UIButton).backgroundColor = UIColor.gray
+            keepMe = true
+        }
+    }
+    @IBAction func onCanceMail(_ sender: Any) {
+        self.forgetView.isHidden = true
+        self.loaderMail.stopAnimating()
+        self.laoderViewMail.isHidden = false
     }
     /*
     // MARK: - Navigation

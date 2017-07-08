@@ -15,7 +15,8 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     var services = services_calls()
     var searchResult : [offer] = []
     var loader: MaterialLoadingIndicator!
-
+    var category_ids = ""
+    var district_ids = ""
     @IBOutlet weak var loaderView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,13 +116,15 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
             des.fromCategories = fromCat
         }else if segue.identifier == "toResult" {
             let des = segue.destination as! SearchResultViewController
-            des.result = self.searchResult
+            des.category_ids = self.category_ids
+            des.district_ids = self.district_ids
+            des.keyword = (self.searchDisplayController?.searchBar.text)!
         }
     }
     
     func callService()  {
-        var category_ids = ""
-        var district_ids = ""
+         category_ids = ""
+         district_ids = ""
         
         var i = 0
         for cat in selectedCat {
@@ -142,36 +145,8 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
             }
             j = j + 1
         }
-        loader.startAnimating()
-        self.loaderView.isHidden = false
-        services.search_offers(category_ids: category_ids, country_code: "lb", date: NSDate().getToDay(), district_ids: district_ids, keyword: (self.searchDisplayController?.searchBar.text)!) {
-            (offers, status,postRes) in
-            if status == "ok" {
-                if postRes?.status == 1 {
-                    DispatchQueue.main.async {
-                        self.loader.stopAnimating()
-                        self.loaderView.isHidden = true
-                        self.searchResult = offers!
-                        self.performSegue(withIdentifier: "toResult", sender: self)
-                    }
-                }else{
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
-                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
-                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
-                        self.callService()
-                    })
-                    alertController.addAction(cancel)
-                    alertController.addAction(tryAgain)
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            }else{
-                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-                alertController.addAction(ok)
-                self.present(alertController, animated: true, completion: nil)
-                print("error service")
-            }
-        }
+        performSegue(withIdentifier: "toResult", sender: self)
+
     }
     /*
     // MARK: - Navigation

@@ -75,13 +75,13 @@ class offer {
         
         if let featured = result["featured"] as? String{
             self.featured = featured
-            load_image(urlString: featured, onComplete: { (image, status) in
-                if status == "ok" {
-                    DispatchQueue.main.async(execute: {
-                        self.featuredImage = image!
-                    })
-                }
-            })
+//            load_image(urlString: featured, onComplete: { (image, status) in
+//                if status == "ok" {
+//                    DispatchQueue.main.async(execute: {
+//                        self.featuredImage = image!
+//                    })
+//                }
+//            })
         }else{
             self.featured = ""
         }

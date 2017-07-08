@@ -11,9 +11,20 @@ import UIKit
 class SearchResultViewController: UIViewController , UITableViewDelegate,UITableViewDataSource{
     var result :[offer] = []
     var selectedResult : offer?
+    let services = services_calls()
+    var loader: MaterialLoadingIndicator!
+    var category_ids :String!
+    var district_ids: String!
+    var keyword :String!
+    @IBOutlet weak var loaderView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
+        self.loaderView.addSubview(loader)
 
+        callService()
         // Do any additional setup after loading the view.
     }
 
@@ -59,6 +70,43 @@ class SearchResultViewController: UIViewController , UITableViewDelegate,UITable
             let des = (segue.destination as! UINavigationController).topViewController as! FeaturedDetailsViewController
             des.offerId = self.selectedResult?.offer_id
         }
+    }
+    func callService()  {
+        self.loaderView.isHidden = false
+        self.loader.startAnimating()
+        services.search_offers(category_ids: category_ids, country_code: "lb", date: NSDate().getToDay(), district_ids:district_ids, keyword: keyword) {
+            (offers, status,postRes) in
+            if status == "ok" {
+                if postRes?.status == 1 {
+                    DispatchQueue.main.async {
+                        self.result = offers!
+                        self.tableView.reloadData()
+                        self.loaderView.isHidden = true
+                        self.loader.stopAnimating()
+                    }
+                }else{
+                    self.loaderView.isHidden = true
+                    self.loader.stopAnimating()
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+                        self.callService()
+                    })
+                    alertController.addAction(cancel)
+                    alertController.addAction(tryAgain)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }else{
+                self.loaderView.isHidden = true
+                self.loader.stopAnimating()
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+                print("error service")
+            }
+        }
+
     }
     /*
     // MARK: - Navigation

@@ -31,7 +31,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
 
         
-        let call_gesture = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.OnCall))
+        let call_gesture = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.OnCalll))
         let call_Taxi = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.OnCallTaxi))
         
         self.call_view.addGestureRecognizer(call_gesture)
@@ -248,7 +248,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     
-    func OnCall(){
+    func OnCalll(){
         onCallCharli(self)
     }
     

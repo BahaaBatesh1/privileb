@@ -435,12 +435,16 @@
                         <barButtonItem key="leftBarButtonItem" image="btn_backicon" id="tk6-mV-g3Z"/>
                         <barButtonItem key="rightBarButtonItem" title="Go" id="ZsU-57-JpB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onGo:" destination="OFU-EM-YBI" id="IEJ-4A-iuE"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="BO4-NT-5qJ" id="DYb-SR-9jt"/>
                         <outlet property="mainImage" destination="8ql-ss-aye" id="hQS-DR-q5k"/>
                         <outlet property="tagsCollectionView" destination="e5j-vD-R4E" id="Lyl-ub-LfM"/>
+                        <segue destination="RDy-Uv-Hg5" kind="show" identifier="toResultsFromCat" id="ulK-9a-t3b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5T-zc-EJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,14 +616,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-Im-CoI">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EfO-kt-nXr">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favX2" translatesAutoresizingMaskIntoConstraints="NO" id="EfO-kt-nXr">
+                                        <rect key="frame" x="20" y="20" width="335" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="6HB-9r-glU"/>
+                                            <constraint firstAttribute="height" constant="200" id="6HB-9r-glU"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Favorite Deals Yet!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEX-SY-0zj">
-                                        <rect key="frame" x="0.0" y="260" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="230" width="375" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Nei-1o-MrS"/>
                                         </constraints>
@@ -628,7 +632,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login now to add deals to favoite list" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rI7-q0-VeD">
-                                        <rect key="frame" x="0.0" y="290" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="260" width="375" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Pxg-6u-5tN"/>
                                         </constraints>
@@ -637,7 +641,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2F-gA-X3K">
-                                        <rect key="frame" x="20" y="351" width="335" height="50"/>
+                                        <rect key="frame" x="20" y="321" width="335" height="50"/>
                                         <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="WM6-FB-iTh"/>
@@ -655,15 +659,15 @@
                                     <constraint firstAttribute="trailing" secondItem="rI7-q0-VeD" secondAttribute="trailing" id="A44-Tj-pwr"/>
                                     <constraint firstItem="vEX-SY-0zj" firstAttribute="leading" secondItem="hz4-Im-CoI" secondAttribute="leading" id="B67-5T-sSL"/>
                                     <constraint firstAttribute="trailing" secondItem="vEX-SY-0zj" secondAttribute="trailing" id="ILQ-XO-cv3"/>
-                                    <constraint firstAttribute="trailing" secondItem="EfO-kt-nXr" secondAttribute="trailing" id="Rmp-P3-2uJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="EfO-kt-nXr" secondAttribute="trailing" constant="20" id="Rmp-P3-2uJ"/>
                                     <constraint firstAttribute="trailing" secondItem="w2F-gA-X3K" secondAttribute="trailing" constant="20" id="SpH-eu-8s0"/>
                                     <constraint firstItem="rI7-q0-VeD" firstAttribute="top" secondItem="vEX-SY-0zj" secondAttribute="bottom" id="d8x-rN-M4a"/>
                                     <constraint firstItem="vEX-SY-0zj" firstAttribute="top" secondItem="EfO-kt-nXr" secondAttribute="bottom" constant="10" id="dt0-Lt-kOI"/>
-                                    <constraint firstItem="EfO-kt-nXr" firstAttribute="top" secondItem="hz4-Im-CoI" secondAttribute="top" id="fQ1-tJ-A8B"/>
+                                    <constraint firstItem="EfO-kt-nXr" firstAttribute="top" secondItem="hz4-Im-CoI" secondAttribute="top" constant="20" id="fQ1-tJ-A8B"/>
                                     <constraint firstItem="w2F-gA-X3K" firstAttribute="top" secondItem="rI7-q0-VeD" secondAttribute="bottom" constant="31" id="hPF-Ur-nXP"/>
                                     <constraint firstItem="rI7-q0-VeD" firstAttribute="leading" secondItem="hz4-Im-CoI" secondAttribute="leading" id="ssw-N3-gKg"/>
                                     <constraint firstItem="w2F-gA-X3K" firstAttribute="leading" secondItem="hz4-Im-CoI" secondAttribute="leading" constant="20" id="w8l-we-9aM"/>
-                                    <constraint firstItem="EfO-kt-nXr" firstAttribute="leading" secondItem="hz4-Im-CoI" secondAttribute="leading" id="z6K-Bt-BwK"/>
+                                    <constraint firstItem="EfO-kt-nXr" firstAttribute="leading" secondItem="hz4-Im-CoI" secondAttribute="leading" constant="20" id="z6K-Bt-BwK"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1005,17 +1009,17 @@ Floor</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6a-go-9uY">
                                         <rect key="frame" x="20" y="105" width="335" height="128"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_3" translatesAutoresizingMaskIntoConstraints="NO" id="CNJ-Qd-SIS">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IFC-kW-VB7">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="128"/>
-                                            </imageView>
+                                            </mapView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="CNJ-Qd-SIS" firstAttribute="leading" secondItem="Z6a-go-9uY" secondAttribute="leading" id="EqS-75-egv"/>
+                                            <constraint firstItem="IFC-kW-VB7" firstAttribute="leading" secondItem="Z6a-go-9uY" secondAttribute="leading" id="NlE-4G-OWv"/>
                                             <constraint firstAttribute="height" constant="128" id="a5S-Su-7FD"/>
-                                            <constraint firstAttribute="trailing" secondItem="CNJ-Qd-SIS" secondAttribute="trailing" id="cbJ-PG-2EY"/>
-                                            <constraint firstAttribute="bottom" secondItem="CNJ-Qd-SIS" secondAttribute="bottom" id="ojw-WY-WZE"/>
-                                            <constraint firstItem="CNJ-Qd-SIS" firstAttribute="top" secondItem="Z6a-go-9uY" secondAttribute="top" id="rs2-vA-rgv"/>
+                                            <constraint firstItem="IFC-kW-VB7" firstAttribute="top" secondItem="Z6a-go-9uY" secondAttribute="top" id="ng7-mZ-GHk"/>
+                                            <constraint firstAttribute="trailing" secondItem="IFC-kW-VB7" secondAttribute="trailing" id="qot-nA-OL0"/>
+                                            <constraint firstAttribute="bottom" secondItem="IFC-kW-VB7" secondAttribute="bottom" id="t4F-jD-Qdr"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKz-Ef-xgr">
@@ -1234,6 +1238,7 @@ Floor</string>
                         <outlet property="joinPageImageView" destination="Onk-uZ-9zA" id="eNb-W9-lru"/>
                         <outlet property="joinPageLabel" destination="TDJ-ss-yRE" id="bcC-GJ-Yti"/>
                         <outlet property="mainView" destination="ZlI-Sj-o0p" id="C2p-aT-IgW"/>
+                        <outlet property="mapView" destination="IFC-kW-VB7" id="wbK-pc-rRD"/>
                         <outlet property="myCardBtn" destination="a1F-1i-i7Z" id="yZk-7Q-U5B"/>
                         <outlet property="secondImage" destination="8z1-14-JBu" id="1Mn-nd-HKa"/>
                         <outlet property="termsBtn" destination="xBd-CE-0Lf" id="nSd-FS-MaQ"/>
@@ -1351,7 +1356,7 @@ Floor</string>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lel-is-mAB">
                                                             <rect key="frame" x="10" y="10" width="355" height="280"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_1" translatesAutoresizingMaskIntoConstraints="NO" id="PeA-Rj-893">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="PeA-Rj-893">
                                                                     <rect key="frame" x="0.0" y="0.0" width="355" height="230"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fzy-vG-4c1">
@@ -2302,6 +2307,7 @@ offers, latest brands … and more!</string>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTB-sv-hRX" userLabel="btn_check">
                                                 <rect key="frame" x="20" y="407" width="20" height="20"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="5BM-i4-MJL"/>
                                                     <constraint firstAttribute="width" constant="20" id="8fA-bC-LYP"/>
@@ -2310,6 +2316,9 @@ offers, latest brands … and more!</string>
                                                 <state key="normal" image="rect1">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onkeepMe:" destination="BGB-oU-6X6" eventType="touchUpInside" id="luq-4z-qbk"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me logged in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cas-22-yh5">
                                                 <rect key="frame" x="50" y="407" width="120" height="17"/>
@@ -2368,9 +2377,9 @@ offers, latest brands … and more!</string>
                                                 </state>
                                             </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ka-Xe-KUj">
-                                                <rect key="frame" x="20" y="200" width="335" height="128"/>
+                                                <rect key="frame" x="20" y="200" width="335" height="300"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTc-GE-GFU" customClass="GrayTextField" customModule="Privileb" customModuleProvider="target">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTc-GE-GFU" customClass="GrayTextField" customModule="Privileb" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="8" width="335" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="T42-PJ-iKH"/>
@@ -2379,12 +2388,34 @@ offers, latest brands … and more!</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qy-w2-mNQ">
-                                                        <rect key="frame" x="102" y="90" width="131" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nB8-3o-xWW">
+                                                        <rect key="frame" x="20" y="90" width="130" height="30"/>
                                                         <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="F9I-AL-B8p"/>
-                                                            <constraint firstAttribute="width" constant="131" id="eFb-PQ-Wzm"/>
+                                                            <constraint firstAttribute="height" constant="30" id="Gkl-6Z-iCB"/>
+                                                            <constraint firstAttribute="width" constant="130" id="qei-tW-6RR"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onCanceMail:" destination="BGB-oU-6X6" eventType="touchUpInside" id="R9H-TW-Jvh"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cI-NU-fll">
+                                                        <rect key="frame" x="152" y="220" width="30" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="1hD-np-EnO"/>
+                                                            <constraint firstAttribute="width" constant="30" id="Fd3-La-R6T"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qy-w2-mNQ">
+                                                        <rect key="frame" x="196" y="90" width="131" height="30"/>
+                                                        <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="K1k-y9-aIc"/>
+                                                            <constraint firstAttribute="width" constant="131" id="gej-xL-JTN"/>
                                                         </constraints>
                                                         <state key="normal" title="Send">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2397,10 +2428,14 @@ offers, latest brands … and more!</string>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="NTc-GE-GFU" firstAttribute="leading" secondItem="8ka-Xe-KUj" secondAttribute="leading" id="Gb8-HP-VGL"/>
-                                                    <constraint firstAttribute="height" constant="128" id="LKK-7V-rjx"/>
-                                                    <constraint firstAttribute="bottom" secondItem="9qy-w2-mNQ" secondAttribute="bottom" constant="8" id="SWe-s9-fXQ"/>
-                                                    <constraint firstItem="9qy-w2-mNQ" firstAttribute="centerX" secondItem="8ka-Xe-KUj" secondAttribute="centerX" id="aJF-8W-3Ye"/>
+                                                    <constraint firstItem="nB8-3o-xWW" firstAttribute="leading" secondItem="8ka-Xe-KUj" secondAttribute="leading" constant="20" id="JVV-8L-aVR"/>
+                                                    <constraint firstAttribute="height" constant="300" id="LKK-7V-rjx"/>
+                                                    <constraint firstItem="nB8-3o-xWW" firstAttribute="top" secondItem="NTc-GE-GFU" secondAttribute="bottom" constant="42" id="MeV-Cp-f1v"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9qy-w2-mNQ" secondAttribute="trailing" constant="8" id="NE5-el-j4M"/>
+                                                    <constraint firstItem="9cI-NU-fll" firstAttribute="centerX" secondItem="8ka-Xe-KUj" secondAttribute="centerX" id="QTj-t8-ii6"/>
+                                                    <constraint firstItem="9cI-NU-fll" firstAttribute="top" secondItem="nB8-3o-xWW" secondAttribute="bottom" constant="100" id="hRo-3y-Ohp"/>
                                                     <constraint firstItem="NTc-GE-GFU" firstAttribute="top" secondItem="8ka-Xe-KUj" secondAttribute="top" constant="8" id="wYk-hu-FMN"/>
+                                                    <constraint firstItem="9qy-w2-mNQ" firstAttribute="top" secondItem="NTc-GE-GFU" secondAttribute="bottom" constant="42" id="wzb-F1-cIP"/>
                                                     <constraint firstAttribute="trailing" secondItem="NTc-GE-GFU" secondAttribute="trailing" id="yxm-sq-Qq7"/>
                                                 </constraints>
                                             </view>
@@ -2472,6 +2507,8 @@ offers, latest brands … and more!</string>
                     <connections>
                         <outlet property="forgetTextField" destination="NTc-GE-GFU" id="uJK-9X-3HV"/>
                         <outlet property="forgetView" destination="8ka-Xe-KUj" id="1il-hL-weN"/>
+                        <outlet property="keepMeLogedInBtn" destination="aTB-sv-hRX" id="m6I-nT-tMS"/>
+                        <outlet property="laoderViewMail" destination="9cI-NU-fll" id="Epv-WI-qF9"/>
                         <outlet property="loaderView" destination="Y4V-0u-zV4" id="Pde-OD-gtn"/>
                         <outlet property="loginBtn" destination="M0o-1g-07f" id="k4a-h3-fRk"/>
                         <outlet property="passwordTextField" destination="WWe-ma-V8k" id="kDc-An-7RW"/>
@@ -2850,7 +2887,7 @@ offers, latest brands … and more!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="300" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gei-Si-uwd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsCell" id="AL5-pb-KdU" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
@@ -2863,7 +2900,7 @@ offers, latest brands … and more!</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYI-Ig-SZl">
                                                     <rect key="frame" x="10" y="10" width="355" height="280"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_1" translatesAutoresizingMaskIntoConstraints="NO" id="kgv-ri-2Oh">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="kgv-ri-2Oh">
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="230"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgC-B8-r6z">
@@ -3003,11 +3040,19 @@ offers, latest brands … and more!</string>
                                     <outlet property="delegate" destination="RDy-Uv-Hg5" id="gvl-R9-6xR"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyn-I7-MFB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gei-Si-uwd" secondAttribute="trailing" id="CT7-BV-JeI"/>
+                            <constraint firstAttribute="trailing" secondItem="fyn-I7-MFB" secondAttribute="trailing" id="ihy-bP-zVK"/>
                             <constraint firstItem="gei-Si-uwd" firstAttribute="top" secondItem="Qsq-KN-kTQ" secondAttribute="bottom" id="kGK-qF-cAg"/>
+                            <constraint firstItem="fyn-I7-MFB" firstAttribute="top" secondItem="Qsq-KN-kTQ" secondAttribute="bottom" id="q5P-Fq-BcZ"/>
+                            <constraint firstItem="fyn-I7-MFB" firstAttribute="leading" secondItem="9bN-F8-Gds" secondAttribute="leading" id="rj5-NQ-KNZ"/>
+                            <constraint firstItem="mRb-fd-A50" firstAttribute="top" secondItem="fyn-I7-MFB" secondAttribute="bottom" id="uP8-GU-WYi"/>
                             <constraint firstItem="mRb-fd-A50" firstAttribute="top" secondItem="gei-Si-uwd" secondAttribute="bottom" id="wta-Kk-xM2"/>
                             <constraint firstItem="gei-Si-uwd" firstAttribute="leading" secondItem="9bN-F8-Gds" secondAttribute="leading" id="xhn-FK-a4A"/>
                         </constraints>
@@ -3020,12 +3065,14 @@ offers, latest brands … and more!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loaderView" destination="fyn-I7-MFB" id="tyO-Ie-FH3"/>
+                        <outlet property="tableView" destination="gei-Si-uwd" id="wAZ-FZ-BR7"/>
                         <segue destination="wb0-Sc-cw1" kind="presentation" identifier="toDetailsFromResults" id="O0E-ZI-5d9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ly-kG-jN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6241" y="-913"/>
+            <point key="canvasLocation" x="5946" y="-2259"/>
         </scene>
         <!--First View Controller-->
         <scene sceneID="0Bj-VC-Mqf">
@@ -3053,7 +3100,7 @@ offers, latest brands … and more!</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NW6-yC-lDy">
                                                     <rect key="frame" x="10" y="10" width="355" height="280"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_1" translatesAutoresizingMaskIntoConstraints="NO" id="aBf-wr-e6m">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="aBf-wr-e6m">
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="230"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKt-14-8Ko">
@@ -3313,7 +3360,7 @@ MASSAGE TREATMENTS</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="371" height="400"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eOY-ox-3Ht">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="eOY-ox-3Ht">
                                                                     <rect key="frame" x="0.0" y="8" width="371" height="384"/>
                                                                 </imageView>
                                                             </subviews>
@@ -3334,7 +3381,7 @@ MASSAGE TREATMENTS</string>
                                                     <outlet property="delegate" destination="whr-qi-lK5" id="HcW-8p-hHn"/>
                                                 </connections>
                                             </collectionView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signowns" translatesAutoresizingMaskIntoConstraints="NO" id="rxr-AU-VDt">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="rxr-AU-VDt">
                                                 <rect key="frame" x="10" y="505" width="134" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="dbB-It-Uda"/>
@@ -3903,7 +3950,7 @@ Télé Liban TV Stations staffs.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6c5-XJ-bAg">
                                                     <rect key="frame" x="10" y="10" width="355" height="280"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_1" translatesAutoresizingMaskIntoConstraints="NO" id="g3w-c6-kY2">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="g3w-c6-kY2">
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="230"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-Tx-gMn">
@@ -4400,8 +4447,6 @@ Télé Liban TV Stations staffs.</string>
     <resources>
         <image name="back_icon2" width="13" height="21"/>
         <image name="background" width="262" height="342"/>
-        <image name="background_1" width="344" height="175"/>
-        <image name="background_3" width="345" height="147"/>
         <image name="background_4" width="361" height="238"/>
         <image name="background_5" width="362" height="239"/>
         <image name="boader3" width="229" height="1"/>
@@ -4418,6 +4463,8 @@ Télé Liban TV Stations staffs.</string>
         <image name="deals_unlimited3" width="42" height="45"/>
         <image name="disclouser_mark1" width="8" height="14"/>
         <image name="down_mark1.png" width="16" height="16"/>
+        <image name="enptyCell" width="359" height="222"/>
+        <image name="favX2" width="442" height="382"/>
         <image name="favorite_select" width="26" height="22"/>
         <image name="filter_mark2" width="62" height="17"/>
         <image name="fire_mark" width="66" height="67"/>
@@ -4437,7 +4484,6 @@ Télé Liban TV Stations staffs.</string>
         <image name="rect1" width="20" height="20"/>
         <image name="rect1.png" width="16" height="16"/>
         <image name="row-reorder" width="26" height="19"/>
-        <image name="signowns" width="127" height="38"/>
         <image name="splash" width="236" height="82"/>
         <image name="tab_categories3" width="22" height="22"/>
         <image name="tab_favorite3" width="26" height="22"/>
@@ -4448,7 +4494,8 @@ Télé Liban TV Stations staffs.</string>
         <image name="vv" width="345" height="184"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UYh-Ff-O9V"/>
         <segue reference="0Tk-Jh-gwp"/>
+        <segue reference="ulK-9a-t3b"/>
+        <segue reference="O0E-ZI-5d9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,7 +18,9 @@ class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UIC
     let services = services_calls()
     var categories : [categoryy] = []
     let Notification1 = Notification.Name(rawValue:"finishLoadCategories")
-
+    var searchResult : [offer] = []
+    var isGoPressed = false
+    var category_ids:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
@@ -113,6 +115,51 @@ class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UIC
             }
             i = i + 1
         }
+    }
+    
+    @IBAction func onGo(_ sender: Any) {
+        if !isGoPressed {
+            if self.selectedTags.count > 0{
+                callService()
+            }else{
+                let alertController = UIAlertController(title: "There is no selected categories", message: "Please select categories tha you want", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }else{
+            let alertController = UIAlertController(title: "Processing..", message: "Please wait..", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func callService()  {
+        category_ids = ""
+        
+        var i = 0
+        for cat in self.selectedTags {
+            if i == selectedTags.count - 1{
+                category_ids.append("\(cat.category_id!)")
+            }else{
+                category_ids.append("\(cat.category_id!),")
+            }
+            i = i + 1
+        }
+        self.performSegue(withIdentifier: "toResultsFromCat", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toResultsFromCat" {
+            let des = segue.destination as! SearchResultViewController
+            des.category_ids = self.category_ids
+            des.district_ids = ""
+            des.keyword = ""
+        }
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
     /*
     // MARK: - Navigation

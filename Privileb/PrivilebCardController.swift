@@ -6,10 +6,13 @@
 //  Copyright © 2017 omran. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import MessageUI
+import MapKit
+class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDelegate ,MKMapViewDelegate{
 
-class PrivilebCardController: BaseViewController {
-
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var joinPageLabel: UILabel!
     @IBOutlet weak var joinPageImageView: UIImageView!
     @IBOutlet weak var clearView: UIView!
@@ -41,6 +44,18 @@ class PrivilebCardController: BaseViewController {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
 
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.mapType = MKMapType.standard
+        let location = CLLocationCoordinate2D(latitude:33.8863655,longitude:35.4928941)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        self.mapView.setRegion(region, animated: true)
+        let annotation =  MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude:33.8863655 ,longitude:35.4928941)
+        self.mapView.addAnnotation(annotation)
+
+        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(PrivilebCardController.onViewGesture(_:)))
         self.clearView.addGestureRecognizer(gesture)
         if isHaveCard {
@@ -151,11 +166,65 @@ class PrivilebCardController: BaseViewController {
     @IBAction func onBuy(_ sender: Any) {
     }
     @IBAction func onHotLine(_ sender: Any) {
+        let alertController = UIAlertController(title: "Call hot line", message: "81717272", preferredStyle: .alert)
+        let call = UIAlertAction(title: "Call", style: .default) { (alert) in
+            if let url = NSURL(string: "tel://81717272") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url as URL, options: ["":""], completionHandler: nil)
+                } else {
+                    _ = UIApplication.shared.openURL(NSURL(string: "tel://81717272") as! URL)
+                }
+            }
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(call)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
     }
     @IBAction func onDropMessage(_ sender: Any) {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
     }
     @IBAction func onGetDirection(_ sender: Any) {
+        let alert = UIAlertController(title: "Selection", message: "Select Navigation App", preferredStyle: .actionSheet)
+        let gMapsBtn = UIAlertAction(title: "Google maps", style: .default) { (action) in
+            UIApplication.shared.openURL(NSURL(string:"comgooglemaps://?saddr=&daddr=33.8863655,35.4928941&directionsmode=driving")! as URL) // Also from sumesh's answer
+        }
+        let appleMaps = UIAlertAction(title: "Maps", style: .default) { (action) in
+            self.openMapForPlace()
+        }
+        alert.addAction(gMapsBtn)
+        alert.addAction(appleMaps)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
     }
+    func openMapForPlace() {
+        
+        let lat1 : NSString = "33.8863655" as NSString
+        let lng1 : NSString = "35.4928941" as NSString
+        
+        let latitude:CLLocationDegrees =  lat1.doubleValue
+        let longitude:CLLocationDegrees =  lng1.doubleValue
+        
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "Privileb"
+        mapItem.openInMaps(launchOptions: options)
+        
+    }
+
     func hidOther(view: UIView)  {
         if view == self.aboutView {
             self.aboutView.isHidden = false
@@ -223,4 +292,26 @@ class PrivilebCardController: BaseViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients(["info@privileb.com"])
+        mailComposerVC.setSubject("subject")
+        mailComposerVC.setMessageBody("Body", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
 }

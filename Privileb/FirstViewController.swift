@@ -113,5 +113,8 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
             }
         })
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 }
 

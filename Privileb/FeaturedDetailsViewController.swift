@@ -145,7 +145,42 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     
     
     @IBAction func onGetDeirection(_ sender: Any) {
+        if self.selectedBranch != nil {
+            let alert = UIAlertController(title: "Selection", message: "Select Navigation App", preferredStyle: .actionSheet)
+            let gMapsBtn = UIAlertAction(title: "Google maps", style: .default) { (action) in
+                UIApplication.shared.openURL(NSURL(string:"comgooglemaps://?saddr=&daddr=\(self.selectedBranch!.latitude!),\(self.selectedBranch!.longtude!)&directionsmode=driving")! as URL) // Also from sumesh's answer
+            }
+            let appleMaps = UIAlertAction(title: "Maps", style: .default) { (action) in
+                self.openMapForPlace()
+            }
+            alert.addAction(gMapsBtn)
+            alert.addAction(appleMaps)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
+    func openMapForPlace() {
+        
+        let lat1 : NSString = self.selectedBranch!.latitude!.description as NSString
+        let lng1 : NSString = self.selectedBranch!.longtude!.description as NSString
+        
+        let latitude:CLLocationDegrees =  lat1.doubleValue
+        let longitude:CLLocationDegrees =  lng1.doubleValue
+        
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "\(self.selectedBranch!.name!)"
+        mapItem.openInMaps(launchOptions: options)
+        
+    }
+
     /*
      // MARK: - Navigation
      
@@ -188,9 +223,13 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailsCollectionCell", for: indexPath) as! ImagesDetailsCollectionViewCell
             if self.offerImagesObject[indexPath.row].image != nil {
-                cell.cellImage.image = self.offerImagesObject[indexPath.row].image
+                DispatchQueue.main.async {
+                    cell.cellImage.image = self.offerImagesObject[indexPath.row].image
+                }
             }else{
-                cell.load_image(urlString: self.offerImagesObject[indexPath.row].link)
+                DispatchQueue.main.async {
+                    cell.load_image(urlString: self.offerImagesObject[indexPath.row].link)
+                }
             }
             return cell
         }
