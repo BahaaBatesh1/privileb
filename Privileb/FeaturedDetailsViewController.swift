@@ -118,8 +118,21 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                 self.present(socialController!, animated: true, completion: nil)
             }
         }
+        let whatsapp = UIAlertAction(title: "Whatsapp", style: .default) { (action) in
+            let urlString = self.detailedOffer.offer_name + " - " + self.detailedOffer.retailer_name
+            let urlStringEncoded = urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let url  = NSURL(string: "whatsapp://send?text=\(urlStringEncoded!)")
+            
+            if UIApplication.shared.canOpenURL(url! as URL) {
+                UIApplication.shared.openURL(url! as URL)
+            } else {
+                let errorAlert = UIAlertView(title: "Cannot Send Message", message: "Your device is not able to send WhatsApp messages.", delegate: self, cancelButtonTitle: "OK")
+                errorAlert.show()
+            }
+        }
         alert.addAction(gMapsBtn)
         alert.addAction(appleMaps)
+        alert.addAction(whatsapp)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
@@ -129,7 +142,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         self.favoritBtnRight.isEnabled = false
         
         if isfav{
-            services.remove_from_favourite(favorite_id: (favorite?.favorite_id.description)!, onComplete: { (res, status) in
+            services.remove_from_favourite(favorite_id: favorite!.favorite_id.description, onComplete: { (res, status) in
                 if status == "ok" {
                     if res?.status == 1 {
                         DispatchQueue.main.async {
@@ -148,7 +161,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                 
             })
         }else{
-            services.add_to_favourite(user_id: (self.uid?.description)!, datetime: Date().description, offer_id: self.offerId!.description) { (res,status) in
+            services.add_to_favourite(user_id: self.uid!.description, datetime: NSDate().getToDay(), offer_id: self.offerId!.description) { (res,status) in
                 if status == "ok"{
                     if res?.status == 1 {
                         DispatchQueue.main.async {

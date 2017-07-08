@@ -126,22 +126,44 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
             services.login(email: userNameTextField.text!, password: passwordTextField.text!) { (user, status,postRes) in
                 if status == "ok"{
                     if user?.response.status == 1 {
-                        self.loginBtn.isEnabled = true
-                        self.loader.stopAnimating()
-                        self.loaderView.isHidden = true
-                        self.user = user
-                        self.userDefaults.setValue(true, forKey: "isLogedIn")
-                        self.userDefaults.setValue(user?.id, forKey: "userId")
-                        self.userDefaults.setValue(user?.country_id, forKey: "countryId")
-                        self.userDefaults.setValue(user?.email, forKey: "userMail")
-                        AppDelegate.sharedDelegate().loadCard()
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = storyboard.instantiateViewController(withIdentifier: "base")
-                        if #available(iOS 10.0, *) {
-                            AppDelegate.sharedDelegate().window?.rootViewController = controller
-                        } else {
-                            let appDelegate = UIApplication.shared.delegate
-                            appDelegate?.window!?.rootViewController = controller
+                        if user?.type == "Cardholder"{
+                            self.loginBtn.isEnabled = true
+                            self.loader.stopAnimating()
+                            self.loaderView.isHidden = true
+                            self.user = user
+                            self.userDefaults.setValue(true, forKey: "isLogedIn")
+                            self.userDefaults.setValue(user?.id, forKey: "userId")
+                            self.userDefaults.setValue(user?.country_id, forKey: "countryId")
+                            self.userDefaults.setValue(user?.email, forKey: "userMail")
+                            self.userDefaults.setValue(user?.type, forKey: "userType")
+                            AppDelegate.sharedDelegate().loadCard()
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "base")
+                            if #available(iOS 10.0, *) {
+                                AppDelegate.sharedDelegate().window?.rootViewController = controller
+                            } else {
+                                let appDelegate = UIApplication.shared.delegate
+                                appDelegate?.window!?.rootViewController = controller
+                            }
+                        }else{
+                            self.loginBtn.isEnabled = true
+                            self.loader.stopAnimating()
+                            self.loaderView.isHidden = true
+                            self.user = user
+                            self.userDefaults.setValue(true, forKey: "isLogedIn")
+                            self.userDefaults.setValue(user?.id, forKey: "userId")
+                            self.userDefaults.setValue(user?.country_id, forKey: "countryId")
+                            self.userDefaults.setValue(user?.email, forKey: "userMail")
+                            self.userDefaults.setValue(user?.type, forKey: "userType")
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "QR")
+                            if #available(iOS 10.0, *) {
+                                AppDelegate.sharedDelegate().window?.rootViewController = controller
+                            } else {
+                                let appDelegate = UIApplication.shared.delegate
+                                appDelegate?.window!?.rootViewController = controller
+                            }
+
                         }
                     }else{
                         self.loginBtn.isEnabled = true

@@ -216,6 +216,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                         self.userDefaults.setValue("", forKey: "userId")
                         self.userDefaults.setValue("", forKey: "countryId")
                         self.userDefaults.setValue("", forKey: "userMail")
+                        self.userDefaults.setValue("", forKey: "userType")
                         self.loginBtn.setTitle("LogIn", for: .normal)
                         self.loginBtn.isEnabled = true
                     }else{

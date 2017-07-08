@@ -26,8 +26,7 @@ class user {
     var gender : String!
     var country_id : String!
     var response : postResponse!
-    
-    
+    var type:String!
     
     
     
@@ -109,6 +108,10 @@ class user {
                 self.country_id = ""
             }
         }
-        
+        if let typ = result["type"] as? String{
+            self.type = typ
+        }else{
+            self.type = ""
+        }
     }
 }

@@ -35,6 +35,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        if let isLogiedIn = self.userDefaults.value(forKey: "isLogedIn") as? Bool {
+            if isLogiedIn {
+                if let type = userDefaults.value(forKey: "userType") as? String {
+                    if type == "Cardholder" {
+                        loadCard()
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "signUp")
+                        if #available(iOS 10.0, *) {
+                            AppDelegate.sharedDelegate().window?.rootViewController = controller
+                        } else {
+                            let appDelegate = UIApplication.shared.delegate
+                            appDelegate?.window!?.rootViewController = controller
+                        }
+                    }else{
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "QR")
+                        if #available(iOS 10.0, *) {
+                            AppDelegate.sharedDelegate().window?.rootViewController = controller
+                        } else {
+                            let appDelegate = UIApplication.shared.delegate
+                            appDelegate?.window!?.rootViewController = controller
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
         let navigationBarAppearace = UINavigationBar.appearance()
         
 
@@ -50,8 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let attributes = [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 9)]
         appearance.setTitleTextAttributes(attributes, for: .normal)
 
-        //load card 
-        loadCard()
         //load categories
         services.get_categories(country_code: "lb") { (categories, status,postRes) in
             if status == "ok" {

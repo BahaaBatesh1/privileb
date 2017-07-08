@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BuyCardViewController: UIViewController {
+class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var email: UITextField!
@@ -23,10 +23,15 @@ class BuyCardViewController: UIViewController {
     
     @IBOutlet weak var secondRadio: UIButton!
     
+    var lastTagField = 0
     var call : services_calls?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuyCardViewController.hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(tapGesture)
+
         call = services_calls()
         scrollView.contentSize=CGSize(width: 414,height: 2300);
 
@@ -55,6 +60,25 @@ class BuyCardViewController: UIViewController {
     @IBAction func onBack(_ sender: Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)
 
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.address.resignFirstResponder()
+        self.comments.resignFirstResponder()
+        self.email.resignFirstResponder()
+        self.firstName.resignFirstResponder()
+        self.lastName.resignFirstResponder()
+        self.mobileNumber.resignFirstResponder()
+        view.endEditing(true)
+    }
+    
+    func hideKeyboard() {
+        self.address.resignFirstResponder()
+        self.comments.resignFirstResponder()
+        self.email.resignFirstResponder()
+        self.firstName.resignFirstResponder()
+        self.lastName.resignFirstResponder()
+        self.mobileNumber.resignFirstResponder()
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     /*
     // MARK: - Navigation

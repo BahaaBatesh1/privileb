@@ -219,6 +219,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
     }
     
     @IBAction func onBuy(_ sender: Any) {
+        performSegue(withIdentifier: "toBuyCard", sender: self)
     }
     @IBAction func onHotLine(_ sender: Any) {
         let alertController = UIAlertController(title: "Call hot line", message: "81717272", preferredStyle: .alert)

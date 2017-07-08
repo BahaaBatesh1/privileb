@@ -8,18 +8,29 @@
 
 import UIKit
 
-class PartnerViewController: UIViewController {
+class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate{
+    @IBOutlet weak var chooseDealTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var patnerLogo: UIImageView!
-    @IBOutlet weak var dealDetails: UITextView!
+
+    @IBOutlet weak var dealDetails: UITextField!
+    
     @IBOutlet weak var firstNumber: UITextField!
     @IBOutlet weak var secondNumber: UITextField!
     @IBOutlet weak var thirdNumber: UITextField!
     @IBOutlet weak var fourthNumber: UITextField!
-
+    let userDefaults = UserDefaults.standard
+    var isTableShow = false
+    var deals:[String] = ["sad","asdas","asdasdadasdasdas"]
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-  scrollView.contentSize=CGSize(width: 414,height: 2300);
+        scrollView.contentSize=CGSize(width: 414,height: 2300)
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuyCardViewController.hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(tapGesture)
+        
 //        self.firstNumber.input
         // Do any additional setup after loading the view.
     }
@@ -34,16 +45,129 @@ class PartnerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return deals.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "partnerDeal")
+        cell?.textLabel?.text = self.deals[indexPath.row]
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.chooseDealTextField.text = self.deals[indexPath.row]
+        self.tableView.isHidden = true
+        self.tableImage.image = UIImage(named:"SortD")
+    }
     @IBAction func onScanQR(_ sender: Any) {
+        performSegue(withIdentifier: "toScan", sender: self)
     }
     
     @IBAction func onLogout(_ sender: Any) {
+        var service = services_calls()
+        let uid = userDefaults.value(forKey: "userId") as! Int
+        service.logout(user_id: uid.description, onComplete: { (res, status) in
+            if status == "ok" {
+                if res?.status == 1 {
+                    self.userDefaults.setValue(false, forKey: "isLogedIn")
+                    self.userDefaults.setValue("", forKey: "userId")
+                    self.userDefaults.setValue("", forKey: "countryId")
+                    self.userDefaults.setValue("", forKey: "userMail")
+                    self.userDefaults.setValue("", forKey: "userType")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "signUp")
+                    if #available(iOS 10.0, *) {
+                        AppDelegate.sharedDelegate().window?.rootViewController = controller
+                    } else {
+                        let appDelegate = UIApplication.shared.delegate
+                        appDelegate?.window!?.rootViewController = controller
+                    }
+                }else{
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }else{
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
     }
     
     
-    @IBOutlet weak var onBack: UIBarButtonItem!
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.chooseDealTextField{
+            guard let text = textField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 1000 // Bool
+
+        }else if textField == self.dealDetails{
+            guard let text = textField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 1000 // Bool
+
+        }else{
+            guard let text = textField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 1 // Bool
+        }
+    }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.firstNumber.resignFirstResponder()
+        self.secondNumber.resignFirstResponder()
+        self.thirdNumber.resignFirstResponder()
+        self.fourthNumber.resignFirstResponder()
+        self.dealDetails.resignFirstResponder()
+        view.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+       if textField == self.dealDetails{
+        
+        }else{
+            scrollView.setContentOffset(CGPoint(x: 0, y: 200), animated: true)
+        }
+    }
+    func hideKeyboard() {
+        self.firstNumber.resignFirstResponder()
+        self.secondNumber.resignFirstResponder()
+        self.thirdNumber.resignFirstResponder()
+        self.fourthNumber.resignFirstResponder()
+        self.dealDetails.resignFirstResponder()
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag < 4 {
+            textField.resignFirstResponder()
+            self.view.viewWithTag(textField.tag + 1)?.becomeFirstResponder()
+        }else{
+            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    @IBAction func onChoosDealsBtn(_ sender: Any) {
+        if isTableShow{
+            self.tableImage.image = UIImage(named:"SortD")
+            self.tableView.isHidden = true
+            self.tableView.reloadData()
+        }else{
+            self.tableImage.image = UIImage(named:"SortU")
+            self.tableView.isHidden = false
+            self.tableView.reloadData()
+        }
+    }
     /*
     // MARK: - Navigation
 
