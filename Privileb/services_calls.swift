@@ -516,7 +516,32 @@ class services_calls {
 //        {"country_code":"lb"}
     }
     //to check
-    func buy_card(){
+    func buy_card(fname : String,lname : String,email : String,mobile_number : String,address : String,payment_method_id : String,order_status_id : String,datetime : String){
+        
+        let parameters: Parameters = [
+            "fname": fname,
+            "lname": lname,
+            "email": email,
+            "mobile_number": mobile_number,
+            "address": address,
+            "payment_method_id": payment_method_id,
+            "order_status_id": order_status_id,
+            "datetime": datetime
+        ]
+
+        Alamofire.request("http://privileb.com/webservices/buy_card.php", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(){response in
+            switch response.result {
+            //success
+            case .success( _):
+                self.parseData(JSONData: response.data!, class_name: "card")
+               // onComplete(self.districts,"ok",self.postRes)
+            //failure
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+               // onComplete(nil,"Request failed with error: \(error)",nil)
+            }}
+        
+        
 //    http://privileb.com/webservices/buy_card.php
 //        {"fname":"Carla","lname":"Zaiter","email":"carla.zaiter@bloomay.com","mobile_number":"03747474","address":"Jdeideh, Bakhos Canter, 6th FLoor","comments":"From 9am-6pm","payment_method_id":"2","order_status_id":"2","datetime":"2017-05-09 11:07:00"}
     }

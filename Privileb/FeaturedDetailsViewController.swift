@@ -1,5 +1,6 @@
 import UIKit
 import MapKit
+import Social
 class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,MKMapViewDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
@@ -93,6 +94,35 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     
     
     @IBAction func onShare(_ sender: Any) {
+        let alert = UIAlertController(title: "Selection", message: "Select Share App", preferredStyle: .actionSheet)
+        let gMapsBtn = UIAlertAction(title: "FaceBook", style: .default) { (action) in
+          //facebook social
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)) {
+                let socialController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                //            socialController.setInitialText("Hello World!")
+                socialController?.add(self.supervisedImage.image)
+                //            socialController.addURL(someNSURLInstance)
+                
+                self.present(socialController!, animated: true, completion: nil)
+            }
+        }
+        let appleMaps = UIAlertAction(title: "Twitter", style: .default) { (action) in
+           //twitter social
+            
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)) {
+                let socialController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                //            socialController.setInitialText("Hello World!")
+                socialController?.add(self.supervisedImage.image)
+                //            socialController.addURL(someNSURLInstance)
+                
+                self.present(socialController!, animated: true, completion: nil)
+            }
+        }
+        alert.addAction(gMapsBtn)
+        alert.addAction(appleMaps)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     @IBAction func onFavorite(_ sender: Any) {
