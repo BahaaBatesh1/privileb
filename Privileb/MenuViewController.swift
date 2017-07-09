@@ -10,6 +10,9 @@ import UIKit
 
 class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
+    @IBOutlet weak var registerImage: UIImageView!
+    @IBOutlet weak var registerLabel: UILabel!
+    @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var taxi_view: UIView!
     @IBOutlet weak var call_view: UIView!
     @IBOutlet weak var loginBtn: UIButton!
@@ -27,7 +30,18 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
         
         if isLogedIn {
+            if let name = userDefaults.value(forKey: "userName") as? String{
+                self.registerBtn.isHidden = true
+                self.registerImage.isHidden = true
+                self.registerLabel.isHidden = false
+                self.registerLabel.text = "Welcome \(name)"
+            }
             self.loginBtn.setTitle("Logout", for: .normal)
+        }else{
+            self.registerBtn.isHidden = false
+            self.registerImage.isHidden = false
+            self.registerLabel.isHidden = true
+            self.registerLabel.text = ""
         }
 
         
@@ -217,6 +231,11 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                         self.userDefaults.setValue("", forKey: "countryId")
                         self.userDefaults.setValue("", forKey: "userMail")
                         self.userDefaults.setValue("", forKey: "userType")
+                        self.userDefaults.setValue("", forKey: "userName")
+                        self.registerBtn.isHidden = false
+                        self.registerImage.isHidden = false
+                        self.registerLabel.isHidden = true
+                        self.registerLabel.text = ""
                         self.loginBtn.setTitle("LogIn", for: .normal)
                         self.loginBtn.isEnabled = true
                     }else{
