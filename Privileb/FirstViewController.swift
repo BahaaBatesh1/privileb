@@ -57,7 +57,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
             cell.load_image(urlString: self.offers[indexPath.row].featured_cropped)
         }
         cell.sliderLabel.text = self.offers[indexPath.row].frequency
-        cell.categoryLabel.text = " Beauty & spa  "
+        cell.categoryLabel.text = "   " + self.offers[indexPath.row].category + "   "
         return cell
     }
 

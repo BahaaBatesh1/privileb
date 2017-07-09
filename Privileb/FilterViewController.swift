@@ -73,7 +73,7 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
                 cell.load_image(urlString: (self.searchBarResult?[indexPath.row].featured_cropped)!)
             }
             cell.sliderLabel.text = self.searchBarResult?[indexPath.row].frequency
-            cell.categoryLabel.text = " Beauty & spa  "
+            cell.categoryLabel.text = "   " + (self.searchBarResult?[indexPath.row].category)! + "   "
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! SearchTableViewCell
@@ -199,6 +199,9 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
         return true
     }
 
+    @IBAction func onShowResults(_ sender: Any) {
+        callService()
+    }
     /*
     // MARK: - Navigation
 

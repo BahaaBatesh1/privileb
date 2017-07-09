@@ -23,7 +23,7 @@ class offer {
     var featured_cropped:String!
     var featured_croppedImage : UIImage?
     var branches : [branch] = []
-    
+    var category :String!
     init(reN:String,ofNam:String) {
         self.offer_name = ofNam
         self.retailer_name = reN
@@ -65,6 +65,12 @@ class offer {
             self.validity = validity
         }else{
             self.validity = ""
+        }
+        
+        if let cat = result["category"] as? String{
+            self.category = cat
+        }else{
+            self.category = ""
         }
         
         if let frequency = result["frequency"] as? String{

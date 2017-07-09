@@ -158,6 +158,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
                             self.userDefaults.setValue(user?.email, forKey: "userMail")
                             self.userDefaults.setValue(user?.type, forKey: "userType")
                             self.userDefaults.setValue(user?.fname, forKey: "userName")
+                            self.userDefaults.setValue(user?.retailer_id, forKey: "retailerId")
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let controller = storyboard.instantiateViewController(withIdentifier: "QR")
                             if #available(iOS 10.0, *) {

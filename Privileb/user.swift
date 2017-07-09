@@ -28,7 +28,17 @@ class user {
     var response : postResponse!
     var type:String!
     
+    //partner
     
+    var is_active : String!
+    var username : String!
+    var radius : String!
+    var longitude : String!
+    var latitude : String!
+    var region_id : String!
+    var retailer_id : String!
+    var name : String!
+    var phone_number : String!
     
     init(result :[String: Any]) {
         
@@ -107,6 +117,65 @@ class user {
             }else{
                 self.country_id = ""
             }
+            
+            
+            if let is_active = data["is_active"] as? String{
+                self.is_active = is_active
+            }else{
+                self.is_active = ""
+            }
+            
+            
+            if let username = data["username"] as? String{
+                self.username = username
+            }else{
+                self.username = ""
+            }
+            
+            
+            if let radius = data["radius"] as? String{
+                self.radius = radius
+            }else{
+                self.radius = ""
+            }
+            
+            
+            if let longitude = data["longitude"] as? String{
+                self.longitude = longitude
+            }else{
+                self.longitude = ""
+            }
+            
+            if let latitude = data["latitude"] as? String{
+                self.latitude = latitude
+            }else{
+                self.latitude = ""
+            }
+            
+            if let region_id = data["region_id"] as? String{
+                self.region_id = region_id
+            }else{
+                self.region_id = ""
+            }
+            
+            if let retailer_id = data["retailer_id"] as? String{
+                self.retailer_id = retailer_id
+            }else{
+                self.retailer_id = ""
+            }
+            
+            if let name = data["name"] as? String{
+                self.name = name
+            }else{
+                self.name = ""
+            }
+            
+            if let phone_number = data["phone_number"] as? String{
+                self.phone_number = phone_number
+            }else{
+                self.phone_number = ""
+            }
+
         }
         if let typ = result["type"] as? String{
             self.type = typ

@@ -548,7 +548,7 @@ class services_calls {
                // onComplete(nil,"Request failed with error: \(error)",nil)
             }}
         
-        
+
 //    http://privileb.com/webservices/buy_card.php
 //        {"fname":"Carla","lname":"Zaiter","email":"carla.zaiter@bloomay.com","mobile_number":"03747474","address":"Jdeideh, Bakhos Canter, 6th FLoor","comments":"From 9am-6pm","payment_method_id":"2","order_status_id":"2","datetime":"2017-05-09 11:07:00"}
     }
@@ -786,4 +786,35 @@ class services_calls {
 //        {"user_id":"4", "offer_id":"126"}
     }
     
+    
+    func scan_offer(user_id : String ,scan_date : String ,offer_id : String,branch_id: String ,serial_number : String , onComplete: @escaping (postResponse?,String) -> Void){
+        
+        let parameters: Parameters = [
+            "user_id": user_id,
+            "offer_id" : offer_id,
+            "scan_date" : scan_date,
+            "branch_id" : branch_id,
+            "serial_number" : serial_number,
+            ]
+        
+        Alamofire.request("http://privileb.com/webservices/scan_offer.php", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(){response in
+            switch response.result {
+            //success
+            case .success( _):
+                do {
+                    let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                    self.postRes = postResponse(result: readableJSON)
+                    onComplete(self.postRes,"ok")
+                }catch(_) {
+                    print("error parsing")
+                    onComplete(nil,"error")
+            }
+            //failure
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                onComplete(nil,"error")
+            }}
+        
+    }
+
 }

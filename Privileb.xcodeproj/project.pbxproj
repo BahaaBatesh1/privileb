@@ -27,6 +27,9 @@
 		1820440D1EF98FD400CDB3EF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820440C1EF98FD400CDB3EF /* SignUpViewController.swift */; };
 		18263B911F0654510080929A /* postResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18263B901F0654510080929A /* postResponse.swift */; };
 		1828EE4C1F02F9CC0056A6FC /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828EE4B1F02F9CC0056A6FC /* Test.swift */; };
+		182C6E031F11227F00D9DBED /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C6E021F11227F00D9DBED /* QRScannerController.swift */; };
+		182C6E0C1F11240400D9DBED /* PartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C6E0B1F11240400D9DBED /* PartnerViewController.swift */; };
+		182C6E0E1F11240B00D9DBED /* BuyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C6E0D1F11240B00D9DBED /* BuyCardViewController.swift */; };
 		182E590B1F04EC0E00EA49F9 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E590A1F04EC0E00EA49F9 /* SearchTableViewCell.swift */; };
 		182E590D1F04F5B000EA49F9 /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E590C1F04F5B000EA49F9 /* SearchLocationTableViewCell.swift */; };
 		182E590F1F04F61600EA49F9 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E590E1F04F61600EA49F9 /* SearchLocationViewController.swift */; };
@@ -49,6 +52,9 @@
 		1832B43C1F058D850072E3F0 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832B42E1F058D850072E3F0 /* user.swift */; };
 		183472CB1EFB133800309CE9 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183472CA1EFB133800309CE9 /* MenuTableViewCell.swift */; };
 		183472CD1EFB134E00309CE9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183472CC1EFB134E00309CE9 /* MenuViewController.swift */; };
+		183A21331F0E865000FCF960 /* BranchesDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A21321F0E865000FCF960 /* BranchesDetailsCollectionViewCell.swift */; };
+		183A213C1F0E917800FCF960 /* GalaryElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A213B1F0E917800FCF960 /* GalaryElement.swift */; };
+		183A213E1F0E982F00FCF960 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A213D1F0E982E00FCF960 /* SearchResultViewController.swift */; };
 		18400E431F0414E8008F0811 /* GrayTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18400E421F0414E8008F0811 /* GrayTextField.swift */; };
 		1848D5F61EF9B0ED0052140C /* PagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D5F51EF9B0ED0052140C /* PagerController.swift */; };
 		1848D5F91EF9B18F0052140C /* PrivilebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D5F81EF9B18F0052140C /* PrivilebViewController.swift */; };
@@ -184,6 +190,9 @@
 		1820440C1EF98FD400CDB3EF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		18263B901F0654510080929A /* postResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postResponse.swift; sourceTree = "<group>"; };
 		1828EE4B1F02F9CC0056A6FC /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		182C6E021F11227F00D9DBED /* QRScannerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
+		182C6E0B1F11240400D9DBED /* PartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerViewController.swift; sourceTree = "<group>"; };
+		182C6E0D1F11240B00D9DBED /* BuyCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyCardViewController.swift; sourceTree = "<group>"; };
 		182E590A1F04EC0E00EA49F9 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		182E590C1F04F5B000EA49F9 /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
 		182E590E1F04F61600EA49F9 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +214,9 @@
 		1832B42E1F058D850072E3F0 /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		183472CA1EFB133800309CE9 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		183472CC1EFB134E00309CE9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		183A21321F0E865000FCF960 /* BranchesDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchesDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		183A213B1F0E917800FCF960 /* GalaryElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalaryElement.swift; sourceTree = "<group>"; };
+		183A213D1F0E982E00FCF960 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		18400E421F0414E8008F0811 /* GrayTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrayTextField.swift; sourceTree = "<group>"; };
 		1848D5F51EF9B0ED0052140C /* PagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerController.swift; sourceTree = "<group>"; };
 		1848D5F81EF9B18F0052140C /* PrivilebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivilebViewController.swift; sourceTree = "<group>"; };
@@ -331,8 +343,11 @@
 				1848D5FE1EF9B3410052140C /* AllDealsViewController.swift */,
 				183472CC1EFB134E00309CE9 /* MenuViewController.swift */,
 				18EFFA3C1F017FC000A3F2FE /* RegisterViewController.swift */,
+				182C6E0D1F11240B00D9DBED /* BuyCardViewController.swift */,
 				18EFFA3E1F01838D00A3F2FE /* LoginViewController.swift */,
+				182C6E021F11227F00D9DBED /* QRScannerController.swift */,
 				18AEE9261F018E4B00FD6D59 /* FilterViewController.swift */,
+				182C6E0B1F11240400D9DBED /* PartnerViewController.swift */,
 				18AEE9281F01908200FD6D59 /* FavorieViewController.swift */,
 				18AEE92A1F0191CF00FD6D59 /* PrivilebCardController.swift */,
 				18AEE92C1F0192D100FD6D59 /* NearbyController.swift */,
@@ -346,6 +361,7 @@
 				181AC1361F0811E200487FB0 /* AboutPagerViewController.swift */,
 				181AC13F1F08126500487FB0 /* ArabicAboutViewController.swift */,
 				181AC1411F08128700487FB0 /* EnglishAboutViewController.swift */,
+				183A213D1F0E982E00FCF960 /* SearchResultViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -356,6 +372,7 @@
 				184BBB111EFAB48C00CAFE82 /* FeaturedTableViewCell.swift */,
 				183472CA1EFB133800309CE9 /* MenuTableViewCell.swift */,
 				189535251F01A32E00E7D4C3 /* FavoriteSimpleCell.swift */,
+				183A21321F0E865000FCF960 /* BranchesDetailsCollectionViewCell.swift */,
 				189535271F01B13300E7D4C3 /* CategoryCollectionViewCell.swift */,
 				182E590A1F04EC0E00EA49F9 /* SearchTableViewCell.swift */,
 				182E590C1F04F5B000EA49F9 /* SearchLocationTableViewCell.swift */,
@@ -399,6 +416,7 @@
 				18263B901F0654510080929A /* postResponse.swift */,
 				18530E691F06F50E000B5F35 /* OfferAnnotation.swift */,
 				18530E6F1F06FB04000B5F35 /* OfferAnnotationView.swift */,
+				183A213B1F0E917800FCF960 /* GalaryElement.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -582,6 +600,7 @@
 				1807C98D1EF96EE7003F554F /* MSViewControllerSlidingPanel.m in Sources */,
 				18530E611F06ECF1000B5F35 /* CustomPointAnnotation.swift in Sources */,
 				180E20BA1F0262A400AA487D /* Extensions.swift in Sources */,
+				183A213C1F0E917800FCF960 /* GalaryElement.swift in Sources */,
 				1895352C1F01BD5A00E7D4C3 /* ArabicViewController.swift in Sources */,
 				181AC1401F08126500487FB0 /* ArabicAboutViewController.swift in Sources */,
 				1807C98C1EF96EE7003F554F /* MSSlidingPanelController.m in Sources */,
@@ -612,6 +631,8 @@
 				1832B43C1F058D850072E3F0 /* user.swift in Sources */,
 				1832B42F1F058D850072E3F0 /* branch.swift in Sources */,
 				18EFFA3F1F01838D00A3F2FE /* LoginViewController.swift in Sources */,
+				183A213E1F0E982F00FCF960 /* SearchResultViewController.swift in Sources */,
+				182C6E0E1F11240B00D9DBED /* BuyCardViewController.swift in Sources */,
 				18263B911F0654510080929A /* postResponse.swift in Sources */,
 				182E590B1F04EC0E00EA49F9 /* SearchTableViewCell.swift in Sources */,
 				184BBB121EFAB48C00CAFE82 /* FeaturedTableViewCell.swift in Sources */,
@@ -619,6 +640,7 @@
 				184BBB181EFAB4CA00CAFE82 /* CategoriesViewController.swift in Sources */,
 				183472CD1EFB134E00309CE9 /* MenuViewController.swift in Sources */,
 				1848D5F91EF9B18F0052140C /* PrivilebViewController.swift in Sources */,
+				182C6E031F11227F00D9DBED /* QRScannerController.swift in Sources */,
 				183472CB1EFB133800309CE9 /* MenuTableViewCell.swift in Sources */,
 				1848D6031EF9BC520052140C /* colorExtension.swift in Sources */,
 				1832B4301F058D850072E3F0 /* card.swift in Sources */,
@@ -635,7 +657,9 @@
 				18AEE9291F01908200FD6D59 /* FavorieViewController.swift in Sources */,
 				18184C631F0C329A004EA99C /* ImagesDetailsCollectionViewCell.swift in Sources */,
 				184BBB0E1EFAB3E600CAFE82 /* FeaturedDetailsViewController.swift in Sources */,
+				182C6E0C1F11240400D9DBED /* PartnerViewController.swift in Sources */,
 				1807C98B1EF96EE7003F554F /* EmptySegue.m in Sources */,
+				183A21331F0E865000FCF960 /* BranchesDetailsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +790,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9PDJR4H36G;
 				INFOPLIST_FILE = Privileb/Info.plist;
@@ -783,6 +809,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9PDJR4H36G;
 				INFOPLIST_FILE = Privileb/Info.plist;

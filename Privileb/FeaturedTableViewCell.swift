@@ -30,7 +30,7 @@ class FeaturedTableViewCell: UITableViewCell {
         containerView.layer.masksToBounds = true
         topView.layer.masksToBounds = true
         bottomView.layer.masksToBounds = true
-        self.categoryLabel.layer.cornerRadius = 2
+        self.categoryLabel.layer.cornerRadius = 4
         self.categoryLabel.sizeToFit()
         self.categoryLabel.layer.masksToBounds = true
         

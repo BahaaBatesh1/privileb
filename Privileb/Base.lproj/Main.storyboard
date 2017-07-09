@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -2880,7 +2880,7 @@ offers, latest brands … and more!</string>
                                                         <rect key="frame" x="0.0" y="28" width="351" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VNh-mr-Dze" id="WtF-SE-leg">
-                                                            <rect key="frame" x="0.0" y="0.0" width="351" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="351" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -2950,11 +2950,35 @@ offers, latest brands … and more!</string>
                                     <constraint firstItem="xcO-86-pRL" firstAttribute="centerX" secondItem="ubN-rJ-X1i" secondAttribute="centerX" id="tIq-TY-WFc"/>
                                 </constraints>
                             </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jg-Yh-ogL">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Wait..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72k-x5-vhr">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Q6e-nj-XRX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="72k-x5-vhr" secondAttribute="trailing" id="FzQ-aY-0rT"/>
+                                    <constraint firstItem="72k-x5-vhr" firstAttribute="leading" secondItem="0jg-Yh-ogL" secondAttribute="leading" id="Pvo-Lu-J2r"/>
+                                    <constraint firstItem="72k-x5-vhr" firstAttribute="top" secondItem="0jg-Yh-ogL" secondAttribute="top" constant="100" id="f6n-Nq-11k"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="ubN-rJ-X1i" secondAttribute="bottom" constant="-20" id="CN1-Qj-IXb"/>
+                            <constraint firstItem="0jg-Yh-ogL" firstAttribute="leading" secondItem="N5F-W7-5Ao" secondAttribute="leading" id="I8u-Iv-6lX"/>
                             <constraint firstItem="ubN-rJ-X1i" firstAttribute="top" secondItem="N6B-Gr-b2x" secondAttribute="bottom" constant="3" id="P9p-Zt-8Xh"/>
+                            <constraint firstItem="lOr-Cw-Qlw" firstAttribute="top" secondItem="0jg-Yh-ogL" secondAttribute="bottom" id="Q9T-dA-h1a"/>
+                            <constraint firstItem="0jg-Yh-ogL" firstAttribute="top" secondItem="N6B-Gr-b2x" secondAttribute="bottom" id="qTp-3C-KLW"/>
+                            <constraint firstAttribute="trailing" secondItem="0jg-Yh-ogL" secondAttribute="trailing" id="zHa-ON-hyj"/>
                             <constraint firstItem="ubN-rJ-X1i" firstAttribute="centerX" secondItem="N5F-W7-5Ao" secondAttribute="centerX" id="zlT-HG-Q7b"/>
                         </constraints>
                     </view>
@@ -2975,6 +2999,7 @@ offers, latest brands … and more!</string>
                         <outlet property="dealDetails" destination="1RQ-l9-MK1" id="9hf-uw-1yZ"/>
                         <outlet property="firstNumber" destination="wIQ-hC-yz9" id="agX-5R-PTK"/>
                         <outlet property="fourthNumber" destination="moS-Kh-pQG" id="iJ8-tL-e2B"/>
+                        <outlet property="loaderView" destination="0jg-Yh-ogL" id="Npo-6R-A3T"/>
                         <outlet property="patnerLogo" destination="xcO-86-pRL" id="7ag-Fn-le0"/>
                         <outlet property="scrollView" destination="ubN-rJ-X1i" id="NJM-Pt-3Gy"/>
                         <outlet property="secondNumber" destination="4pB-1T-GCC" id="hYL-jG-Gf2"/>
@@ -3657,6 +3682,9 @@ offers, latest brands … and more!</string>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="-12" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Show results"/>
+                                <connections>
+                                    <action selector="onShowResults:" destination="tlH-zN-qm4" eventType="touchUpInside" id="fwI-jx-MFI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Offer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gh-o5-Jmq">
                                 <rect key="frame" x="16" y="640" width="343" height="15"/>

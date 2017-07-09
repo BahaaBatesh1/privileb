@@ -231,6 +231,8 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                         self.userDefaults.setValue("", forKey: "userMail")
                         self.userDefaults.setValue("", forKey: "userType")
                         self.userDefaults.setValue("", forKey: "userName")
+                        self.userDefaults.setValue("", forKey: "retailerId")
+
                         self.registerBtn.isHidden = false
                         self.registerImage.isHidden = false
                         self.registerLabel.isHidden = true

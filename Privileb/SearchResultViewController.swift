@@ -53,7 +53,7 @@ class SearchResultViewController: UIViewController , UITableViewDelegate,UITable
             cell.load_image(urlString: self.result[indexPath.row].featured_cropped)
         }
         cell.sliderLabel.text = self.result[indexPath.row].frequency
-        cell.categoryLabel.text = " Beauty & spa  "
+        cell.categoryLabel.text = "   " + self.result[indexPath.row].category + "   "
 
         return cell
     }

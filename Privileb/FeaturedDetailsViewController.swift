@@ -99,7 +99,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
           //facebook social
             if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                //            socialController.setInitialText("Hello World!")
+                socialController?.setInitialText(self.detailedOffer!.offer_name!)
                 socialController?.add(self.supervisedImage.image)
                 //            socialController.addURL(someNSURLInstance)
                 
@@ -111,7 +111,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
             
             if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-                //            socialController.setInitialText("Hello World!")
+                socialController?.setInitialText(self.detailedOffer!.offer_name!)
                 socialController?.add(self.supervisedImage.image)
                 //            socialController.addURL(someNSURLInstance)
                 

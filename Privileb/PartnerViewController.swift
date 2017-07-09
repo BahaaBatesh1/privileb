@@ -13,6 +13,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var patnerLogo: UIImageView!
 
+    @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var dealDetails: UITextField!
     
     @IBOutlet weak var firstNumber: UITextField!
@@ -24,6 +25,9 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
     var deals:[String] = ["sad","asdas","asdasdadasdasdas"]
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableImage: UIImageView!
+    
+    var loader: MaterialLoadingIndicator!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.contentSize=CGSize(width: 414,height: 2300)
@@ -31,6 +35,11 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
         
+        loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
+        loader.circleShapeLayer.strokeColor = UIColor(red: 212, green: 172, blue: 92).cgColor
+        self.loaderView.addSubview(loader)
+
 //        self.firstNumber.input
         // Do any additional setup after loading the view.
     }
@@ -79,6 +88,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
                     self.userDefaults.setValue("", forKey: "countryId")
                     self.userDefaults.setValue("", forKey: "userMail")
                     self.userDefaults.setValue("", forKey: "userType")
+                    self.userDefaults.setValue("", forKey: "retailerId")
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "signUp")
                     if #available(iOS 10.0, *) {
@@ -166,6 +176,36 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
             self.tableImage.image = UIImage(named:"SortU")
             self.tableView.isHidden = false
             self.tableView.reloadData()
+        }
+    }
+    
+    func callScan() {
+        var service = services_calls()
+        loader.startAnimating()
+        self.loaderView.isHidden = false
+
+        service.scan_offer(user_id: "", scan_date: NSDate().getToDay(), offer_id: "", branch_id: "", serial_number: "") { (res, status) in
+            if status == "ok" {
+                if res?.status == 1 {
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+
+                }else{
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    let alertController = UIAlertController(title: "Failure!", message: res?.message, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }else{
+                self.loader.stopAnimating()
+                self.loaderView.isHidden = true
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
     /*
