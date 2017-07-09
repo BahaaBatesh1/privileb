@@ -163,6 +163,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
         }else{
             scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             textField.resignFirstResponder()
+            callScan()
         }
         return true
     }
@@ -172,15 +173,17 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
             self.tableImage.image = UIImage(named:"SortD")
             self.tableView.isHidden = true
             self.tableView.reloadData()
+            isTableShow = false
         }else{
             self.tableImage.image = UIImage(named:"SortU")
             self.tableView.isHidden = false
             self.tableView.reloadData()
+            isTableShow = true
         }
     }
     
     func callScan() {
-        var service = services_calls()
+        let service = services_calls()
         loader.startAnimating()
         self.loaderView.isHidden = false
 
