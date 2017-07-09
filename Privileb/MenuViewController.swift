@@ -127,8 +127,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             rootController.closePanel()
             break
         case 1:
-            tab.selectedIndex = 2
-            (tab.viewControllers?[2] as! PrivilebCardController).onAbout(self)
+            tab.selectedIndex = 0
             rootController.closePanel()
             break
         case 2:

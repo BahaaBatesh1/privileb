@@ -1761,25 +1761,39 @@ Floor</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vl3-bs-VU7" userLabel="btn_combo1">
-                                                <rect key="frame" x="126" y="482" width="24" height="24"/>
-                                                <state key="normal" image="circle">
+                                                <rect key="frame" x="126" y="484" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="9e1-NK-Oo6"/>
+                                                    <constraint firstAttribute="height" constant="20" id="QRD-wT-cbb"/>
+                                                </constraints>
+                                                <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onMale:" destination="hFn-oF-SEf" eventType="touchUpInside" id="Wrr-X1-Y1Z"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7O-mZ-JOW">
-                                                <rect key="frame" x="155" y="485" width="33" height="18"/>
+                                                <rect key="frame" x="156" y="485" width="33" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zk-Ms-hjE" userLabel="btn_combo2">
-                                                <rect key="frame" x="238" y="482" width="24" height="24"/>
-                                                <state key="normal" image="circle">
+                                                <rect key="frame" x="239" y="484" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="CP2-xh-BiO"/>
+                                                    <constraint firstAttribute="height" constant="20" id="Goh-fa-B7j"/>
+                                                </constraints>
+                                                <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onFemale:" destination="hFn-oF-SEf" eventType="touchUpInside" id="bX4-Dj-G4Z"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Famale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loa-YB-hCQ">
-                                                <rect key="frame" x="267" y="485" width="49" height="18"/>
+                                                <rect key="frame" x="269" y="485" width="49" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1821,7 +1835,7 @@ Floor</string>
                                                 <rect key="frame" x="15" y="797" width="346" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0D-Kb-sHN">
                                                 <rect key="frame" x="15" y="866" width="97" height="18"/>
@@ -1833,7 +1847,7 @@ Floor</string>
                                                 <rect key="frame" x="15" y="889" width="346" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l92-KV-HXc">
                                                 <rect key="frame" x="14" y="958" width="66" height="18"/>
@@ -1845,7 +1859,7 @@ Floor</string>
                                                 <rect key="frame" x="15" y="981" width="346" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giH-kL-Lz0">
                                                 <rect key="frame" x="15" y="1050" width="125" height="18"/>
@@ -1857,7 +1871,7 @@ Floor</string>
                                                 <rect key="frame" x="14" y="1073" width="346" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEb-zd-xt7">
                                                 <rect key="frame" x="15" y="1147" width="17" height="17"/>
@@ -1865,9 +1879,12 @@ Floor</string>
                                                     <constraint firstAttribute="height" constant="17" id="Oac-O6-Dwm"/>
                                                     <constraint firstAttribute="width" constant="17" id="dCT-p5-Cin"/>
                                                 </constraints>
-                                                <state key="normal" image="rect1.png">
+                                                <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onAgreeBtn:" destination="hFn-oF-SEf" eventType="touchUpInside" id="Cyd-5g-QBV"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree to our Terms of Services and Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPV-jk-WZX">
                                                 <rect key="frame" x="47" y="1144" width="289" height="32"/>
@@ -1888,7 +1905,18 @@ Floor</string>
                                                 <state key="normal" backgroundImage="btn_active1.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onRegister:" destination="hFn-oF-SEf" eventType="touchUpInside" id="gmJ-bv-Efx"/>
+                                                </connections>
                                             </button>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XHY-Su-Jhp">
+                                                <rect key="frame" x="311" y="1254" width="30" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="ES0-Lt-7c5"/>
+                                                    <constraint firstAttribute="height" constant="30" id="ViN-o3-pd1"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="6XK-6z-g2t" firstAttribute="top" secondItem="S0D-Kb-sHN" secondAttribute="bottom" constant="5" id="1nh-qM-TDM"/>
@@ -1910,7 +1938,9 @@ Floor</string>
                                             <constraint firstItem="Ihg-je-Di5" firstAttribute="top" secondItem="ol8-cA-hO0" secondAttribute="bottom" constant="20" id="GTy-f0-7KX"/>
                                             <constraint firstItem="6XK-6z-g2t" firstAttribute="width" secondItem="UAx-Ge-AEd" secondAttribute="width" id="IZf-4B-D2C"/>
                                             <constraint firstItem="0zk-Ms-hjE" firstAttribute="centerY" secondItem="U7O-mZ-JOW" secondAttribute="centerY" id="J4o-1o-HeI"/>
+                                            <constraint firstItem="XHY-Su-Jhp" firstAttribute="trailing" secondItem="sSd-R8-qTF" secondAttribute="trailing" constant="-20" id="JTs-9G-kYd"/>
                                             <constraint firstItem="unH-oC-CCh" firstAttribute="width" secondItem="ol8-cA-hO0" secondAttribute="width" id="Jxn-mU-eef"/>
+                                            <constraint firstItem="XHY-Su-Jhp" firstAttribute="centerY" secondItem="sSd-R8-qTF" secondAttribute="centerY" id="MPa-OZ-U1h"/>
                                             <constraint firstItem="rOz-zS-ZJp" firstAttribute="top" secondItem="kWM-hZ-pZS" secondAttribute="bottom" constant="5" id="R6c-jK-NBu"/>
                                             <constraint firstItem="q5J-XD-Nxt" firstAttribute="top" secondItem="4sr-df-HVe" secondAttribute="bottom" constant="5" id="RIs-u3-dpr"/>
                                             <constraint firstItem="wPV-jk-WZX" firstAttribute="top" secondItem="WEb-zd-xt7" secondAttribute="top" constant="-3" id="Rdf-Nz-bKC"/>
@@ -1936,9 +1966,9 @@ Floor</string>
                                             <constraint firstItem="lTo-Fj-G0v" firstAttribute="top" secondItem="dXw-m6-eVR" secondAttribute="bottom" constant="15" id="ils-Xq-deh"/>
                                             <constraint firstItem="loa-YB-hCQ" firstAttribute="centerY" secondItem="0zk-Ms-hjE" secondAttribute="centerY" id="lzq-3D-Mgf"/>
                                             <constraint firstItem="vl3-bs-VU7" firstAttribute="leading" secondItem="dXw-m6-eVR" secondAttribute="trailing" constant="60" id="m0c-lj-aCH"/>
-                                            <constraint firstItem="loa-YB-hCQ" firstAttribute="leading" secondItem="0zk-Ms-hjE" secondAttribute="trailing" constant="5" id="oY6-4K-kNk"/>
+                                            <constraint firstItem="loa-YB-hCQ" firstAttribute="leading" secondItem="0zk-Ms-hjE" secondAttribute="trailing" constant="10" id="oY6-4K-kNk"/>
                                             <constraint firstItem="dXH-WD-TuA" firstAttribute="top" secondItem="5ee-E1-50Y" secondAttribute="bottom" constant="5" id="pd5-Wu-X5L"/>
-                                            <constraint firstItem="U7O-mZ-JOW" firstAttribute="leading" secondItem="vl3-bs-VU7" secondAttribute="trailing" constant="5" id="q8S-Qs-xxh"/>
+                                            <constraint firstItem="U7O-mZ-JOW" firstAttribute="leading" secondItem="vl3-bs-VU7" secondAttribute="trailing" constant="10" id="q8S-Qs-xxh"/>
                                             <constraint firstItem="pO1-4D-086" firstAttribute="centerY" secondItem="g4r-Zq-4Nd" secondAttribute="centerY" id="qpB-8Y-8CG"/>
                                             <constraint firstItem="S0D-Kb-sHN" firstAttribute="top" secondItem="UAx-Ge-AEd" secondAttribute="bottom" constant="20" id="rE7-9i-FqY"/>
                                             <constraint firstItem="dXw-m6-eVR" firstAttribute="top" secondItem="g4r-Zq-4Nd" secondAttribute="bottom" constant="20" id="rxg-rw-4Vq"/>
@@ -1952,7 +1982,7 @@ Floor</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-IP-6Lx">
-                                                <rect key="frame" x="0.0" y="176.5" width="375" height="250"/>
+                                                <rect key="frame" x="0.0" y="76.5" width="375" height="250"/>
                                                 <subviews>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tDq-Zp-saE">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -1991,7 +2021,7 @@ Floor</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.51386443661971826" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="I3V-IP-6Lx" secondAttribute="trailing" id="6NX-Eh-g09"/>
-                                            <constraint firstItem="I3V-IP-6Lx" firstAttribute="centerY" secondItem="GzU-T9-nQe" secondAttribute="centerY" id="8IL-KN-FlF"/>
+                                            <constraint firstItem="I3V-IP-6Lx" firstAttribute="centerY" secondItem="GzU-T9-nQe" secondAttribute="centerY" constant="-100" id="8IL-KN-FlF"/>
                                             <constraint firstItem="I3V-IP-6Lx" firstAttribute="leading" secondItem="GzU-T9-nQe" secondAttribute="leading" id="lld-zZ-Wp0"/>
                                         </constraints>
                                     </view>
@@ -2048,9 +2078,23 @@ Floor</string>
                     </view>
                     <navigationItem key="navigationItem" title="REGISTER" id="2z9-pM-Zwi"/>
                     <connections>
+                        <outlet property="addressTextField" destination="unH-oC-CCh" id="mZI-7U-X8Z"/>
+                        <outlet property="agressBtn" destination="WEb-zd-xt7" id="Iia-aB-ERI"/>
                         <outlet property="birhDateTextField" destination="g4r-Zq-4Nd" id="oMO-Xd-jvb"/>
                         <outlet property="birthdayPicker" destination="tDq-Zp-saE" id="CKU-qP-NUV"/>
                         <outlet property="birthdayView" destination="GzU-T9-nQe" id="8Yt-v0-c3N"/>
+                        <outlet property="confirmTextField" destination="QxR-IT-6Cg" id="FRp-CY-O2c"/>
+                        <outlet property="countryTextField" destination="ol8-cA-hO0" id="YsN-vi-nLf"/>
+                        <outlet property="emailTextField" destination="6XK-6z-g2t" id="59k-w7-6Il"/>
+                        <outlet property="femaleBtn" destination="0zk-Ms-hjE" id="Tci-Uh-0Wq"/>
+                        <outlet property="firstNameTextFiled" destination="q5J-XD-Nxt" id="TTJ-qz-ppY"/>
+                        <outlet property="lastNameTextField" destination="2YQ-LR-Ct7" id="HIG-uF-bUW"/>
+                        <outlet property="loaderView" destination="XHY-Su-Jhp" id="IeG-rI-RZP"/>
+                        <outlet property="maleBtn" destination="vl3-bs-VU7" id="CDf-rx-3eS"/>
+                        <outlet property="mobileNumberTextFiled" destination="UAx-Ge-AEd" id="xcG-YX-24L"/>
+                        <outlet property="passwordTextField" destination="B4J-0Y-cNg" id="5Lb-2V-8md"/>
+                        <outlet property="searialTextField" destination="dXH-WD-TuA" id="xHb-wz-jCY"/>
+                        <outlet property="verfyCodeTextFiled" destination="rOz-zS-ZJp" id="80B-ec-gzd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJJ-jA-zaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5403,7 +5447,6 @@ Télé Liban TV Stations staffs.</string>
         <image name="offer_location3" width="57" height="72"/>
         <image name="offer_validity3" width="60" height="60"/>
         <image name="rect1" width="20" height="20"/>
-        <image name="rect1.png" width="16" height="16"/>
         <image name="row-reorder" width="26" height="19"/>
         <image name="splash" width="236" height="82"/>
         <image name="tab_categories3" width="22" height="22"/>

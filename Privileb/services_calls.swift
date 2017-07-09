@@ -171,7 +171,7 @@ class services_calls {
     
     }
     
-    func register(datetime : String ,fname : String ,lname : String , serial_number : String , birthdate : String , gender : String , country_id : String , email : String , mobile_number : String , password : String ){
+    func register(datetime : String ,fname : String ,lname : String , serial_number : String , birthdate : String , gender : String , country_id : String , email : String , mobile_number : String , password : String ,onComplete: @escaping (postResponse?,String) ->Void){
         let parameters: Parameters = [
             "datetime": datetime,
             "fname": fname,
@@ -188,11 +188,18 @@ class services_calls {
             switch response.result {
             //success
             case .success( _):
-                self.parseData(JSONData: response.data!,  class_name: "user")
+                do {
+                    let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                    self.postRes = postResponse(result: readableJSON as! [String: Any])
+                    onComplete(self.postRes,"ok")
+                }catch(_) {
+                    print("error parsing")
+                    onComplete(nil,"error")
+            }
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                
+                onComplete(nil,"error")
             }}
 
         
