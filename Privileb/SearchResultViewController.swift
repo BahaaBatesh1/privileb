@@ -64,6 +64,10 @@ class SearchResultViewController: UIViewController , UITableViewDelegate,UITable
     }
     @IBAction func onBackBtn(_ sender: Any) {
         let _ = self.navigationController?.popViewController(animated: true)
+        if let search = self.navigationController?.viewControllers[0] as? FilterViewController {
+            search.resultLabel.text = "\(self.result.count) Offer"
+            search.searchResult = self.result
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailsFromResults" {

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SearchLocationViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate {
+class SearchLocationViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate, UISearchDisplayDelegate {
     
     
     @IBOutlet weak var tableViwe: UITableView!
@@ -18,6 +18,9 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     
     var selectedCat : [categoryy] = []
     var unSelectedCat : [categoryy] = []
+    
+    var searchBarCat:[categoryy]?
+    var searchBarDis:[district]?
     var fromCategories = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +58,11 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.searchDisplayController?.searchResultsTableView{
-            return 1
+            if fromCategories {
+                return self.searchBarCat?.count ?? 0
+            }else{
+                return self.searchBarDis?.count ?? 0
+            }
         }else{
             if fromCategories {
                 if section == 0 {
@@ -108,9 +115,26 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == self.searchDisplayController?.searchResultsTableView{
-            return UITableViewCell()
+            if fromCategories {
+                if indexPath.section == 0 {
+                    let cell = self.tableViwe.dequeueReusableCell(withIdentifier: "searchLocationCell") as! SearchLocationTableViewCell
+                    cell.celllabel.text = searchBarCat?[indexPath.row].name
+                    cell.cellBtn.setBackgroundImage(UIImage(named: "location_search3"), for: .normal)
+                    cell.cellBtn.tag = indexPath.row
+                    cell.contentView.tag = 400
+                    return cell
+                }
+            }else{
+                if indexPath.section == 0 {
+                    let cell = self.tableViwe.dequeueReusableCell(withIdentifier: "searchLocationCell") as! SearchLocationTableViewCell
+                    cell.celllabel.text = searchBarDis?[indexPath.row].name
+                    cell.cellBtn.setBackgroundImage(UIImage(named: "location_search3"), for: .normal)
+                    cell.cellBtn.tag = indexPath.row
+                    cell.contentView.tag = 400
+                    return cell
+                }
+            }
         }else{
-            
             if fromCategories {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "searchLocationCell") as! SearchLocationTableViewCell
                 if indexPath.section == 0 {
@@ -142,6 +166,7 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
                 return cell
             }
         }
+        return UITableViewCell()
     }
     /*
     // MARK: - Navigation
@@ -166,6 +191,11 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     @IBAction func onCellBtn(_ sender: UIButton) {
         
         if fromCategories {
+            if sender.superview?.tag == 400 {
+                var element = self.searchBarCat?.remove(at: sender.tag)
+                self.selectedCat.append(self.removeFromUnselectedCat(cat: element!)!)
+                self.searchDisplayController?.searchResultsTableView.reloadData()
+            }
             if sender.superview?.tag == 100 {
                 self.unSelectedCat.append(self.selectedCat.remove(at: sender.tag))
             }else if sender.superview?.tag == 200{
@@ -173,6 +203,11 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
             }
             self.tableViwe.reloadData()
         }else{
+            if sender.superview?.tag == 400 {
+                var element = self.searchBarDis?.remove(at: sender.tag)
+                self.selectedDes.append(self.removeFromUnselected(dis: element!)!)
+                self.searchDisplayController?.searchResultsTableView.reloadData()
+            }
             if sender.superview?.tag == 100 {
                 self.unSelectedDes.append(self.selectedDes.remove(at: sender.tag))
             }else if sender.superview?.tag == 200{
@@ -183,4 +218,56 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
         
     }
 
+    
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        if fromCategories {
+            if self.unSelectedCat == nil {
+                self.searchBarCat = nil
+                return
+            }
+            self.searchBarCat =  self.unSelectedCat.filter({ (test) -> Bool in
+                return (test.name.lowercased().range(of: searchText.lowercased()) != nil)
+            })
+        }else{
+            if self.unSelectedDes == nil {
+                self.searchBarDis = nil
+                return
+            }
+            self.searchBarDis =  self.unSelectedDes.filter({ (test) -> Bool in
+                return (test.name.lowercased().range(of: searchText.lowercased()) != nil)
+            })
+        }
+
+    }
+    
+    
+    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
+        let searchString = controller.searchBar.text
+        self.filterContentForSearchText(searchText: searchString!)
+        return true
+    }
+    
+    
+    func removeFromUnselected(dis :district) -> district? {
+        var i = 0
+        for el in self.unSelectedDes{
+            if el.district_id == dis.district_id {
+                return self.unSelectedDes.remove(at: i)
+            }
+            i = i + 1
+        }
+        return nil
+    }
+    
+    func removeFromUnselectedCat(cat :categoryy) -> categoryy? {
+        var i = 0
+        for el in self.unSelectedCat{
+            if el.category_id == cat.category_id {
+              return  self.unSelectedCat.remove(at: i)
+            }
+            i = i + 1
+        }
+        return nil
+    }
 }

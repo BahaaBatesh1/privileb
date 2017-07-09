@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UISearchDisplayDelegate{
+class FilterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UISearchBarDelegate, UISearchDisplayDelegate{
     var fromCat = false
     var selectedCat : [categoryy] = []
     var selectedDis : [district] = []
@@ -17,6 +17,10 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     var loader: MaterialLoadingIndicator!
     var category_ids = ""
     var district_ids = ""
+    var searchBarResult:[offer]?
+    var selectedOffer:offer?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var loaderView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +54,7 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.searchDisplayController?.searchResultsTableView{
-            return 1
+            return searchBarResult?.count ?? 0
         }else{
             return 2
         }
@@ -58,7 +62,19 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == self.searchDisplayController?.searchResultsTableView{
-            return UITableViewCell()
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "resultsSearchCell") as! FeaturedTableViewCell
+            cell.dateLabel.text = "\(self.searchBarResult![indexPath.row].issue_date!) to \(self.searchBarResult![indexPath.row].expiry_date!)"
+            cell.supervisedByLabel.text = self.searchBarResult?[indexPath.row].retailer_name
+            cell.offerLabel.text = self.searchBarResult?[indexPath.row].offer_name
+            
+            if self.searchBarResult?[indexPath.row].featured_croppedImage != nil {
+                cell.logoImage.image = self.searchBarResult?[indexPath.row].featured_croppedImage
+            }else{
+                cell.load_image(urlString: (self.searchBarResult?[indexPath.row].featured_cropped)!)
+            }
+            cell.sliderLabel.text = self.searchBarResult?[indexPath.row].frequency
+            cell.categoryLabel.text = " Beauty & spa  "
+            return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! SearchTableViewCell
             if indexPath.row == 0 {
@@ -93,13 +109,26 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
         return 20
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            fromCat = false
-            performSegue(withIdentifier: "toLocationSearch", sender: self)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == self.searchDisplayController?.searchResultsTableView{
+            return 300
         }else{
-            fromCat = true
-            performSegue(withIdentifier: "toLocationSearch", sender: self)
+            return 44
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.searchDisplayController?.searchResultsTableView{
+            self.selectedOffer = self.searchBarResult?[indexPath.row]
+            performSegue(withIdentifier: "toDetailsFromFilter" , sender: self)
+        }else{
+            if indexPath.row == 0 {
+                fromCat = false
+                performSegue(withIdentifier: "toLocationSearch", sender: self)
+            }else{
+                fromCat = true
+                performSegue(withIdentifier: "toLocationSearch", sender: self)
+            }
         }
     }
     @IBAction func onCancel(_ sender: Any) {
@@ -119,6 +148,9 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
             des.category_ids = self.category_ids
             des.district_ids = self.district_ids
             des.keyword = (self.searchDisplayController?.searchBar.text)!
+        }else if segue.identifier == "toDetailsFromFilter" {
+            let des = (segue.destination as! UINavigationController).topViewController as! FeaturedDetailsViewController
+            des.offerId = (self.selectedOffer?.offer_id)!
         }
     }
     
@@ -148,6 +180,25 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
         performSegue(withIdentifier: "toResult", sender: self)
 
     }
+    
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        if self.searchResult == nil {
+            self.searchBarResult = nil
+            return
+        }
+        self.searchBarResult =  self.searchResult.filter({ (test) -> Bool in
+            return (test.offer_name.lowercased().range(of: searchText.lowercased()) != nil)
+        })
+    }
+    
+    
+    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
+        let searchString = controller.searchBar.text
+        self.filterContentForSearchText(searchText: searchString!)
+        return true
+    }
+
     /*
     // MARK: - Navigation
 
