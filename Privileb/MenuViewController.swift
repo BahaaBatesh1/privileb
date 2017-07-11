@@ -162,13 +162,13 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     @IBAction func onCall(_ sender: Any) {
         
         
-        let alertController = UIAlertController(title: "Call hot line", message: "01697714", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Call hot line", message: "81717272", preferredStyle: .alert)
         let call = UIAlertAction(title: "Call", style: .default) { (alert) in
-            if let url = NSURL(string: "tel://01697714") {
+            if let url = NSURL(string: "tel://81717272") {
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(url as URL, options: ["":""], completionHandler: nil)
                 } else {
-                    _ = UIApplication.shared.openURL(NSURL(string: "tel://01697714") as! URL)
+                    _ = UIApplication.shared.openURL(NSURL(string: "tel://81717272") as! URL)
                 }
             }
         }
@@ -231,7 +231,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                         self.userDefaults.setValue("", forKey: "userMail")
                         self.userDefaults.setValue("", forKey: "userType")
                         self.userDefaults.setValue("", forKey: "userName")
-                        self.userDefaults.setValue("", forKey: "retailerId")
+//                        self.userDefaults.setValue("", forKey: "branch_id")
 
                         self.registerBtn.isHidden = false
                         self.registerImage.isHidden = false

@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var unSelectedCat : [categoryy] = []
     var unSelectedDis : [district] = []
+    
+    var current_user : user?
 
     let userDefaults = UserDefaults.standard
 
@@ -204,6 +206,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.joinOur = page
             }
         }
+    }
+    
+    func set_current_user (user : user){
+        self.current_user = user
+    }
+    func get_current_user () ->user {
+        
+        return self.current_user!
+    
     }
     
     func loadCard() {

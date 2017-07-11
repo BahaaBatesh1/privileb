@@ -13,20 +13,20 @@ class user {
 
 
     
-    var id : Int!
-    var fname : String!
-    var lname : String!
-    var email : String!
-    var address : String!
-    var password : String!
-    var card_id : Int!
-    var mobile_number : Int!
-    var birthdate : String!
-    var creation_date : String!
-    var gender : String!
-    var country_id : String!
+    var id : Int! = 0
+    var fname : String! = ""
+    var lname : String! = ""
+    var email : String! = ""
+    var address : String! = ""
+    var password : String! = ""
+    var card_id : Int! = 0
+    var mobile_number : Int! = 0
+    var birthdate : String! = ""
+    var creation_date : String! = ""
+    var gender : String! = ""
+    var country_id : String! = ""
     var response : postResponse!
-    var type:String!
+    var type:String! = ""
     
     //partner
     
@@ -39,13 +39,15 @@ class user {
     var retailer_id : String!
     var name : String!
     var phone_number : String!
+
+    
     
     init(result :[String: Any]) {
         
         self.response = postResponse(result: result)
         
         if self.response.status == 1 {
-            let data = result["data"] as! [String: Any]
+            if let data = result["data"] as? [String: Any]{
             
             if let id = Int((data["id"] as? String)!){
                 self.id = id
@@ -119,32 +121,7 @@ class user {
             }
             
             
-            if let is_active = data["is_active"] as? String{
-                self.is_active = is_active
-            }else{
-                self.is_active = ""
-            }
-            
-            
-            if let username = data["username"] as? String{
-                self.username = username
-            }else{
-                self.username = ""
-            }
-            
-            
-            if let radius = data["radius"] as? String{
-                self.radius = radius
-            }else{
-                self.radius = ""
-            }
-            
-            
-            if let longitude = data["longitude"] as? String{
-                self.longitude = longitude
-            }else{
-                self.longitude = ""
-            }
+          
             
             if let latitude = data["latitude"] as? String{
                 self.latitude = latitude
@@ -176,11 +153,16 @@ class user {
                 self.phone_number = ""
             }
 
+            
+        
+        
         }
+        
         if let typ = result["type"] as? String{
             self.type = typ
         }else{
             self.type = ""
+            }
         }
     }
 }

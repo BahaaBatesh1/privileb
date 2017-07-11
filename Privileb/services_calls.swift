@@ -28,6 +28,8 @@ class services_calls {
     var postRes : postResponse?
     var fav : favourite?
     
+    var partner : Partner?
+    
     
     func parsUserLogin(JSONData: Data)  {
         do {
@@ -106,6 +108,9 @@ class services_calls {
                     if(class_name == "details"){
                         self.offer_detailss = offer_details(result: element)
                     }
+                    if(class_name == "partner"){
+                        self.partner = Partner(result: element)
+                    }
                  //   self.items.append(item(result: element))
                 }}
             else {
@@ -122,11 +127,12 @@ class services_calls {
     }
 
     
-    func login(email : String , password : String, onComplete: @escaping (user?,String,postResponse?) -> Void){
+    func login(email : String , password : String,date : String , onComplete: @escaping (user?,String,postResponse?) -> Void){
         
         let parameters: Parameters = [
             "email": email,
-            "password": password
+            "password": password,
+            "date" : date
         ]
         
         Alamofire.request("http://privileb.com/webservices/login.php", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(){response in
@@ -816,5 +822,62 @@ class services_calls {
             }}
         
     }
+    
+    
+    
+    
+    func get_offer_description(offer_id : String , onComplete: @escaping (postResponse?,String) -> Void){
+        
+        let parameters: Parameters = [
+            "offer_id" : offer_id            
+            ]
+        
+        Alamofire.request("http://privileb.com/webservices/get_offer_description.php", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(){response in
+            switch response.result {
+            //success
+            case .success( _):
+                do {
+                    let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                    self.postRes = postResponse(result: readableJSON)
+                    onComplete(self.postRes,"ok")
+                }catch(_) {
+                    print("error parsing")
+                    onComplete(nil,"error")
+                }
+            //failure
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                onComplete(nil,"error")
+            }}
+        
+    }
+    
+    
+    func get_partner_offers (date : String , branch_id : String ,onComplete:@escaping (postResponse? , String , Partner?)->Void){
+        
+        
+        let parameters: Parameters = [
+            "branch_id" : branch_id ,
+            "date" : date
+        ]
+        
+        Alamofire.request("http://privileb.com/webservices/get_offers_by_branch_id.php", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(){response in
+            switch response.result {
+            //success
+            case .success( _):
+                self.parseData(JSONData: response.data!, class_name: "partner")
+                onComplete(self.postRes,"ok",self.partner)
+            //failure
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                onComplete(nil,"error", nil)
+            }}
+
+    
+    
+    }
+
+    
+    
 
 }

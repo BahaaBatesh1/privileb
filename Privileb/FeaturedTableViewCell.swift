@@ -35,13 +35,14 @@ class FeaturedTableViewCell: UITableViewCell {
         self.categoryLabel.layer.masksToBounds = true
         
         let mGradient = CAGradientLayer()
+        mGradient.masksToBounds = true
         mGradient.frame = self.logoImage.bounds
         var colors = [CGColor]()
-        colors.append(UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor)
+        colors.append(UIColor(red: 0, green: 0, blue: 0, alpha: 0.9).cgColor)
         colors.append(UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor)
         
-        mGradient.startPoint = CGPoint(x: 0.5, y: 0.9)
-        mGradient.endPoint = CGPoint(x: 0.5, y: 0.1)
+        mGradient.startPoint = CGPoint(x: 0.0, y: 1)
+        mGradient.endPoint = CGPoint(x: 0.0, y: 0.0)
         mGradient.colors = colors
         
         self.logoImage.layer.addSublayer(mGradient)

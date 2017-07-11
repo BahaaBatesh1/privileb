@@ -123,7 +123,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
             loader.startAnimating()
             self.loaderView.isHidden = false
 
-            services.login(email: userNameTextField.text!, password: passwordTextField.text!) { (user, status,postRes) in
+            services.login(email: userNameTextField.text!, password: passwordTextField.text! , date : NSDate().getToDay()) { (user, status,postRes) in
                 if status == "ok"{
                     if user?.response.status == 1 {
                         if user?.type == "Cardholder"{
@@ -158,11 +158,14 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
                             self.userDefaults.setValue(user?.email, forKey: "userMail")
                             self.userDefaults.setValue(user?.type, forKey: "userType")
                             self.userDefaults.setValue(user?.fname, forKey: "userName")
-                            self.userDefaults.setValue(user?.retailer_id, forKey: "retailerId")
+//                            self.userDefaults.setValue(user?.branch_id, forKey: "branch_id")
+                            AppDelegate.sharedDelegate().set_current_user(user: self.user!)
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let controller = storyboard.instantiateViewController(withIdentifier: "QR")
+                            
                             if #available(iOS 10.0, *) {
                                 AppDelegate.sharedDelegate().window?.rootViewController = controller
+                                
                             } else {
                                 let appDelegate = UIApplication.shared.delegate
                                 appDelegate?.window!?.rootViewController = controller

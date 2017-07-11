@@ -22,14 +22,22 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
     @IBOutlet weak var fourthNumber: UITextField!
     let userDefaults = UserDefaults.standard
     var isTableShow = false
-    var deals:[String] = ["sad","asdas","asdasdadasdasdas"]
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableImage: UIImageView!
     
+    @IBOutlet weak var welcome_label: UILabel!
     var loader: MaterialLoadingIndicator!
-
+    
+    var deals : [Partner_offer] = []
+    var user :Partner!
+    var branchId :String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        branchId = (userDefaults.value(forKey: "userId") as? Int)?.description
+        
+        
         scrollView.contentSize=CGSize(width: 414,height: 2300)
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuyCardViewController.hideKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -39,9 +47,11 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         loader.circleShapeLayer.strokeColor = UIColor(red: 212, green: 172, blue: 92).cgColor
         self.loaderView.addSubview(loader)
+        
+        callService()
+        
 
-//        self.firstNumber.input
-        // Do any additional setup after loading the view.
+        
     }
 
     @IBAction func back(_ sender: Any) {
@@ -59,19 +69,21 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return deals.count
+        return self.deals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "partnerDeal")
-        cell?.textLabel?.text = self.deals[indexPath.row]
+        cell?.textLabel?.text = self.deals[indexPath.row].Name
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.chooseDealTextField.text = self.deals[indexPath.row]
+        self.chooseDealTextField.text = self.deals[indexPath.row].Name
         self.tableView.isHidden = true
         self.tableImage.image = UIImage(named:"SortD")
+        
+        // call get offer description service
     }
     @IBAction func onScanQR(_ sender: Any) {
         performSegue(withIdentifier: "toScan", sender: self)
@@ -210,6 +222,52 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
                 self.present(alertController, animated: true, completion: nil)
             }
         }
+    }
+    
+    func callService()  {
+        let service = services_calls()
+        self.loader.startAnimating()
+        self.loaderView.isHidden = false
+
+        service.get_partner_offers(date: NSDate().getToDay(), branch_id: self.branchId!, onComplete: {(res, status, partner) -> Void in
+            
+            if status == "ok" {
+                if res?.status == 1 {
+                    DispatchQueue.main.async {
+                        self.user = partner
+                        self.deals = self.user.offers
+                        self.welcome_label.text = "Welcome " + self.user.partner_name
+                        if let url = NSURL(string: self.user.partner_logo) {
+                            if let data = NSData(contentsOf: url as URL) {
+                                self.patnerLogo.image = UIImage(data: data as Data)
+                            }
+                        }
+                        self.tableView.reloadData()
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: "Connection Error!", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+            
+        })
     }
     /*
     // MARK: - Navigation
