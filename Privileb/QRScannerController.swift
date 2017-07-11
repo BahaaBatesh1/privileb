@@ -90,6 +90,13 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
             
             if metadataObj.stringValue != nil {
                 messageLabel.text = metadataObj.stringValue
+                
+                //here to trigger the service and take the variables from the qr code
+                var splittedArray = metadataObj.stringValue.components(separatedBy: ":")
+                var user_id = splittedArray[0]
+                var serial_number = splittedArray[1]                
+                print (user_id)
+                print(serial_number)
             }
         }
     }

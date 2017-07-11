@@ -835,7 +835,8 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-card" translatesAutoresizingMaskIntoConstraints="NO" id="mtZ-hZ-468">
-                                                <rect key="frame" x="0.0" y="260" width="414" height="220.00000000000006"/>
+                                                <rect key="frame" x="100" y="260" width="214" height="220.00000000000006"/>
+                                                <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="220" id="ask-RN-Za8"/>
                                                 </constraints>
@@ -885,6 +886,9 @@
                                                                 </constraints>
                                                             </stackView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="eyQ-9U-h0e" firstAttribute="leading" secondItem="l5D-RU-vcZ" secondAttribute="leading" id="Bl1-Ds-G7k"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
@@ -894,12 +898,12 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="mtZ-hZ-468" secondAttribute="trailing" id="5rb-KL-rV5"/>
+                                            <constraint firstAttribute="trailing" secondItem="mtZ-hZ-468" secondAttribute="trailing" constant="100" id="5rb-KL-rV5"/>
                                             <constraint firstAttribute="trailing" secondItem="z3b-H0-gcW" secondAttribute="trailing" constant="20" id="Kqr-JY-bnQ"/>
                                             <constraint firstItem="z3b-H0-gcW" firstAttribute="leading" secondItem="6iz-MS-gCc" secondAttribute="leading" constant="20" id="UBe-dz-NBD"/>
                                             <constraint firstItem="z3b-H0-gcW" firstAttribute="bottom" secondItem="Iat-qC-cmT" secondAttribute="bottom" id="WJq-lq-8OS"/>
                                             <constraint firstAttribute="trailing" secondItem="Iat-qC-cmT" secondAttribute="trailing" id="XQs-TQ-aJJ"/>
-                                            <constraint firstItem="mtZ-hZ-468" firstAttribute="leading" secondItem="6iz-MS-gCc" secondAttribute="leading" id="aBT-CO-yge"/>
+                                            <constraint firstItem="mtZ-hZ-468" firstAttribute="leading" secondItem="6iz-MS-gCc" secondAttribute="leading" constant="100" id="aBT-CO-yge"/>
                                             <constraint firstItem="Iat-qC-cmT" firstAttribute="leading" secondItem="6iz-MS-gCc" secondAttribute="leading" id="dle-bR-78C"/>
                                             <constraint firstItem="mtZ-hZ-468" firstAttribute="top" secondItem="Iat-qC-cmT" secondAttribute="bottom" constant="20" id="g7Z-qh-1kO"/>
                                             <constraint firstItem="Iat-qC-cmT" firstAttribute="top" secondItem="6iz-MS-gCc" secondAttribute="top" constant="20" id="u2s-Ta-jya"/>
@@ -1325,6 +1329,7 @@ Floor</string>
                         <outlet property="mapView" destination="IFC-kW-VB7" id="wbK-pc-rRD"/>
                         <outlet property="myCardBtn" destination="a1F-1i-i7Z" id="yZk-7Q-U5B"/>
                         <outlet property="myCardView" destination="6iz-MS-gCc" id="kbr-nq-eQn"/>
+                        <outlet property="secondImage" destination="mtZ-hZ-468" id="LUc-f6-KDw"/>
                         <outlet property="termsBtn" destination="xBd-CE-0Lf" id="nSd-FS-MaQ"/>
                         <outlet property="termsView" destination="Odm-zU-SEN" id="Fby-sh-IWR"/>
                         <outlet property="validationDateLabel" destination="OWD-3V-LIv" id="XHh-h4-ADG"/>

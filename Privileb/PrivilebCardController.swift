@@ -53,6 +53,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
 
         if let isLogedIn = userDefaults.value(forKey: "isLogedIn") as? Bool{
             if isLogedIn {
+                AppDelegate.sharedDelegate().loadCard()
                 self.card = AppDelegate.sharedDelegate().card
                 self.cardSerialNumberLabel.text = self.card?.serial_number
                 self.holderNameLabel.text = self.card?.cardHolderName
@@ -61,6 +62,8 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
                 self.myCardView.isHidden = false
                 self.buCardView.isHidden = true
                 isHaveCard = true
+                var user_id1 = (userDefaults.value(forKey: "userId") as! Int).description
+                self.secondImage.image = generateQRCodeFromString(user_id: user_id1 , serial_number : "1234")
             }else{
                 self.myCardView.isHidden = true
                 self.buCardView.isHidden = false
@@ -368,6 +371,28 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func generateQRCodeFromString(user_id : String , serial_number : String) -> UIImage?{
+        
+        let string_to_encode = user_id + ":" + serial_number
+        let data = string_to_encode.data(using: String.Encoding.ascii, allowLossyConversion: false)
+        //let serial_number1 = user_id.data(using: String.Encoding.ascii, allowLossyConversion: false)
+        let filter = CIFilter(name: "CIQRCodeGenerator")
+        filter?.setValue(data, forKey: "inputMessage")
+      //  filter?.setValue(serial_number1, forKey: "inputCorrectionLevel")
+
+        
+        let transform = CGAffineTransform(scaleX: 10, y: 10)
+        let output = filter?.outputImage?.applying(transform)
+        if(output != nil){
+            return UIImage(ciImage: output!)
+        }
+        return nil
+        
+    
+    
     }
 
 }
