@@ -14,7 +14,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
     @IBOutlet weak var patnerLogo: UIImageView!
 
     @IBOutlet weak var loaderView: UIView!
-    @IBOutlet weak var dealDetails: UITextField!
+    @IBOutlet weak var dealDetails: UITextView!
     
     @IBOutlet weak var firstNumber: UITextField!
     @IBOutlet weak var secondNumber: UITextField!
@@ -37,6 +37,9 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
         
         branchId = (userDefaults.value(forKey: "userId") as? Int)?.description
         
+        self.dealDetails.layer.cornerRadius = 5
+        self.dealDetails.layer.borderColor = UIColor.lightGray.cgColor
+        self.dealDetails.layer.borderWidth = 1
         
         scrollView.contentSize=CGSize(width: 414,height: 2300)
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuyCardViewController.hideKeyboard))
@@ -83,7 +86,13 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
         self.tableView.isHidden = true
         self.tableImage.image = UIImage(named:"SortD")
         
-        // call get offer description service
+        
+        let attrStr = try! NSAttributedString(
+            data: (self.deals[indexPath.row].description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
+            options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+            documentAttributes: nil)
+        
+        self.dealDetails.attributedText = attrStr
     }
     @IBAction func onScanQR(_ sender: Any) {
         performSegue(withIdentifier: "toScan", sender: self)

@@ -11,7 +11,7 @@ class Partner_offer {
 
     var id : String!
     var Name : String!
-    
+    var description:String!
     init(result :[String: Any]) {
         
         if let id = result["id"] as? String {
@@ -26,6 +26,11 @@ class Partner_offer {
             self.Name = ""
         }
         
+        if let des = result["offer_description"] as? String{
+            self.description = des
+        }else{
+            self.description = ""
+        }
         
         
     }
