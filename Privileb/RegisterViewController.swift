@@ -105,62 +105,78 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     }
     
     @IBAction func onRegister(_ sender: Any) {
-        let services = services_calls()
-        if(validation()){
-        self.loader.startAnimating()
-        self.loaderView.isHidden = false
-
-            services.register(datetime: NSDate().getToDay(), fname: firstNameTextFiled.text!, lname: lastNameTextField.text!, serial_number: self.searialTextField.text!, birthdate: birhDateTextField.text!, gender: self.gender, country_id: self.selected_country.country_id.description, email: emailTextField.text!, mobile_number: mobileNumberTextFiled.text!, password: passwordTextField.text! , address : self.addressTextField.text!) { (res, status) in
-            
-            if status == "ok" {
-                if res?.status == 1 {
-                    self.loader.stopAnimating()
-                    self.loaderView.isHidden = true
-                    
-                    let alertController = UIAlertController(title: "Succeeded please login with your new info", message: res?.message, preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-                    alertController.addAction(ok)
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                    
-                    if #available(iOS 10.0, *) {
-                        AppDelegate.sharedDelegate().openLogin()
-                    } else {
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = storyboard.instantiateViewController(withIdentifier: "loginNav")
-                        let rootController = UIApplication.shared.delegate?.window??.rootViewController as! MSSlidingPanelController
-                        rootController.centerViewController = controller
-                        rootController.closePanel()
-                    }
-
-                }else{
-                    self.loader.stopAnimating()
-                    self.loaderView.isHidden = true
-                    let alertController = UIAlertController(title: "Failure", message: res?.message, preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-                    alertController.addAction(ok)
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            }else{
-                self.loader.stopAnimating()
-                self.loaderView.isHidden = true
-                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-                alertController.addAction(ok)
-                self.present(alertController, animated: true, completion: nil)
-            }
-            
-            }
-        }
         
-        else {
-        
-            let alertController = UIAlertController(title: "Information Error", message: "Please check all of your information in fields", preferredStyle: .alert)
+
+        if self.searialTextField.text?.characters.count != 16 {
+            let alertController = UIAlertController(title: "Information Error", message: "Please check Serial number!", preferredStyle: .alert)
             let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
             alertController.addAction(ok)
             self.present(alertController, animated: true, completion: nil)
-        
+        }else{
+            let allSerial : NSMutableString = NSMutableString(string:self.searialTextField.text!)
+            allSerial.insert(" ", at: 4)
+            allSerial.insert(" ", at: 9)
+            allSerial.insert(" ", at: 14)
+
+            let services = services_calls()
+            if(validation()){
+                self.loader.startAnimating()
+                self.loaderView.isHidden = false
+                
+                services.register(datetime: NSDate().getToDay(), fname: firstNameTextFiled.text!, lname: lastNameTextField.text!, serial_number: allSerial as String, birthdate: birhDateTextField.text!, gender: self.gender, country_id: self.selected_country.country_id.description, email: emailTextField.text!, mobile_number: mobileNumberTextFiled.text!, password: passwordTextField.text! , address : self.addressTextField.text!) { (res, status) in
+                    
+                    if status == "ok" {
+                        if res?.status == 1 {
+                            self.loader.stopAnimating()
+                            self.loaderView.isHidden = true
+                            
+                            let alertController = UIAlertController(title: "Succeeded please login with your new info", message: res?.message, preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                            alertController.addAction(ok)
+                            self.present(alertController, animated: true, completion: nil)
+                            
+                            
+                            if #available(iOS 10.0, *) {
+                                AppDelegate.sharedDelegate().openLogin()
+                            } else {
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let controller = storyboard.instantiateViewController(withIdentifier: "loginNav")
+                                let rootController = UIApplication.shared.delegate?.window??.rootViewController as! MSSlidingPanelController
+                                rootController.centerViewController = controller
+                                rootController.closePanel()
+                            }
+                            
+                        }else{
+                            self.loader.stopAnimating()
+                            self.loaderView.isHidden = true
+                            let alertController = UIAlertController(title: "Failure", message: res?.message, preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                            alertController.addAction(ok)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    }else{
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    
+                }
+            }
+                
+            else {
+                
+                let alertController = UIAlertController(title: "Information Error", message: "Please check all of your information in fields", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+                
+            }
+
         }
+        
     }
     
     @IBAction func onAgreeBtn(_ sender: Any) {

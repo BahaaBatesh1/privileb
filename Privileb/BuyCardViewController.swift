@@ -45,6 +45,17 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
         self.loaderView.addSubview(loader)
 
 
+        firstRadio.layer.cornerRadius = firstRadio.layer.frame.width / 2
+        firstRadio.layer.borderColor = UIColor.lightGray.cgColor
+        firstRadio.layer.borderWidth = 1
+        firstRadio.backgroundColor = UIColor.white
+        
+        secondRadio.layer.cornerRadius = secondRadio.layer.frame.width / 2
+        secondRadio.layer.borderColor = UIColor.lightGray.cgColor
+        secondRadio.layer.borderWidth = 1
+        secondRadio.backgroundColor = UIColor.white
+
+        
         // Do any additional setup after loading the view.
     }
 
@@ -57,11 +68,13 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     
     @IBAction func onFirstRadio(_ sender: Any) {
         firstRadio.backgroundColor = UIColor.gray
+        secondRadio.backgroundColor = UIColor.white
+
         
     }
     @IBAction func onSecondRadio(_ sender: Any) {
         secondRadio.backgroundColor = UIColor.gray
-
+        firstRadio.backgroundColor = UIColor.white
     }
 
     @IBAction func onActivate(_ sender: Any) {

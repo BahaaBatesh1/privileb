@@ -53,10 +53,12 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         
         if isLogedIn {
             self.favoritBtnRight.isHidden = false
+            self.retailerNameLabel.isHidden = true
             uid = userDefaults.value(forKey: "userId") as! Int
             isfavorite()
         }else{
             self.favoritBtnRight.isHidden = true
+            self.retailerNameLabel.isHidden = false
         }
         
         
