@@ -56,7 +56,7 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     @IBAction func onActivate(_ sender: Any) {
         
         
-        call?.buy_card(fname: self.firstName.text!, lname: self.lastName.text!, email: self.email.text!, mobile_number: self.mobileNumber.text!, address: self.address.text!, payment_method_id: "1", order_status_id: "1", datetime: NSDate().getToDay())
+        call?.buy_card(fname: self.firstName.text!, lname: self.lastName.text!, email: self.email.text!, mobile_number: self.mobileNumber.text!, address: self.address.text!,comments : self.comments.text!, payment_method_id: "1", order_status_id: "1", datetime: NSDate().getToDay())
         
     }
     @IBAction func onBack(_ sender: Any) {

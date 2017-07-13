@@ -529,7 +529,7 @@ class services_calls {
 //        {"country_code":"lb"}
     }
     //to check
-    func buy_card(fname : String,lname : String,email : String,mobile_number : String,address : String,payment_method_id : String,order_status_id : String,datetime : String){
+    func buy_card(fname : String,lname : String,email : String,mobile_number : String,address : String,comments : String!,payment_method_id : String,order_status_id : String,datetime : String){
         
         let parameters: Parameters = [
             "fname": fname,
@@ -537,6 +537,7 @@ class services_calls {
             "email": email,
             "mobile_number": mobile_number,
             "address": address,
+            "comments": comments,
             "payment_method_id": payment_method_id,
             "order_status_id": order_status_id,
             "datetime": datetime
