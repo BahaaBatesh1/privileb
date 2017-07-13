@@ -35,7 +35,8 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     var favorite :favourite?
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize=CGSize(width: 320,height: 2300);
+        self.cateoryLabel.sizeToFit()
+        scrollView.contentSize=CGSize(width: 320,height: 1900);
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
@@ -343,7 +344,13 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                         }
                         self.cateoryLabel.text = subCat
                         self.dateLabel.text = "From \(self.detailedOffer.issue_date!) To \(self.detailedOffer.expiry_date!)"
-                        self.descriptionLabel.text = "\(self.detailedOffer.description!)"
+                        
+                        let attrStr = try! NSAttributedString(
+                            data: (self.detailedOffer.offer_description.data(using: String.Encoding.unicode, allowLossyConversion: true)!),
+                            options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                            documentAttributes: nil)
+
+                        self.descriptionLabel.text = "\(attrStr)"
                         self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
                         self.offerImages = self.detailedOffer.gallery_cropped!
                         self.offerImagesObject = self.detailedOffer.gallery_croppedObject

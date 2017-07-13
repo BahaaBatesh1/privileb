@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -2022,7 +2022,7 @@ Floor</string>
                                                                 <rect key="frame" x="0.0" y="28" width="346" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OQC-ew-9YK" id="r4f-nS-qnA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
@@ -4434,7 +4434,7 @@ offers, latest brands … and more!</string>
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFI-op-l29">
-                                        <rect key="frame" x="0.0" y="0.0" width="413" height="550"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="413" height="620"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjz-jp-hmt">
                                                 <rect key="frame" x="10" y="0.0" width="403" height="60"/>
@@ -4453,21 +4453,21 @@ MASSAGE TREATMENTS</string>
                                                     <constraint firstAttribute="width" constant="75" id="1c7-2L-bbX"/>
                                                     <constraint firstAttribute="height" constant="20" id="Lr9-mR-NMW"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.83529411760000005" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beaty &amp; Spa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80f-4f-5GD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beaty &amp; Spa" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80f-4f-5GD">
                                                 <rect key="frame" x="90" y="70" width="323" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Qi9-P7-D4b"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rnb-Pr-ySc">
-                                                <rect key="frame" x="0.0" y="105" width="413" height="400"/>
+                                                <rect key="frame" x="0.0" y="125" width="413" height="400"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="400" id="OFm-M6-uWE"/>
@@ -4507,14 +4507,15 @@ MASSAGE TREATMENTS</string>
                                                     <outlet property="delegate" destination="whr-qi-lK5" id="HcW-8p-hHn"/>
                                                 </connections>
                                             </collectionView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="rxr-AU-VDt">
-                                                <rect key="frame" x="10" y="505" width="173" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="rxr-AU-VDt">
+                                                <rect key="frame" x="10" y="525" width="75" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="dbB-It-Uda"/>
+                                                    <constraint firstAttribute="width" constant="75" id="4fF-sk-Hpc"/>
+                                                    <constraint firstAttribute="height" constant="75" id="dbB-It-Uda"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKH-jS-sBl">
-                                                <rect key="frame" x="303" y="512.66666666666663" width="100" height="25"/>
+                                                <rect key="frame" x="303" y="550" width="100" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="5fU-eP-aQv"/>
                                                     <constraint firstAttribute="height" constant="25" id="liX-U5-WQX"/>
@@ -4527,7 +4528,7 @@ MASSAGE TREATMENTS</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ta4-k1-C8f">
-                                                <rect key="frame" x="10" y="549" width="393" height="1"/>
+                                                <rect key="frame" x="10" y="619" width="393" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="1dU-kY-uIX"/>
@@ -4540,26 +4541,26 @@ MASSAGE TREATMENTS</string>
                                             <constraint firstItem="Wjz-jp-hmt" firstAttribute="top" secondItem="YFI-op-l29" secondAttribute="top" id="Aed-CR-tSl"/>
                                             <constraint firstItem="tng-tb-TZa" firstAttribute="top" secondItem="Wjz-jp-hmt" secondAttribute="bottom" constant="10" id="GH9-2t-wra"/>
                                             <constraint firstAttribute="trailing" secondItem="YKH-jS-sBl" secondAttribute="trailing" constant="10" id="HuP-eg-9oC"/>
+                                            <constraint firstItem="80f-4f-5GD" firstAttribute="centerY" secondItem="tng-tb-TZa" secondAttribute="centerY" id="ICk-Ku-uNV"/>
                                             <constraint firstAttribute="bottom" secondItem="ta4-k1-C8f" secondAttribute="bottom" id="IMN-AR-CNA"/>
-                                            <constraint firstItem="80f-4f-5GD" firstAttribute="top" secondItem="Wjz-jp-hmt" secondAttribute="bottom" constant="10" id="Ke3-5k-4M7"/>
+                                            <constraint firstItem="Rnb-Pr-ySc" firstAttribute="top" secondItem="tng-tb-TZa" secondAttribute="bottom" constant="35" id="NDG-aZ-ksG"/>
                                             <constraint firstItem="rxr-AU-VDt" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="NKm-3O-2qd"/>
                                             <constraint firstAttribute="trailing" secondItem="80f-4f-5GD" secondAttribute="trailing" id="P3a-gC-fPi"/>
-                                            <constraint firstAttribute="height" constant="550" id="WyU-Ox-QXK"/>
+                                            <constraint firstAttribute="height" constant="620" id="WyU-Ox-QXK"/>
+                                            <constraint firstItem="rxr-AU-VDt" firstAttribute="centerY" secondItem="YKH-jS-sBl" secondAttribute="centerY" id="b0h-uX-dQN"/>
                                             <constraint firstItem="Rnb-Pr-ySc" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" id="bQY-sJ-nyl"/>
                                             <constraint firstItem="tng-tb-TZa" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="ewj-Ru-0sG"/>
                                             <constraint firstItem="Wjz-jp-hmt" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="ifK-35-Dsj"/>
-                                            <constraint firstItem="Rnb-Pr-ySc" firstAttribute="top" secondItem="80f-4f-5GD" secondAttribute="bottom" constant="15" id="jRu-6g-lFg"/>
                                             <constraint firstItem="ta4-k1-C8f" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="qrx-ur-i19"/>
                                             <constraint firstAttribute="trailing" secondItem="Wjz-jp-hmt" secondAttribute="trailing" id="rsm-7r-Tq7"/>
-                                            <constraint firstItem="YKH-jS-sBl" firstAttribute="leading" secondItem="rxr-AU-VDt" secondAttribute="trailing" constant="120" id="s3Y-Vn-JBP"/>
+                                            <constraint firstItem="YKH-jS-sBl" firstAttribute="leading" secondItem="rxr-AU-VDt" secondAttribute="trailing" constant="218" id="s3Y-Vn-JBP"/>
                                             <constraint firstAttribute="trailing" secondItem="ta4-k1-C8f" secondAttribute="trailing" constant="10" id="vIh-0t-I2k"/>
                                             <constraint firstAttribute="trailing" secondItem="Rnb-Pr-ySc" secondAttribute="trailing" id="va1-8Q-2hn"/>
                                             <constraint firstItem="rxr-AU-VDt" firstAttribute="top" secondItem="Rnb-Pr-ySc" secondAttribute="bottom" id="wmA-xZ-1UX"/>
-                                            <constraint firstItem="YKH-jS-sBl" firstAttribute="centerY" secondItem="rxr-AU-VDt" secondAttribute="centerY" id="wmA-z6-7hL"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp5-ne-3Fg">
-                                        <rect key="frame" x="0.0" y="550" width="413" height="600"/>
+                                        <rect key="frame" x="0.0" y="620" width="413" height="650"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bxr-bW-JKh">
                                                 <rect key="frame" x="0.0" y="0.0" width="413" height="430"/>
@@ -4819,7 +4820,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="74"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offer_location3" translatesAutoresizingMaskIntoConstraints="NO" id="DnS-WY-RTU">
-                                                                        <rect key="frame" x="17.666666666666664" y="24.666666666666629" width="24.999999999999993" height="25"/>
+                                                                        <rect key="frame" x="17.666666666666664" y="24.666666666666629" width="24.999999999999993" height="25.000000000000114"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="25" id="BEh-mc-sda"/>
                                                                             <constraint firstAttribute="height" constant="25" id="aYw-BN-j3G"/>
@@ -4954,7 +4955,7 @@ Hadath-Baabda Main Road</string>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="600" id="4o1-Ly-nG0"/>
+                                            <constraint firstAttribute="height" constant="650" id="4o1-Ly-nG0"/>
                                             <constraint firstAttribute="trailing" secondItem="bC0-nO-C8m" secondAttribute="trailing" constant="20" id="6m4-hD-I4l"/>
                                             <constraint firstItem="bC0-nO-C8m" firstAttribute="top" secondItem="Bxr-bW-JKh" secondAttribute="bottom" id="Avt-1i-pcY"/>
                                             <constraint firstItem="bC0-nO-C8m" firstAttribute="leading" secondItem="wp5-ne-3Fg" secondAttribute="leading" constant="20" id="Tp6-Hp-T0O"/>
@@ -4966,7 +4967,7 @@ Hadath-Baabda Main Road</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnB-fG-wfB">
-                                        <rect key="frame" x="0.0" y="1150" width="413" height="200"/>
+                                        <rect key="frame" x="0.0" y="1270" width="413" height="200"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mru-Xj-FSB">
                                                 <rect key="frame" x="20" y="20" width="373" height="60"/>
@@ -5009,7 +5010,7 @@ Hadath-Baabda Main Road</string>
                                     <constraint firstAttribute="trailing" secondItem="YFI-op-l29" secondAttribute="trailing" id="ekH-bu-qXd"/>
                                     <constraint firstItem="wp5-ne-3Fg" firstAttribute="leading" secondItem="zOP-lQ-Ekw" secondAttribute="leading" id="g6g-nw-RfR"/>
                                     <constraint firstAttribute="trailing" secondItem="hnB-fG-wfB" secondAttribute="trailing" id="hEg-Ze-pSf"/>
-                                    <constraint firstAttribute="bottom" secondItem="YFI-op-l29" secondAttribute="bottom" constant="1000" id="lyM-x5-Ocd"/>
+                                    <constraint firstAttribute="bottom" secondItem="YFI-op-l29" secondAttribute="bottom" constant="800" id="lyM-x5-Ocd"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqh-C0-QWL">
