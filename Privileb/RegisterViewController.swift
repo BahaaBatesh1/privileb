@@ -107,17 +107,28 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         self.loader.startAnimating()
         self.loaderView.isHidden = false
 
-        services.register(datetime: NSDate().getToDay(), fname: firstNameTextFiled.text!, lname: lastNameTextField.text!, serial_number: self.searialTextField.text!, birthdate: birhDateTextField.text!, gender: self.gender, country_id: self.selected_country.country_id.description, email: emailTextField.text!, mobile_number: mobileNumberTextFiled.text!, password: passwordTextField.text!) { (res, status) in
+            services.register(datetime: NSDate().getToDay(), fname: firstNameTextFiled.text!, lname: lastNameTextField.text!, serial_number: self.searialTextField.text!, birthdate: birhDateTextField.text!, gender: self.gender, country_id: self.selected_country.country_id.description, email: emailTextField.text!, mobile_number: mobileNumberTextFiled.text!, password: passwordTextField.text! , address : self.addressTextField.text!) { (res, status) in
             
             if status == "ok" {
                 if res?.status == 1 {
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
                     
-                    let alertController = UIAlertController(title: "Succeeded", message: res?.message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Succeeded please login with your new info", message: res?.message, preferredStyle: .alert)
                     let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                     alertController.addAction(ok)
                     self.present(alertController, animated: true, completion: nil)
+                    
+                    
+                    if #available(iOS 10.0, *) {
+                        AppDelegate.sharedDelegate().openLogin()
+                    } else {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "loginNav")
+                        let rootController = UIApplication.shared.delegate?.window??.rootViewController as! MSSlidingPanelController
+                        rootController.centerViewController = controller
+                        rootController.closePanel()
+                    }
 
                 }else{
                     self.loader.stopAnimating()

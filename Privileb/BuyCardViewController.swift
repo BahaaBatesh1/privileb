@@ -56,8 +56,12 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     
     
     @IBAction func onFirstRadio(_ sender: Any) {
+        firstRadio.backgroundColor = UIColor.gray
+        
     }
     @IBAction func onSecondRadio(_ sender: Any) {
+        secondRadio.backgroundColor = UIColor.gray
+
     }
 
     @IBAction func onActivate(_ sender: Any) {

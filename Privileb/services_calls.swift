@@ -177,7 +177,7 @@ class services_calls {
     
     }
     
-    func register(datetime : String ,fname : String ,lname : String , serial_number : String , birthdate : String , gender : String , country_id : String , email : String , mobile_number : String , password : String ,onComplete: @escaping (postResponse?,String) ->Void){
+    func register(datetime : String ,fname : String ,lname : String , serial_number : String , birthdate : String , gender : String , country_id : String , email : String , mobile_number : String , password : String ,  address : String ,onComplete: @escaping (postResponse?,String) ->Void){
         let parameters: Parameters = [
             "datetime": datetime,
             "fname": fname,
@@ -187,6 +187,8 @@ class services_calls {
             "gender": gender,
             "country_id": country_id,
             "email": email,
+            "address": address,
+
             "mobile_number": mobile_number,
             "password" : password]
         
