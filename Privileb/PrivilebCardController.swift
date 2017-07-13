@@ -63,7 +63,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
                 self.buCardView.isHidden = true
                 isHaveCard = true
                 var user_id1 = (userDefaults.value(forKey: "userId") as! Int).description
-                self.secondImage.image = generateQRCodeFromString(user_id: user_id1 , serial_number : "1234")
+                self.secondImage.image = generateQRCodeFromString(user_id: user_id1 )
             }else{
                 self.myCardView.isHidden = true
                 self.buCardView.isHidden = false
@@ -374,9 +374,9 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
     }
     
     
-    func generateQRCodeFromString(user_id : String , serial_number : String) -> UIImage?{
+    func generateQRCodeFromString(user_id : String) -> UIImage?{
         
-        let string_to_encode = user_id + ":" + serial_number
+        let string_to_encode = user_id
         let data = string_to_encode.data(using: String.Encoding.ascii, allowLossyConversion: false)
         //let serial_number1 = user_id.data(using: String.Encoding.ascii, allowLossyConversion: false)
         let filter = CIFilter(name: "CIQRCodeGenerator")
