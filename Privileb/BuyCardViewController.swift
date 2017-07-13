@@ -22,20 +22,27 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     @IBOutlet weak var firstRadio: UIButton!
     
     @IBOutlet weak var secondRadio: UIButton!
-    
+    var loader: MaterialLoadingIndicator!
+
     var order_method_id : String!
     
     var lastTagField = 0
-    var call : services_calls?
     
+    var shouldScroll = true
+    
+    @IBOutlet weak var loaderView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuyCardViewController.hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
 
-        call = services_calls()
         scrollView.contentSize=CGSize(width: 414,height: 2300);
+        
+        loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
+        loader.circleShapeLayer.strokeColor = UIColor.white.cgColor
+        self.loaderView.addSubview(loader)
 
 
         // Do any additional setup after loading the view.
@@ -54,10 +61,53 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     }
 
     @IBAction func onActivate(_ sender: Any) {
+        shouldScroll = false
+        let service = services_calls()
         
+        if self.self.firstName.text != "" && self.address.text != "" && self.email.text != "" && self.lastName.text != "" && self.comments.text != "" && self.mobileNumber.text != ""{
+            loader.startAnimating()
+            self.loaderView.isHidden = false
+            service.buy_card(fname: self.firstName.text!, lname: self.lastName.text!, email: self.email.text!, mobile_number: self.mobileNumber.text!, address: self.address.text!,comments : self.comments.text!, payment_method_id: "1", order_status_id: "1", datetime: NSDate().getToDay()) { (res, status) in
+                if status == "ok"{
+                    if res?.status == 1 {
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        let alertController = UIAlertController(title: "Success!", message: res?.message, preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                        self.shouldScroll = true
+                    }else{
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                        self.shouldScroll = true
+                    }
+                }else{
+                    self.loader.stopAnimating()
+                    self.loaderView.isHidden = true
+                    let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                    self.shouldScroll = true
+
+                }
+                
+            }
+            
+        }else{
+            let alertController = UIAlertController(title: "Empty fields!", message: "Please fill all fields", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+            self.shouldScroll = true
+        }
         
-        call?.buy_card(fname: self.firstName.text!, lname: self.lastName.text!, email: self.email.text!, mobile_number: self.mobileNumber.text!, address: self.address.text!,comments : self.comments.text!, payment_method_id: "1", order_status_id: "1", datetime: NSDate().getToDay())
-        
+      
     }
     @IBAction func onBack(_ sender: Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)
@@ -74,6 +124,7 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     }
     
     func hideKeyboard() {
+        if shouldScroll{
         self.address.resignFirstResponder()
         self.comments.resignFirstResponder()
         self.email.resignFirstResponder()
@@ -81,6 +132,7 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
         self.lastName.resignFirstResponder()
         self.mobileNumber.resignFirstResponder()
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        }
     }
     /*
     // MARK: - Navigation

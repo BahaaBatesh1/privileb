@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1902,6 +1902,35 @@ Floor</string>
                                                     <outlet property="delegate" destination="hFn-oF-SEf" id="J2k-g9-BdU"/>
                                                 </connections>
                                             </textField>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-Bm-8xx">
+                                                <rect key="frame" x="14" y="590" width="346" height="150"/>
+                                                <subviews>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i44-Up-gV2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <prototypes>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="country_cell" id="OQC-ew-9YK">
+                                                                <rect key="frame" x="0.0" y="28" width="346" height="44"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OQC-ew-9YK" id="r4f-nS-qnA">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="43"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                </tableViewCellContentView>
+                                                            </tableViewCell>
+                                                        </prototypes>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="hFn-oF-SEf" id="VF3-xM-KtE"/>
+                                                            <outlet property="delegate" destination="hFn-oF-SEf" id="GBa-S8-JSc"/>
+                                                        </connections>
+                                                    </tableView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="wBb-N0-b5b"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihg-je-Di5">
                                                 <rect key="frame" x="15" y="610" width="56.666666666666671" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2020,6 +2049,7 @@ Floor</string>
                                             <constraint firstItem="unH-oC-CCh" firstAttribute="top" secondItem="Ihg-je-Di5" secondAttribute="bottom" constant="5" id="7zd-N4-Rbb"/>
                                             <constraint firstItem="ol8-cA-hO0" firstAttribute="top" secondItem="lTo-Fj-G0v" secondAttribute="bottom" constant="5" id="8Sk-li-868"/>
                                             <constraint firstItem="QxR-IT-6Cg" firstAttribute="height" secondItem="B4J-0Y-cNg" secondAttribute="height" id="9Dr-Ju-SyC"/>
+                                            <constraint firstItem="eUd-Bm-8xx" firstAttribute="width" secondItem="ol8-cA-hO0" secondAttribute="width" id="9dA-Jk-fNX"/>
                                             <constraint firstItem="rOz-zS-ZJp" firstAttribute="height" secondItem="dXH-WD-TuA" secondAttribute="height" id="9mq-kX-icz"/>
                                             <constraint firstItem="giH-kL-Lz0" firstAttribute="top" secondItem="B4J-0Y-cNg" secondAttribute="bottom" constant="20" id="AMw-cO-5UT"/>
                                             <constraint firstItem="q5J-XD-Nxt" firstAttribute="height" secondItem="rOz-zS-ZJp" secondAttribute="height" id="BzB-XS-DGs"/>
@@ -2027,6 +2057,7 @@ Floor</string>
                                             <constraint firstItem="kWM-hZ-pZS" firstAttribute="top" secondItem="dXH-WD-TuA" secondAttribute="bottom" constant="20" id="De9-eL-rVV"/>
                                             <constraint firstItem="g4r-Zq-4Nd" firstAttribute="width" secondItem="2YQ-LR-Ct7" secondAttribute="width" id="Enw-ZG-KzI"/>
                                             <constraint firstItem="pO1-4D-086" firstAttribute="trailing" secondItem="g4r-Zq-4Nd" secondAttribute="trailing" constant="-20" id="FNP-2n-EYN"/>
+                                            <constraint firstItem="eUd-Bm-8xx" firstAttribute="top" secondItem="ol8-cA-hO0" secondAttribute="bottom" id="GTZ-Rx-M9w"/>
                                             <constraint firstItem="Ihg-je-Di5" firstAttribute="top" secondItem="ol8-cA-hO0" secondAttribute="bottom" constant="20" id="GTy-f0-7KX"/>
                                             <constraint firstItem="6XK-6z-g2t" firstAttribute="width" secondItem="UAx-Ge-AEd" secondAttribute="width" id="IZf-4B-D2C"/>
                                             <constraint firstItem="0zk-Ms-hjE" firstAttribute="centerY" secondItem="U7O-mZ-JOW" secondAttribute="centerY" id="J4o-1o-HeI"/>
@@ -2051,6 +2082,7 @@ Floor</string>
                                             <constraint firstItem="rOz-zS-ZJp" firstAttribute="width" secondItem="dXH-WD-TuA" secondAttribute="width" id="dIL-2E-Ek1"/>
                                             <constraint firstItem="0zk-Ms-hjE" firstAttribute="leading" secondItem="U7O-mZ-JOW" secondAttribute="trailing" constant="50" id="dcq-Kq-9mG"/>
                                             <constraint firstItem="shR-f8-oaj" firstAttribute="top" secondItem="unH-oC-CCh" secondAttribute="bottom" constant="20" id="emV-zJ-huQ"/>
+                                            <constraint firstItem="eUd-Bm-8xx" firstAttribute="centerX" secondItem="ol8-cA-hO0" secondAttribute="centerX" id="fGh-Wc-1Hn"/>
                                             <constraint firstItem="2YQ-LR-Ct7" firstAttribute="width" secondItem="q5J-XD-Nxt" secondAttribute="width" id="gyn-LO-vPI"/>
                                             <constraint firstItem="UAx-Ge-AEd" firstAttribute="height" secondItem="ol8-cA-hO0" secondAttribute="height" id="h7h-vp-Qqf"/>
                                             <constraint firstItem="l92-KV-HXc" firstAttribute="top" secondItem="6XK-6z-g2t" secondAttribute="bottom" constant="20" id="hHd-0X-hsV"/>
@@ -2068,37 +2100,6 @@ Floor</string>
                                             <constraint firstItem="U7O-mZ-JOW" firstAttribute="centerY" secondItem="vl3-bs-VU7" secondAttribute="centerY" id="wmx-La-pqc"/>
                                             <constraint firstItem="B4J-0Y-cNg" firstAttribute="top" secondItem="l92-KV-HXc" secondAttribute="bottom" constant="5" id="xm7-hS-vnO"/>
                                             <constraint firstItem="UAx-Ge-AEd" firstAttribute="width" secondItem="ol8-cA-hO0" secondAttribute="width" id="yvK-TK-NuO"/>
-                                        </constraints>
-                                    </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-Bm-8xx">
-                                        <rect key="frame" x="14" y="413" width="346" height="128"/>
-                                        <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i44-Up-gV2">
-                                                <rect key="frame" x="0.0" y="0.0" width="346" height="128"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="country_cell" id="OQC-ew-9YK">
-                                                        <rect key="frame" x="0.0" y="28" width="346" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OQC-ew-9YK" id="r4f-nS-qnA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="hFn-oF-SEf" id="VF3-xM-KtE"/>
-                                                    <outlet property="delegate" destination="hFn-oF-SEf" id="GBa-S8-JSc"/>
-                                                </connections>
-                                            </tableView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="i44-Up-gV2" firstAttribute="leading" secondItem="eUd-Bm-8xx" secondAttribute="leading" id="6g8-ar-QXz"/>
-                                            <constraint firstAttribute="height" constant="128" id="IC1-3q-EOE"/>
-                                            <constraint firstItem="i44-Up-gV2" firstAttribute="top" secondItem="eUd-Bm-8xx" secondAttribute="top" id="NCQ-eS-uML"/>
-                                            <constraint firstAttribute="trailing" secondItem="i44-Up-gV2" secondAttribute="trailing" id="S0i-QS-CQ0"/>
-                                            <constraint firstAttribute="bottom" secondItem="i44-Up-gV2" secondAttribute="bottom" id="fFz-Fl-esj"/>
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GzU-T9-nQe">
@@ -2155,9 +2156,7 @@ Floor</string>
                                     <constraint firstItem="B4J-0Y-cNg" firstAttribute="centerX" secondItem="dJt-9C-1wx" secondAttribute="centerX" id="4Cf-EY-51Q"/>
                                     <constraint firstItem="4sr-df-HVe" firstAttribute="leading" secondItem="dJt-9C-1wx" secondAttribute="leading" constant="14.5" id="6PO-Jz-XO7"/>
                                     <constraint firstItem="UAx-Ge-AEd" firstAttribute="centerX" secondItem="dJt-9C-1wx" secondAttribute="centerX" id="7In-dV-F4h"/>
-                                    <constraint firstItem="eUd-Bm-8xx" firstAttribute="width" secondItem="ol8-cA-hO0" secondAttribute="width" id="90H-v8-4R5"/>
                                     <constraint firstItem="S0D-Kb-sHN" firstAttribute="leading" secondItem="dJt-9C-1wx" secondAttribute="leading" constant="14.5" id="9hZ-yJ-ynr"/>
-                                    <constraint firstItem="ol8-cA-hO0" firstAttribute="top" secondItem="eUd-Bm-8xx" secondAttribute="bottom" id="9oe-gV-Mdb"/>
                                     <constraint firstItem="dXw-m6-eVR" firstAttribute="leading" secondItem="dJt-9C-1wx" secondAttribute="leading" constant="14.5" id="BDa-nk-XyK"/>
                                     <constraint firstItem="WEb-zd-xt7" firstAttribute="leading" secondItem="dJt-9C-1wx" secondAttribute="leading" constant="14.5" id="BLu-D8-gSa"/>
                                     <constraint firstItem="rOz-zS-ZJp" firstAttribute="centerX" secondItem="dJt-9C-1wx" secondAttribute="centerX" id="D3h-6t-bPj"/>
@@ -2171,7 +2170,6 @@ Floor</string>
                                     <constraint firstItem="shR-f8-oaj" firstAttribute="leading" secondItem="dJt-9C-1wx" secondAttribute="leading" constant="14.5" id="ZFq-MQ-JT8"/>
                                     <constraint firstItem="sSd-R8-qTF" firstAttribute="width" secondItem="dJt-9C-1wx" secondAttribute="width" multiplier="347:375" id="a8J-o5-EOV"/>
                                     <constraint firstItem="dXH-WD-TuA" firstAttribute="width" secondItem="dJt-9C-1wx" secondAttribute="width" multiplier="346:375" id="aBs-E6-7Mt"/>
-                                    <constraint firstItem="eUd-Bm-8xx" firstAttribute="trailing" secondItem="ol8-cA-hO0" secondAttribute="trailing" id="bJP-hc-Cyf"/>
                                     <constraint firstItem="QxR-IT-6Cg" firstAttribute="centerX" secondItem="dJt-9C-1wx" secondAttribute="centerX" id="crZ-CX-y3O"/>
                                     <constraint firstItem="Ihg-je-Di5" firstAttribute="leading" secondItem="dJt-9C-1wx" secondAttribute="leading" constant="14.5" id="cxK-nw-aN6"/>
                                     <constraint firstItem="l92-KV-HXc" firstAttribute="leading" secondItem="dJt-9C-1wx" secondAttribute="leading" constant="14.5" id="dVU-Zp-wS7"/>
@@ -2186,7 +2184,6 @@ Floor</string>
                                     <constraint firstItem="sSd-R8-qTF" firstAttribute="bottom" secondItem="dJt-9C-1wx" secondAttribute="bottom" constant="-40" id="rkn-ZX-EfD"/>
                                     <constraint firstItem="0hb-CD-Gje" firstAttribute="centerX" secondItem="dJt-9C-1wx" secondAttribute="centerX" id="ruV-D6-UkP"/>
                                     <constraint firstItem="lTo-Fj-G0v" firstAttribute="leading" secondItem="dJt-9C-1wx" secondAttribute="leading" constant="14.5" id="vtw-gF-zaW"/>
-                                    <constraint firstItem="eUd-Bm-8xx" firstAttribute="leading" secondItem="ol8-cA-hO0" secondAttribute="leading" id="wIh-b4-Eqe"/>
                                     <constraint firstItem="0hb-CD-Gje" firstAttribute="top" secondItem="dJt-9C-1wx" secondAttribute="top" id="zBp-Mg-QO6"/>
                                 </constraints>
                             </scrollView>
@@ -3411,12 +3408,11 @@ offers, latest brands … and more!</string>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loS-QR-CCE">
+                                            <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loS-QR-CCE">
                                                 <rect key="frame" x="0.0" y="696" width="405" height="128"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFr-fD-02d">
-                                                        <rect key="frame" x="13" y="37" width="347" height="54"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFr-fD-02d">
+                                                        <rect key="frame" x="20" y="37" width="365" height="54"/>
                                                         <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="Activate">
@@ -3426,8 +3422,24 @@ offers, latest brands … and more!</string>
                                                             <action selector="onActivate:" destination="ko4-Mh-fhO" eventType="touchUpInside" id="uJ7-FO-T0x"/>
                                                         </connections>
                                                     </button>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvm-u6-QvV">
+                                                        <rect key="frame" x="335" y="49" width="30" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="YUL-sH-Pos"/>
+                                                            <constraint firstAttribute="width" constant="30" id="lQU-aC-fe4"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="RFr-fD-02d" firstAttribute="leading" secondItem="loS-QR-CCE" secondAttribute="leading" constant="20" id="8as-SX-HJL"/>
+                                                    <constraint firstItem="Jvm-u6-QvV" firstAttribute="centerY" secondItem="RFr-fD-02d" secondAttribute="centerY" id="8i7-dJ-1a9"/>
+                                                    <constraint firstItem="RFr-fD-02d" firstAttribute="top" secondItem="loS-QR-CCE" secondAttribute="top" constant="37" id="9a7-hi-SZ8"/>
+                                                    <constraint firstAttribute="bottom" secondItem="RFr-fD-02d" secondAttribute="bottom" constant="37" id="Dbg-uz-JgF"/>
+                                                    <constraint firstItem="Jvm-u6-QvV" firstAttribute="trailing" secondItem="RFr-fD-02d" secondAttribute="trailing" constant="-20" id="RYf-eG-BLA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="RFr-fD-02d" secondAttribute="trailing" constant="20" id="sr8-5J-YqS"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -3474,6 +3486,7 @@ offers, latest brands … and more!</string>
                         <outlet property="firstName" destination="gXy-rY-aKr" id="9dg-wt-9TM"/>
                         <outlet property="firstRadio" destination="u9m-kF-tpn" id="Qtx-FL-lwy"/>
                         <outlet property="lastName" destination="3BX-Kl-JGh" id="tS5-24-wJA"/>
+                        <outlet property="loaderView" destination="Jvm-u6-QvV" id="yT9-Qv-Smq"/>
                         <outlet property="mobileNumber" destination="GOF-lh-OiA" id="bqE-tx-GuF"/>
                         <outlet property="scrollView" destination="oop-X5-l0O" id="xvo-lt-XNK"/>
                         <outlet property="secondRadio" destination="9mZ-ed-B24" id="Mjb-Ls-ahN"/>

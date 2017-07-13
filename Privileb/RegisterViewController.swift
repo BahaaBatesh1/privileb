@@ -201,6 +201,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "country_cell")
         cell?.textLabel?.text = self.countries[indexPath.row].country_name
+        cell?.backgroundColor = UIColor.white
         return cell!
     }
     

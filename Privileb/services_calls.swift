@@ -529,7 +529,7 @@ class services_calls {
 //        {"country_code":"lb"}
     }
     //to check
-    func buy_card(fname : String,lname : String,email : String,mobile_number : String,address : String,comments : String!,payment_method_id : String,order_status_id : String,datetime : String){
+    func buy_card(fname : String,lname : String,email : String,mobile_number : String,address : String,comments : String!,payment_method_id : String,order_status_id : String,datetime : String, onComplete: @escaping (postResponse?,String) -> Void){
         
         let parameters: Parameters = [
             "fname": fname,
@@ -547,11 +547,18 @@ class services_calls {
             switch response.result {
             //success
             case .success( _):
-                self.parseData(JSONData: response.data!, class_name: "card")
-               // onComplete(self.districts,"ok",self.postRes)
+                do {
+                    let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                    self.postRes = postResponse(result: readableJSON)
+                    onComplete(self.postRes,"ok")
+                }catch(_) {
+                    print("error parsing")
+                    onComplete(nil,"error")
+                }
             //failure
             case .failure(let error):
                 print("Request failed with error: \(error)")
+                onComplete(nil,"error")
                // onComplete(nil,"Request failed with error: \(error)",nil)
             }}
         
