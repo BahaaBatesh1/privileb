@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -4514,6 +4514,12 @@ MASSAGE TREATMENTS</string>
                                                     <constraint firstAttribute="height" constant="75" id="dbB-It-Uda"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpC-q7-L87">
+                                                <rect key="frame" x="90" y="550" width="208" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKH-jS-sBl">
                                                 <rect key="frame" x="303" y="550" width="100" height="25"/>
                                                 <constraints>
@@ -4546,11 +4552,15 @@ MASSAGE TREATMENTS</string>
                                             <constraint firstItem="Rnb-Pr-ySc" firstAttribute="top" secondItem="tng-tb-TZa" secondAttribute="bottom" constant="35" id="NDG-aZ-ksG"/>
                                             <constraint firstItem="rxr-AU-VDt" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="NKm-3O-2qd"/>
                                             <constraint firstAttribute="trailing" secondItem="80f-4f-5GD" secondAttribute="trailing" id="P3a-gC-fPi"/>
+                                            <constraint firstItem="dpC-q7-L87" firstAttribute="leading" secondItem="rxr-AU-VDt" secondAttribute="trailing" constant="5" id="Vug-Pb-MIZ"/>
                                             <constraint firstAttribute="height" constant="620" id="WyU-Ox-QXK"/>
+                                            <constraint firstItem="dpC-q7-L87" firstAttribute="height" secondItem="YKH-jS-sBl" secondAttribute="height" id="ZiF-zL-eUX"/>
                                             <constraint firstItem="rxr-AU-VDt" firstAttribute="centerY" secondItem="YKH-jS-sBl" secondAttribute="centerY" id="b0h-uX-dQN"/>
                                             <constraint firstItem="Rnb-Pr-ySc" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" id="bQY-sJ-nyl"/>
                                             <constraint firstItem="tng-tb-TZa" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="ewj-Ru-0sG"/>
+                                            <constraint firstItem="dpC-q7-L87" firstAttribute="centerY" secondItem="rxr-AU-VDt" secondAttribute="centerY" id="ida-Yn-rN6"/>
                                             <constraint firstItem="Wjz-jp-hmt" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="ifK-35-Dsj"/>
+                                            <constraint firstItem="YKH-jS-sBl" firstAttribute="leading" secondItem="dpC-q7-L87" secondAttribute="trailing" constant="5" id="jZ4-KD-wun"/>
                                             <constraint firstItem="ta4-k1-C8f" firstAttribute="leading" secondItem="YFI-op-l29" secondAttribute="leading" constant="10" id="qrx-ur-i19"/>
                                             <constraint firstAttribute="trailing" secondItem="Wjz-jp-hmt" secondAttribute="trailing" id="rsm-7r-Tq7"/>
                                             <constraint firstAttribute="trailing" secondItem="ta4-k1-C8f" secondAttribute="trailing" constant="10" id="vIh-0t-I2k"/>
@@ -5056,6 +5066,7 @@ Hadath-Baabda Main Road</string>
                         <outlet property="locationLabel" destination="bHR-q0-7sZ" id="gK6-Lj-SMX"/>
                         <outlet property="mapView" destination="dl5-xM-pGF" id="9dL-0u-AgD"/>
                         <outlet property="offerLabel" destination="Wjz-jp-hmt" id="5dm-PR-PeM"/>
+                        <outlet property="retailerNameLabel" destination="dpC-q7-L87" id="hD6-OG-eBy"/>
                         <outlet property="scrollView" destination="zOP-lQ-Ekw" id="F3L-k6-wCV"/>
                         <outlet property="supervisedImage" destination="rxr-AU-VDt" id="GuG-EG-S8y"/>
                         <outlet property="validatyValueLabel" destination="YX9-om-Kl1" id="h1B-sh-XIw"/>

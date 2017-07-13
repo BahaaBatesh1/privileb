@@ -3,6 +3,7 @@ import MapKit
 import Social
 class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,MKMapViewDelegate{
     
+    @IBOutlet weak var retailerNameLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var branchesCollectionView: UICollectionView!
     @IBOutlet weak var getDirectionBtn: UIButton!
@@ -350,8 +351,9 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                             options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                             documentAttributes: nil)
 
-                        self.descriptionLabel.text = "\(attrStr)"
+                        self.descriptionLabel.attributedText = attrStr
                         self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
+                        self.retailerNameLabel.text = self.detailedOffer.retailer_name
                         self.offerImages = self.detailedOffer.gallery_cropped!
                         self.offerImagesObject = self.detailedOffer.gallery_croppedObject
                         self.offerLabel.text = self.detailedOffer.offer_name
