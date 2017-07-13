@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var binifits:static_page?
     var terms:static_page?
     var joinOur:static_page?
-
+    var charity:static_page?
     var card :card?
     var selectedCat : [categoryy] = []
     var selectedDis : [district] = []
@@ -170,6 +170,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func openFavorite() {
         openControllerWithIndentifier(identifier: "favNav")
     }
+    func openCharities() {
+        openControllerWithIndentifier(identifier: "chNav")
+    }
     // MARK: - Private Methods
     private func openControllerWithIndentifier(identifier: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -204,6 +207,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.binifits = page
             }else if page.id == 5{//our family
                 self.joinOur = page
+            }else if page.id == 7 {
+                self.charity = page
             }
         }
     }

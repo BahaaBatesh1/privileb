@@ -8,8 +8,10 @@
 
 import UIKit
 
-class RegisterViewController: BaseViewController ,UITextFieldDelegate{
+class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableViewDelegate , UITableViewDataSource{
 
+    @IBOutlet weak var coutries_table: UITableView!
+    @IBOutlet weak var countries_view: UIView!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var agressBtn: UIButton!
     @IBOutlet weak var confirmTextField: UITextField!
@@ -29,9 +31,11 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate{
     @IBOutlet weak var birthdayView: UIView!
     var birthDate :Date?
     var loader: MaterialLoadingIndicator!
-
+    var selected_country : country!
     var isMale = false
     var isAgree = false
+    var gender : String = "male"
+    var countries = AppDelegate.sharedDelegate().countries
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = true
@@ -89,20 +93,31 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate{
             textField.resignFirstResponder()
             self.birthdayView.isHidden = false
         }
+        
+        if textField.tag == 99{
+            textField.resignFirstResponder()
+            self.countries_view.isHidden = false
+        }
+
     }
     
     @IBAction func onRegister(_ sender: Any) {
-        var services = services_calls()
-        
+        let services = services_calls()
+        if(validation()){
         self.loader.startAnimating()
         self.loaderView.isHidden = false
 
-        services.register(datetime: NSDate().getToDay(), fname: firstNameTextFiled.text!, lname: lastNameTextField.text!, serial_number: self.searialTextField.text!, birthdate: birhDateTextField.text!, gender: "male", country_id: self.countryTextField.text!, email: emailTextField.text!, mobile_number: mobileNumberTextFiled.text!, password: passwordTextField.text!) { (res, status) in
+        services.register(datetime: NSDate().getToDay(), fname: firstNameTextFiled.text!, lname: lastNameTextField.text!, serial_number: self.searialTextField.text!, birthdate: birhDateTextField.text!, gender: self.gender, country_id: self.selected_country.country_id.description, email: emailTextField.text!, mobile_number: mobileNumberTextFiled.text!, password: passwordTextField.text!) { (res, status) in
             
             if status == "ok" {
                 if res?.status == 1 {
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
+                    
+                    let alertController = UIAlertController(title: "Succeeded", message: res?.message, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
 
                 }else{
                     self.loader.stopAnimating()
@@ -121,6 +136,16 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate{
                 self.present(alertController, animated: true, completion: nil)
             }
             
+            }
+        }
+        
+        else {
+        
+            let alertController = UIAlertController(title: "Information Error", message: "Please check all of your information in fields", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+        
         }
     }
     
@@ -134,11 +159,13 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate{
         }
     }
     @IBAction func onFemale(_ sender: Any) {
+        self.gender = "female"
         self.isMale = false
         self.femaleBtn.backgroundColor = UIColor.gray
         self.maleBtn.backgroundColor = UIColor.white
     }
     @IBAction func onMale(_ sender: Any) {
+        self.gender = "male"
         self.isMale = true
         self.femaleBtn.backgroundColor = UIColor.white
         self.maleBtn.backgroundColor = UIColor.gray
@@ -157,5 +184,35 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate{
         // Pass the selected object to the new view controller.
     }
     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selected_country = self.countries[indexPath.row]
+        self.countryTextField.text = self.countries[indexPath.row].country_name
+        self.countries_view.isHidden = true
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.countries.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "country_cell")
+        cell?.textLabel?.text = self.countries[indexPath.row].country_name
+        return cell!
+    }
+    
+    func validation () -> Bool {
+        if(self.firstNameTextFiled.text == "" || self.addressTextField.text == ""  || self.birhDateTextField.text == "" || self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == "" || self.verfyCodeTextFiled.text == ""){
+                return false
+        }
+        else {
+            return true
+
+        }
+    
+    }
 
 }

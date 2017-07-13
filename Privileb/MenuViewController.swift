@@ -65,7 +65,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,6 +97,10 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             cell.cellLabel.text = "Favorites"
             break
         case 6:
+            cell.cellImage.image = UIImage(named: "charityx3")
+            cell.cellLabel.text = "Charities"
+            break
+        case 7:
             cell.cellImage.image = UIImage(named: "contact_us3")
             cell.cellLabel.text = "Contact us"
             break
@@ -150,6 +154,17 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             rootController.closePanel()
             break
         case 6:
+            if #available(iOS 10.0, *) {
+                AppDelegate.sharedDelegate().openCharities()
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "chNav")
+                let rootController = UIApplication.shared.delegate?.window??.rootViewController as! MSSlidingPanelController
+                rootController.centerViewController = controller
+                rootController.closePanel()
+            }
+            break
+        case 7:
             tab.selectedIndex = 2
             (tab.viewControllers?[2] as! PrivilebCardController).onContact(self)
             rootController.closePanel()

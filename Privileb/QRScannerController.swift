@@ -13,10 +13,17 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
 
     @IBOutlet var messageLabel:UILabel!
     
-    
+    @IBOutlet weak var loaderView: UIView!
+    var offer_id:String!
+    var branch_id:String!
+    var user_id : String!
+    var serial_number : String!
+
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
+    var loader: MaterialLoadingIndicator!
+    var isScanning : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +72,12 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
             return
         }
         // Do any additional setup after loading the view.
+        
+        loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
+        loader.circleShapeLayer.strokeColor = UIColor(red: 212, green: 172, blue: 92).cgColor
+        self.loaderView.addSubview(loader)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,10 +106,12 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
                 
                 //here to trigger the service and take the variables from the qr code
                 var splittedArray = metadataObj.stringValue.components(separatedBy: ":")
-                var user_id = splittedArray[0]
-                var serial_number = splittedArray[1]                
-                print (user_id)
-                print(serial_number)
+                 user_id = splittedArray[0]
+                 serial_number = splittedArray[1]
+                if(!isScanning){
+                    callScan()
+                }
+
             }
         }
     }
@@ -114,5 +129,43 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    func callScan() {
+        isScanning = true
+        let service = services_calls()
+                loader.startAnimating()
+                self.loaderView.isHidden = false
+        
+                service.scan_offer(user_id: self.user_id, scan_date: NSDate().getToDay(), offer_id: self.offer_id, branch_id: self.branch_id, serial_number: self.serial_number) { (res, status) in
+                    if status == "ok" {
+                        if res?.status == 1 {
+                            self.loader.stopAnimating()
+                            self.loaderView.isHidden = true
+                            let alertController = UIAlertController(title: "Success!", message: res?.message, preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                            alertController.addAction(ok)
+                            self.present(alertController, animated: true, completion: nil)
+                        }else{
+                            self.isScanning = false
+                            self.loader.stopAnimating()
+                            self.loaderView.isHidden = true
+                            let alertController = UIAlertController(title: "Failure!", message: res?.message, preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                            alertController.addAction(ok)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    }else{
+                        self.isScanning = false
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
+                }
+
 
 }

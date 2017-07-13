@@ -31,6 +31,9 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
     var deals : [Partner_offer] = []
     var user :Partner!
     var branchId :String!
+    var serial_number : String!
+    
+    var selected_deal : Partner_offer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,9 +96,18 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
             documentAttributes: nil)
         
         self.dealDetails.attributedText = attrStr
+        
+        selected_deal = self.deals[indexPath.row]
     }
     @IBAction func onScanQR(_ sender: Any) {
-        performSegue(withIdentifier: "toScan", sender: self)
+        if self.selected_deal != nil {
+            performSegue(withIdentifier: "toScan", sender: self)
+        }else{
+            let alertController = UIAlertController(title: "Select a deal!", message: "Please select a deal!", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func onLogout(_ sender: Any) {
@@ -205,31 +217,48 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
     
     func callScan() {
         let service = services_calls()
-        loader.startAnimating()
-        self.loaderView.isHidden = false
-
-        service.scan_offer(user_id: "", scan_date: NSDate().getToDay(), offer_id: "", branch_id: "", serial_number: "") { (res, status) in
-            if status == "ok" {
-                if res?.status == 1 {
-                    self.loader.stopAnimating()
-                    self.loaderView.isHidden = true
-
-                }else{
-                    self.loader.stopAnimating()
-                    self.loaderView.isHidden = true
-                    let alertController = UIAlertController(title: "Failure!", message: res?.message, preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-                    alertController.addAction(ok)
-                    self.present(alertController, animated: true, completion: nil)
+        if self.selected_deal != nil {
+            if self.firstNumber.text != "" && self.secondNumber.text != "" && self.thirdNumber.text! != "" && self.fourthNumber.text != "" {
+                loader.startAnimating()
+                self.loaderView.isHidden = false
+                serial_number = self.firstNumber.text!+self.secondNumber.text!+self.thirdNumber.text!+self.fourthNumber.text!
+                service.scan_offer(user_id: "", scan_date: NSDate().getToDay(), offer_id: self.selected_deal.id, branch_id: self.branchId, serial_number: self.serial_number) { (res, status) in
+                    if status == "ok" {
+                        if res?.status == 1 {
+                            self.loader.stopAnimating()
+                            self.loaderView.isHidden = true
+                            let alertController = UIAlertController(title: "Success!", message: res?.message, preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                            alertController.addAction(ok)
+                            self.present(alertController, animated: true, completion: nil)
+                        }else{
+                            self.loader.stopAnimating()
+                            self.loaderView.isHidden = true
+                            let alertController = UIAlertController(title: "Failure!", message: res?.message, preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                            alertController.addAction(ok)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    }else{
+                        self.loader.stopAnimating()
+                        self.loaderView.isHidden = true
+                        let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                        alertController.addAction(ok)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }
             }else{
-                self.loader.stopAnimating()
-                self.loaderView.isHidden = true
-                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Fill serial number!", message: "Please enter four numbers!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                 alertController.addAction(ok)
                 self.present(alertController, animated: true, completion: nil)
             }
+        }else{
+            let alertController = UIAlertController(title: "Select a deal!", message: "Please select a deal!", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -277,6 +306,14 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
             }
             
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toScan" {
+            let des = segue.destination as! QRScannerController
+            des.branch_id = self.branchId
+            des.offer_id = self.selected_deal.id
+        }
     }
     /*
     // MARK: - Navigation
