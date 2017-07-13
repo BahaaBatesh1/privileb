@@ -57,6 +57,9 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         loader.circleShapeLayer.strokeColor = UIColor.white.cgColor
         self.loaderView.addSubview(loader)
 
+        countries_view.layer.cornerRadius = 3
+        countries_view.layer.backgroundColor = UIColor.lightGray.cgColor
+        countries_view.layer.borderWidth = 1
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.hideKeyboard))
         tapGesture.cancelsTouchesInView = false
