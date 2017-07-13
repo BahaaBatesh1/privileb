@@ -21,8 +21,8 @@ class EnglishTermsViewController: UIViewController {
                 data: (terms?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
-            self.pageLabel.attributedText = attrStr
-            self.load_image(urlString: (terms?.image)!)
+            self.pageLabel.text = attrStr.string
+            //self.load_image(urlString: (terms?.image)!)
         }
         // Do any additional setup after loading the view.
     }
@@ -35,8 +35,8 @@ class EnglishTermsViewController: UIViewController {
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             
-            self.pageLabel.attributedText = attrStr
-            self.load_image(urlString: (terms?.image)!)
+            self.pageLabel.text = attrStr.string
+           // self.load_image(urlString: (terms?.image)!)
         }
     }
     override func didReceiveMemoryWarning() {

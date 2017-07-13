@@ -22,7 +22,7 @@ class EnglishAboutViewController: UIViewController {
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             
-            self.pageLabel.attributedText = attrStr
+            self.pageLabel.text = attrStr.string
             self.load_image(urlString: (about?.image)!)
         }
         // Do any additional setup after loading the view.
@@ -36,7 +36,7 @@ class EnglishAboutViewController: UIViewController {
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             
-            self.pageLabel.attributedText = attrStr
+            self.pageLabel.text = attrStr.string
             self.load_image(urlString: (about?.image)!)
         }
     }

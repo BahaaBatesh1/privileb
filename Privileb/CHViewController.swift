@@ -33,7 +33,7 @@ class CHViewController: BaseViewController {
                 data: (charity?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
-            self.descriptionLabel.attributedText = attrStr
+            self.descriptionLabel.text = attrStr.string
            // self.load_image(urlString: (charity?.image)!)
         }
 

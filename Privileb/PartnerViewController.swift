@@ -95,7 +95,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
             options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
             documentAttributes: nil)
         
-        self.dealDetails.attributedText = attrStr
+        self.dealDetails.text = attrStr.string
         
         selected_deal = self.deals[indexPath.row]
     }

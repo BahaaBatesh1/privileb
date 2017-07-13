@@ -23,8 +23,8 @@ class EngilshViewController: UIViewController {
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             
-            self.pageLabel.attributedText = attrStr
-            self.load_image(urlString: (binifits?.image)!)
+            self.pageLabel.text = attrStr.string
+            //self.load_image(urlString: (binifits?.image)!)
         }
         // Do any additional setup after loading the view.
     }
@@ -37,8 +37,8 @@ class EngilshViewController: UIViewController {
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             
-            self.pageLabel.attributedText = attrStr
-            self.load_image(urlString: (binifits?.image)!)
+            self.pageLabel.text = attrStr.string
+           // self.load_image(urlString: (binifits?.image)!)
         }
     }
     override func didReceiveMemoryWarning() {
@@ -56,7 +56,7 @@ class EngilshViewController: UIViewController {
             if error == nil && data != nil {
                 DispatchQueue.main.async(execute: {
                     if let im = UIImage(data: data!) {
-                        self.pageImageView.image = im
+                       // self.pageImageView.image = im
                     }
                 })
             }else{

@@ -22,8 +22,8 @@ class ArabicTermsViewController: UIViewController {
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             self.pageLabel.textAlignment = .right
-            self.pageLabel.attributedText = attrStr
-            self.load_image(urlString: (terms?.image)!)
+            self.pageLabel.text = attrStr.string
+            //self.load_image(urlString: (terms?.image)!)
         }
         // Do any additional setup after loading the view.
     }
@@ -36,8 +36,8 @@ class ArabicTermsViewController: UIViewController {
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             self.pageLabel.textAlignment = .right
-            self.pageLabel.attributedText = attrStr
-            self.load_image(urlString: (terms?.image)!)
+            self.pageLabel.text = attrStr.string
+           // self.load_image(urlString: (terms?.image)!)
         }
     }
 

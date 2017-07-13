@@ -114,7 +114,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
                 data: (joinOur?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
-            self.joinPageLabel.attributedText = attrStr
+            self.joinPageLabel.text = attrStr.string
             self.load_image(urlString: (joinOur?.image)!)
         }
         // Do any additional setup after loading the view.
@@ -153,7 +153,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
                 data: (joinOur?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
-            self.joinPageLabel.attributedText = attrStr
+            self.joinPageLabel.text = attrStr.string
             self.load_image(urlString: (joinOur?.image)!)
         }
     }

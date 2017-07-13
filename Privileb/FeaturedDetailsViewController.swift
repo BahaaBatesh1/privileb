@@ -349,11 +349,15 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                         self.dateLabel.text = "From \(self.detailedOffer.issue_date!) To \(self.detailedOffer.expiry_date!)"
                         
                         let attrStr = try! NSAttributedString(
-                            data: (self.detailedOffer.offer_description.data(using: String.Encoding.unicode, allowLossyConversion: true)!),
+                            data: (self.detailedOffer.offer_description.data(using: String.Encoding.unicode, allowLossyConversion: false)!),
                             options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                             documentAttributes: nil)
+//                        let myAttribute = [ NSFontAttributeName: UIFont(name: UIFont.systemFontSize.description, size: 18.0)! ]
+                        //let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
 
-                        self.descriptionLabel.attributedText = attrStr
+                        
+
+                        self.descriptionLabel.text = attrStr.string
                         self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
                         self.retailerNameLabel.text = self.detailedOffer.retailer_name
                         self.offerImages = self.detailedOffer.gallery_cropped!
