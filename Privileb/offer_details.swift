@@ -205,12 +205,20 @@ class offer_details {
         }
         
         if let gallery_cropped = result["gallery_cropped"] as? [String]!{
+            if let featured = String((result["featured"] as? String)!){
+                let element = GalaryElement()
+                element.link = featured
+                element.load_image(urlString: featured)
+                self.gallery_croppedObject.append(element)
+            }
             for el in gallery_cropped {
                 let element = GalaryElement()
                 element.link = el
                 element.load_image(urlString: el)
                 self.gallery_croppedObject.append(element)
             }
+           
+
             self.gallery_cropped = gallery_cropped
         }
         else{
