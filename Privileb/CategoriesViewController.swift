@@ -28,7 +28,6 @@ class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UIC
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification1, object:nil, queue:nil, using:onFinishLoad)
 
-
         // Do any additional setup after loading the view.
     }
 
@@ -36,6 +35,15 @@ class CategoriesViewController: BaseViewController ,UICollectionViewDelegate,UIC
         self.displayDic = AppDelegate.sharedDelegate().displayDic
         self.categories = AppDelegate.sharedDelegate().categories
         self.categoriesCollectionView.reloadData()
+        
+        if self.displayDic != nil {
+            if categories.count > 0 {
+                if let mainIm = self.displayDic[categories[0].category_id]?.mainImage {
+                    self.mainImage.image = mainIm
+                }
+            }
+        }
+
     }
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "finishLoadCategories"), object: nil);

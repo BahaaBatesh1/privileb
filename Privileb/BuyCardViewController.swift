@@ -140,6 +140,21 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
         view.endEditing(true)
     }
     
+    
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        self.address.resignFirstResponder()
+        self.comments.resignFirstResponder()
+        self.email.resignFirstResponder()
+        self.firstName.resignFirstResponder()
+        self.lastName.resignFirstResponder()
+        self.mobileNumber.resignFirstResponder()
+        return true
+    }
+    
+
+  
     func hideKeyboard() {
         if shouldScroll{
         self.address.resignFirstResponder()

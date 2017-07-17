@@ -11,7 +11,7 @@ import UIKit
 class ArabicTermsViewController: UIViewController {
     var terms:static_page?
 
-    @IBOutlet weak var pageLabel: UILabel!
+    @IBOutlet weak var pageLabel: UITextView!
     @IBOutlet weak var pageImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()

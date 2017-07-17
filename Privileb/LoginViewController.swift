@@ -238,6 +238,21 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         self.loaderMail.stopAnimating()
         self.laoderViewMail.isHidden = false
     }
+    
+    @IBAction func onSforFree(_ sender: Any) {
+        if #available(iOS 10.0, *) {
+            AppDelegate.sharedDelegate().openResgister()
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "regNav")
+            let rootController = UIApplication.shared.delegate?.window??.rootViewController as! MSSlidingPanelController
+            rootController.centerViewController = controller
+            rootController.closePanel()
+        }
+
+    
+    }
+
     /*
     // MARK: - Navigation
 

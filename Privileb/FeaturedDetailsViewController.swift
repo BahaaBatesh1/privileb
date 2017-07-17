@@ -3,12 +3,16 @@ import MapKit
 import Social
 class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,MKMapViewDelegate{
     
+    @IBOutlet weak var alldetailsView: UIView!
+    @IBOutlet weak var allDetailsTextView: UITextView!
+    @IBOutlet weak var seeMoreBtn: UIButton!
     @IBOutlet weak var retailerNameLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var branchesCollectionView: UICollectionView!
     @IBOutlet weak var getDirectionBtn: UIButton!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var loaderView: UIView!
+
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
@@ -357,8 +361,19 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
 
                         
 
-                        self.descriptionLabel.text = attrStr.string
-                        self.descriptionLabel.sizeToFit()
+                        
+                        if attrStr.string.utf16.count > 180{
+                            self.seeMoreBtn.isHidden = false
+                           let index =  attrStr.string.index(attrStr.string.startIndex, offsetBy: 180)
+                            let sub = attrStr.string.substring(to: index)
+                            self.descriptionLabel.text = sub
+                            self.descriptionLabel.text?.append("...")
+                            self.allDetailsTextView.text = attrStr.string
+                        }else{
+                            self.descriptionLabel.text = attrStr.string
+                            self.seeMoreBtn.isHidden = true
+                        }
+                        
                         self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
                         self.retailerNameLabel.text = self.detailedOffer.retailer_name
                         self.offerImages = self.detailedOffer.gallery_cropped!
@@ -432,5 +447,13 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                 self.present(alertController, animated: true, completion: nil)
             }
         }
+    }
+    
+    @IBAction func onSeeMore(_ sender: Any) {
+        self.alldetailsView.isHidden = false
+    }
+    
+    @IBAction func onCancelSeeMor(_ sender: Any) {
+        self.alldetailsView.isHidden = true
     }
 }

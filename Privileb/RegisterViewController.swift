@@ -236,7 +236,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     }
     
     func validation () -> Bool {
-        if(self.firstNameTextFiled.text == "" || self.addressTextField.text == ""  || self.birhDateTextField.text == "" || self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == "" || self.verfyCodeTextFiled.text == ""){
+        if(self.firstNameTextFiled.text == "" || self.addressTextField.text == ""  || self.birhDateTextField.text == "" || self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == ""){
                 return false
         }
         else {
