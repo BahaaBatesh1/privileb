@@ -23,7 +23,7 @@ class EnglishAboutViewController: UIViewController {
                 documentAttributes: nil)
             
             self.pageLabel.text = attrStr.string
-            self.load_image(urlString: (about?.image)!)
+           // self.load_image(urlString: (about?.image)!)
         }
         // Do any additional setup after loading the view.
     }
@@ -37,7 +37,7 @@ class EnglishAboutViewController: UIViewController {
                 documentAttributes: nil)
             
             self.pageLabel.text = attrStr.string
-            self.load_image(urlString: (about?.image)!)
+          //  self.load_image(urlString: (about?.image)!)
         }
     }
     override func didReceiveMemoryWarning() {

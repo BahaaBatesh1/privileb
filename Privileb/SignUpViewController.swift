@@ -123,5 +123,8 @@ class SignUpViewController: UIViewController ,UITextFieldDelegate{
         // Pass the selected object to the new view controller.
     }
     */
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+    return .lightContent
+    }
 
 }

@@ -358,6 +358,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                         
 
                         self.descriptionLabel.text = attrStr.string
+                        self.descriptionLabel.sizeToFit()
                         self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
                         self.retailerNameLabel.text = self.detailedOffer.retailer_name
                         self.offerImages = self.detailedOffer.gallery_cropped!

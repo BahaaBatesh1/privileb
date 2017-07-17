@@ -10,6 +10,7 @@ import UIKit
 
 class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
+    @IBOutlet weak var login_image: UIImageView!
     @IBOutlet weak var registerImage: UIImageView!
     @IBOutlet weak var registerLabel: UILabel!
     @IBOutlet weak var registerBtn: UIButton!
@@ -50,6 +51,19 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         
         self.call_view.addGestureRecognizer(call_gesture)
         self.taxi_view.addGestureRecognizer(call_Taxi)
+        
+        
+        
+        let login_gesture = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.onlog))
+        let register_gesture = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.onreg))
+        
+        
+        self.login_image.addGestureRecognizer(login_gesture)
+        self.registerImage.addGestureRecognizer(register_gesture)
+        
+
+        
+        
     }
     
     
@@ -82,7 +96,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             break
         case 2:
             cell.cellImage.image = UIImage(named: "tab_nearby3")
-            cell.cellLabel.text = "Nearby me"
+            cell.cellLabel.text = "Nearby"
             break
         case 3:
             cell.cellImage.image = UIImage(named: "privileb_card3")
@@ -292,6 +306,16 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     func OnCallTaxi() {
         onCall(self)
         }
+    
+    
+    func onlog(){
+        onLogin(self);
+    }
+    
+    func onreg(){
+        onRegister(self);
+    }
+    
     /*
     // MARK: - Navigation
 
