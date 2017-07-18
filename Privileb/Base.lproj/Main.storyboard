@@ -3710,7 +3710,7 @@ offers, latest brands … and more!</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbf-lG-Wlh">
                                                     <rect key="frame" x="10" y="10" width="394" height="280"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="Bcp-Gc-0Jq">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="Bcp-Gc-0Jq">
                                                             <rect key="frame" x="0.0" y="0.0" width="394" height="230"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7A-V3-p0L">
@@ -5793,7 +5793,7 @@ Hadath-Baabda Main Road</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Tk-Jh-gwp"/>
-        <segue reference="m0u-fQ-rSD"/>
         <segue reference="Vwg-uf-nsA"/>
+        <segue reference="sfw-6F-Ov0"/>
     </inferredMetricsTieBreakers>
 </document>
