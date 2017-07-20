@@ -115,7 +115,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             self.joinPageLabel.text = attrStr.string
-            self.load_image(urlString: (joinOur?.image)!)
+           // self.load_image(urlString: (joinOur?.image)!)
         }
         // Do any additional setup after loading the view.
     }
@@ -154,7 +154,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
                 options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             self.joinPageLabel.text = attrStr.string
-            self.load_image(urlString: (joinOur?.image)!)
+           // self.load_image(urlString: (joinOur?.image)!)
         }
     }
     override func didReceiveMemoryWarning() {

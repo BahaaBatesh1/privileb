@@ -123,8 +123,21 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
         return cell
     }
+    
+ 
+    
+    
+    
 
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+      (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image = (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image?.withRenderingMode(.alwaysOriginal)
+    }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image = (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image?.withRenderingMode(.alwaysTemplate)
+        (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.tintColor = UIColor.black
+   
         if isFromReg {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "base")
