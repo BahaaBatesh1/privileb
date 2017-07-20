@@ -29,6 +29,25 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     @IBOutlet weak var birhDateTextField: GrayTextField!
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var birthdayView: UIView!
+    
+    
+    @IBOutlet weak var first_four: UITextField!
+    
+    
+    @IBOutlet weak var second_four: UITextField!
+    
+    
+    @IBOutlet weak var third_four: UITextField!
+    
+    
+    @IBOutlet weak var fourth_four: UITextField!
+    
+    
+    @IBOutlet weak var scroll: UIScrollView!
+    
+    
+    
+    
     var birthDate :Date?
     var loader: MaterialLoadingIndicator!
     var selected_country : country!
@@ -64,6 +83,8 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         birthdayView.addGestureRecognizer(tapGesture)
+        scroll.keyboardDismissMode = .onDrag
+    
 
         // Do any additional setup after loading the view.
     }
@@ -92,34 +113,41 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        scroll.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y), animated: true)
+        
         if textField.tag == 100{
-            textField.resignFirstResponder()
+            //textField.resignFirstResponder()
             self.birthdayView.isHidden = false
+             scroll.setContentOffset(CGPoint(x: 0, y:  self.birthdayView.frame.origin.y), animated: true)
         }
         
         if textField.tag == 99{
-            textField.resignFirstResponder()
+            //textField.resignFirstResponder()
             self.countries_view.isHidden = false
+            scroll.setContentOffset(CGPoint(x: 0, y:  self.countries_view.frame.origin.y), animated: true)
         }
+
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
 
     }
     
     @IBAction func onRegister(_ sender: Any) {
         
 
-        if self.searialTextField.text?.characters.count != 16 {
-            let alertController = UIAlertController(title: "Information Error", message: "Please check Serial number!", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-            alertController.addAction(ok)
-            self.present(alertController, animated: true, completion: nil)
-        }else{
-            let allSerial : NSMutableString = NSMutableString(string:self.searialTextField.text!)
-            allSerial.insert(" ", at: 4)
-            allSerial.insert(" ", at: 9)
-            allSerial.insert(" ", at: 14)
+   
+            var allSerial = (self.first_four.text! + " " + self.second_four.text! + " " )
+            allSerial = allSerial  + self.third_four.text! + " " + self.fourth_four.text!
 
             let services = services_calls()
-            if(validation()){
+            if(validation() && (allSerial.characters.count == 19)){
                 self.loader.startAnimating()
                 self.loaderView.isHidden = false
                 
@@ -175,10 +203,10 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
                 
             }
 
-        }
+        
         
     }
-    
+   
     @IBAction func onAgreeBtn(_ sender: Any) {
         if isAgree{
             self.isAgree = false
@@ -236,7 +264,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     }
     
     func validation () -> Bool {
-        if(self.firstNameTextFiled.text == "" || self.addressTextField.text == ""  || self.birhDateTextField.text == "" || self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == ""){
+        if(self.firstNameTextFiled.text == "" || self.addressTextField.text == ""  || self.birhDateTextField.text == "" || self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == "" || self.first_four.text == "" || self.second_four.text == "" || self.third_four.text == "" || self.fourth_four.text == ""){
                 return false
         }
         else {
@@ -245,5 +273,37 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         }
     
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == self.first_four {
+            guard let text = textField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 4 // Bool
+            
+        }
+        if textField == self.second_four {
+            guard let text = textField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 4 // Bool
+            
+        }
+        if textField == self.third_four {
+            guard let text = textField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 4 // Bool
+            
+        }
+        if textField == self.fourth_four {
+            guard let text = textField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 4 // Bool
+            
+        }
+        
+        return true
 
+
+
+    }
 }

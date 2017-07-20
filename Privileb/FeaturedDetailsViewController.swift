@@ -41,7 +41,8 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         self.cateoryLabel.sizeToFit()
-        scrollView.contentSize=CGSize(width: 320,height: 1900);
+        scrollView.contentSize=CGSize(width: 320,height: 2300);
+        
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
@@ -362,17 +363,17 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                         
 
                         
-                        if attrStr.string.utf16.count > 180{
-                            self.seeMoreBtn.isHidden = false
-                           let index =  attrStr.string.index(attrStr.string.startIndex, offsetBy: 180)
-                            let sub = attrStr.string.substring(to: index)
-                            self.descriptionLabel.text = sub
-                            self.descriptionLabel.text?.append("...")
-                            self.allDetailsTextView.text = attrStr.string
-                        }else{
+                     //   if attrStr.string.utf16.count > 180{
+                     //       self.seeMoreBtn.isHidden = false
+                      //     let index =  attrStr.string.index(attrStr.string.startIndex, offsetBy: 180)
+                   //         let sub = attrStr.string.substring(to: index)
+                     //       self.descriptionLabel.text = sub
+                     //       self.descriptionLabel.text?.append("...")
+                      //      self.allDetailsTextView.text = attrStr.string
+                     //   }else{
                             self.descriptionLabel.text = attrStr.string
                             self.seeMoreBtn.isHidden = true
-                        }
+                     //   }
                         
                         self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
                         self.retailerNameLabel.text = self.detailedOffer.retailer_name
