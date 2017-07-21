@@ -2691,7 +2691,7 @@ offers, latest brands … and more!</string>
                                                     <action selector="onDontHaveAccount:" destination="BGB-oU-6X6" eventType="touchUpInside" id="e8o-Vm-qvU"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uym-b6-Max">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uym-b6-Max">
                                                 <rect key="frame" x="196" y="553" width="160" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="Mf3-NU-lqF"/>
@@ -2708,7 +2708,7 @@ offers, latest brands … and more!</string>
                                                 <rect key="frame" x="20" y="200" width="335" height="300"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTc-GE-GFU" customClass="GrayTextField" customModule="Privileb" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="8" width="335" height="40"/>
+                                                        <rect key="frame" x="0.0" y="71" width="335" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="T42-PJ-iKH"/>
                                                         </constraints>
@@ -2717,7 +2717,7 @@ offers, latest brands … and more!</string>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nB8-3o-xWW">
-                                                        <rect key="frame" x="20" y="90" width="130" height="30"/>
+                                                        <rect key="frame" x="20" y="141" width="130" height="30"/>
                                                         <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="Gkl-6Z-iCB"/>
@@ -2739,7 +2739,7 @@ offers, latest brands … and more!</string>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qy-w2-mNQ">
-                                                        <rect key="frame" x="196" y="90" width="131" height="30"/>
+                                                        <rect key="frame" x="196" y="141" width="131" height="30"/>
                                                         <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="K1k-y9-aIc"/>
@@ -2752,18 +2752,30 @@ offers, latest brands … and more!</string>
                                                             <action selector="onSendForget:" destination="BGB-oU-6X6" eventType="touchUpInside" id="5JC-7C-nxD"/>
                                                         </connections>
                                                     </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your Email below and we'll send you password reset instruction" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-h6-4Cc">
+                                                        <rect key="frame" x="0.0" y="15" width="327" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="327" id="gjZ-AC-FzQ"/>
+                                                            <constraint firstAttribute="height" constant="40" id="nJb-xn-5CN"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="Cut-h6-4Cc" firstAttribute="top" secondItem="8ka-Xe-KUj" secondAttribute="top" constant="15" id="GUs-zj-euF"/>
                                                     <constraint firstItem="NTc-GE-GFU" firstAttribute="leading" secondItem="8ka-Xe-KUj" secondAttribute="leading" id="Gb8-HP-VGL"/>
                                                     <constraint firstItem="nB8-3o-xWW" firstAttribute="leading" secondItem="8ka-Xe-KUj" secondAttribute="leading" constant="20" id="JVV-8L-aVR"/>
+                                                    <constraint firstItem="NTc-GE-GFU" firstAttribute="top" secondItem="Cut-h6-4Cc" secondAttribute="bottom" constant="16" id="Kwf-07-Y96"/>
                                                     <constraint firstAttribute="height" constant="300" id="LKK-7V-rjx"/>
-                                                    <constraint firstItem="nB8-3o-xWW" firstAttribute="top" secondItem="NTc-GE-GFU" secondAttribute="bottom" constant="42" id="MeV-Cp-f1v"/>
+                                                    <constraint firstItem="nB8-3o-xWW" firstAttribute="top" secondItem="NTc-GE-GFU" secondAttribute="bottom" constant="30" id="MeV-Cp-f1v"/>
                                                     <constraint firstAttribute="trailing" secondItem="9qy-w2-mNQ" secondAttribute="trailing" constant="8" id="NE5-el-j4M"/>
                                                     <constraint firstItem="9cI-NU-fll" firstAttribute="centerX" secondItem="8ka-Xe-KUj" secondAttribute="centerX" id="QTj-t8-ii6"/>
-                                                    <constraint firstItem="9cI-NU-fll" firstAttribute="top" secondItem="nB8-3o-xWW" secondAttribute="bottom" constant="100" id="hRo-3y-Ohp"/>
-                                                    <constraint firstItem="NTc-GE-GFU" firstAttribute="top" secondItem="8ka-Xe-KUj" secondAttribute="top" constant="8" id="wYk-hu-FMN"/>
-                                                    <constraint firstItem="9qy-w2-mNQ" firstAttribute="top" secondItem="NTc-GE-GFU" secondAttribute="bottom" constant="42" id="wzb-F1-cIP"/>
+                                                    <constraint firstItem="9cI-NU-fll" firstAttribute="top" secondItem="nB8-3o-xWW" secondAttribute="bottom" constant="49" id="hRo-3y-Ohp"/>
+                                                    <constraint firstItem="9qy-w2-mNQ" firstAttribute="top" secondItem="NTc-GE-GFU" secondAttribute="bottom" constant="30" id="wzb-F1-cIP"/>
+                                                    <constraint firstItem="Cut-h6-4Cc" firstAttribute="centerX" secondItem="8ka-Xe-KUj" secondAttribute="centerX" constant="-4" id="x9r-OQ-wuL"/>
                                                     <constraint firstAttribute="trailing" secondItem="NTc-GE-GFU" secondAttribute="trailing" id="yxm-sq-Qq7"/>
                                                 </constraints>
                                             </view>
@@ -2846,7 +2858,7 @@ offers, latest brands … and more!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkg-mH-yrI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3300" y="662.51874062968523"/>
+            <point key="canvasLocation" x="-3300.7246376811595" y="662.36413043478262"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wY2-Pe-23Y">
@@ -5836,6 +5848,6 @@ Hadath-Baabda Main Road</string>
     <inferredMetricsTieBreakers>
         <segue reference="0Tk-Jh-gwp"/>
         <segue reference="Vwg-uf-nsA"/>
-        <segue reference="8hP-bW-9hd"/>
+        <segue reference="sfw-6F-Ov0"/>
     </inferredMetricsTieBreakers>
 </document>
