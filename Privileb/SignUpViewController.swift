@@ -29,6 +29,13 @@ class SignUpViewController: UIViewController ,UITextFieldDelegate{
         self.loaderView.addSubview(loader)
 
         configureStyles()
+        
+        if let isLogiedIn = self.userDefaults.value(forKey: "isLogedIn") as? Bool {
+            if isLogiedIn {
+                self.onSkip(self)
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
 
