@@ -16,11 +16,13 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
     let services = services_calls()
     var offers : [offer] = []
     var sselectedOffer : offer?
+    var isLoading = false
     override func viewDidLoad() {
         super.viewDidLoad()
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
+        callService()
 
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -29,7 +31,9 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
         self.loaderView.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
-        callService()
+        if isLoading == false && offers.count == 0 {
+            callService()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,6 +78,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
     }
     
     func callService()  {
+        isLoading = true
         self.tableView.isHidden = true
         loader.startAnimating()
         self.loaderView.isHidden = false
@@ -81,6 +86,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
             (offers , status,postRes) -> Void in
             if status == "ok"{
                 if postRes?.status == 1{
+                    self.isLoading = false
                     self.offers = offers!
                     AppDelegate.sharedDelegate().filterOffers = offers!
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fillOffers"), object: nil)
@@ -91,6 +97,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
                         self.tableView.isHidden = false
                     }
                 }else{
+                    self.isLoading = false
                     self.tableView.isHidden = false
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
@@ -104,6 +111,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
                     self.present(alertController, animated: true, completion: nil)
                 }
             }else{
+                self.isLoading = false
                 self.tableView.isHidden = false
                 self.loader.stopAnimating()
                 self.loaderView.isHidden = true
