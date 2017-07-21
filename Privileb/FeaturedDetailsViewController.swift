@@ -3,6 +3,7 @@ import MapKit
 import Social
 class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,MKMapViewDelegate{
     
+    @IBOutlet weak var bottom_consttraint: NSLayoutConstraint!
     @IBOutlet weak var alldetailsView: UIView!
     @IBOutlet weak var allDetailsTextView: UITextView!
     @IBOutlet weak var seeMoreBtn: UIButton!
@@ -372,7 +373,14 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                       //      self.allDetailsTextView.text = attrStr.string
                      //   }else{
                             self.descriptionLabel.text = attrStr.string
-                            self.seeMoreBtn.isHidden = true
+                        
+                        if ((self.descriptionLabel.text?.characters.count)! > 700){self.bottom_consttraint.constant = 250}
+                        else
+                            if ((self.descriptionLabel.text?.characters.count)! > 250) {
+                        self.bottom_consttraint.constant = 150
+                        }
+                        
+                        self.seeMoreBtn.isHidden = true
                      //   }
                         
                         self.frequencyLabel.text = "Frequency: \(self.detailedOffer.frequency!)"
