@@ -33,6 +33,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.addSubview(self.refreshControl)
 
         loginBtn.layer.cornerRadius = 3
         
@@ -70,10 +71,12 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
                 self.isLogedIn = log
             }
             
-            if isLogedIn && isLoading == false && self.favorites.count == 0 {
+            if isLogedIn {
                 self.notLoginView.isHidden = true
                 uid = userDefaults.value(forKey: "userId") as! Int
-                callService()
+                if  isLoading == false && self.favorites.count == 0{
+                    callService()
+                }
             }else{
                 self.notLoginView.isHidden = false
                 self.loginBtn.isHidden = false
@@ -217,15 +220,11 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
                         self.refreshControl.endRefreshing()
                     }
                 }else{
+                    self.favorites.removeAll()
                     self.refreshControl.endRefreshing()
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
-                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
-                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
-                        self.callService()
-                    })
-                    alertController.addAction(cancel)
-                    alertController.addAction(tryAgain)
-                    self.present(alertController, animated: true, completion: nil)
+                    self.notLoginView.isHidden = false
+                    self.loginBtn.isHidden = true
+                    self.loginLabel.isHidden = true
                 }
             }else{
                 self.refreshControl.endRefreshing()
@@ -249,4 +248,15 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         }
     }
     
+    func removeFromList(id:String) {
+        var i = 0
+        for fav in favorites {
+            if fav.offer_id == id {
+                favorites.remove(at: i)
+                break
+            }
+            i = i + 1
+        }
+        self.tableView.reloadData()
+    }
 }
