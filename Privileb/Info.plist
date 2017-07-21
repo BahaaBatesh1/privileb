@@ -37,6 +37,8 @@
 	<string>Please Allow Privileb access to your location to see Near By offers</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please Allow Privileb access to your location to see Near By offers</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please Allow Privileb to access your camera</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

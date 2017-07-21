@@ -12,7 +12,7 @@ class EnglishAboutViewController: UIViewController {
     @IBOutlet weak var pageImageView: UIImageView!
     var about:static_page?
 
-    @IBOutlet weak var pageLabel: UILabel!
+    @IBOutlet weak var pageLabel: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.about = AppDelegate.sharedDelegate().about

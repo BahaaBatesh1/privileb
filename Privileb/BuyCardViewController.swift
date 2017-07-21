@@ -33,9 +33,9 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     @IBOutlet weak var loaderView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuyCardViewController.hideKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        scrollView.addGestureRecognizer(tapGesture)
+//        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuyCardViewController.hideKeyboard))
+  //      tapGesture.cancelsTouchesInView = false
+    //    scrollView.addGestureRecognizer(tapGesture)
 
         scrollView.contentSize=CGSize(width: 414,height: 2300);
         
@@ -57,6 +57,13 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
 
         
         // Do any additional setup after loading the view.
+        scrollView.keyboardDismissMode = .onDrag
+
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y + 200), animated: true)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,14 +138,8 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
 
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.address.resignFirstResponder()
-        self.comments.resignFirstResponder()
-        self.email.resignFirstResponder()
-        self.firstName.resignFirstResponder()
-        self.lastName.resignFirstResponder()
-        self.mobileNumber.resignFirstResponder()
-        view.endEditing(true)
-    }
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+         }
     
     
     

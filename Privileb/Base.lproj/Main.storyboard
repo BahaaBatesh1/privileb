@@ -2591,11 +2591,11 @@ offers, latest brands … and more!</string>
                                                     <constraint firstItem="kvJ-VF-UaK" firstAttribute="centerX" secondItem="v84-rH-fdV" secondAttribute="centerX" id="rkx-l2-aP3"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yto-B8-RvY">
-                                                <rect key="frame" x="20" y="205" width="79" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yto-B8-RvY">
+                                                <rect key="frame" x="20" y="205" width="150" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="hLI-Hr-InC"/>
-                                                    <constraint firstAttribute="width" constant="79" id="mdL-ee-44t"/>
+                                                    <constraint firstAttribute="width" constant="150" id="mdL-ee-44t"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -2659,6 +2659,7 @@ offers, latest brands … and more!</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="wf1-f6-Fyn"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="Forgot Password?">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -3461,7 +3462,7 @@ offers, latest brands … and more!</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="Rdf-rQ-7la" id="8ey-tn-bGL"/>
+                                                            <outlet property="delegate" destination="ko4-Mh-fhO" id="Ri2-El-wIp"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -5469,10 +5470,10 @@ Hadath-Baabda Main Road</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B5D-18-wiN">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B5D-18-wiN">
                                 <rect key="frame" x="20" y="230" width="374" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="pt7-I3-8vq">
@@ -5519,10 +5520,10 @@ Hadath-Baabda Main Road</string>
                                     <constraint firstAttribute="height" constant="180" id="epP-3y-6W0"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fCM-um-gLf">
-                                <rect key="frame" x="-20" y="228" width="414" height="488"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fCM-um-gLf">
+                                <rect key="frame" x="20" y="228" width="374" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -5531,8 +5532,8 @@ Hadath-Baabda Main Road</string>
                             <constraint firstAttribute="trailing" secondItem="GCy-bn-D3w" secondAttribute="trailing" constant="50" id="Jmi-dM-fwg"/>
                             <constraint firstItem="fCM-um-gLf" firstAttribute="top" secondItem="GCy-bn-D3w" secondAttribute="bottom" constant="20" id="TuG-i3-gZH"/>
                             <constraint firstAttribute="trailing" secondItem="fCM-um-gLf" secondAttribute="trailing" constant="20" id="X8v-Lr-xsx"/>
-                            <constraint firstAttribute="leading" secondItem="fCM-um-gLf" secondAttribute="leading" constant="20" id="cEf-7Q-Sfs"/>
-                            <constraint firstItem="Oww-PA-BVo" firstAttribute="top" secondItem="fCM-um-gLf" secondAttribute="bottom" constant="20" id="gtD-cz-ii1"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fCM-um-gLf" secondAttribute="leading" id="cEf-7Q-Sfs"/>
+                            <constraint firstItem="Oww-PA-BVo" firstAttribute="top" secondItem="fCM-um-gLf" secondAttribute="bottom" constant="10" id="gtD-cz-ii1"/>
                             <constraint firstItem="GCy-bn-D3w" firstAttribute="top" secondItem="SyQ-vJ-9ys" secondAttribute="bottom" constant="8" id="mvs-H9-sbt"/>
                             <constraint firstItem="GCy-bn-D3w" firstAttribute="leading" secondItem="1QH-Le-0UC" secondAttribute="leading" constant="50" id="oVp-pz-V16"/>
                         </constraints>
@@ -5576,27 +5577,27 @@ Hadath-Baabda Main Road</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="EKG-D2-dxn">
-                                <rect key="frame" x="50" y="20" width="314" height="180"/>
+                                <rect key="frame" x="70" y="20" width="274" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="eH5-mO-SNm"/>
+                                    <constraint firstAttribute="height" constant="200" id="eH5-mO-SNm"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QGq-NR-eAY">
-                                <rect key="frame" x="20" y="220" width="374" height="496"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QGq-NR-eAY">
+                                <rect key="frame" x="20" y="220" width="374" height="506"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leading" secondItem="EKG-D2-dxn" secondAttribute="leading" constant="-50" id="EOs-7L-Avp"/>
+                            <constraint firstAttribute="leading" secondItem="EKG-D2-dxn" secondAttribute="leading" constant="-70" id="EOs-7L-Avp"/>
                             <constraint firstItem="QGq-NR-eAY" firstAttribute="leading" secondItem="oYS-GT-3g3" secondAttribute="leading" constant="20" id="EeG-hX-nEJ"/>
                             <constraint firstItem="EKG-D2-dxn" firstAttribute="top" secondItem="Hz5-EV-XZQ" secondAttribute="bottom" id="tRH-Ra-YNY"/>
-                            <constraint firstItem="QGq-NR-eAY" firstAttribute="top" secondItem="EKG-D2-dxn" secondAttribute="bottom" constant="20" id="wMf-rY-oLW"/>
-                            <constraint firstAttribute="trailing" secondItem="EKG-D2-dxn" secondAttribute="trailing" constant="50" id="wRM-GJ-4LI"/>
+                            <constraint firstItem="QGq-NR-eAY" firstAttribute="top" secondItem="EKG-D2-dxn" secondAttribute="bottom" id="wMf-rY-oLW"/>
+                            <constraint firstAttribute="trailing" secondItem="EKG-D2-dxn" secondAttribute="trailing" constant="70" id="wRM-GJ-4LI"/>
                             <constraint firstAttribute="trailing" secondItem="QGq-NR-eAY" secondAttribute="trailing" constant="20" id="xWt-dA-iOz"/>
-                            <constraint firstItem="QjT-PH-6dg" firstAttribute="top" secondItem="QGq-NR-eAY" secondAttribute="bottom" constant="20" id="zxW-NR-AEb"/>
+                            <constraint firstItem="QjT-PH-6dg" firstAttribute="top" secondItem="QGq-NR-eAY" secondAttribute="bottom" constant="10" id="zxW-NR-AEb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -5625,10 +5626,10 @@ Hadath-Baabda Main Road</string>
                                     <constraint firstAttribute="height" constant="200" id="gah-Kl-pum"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aia-BO-vX7">
-                                <rect key="frame" x="-20" y="240" width="414" height="476"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aia-BO-vX7">
+                                <rect key="frame" x="20" y="240" width="374" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -5638,9 +5639,9 @@ Hadath-Baabda Main Road</string>
                             <constraint firstItem="aia-BO-vX7" firstAttribute="top" secondItem="lZ6-Ig-4Vl" secondAttribute="bottom" constant="20" id="DjT-do-8hZ"/>
                             <constraint firstItem="lZ6-Ig-4Vl" firstAttribute="top" secondItem="o2c-Dz-E1u" secondAttribute="bottom" id="Mkb-XT-thu"/>
                             <constraint firstItem="lZ6-Ig-4Vl" firstAttribute="leading" secondItem="BeX-fy-1PT" secondAttribute="leadingMargin" constant="50" id="Ope-zk-iIp"/>
-                            <constraint firstAttribute="leading" secondItem="aia-BO-vX7" secondAttribute="leading" constant="20" id="aNF-4B-YNn"/>
+                            <constraint firstAttribute="leading" secondItem="aia-BO-vX7" secondAttribute="leading" constant="-20" id="aNF-4B-YNn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lZ6-Ig-4Vl" secondAttribute="trailing" constant="50" id="dRw-w7-Ccm"/>
-                            <constraint firstItem="Lhb-0c-Ae7" firstAttribute="top" secondItem="aia-BO-vX7" secondAttribute="bottom" constant="20" id="v3N-4h-EkG"/>
+                            <constraint firstItem="Lhb-0c-Ae7" firstAttribute="top" secondItem="aia-BO-vX7" secondAttribute="bottom" constant="10" id="v3N-4h-EkG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -5682,32 +5683,32 @@ Hadath-Baabda Main Road</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="CWP-8N-TA7">
-                                <rect key="frame" x="0.0" y="40" width="414" height="200"/>
+                                <rect key="frame" x="25" y="60" width="364" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="ZSy-P9-u1g"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIF-KX-4An">
-                                <rect key="frame" x="40" y="260" width="334" height="456"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-tW-UR1">
+                                <rect key="frame" x="40" y="290" width="334" height="436"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CWP-8N-TA7" firstAttribute="leading" secondItem="RQ2-aX-KOP" secondAttribute="leading" id="GSu-B1-K2e"/>
-                            <constraint firstItem="MIF-KX-4An" firstAttribute="leading" secondItem="RQ2-aX-KOP" secondAttribute="leadingMargin" constant="20" id="Nva-w3-F2u"/>
-                            <constraint firstItem="CWP-8N-TA7" firstAttribute="top" secondItem="2VU-TG-d6B" secondAttribute="bottom" constant="20" id="PIs-6c-7Tx"/>
-                            <constraint firstAttribute="trailing" secondItem="CWP-8N-TA7" secondAttribute="trailing" id="R9J-Uq-bN2"/>
-                            <constraint firstItem="olK-Dq-5QR" firstAttribute="top" secondItem="MIF-KX-4An" secondAttribute="bottom" constant="20" id="WbV-xW-vtW"/>
-                            <constraint firstItem="MIF-KX-4An" firstAttribute="top" secondItem="CWP-8N-TA7" secondAttribute="bottom" constant="20" id="iNM-zF-H3p"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MIF-KX-4An" secondAttribute="trailing" constant="20" id="pvS-se-gZo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p1D-tW-UR1" secondAttribute="trailing" constant="20" id="8LN-Wc-9YS"/>
+                            <constraint firstItem="p1D-tW-UR1" firstAttribute="leading" secondItem="RQ2-aX-KOP" secondAttribute="leadingMargin" constant="20" id="9Yq-gX-daY"/>
+                            <constraint firstItem="CWP-8N-TA7" firstAttribute="leading" secondItem="RQ2-aX-KOP" secondAttribute="leading" constant="25" id="GSu-B1-K2e"/>
+                            <constraint firstItem="CWP-8N-TA7" firstAttribute="top" secondItem="2VU-TG-d6B" secondAttribute="bottom" constant="40" id="PIs-6c-7Tx"/>
+                            <constraint firstAttribute="trailing" secondItem="CWP-8N-TA7" secondAttribute="trailing" constant="25" id="R9J-Uq-bN2"/>
+                            <constraint firstItem="olK-Dq-5QR" firstAttribute="top" secondItem="p1D-tW-UR1" secondAttribute="bottom" constant="10" id="d5D-YE-ZHJ"/>
+                            <constraint firstItem="p1D-tW-UR1" firstAttribute="top" secondItem="CWP-8N-TA7" secondAttribute="bottom" constant="30" id="isq-Cd-dWs"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="pageImageView" destination="CWP-8N-TA7" id="TPn-gm-d3W"/>
-                        <outlet property="pageLabel" destination="MIF-KX-4An" id="qJx-rM-73J"/>
+                        <outlet property="pageLabel" destination="p1D-tW-UR1" id="woV-hg-GTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ak2-kI-mCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5727,32 +5728,32 @@ Hadath-Baabda Main Road</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="8Es-Gm-998">
-                                <rect key="frame" x="0.0" y="40" width="414" height="200"/>
+                                <rect key="frame" x="25" y="60" width="364" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="E2r-Dt-btp"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9OG-1m-t84">
-                                <rect key="frame" x="40" y="260" width="334" height="456"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UiI-Wx-MQt">
+                                <rect key="frame" x="40" y="280" width="334" height="436"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9OG-1m-t84" firstAttribute="leading" secondItem="hvL-9r-E7I" secondAttribute="leadingMargin" constant="20" id="1z1-SU-EKS"/>
-                            <constraint firstItem="8Es-Gm-998" firstAttribute="leading" secondItem="hvL-9r-E7I" secondAttribute="leading" id="7NY-n4-hGN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9OG-1m-t84" secondAttribute="trailing" constant="20" id="RYO-8V-6sf"/>
-                            <constraint firstItem="NMN-0q-fgy" firstAttribute="top" secondItem="9OG-1m-t84" secondAttribute="bottom" constant="20" id="ZzQ-gw-Zb4"/>
-                            <constraint firstAttribute="trailing" secondItem="8Es-Gm-998" secondAttribute="trailing" id="a60-Sw-IKq"/>
-                            <constraint firstItem="8Es-Gm-998" firstAttribute="top" secondItem="mXy-fQ-lMD" secondAttribute="bottom" constant="20" id="e9H-Ld-TE9"/>
-                            <constraint firstItem="9OG-1m-t84" firstAttribute="top" secondItem="8Es-Gm-998" secondAttribute="bottom" constant="20" id="xBd-UV-GvZ"/>
+                            <constraint firstItem="8Es-Gm-998" firstAttribute="leading" secondItem="hvL-9r-E7I" secondAttribute="leading" constant="25" id="7NY-n4-hGN"/>
+                            <constraint firstItem="UiI-Wx-MQt" firstAttribute="leading" secondItem="hvL-9r-E7I" secondAttribute="leadingMargin" constant="20" id="LXz-zR-Bpi"/>
+                            <constraint firstAttribute="trailing" secondItem="8Es-Gm-998" secondAttribute="trailing" constant="25" id="a60-Sw-IKq"/>
+                            <constraint firstItem="8Es-Gm-998" firstAttribute="top" secondItem="mXy-fQ-lMD" secondAttribute="bottom" constant="40" id="e9H-Ld-TE9"/>
+                            <constraint firstItem="UiI-Wx-MQt" firstAttribute="top" secondItem="8Es-Gm-998" secondAttribute="bottom" constant="20" id="g4R-Jh-BRQ"/>
+                            <constraint firstItem="NMN-0q-fgy" firstAttribute="top" secondItem="UiI-Wx-MQt" secondAttribute="bottom" constant="20" id="iN9-gB-XO4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UiI-Wx-MQt" secondAttribute="trailing" constant="20" id="szF-ji-Cjn"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="pageImageView" destination="8Es-Gm-998" id="7bp-i0-353"/>
-                        <outlet property="pageLabel" destination="9OG-1m-t84" id="Ntc-Xj-F0E"/>
+                        <outlet property="pageLabel" destination="UiI-Wx-MQt" id="Ue7-Jk-Eum"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ta3-Se-dEw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5835,6 +5836,6 @@ Hadath-Baabda Main Road</string>
     <inferredMetricsTieBreakers>
         <segue reference="0Tk-Jh-gwp"/>
         <segue reference="Vwg-uf-nsA"/>
-        <segue reference="sfw-6F-Ov0"/>
+        <segue reference="8hP-bW-9hd"/>
     </inferredMetricsTieBreakers>
 </document>

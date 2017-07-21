@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableViewDelegate , UITableViewDataSource{
+class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableViewDelegate , UITableViewDataSource , UIPickerViewDelegate , UIPickerViewDataSource {
 
     @IBOutlet weak var coutries_table: UITableView!
     @IBOutlet weak var countries_view: UIView!
@@ -45,8 +45,17 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     
     @IBOutlet weak var scroll: UIScrollView!
     
+    var pickerView : UIPickerView!
+
     
-    
+       func slidingPanelController(_ panelController: MSSlidingPanelController!, beginsToBringOutSide side: MSSPSideDisplayed) {
+        DispatchQueue.main.async {
+            self.countryTextField.resignFirstResponder()
+
+        }
+        self.view.endEditing(true)
+
+    }
     
     var birthDate :Date?
     var loader: MaterialLoadingIndicator!
@@ -57,6 +66,14 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     var countries = AppDelegate.sharedDelegate().countries
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickerView = UIPickerView()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        self.countryTextField.inputView = pickerView
+        addKeyboardToolBar()
+        
+        
+        
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = true
         self.maleBtn.layer.cornerRadius = self.maleBtn.layer.frame.width / 2
         self.maleBtn.layer.borderColor = UIColor.darkGray.cgColor
@@ -88,16 +105,32 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
 
         // Do any additional setup after loading the view.
     }
-
+    
+    
+    func addKeyboardToolBar() {
+        var nextButton: UIBarButtonItem?
+        var keyboardToolBar = UIToolbar(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(pickerView.frame.size.width), height: CGFloat(25)))
+        keyboardToolBar.sizeToFit()
+        keyboardToolBar.barStyle = .default
+        self.countryTextField.inputAccessoryView = keyboardToolBar
+        nextButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.donePicker))
+        keyboardToolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), nextButton!]
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.countryTextField.resignFirstResponder()
+
+    }
     override func viewDidDisappear(_ animated: Bool) {
         self.loader.stopAnimating()
         self.loaderView.isHidden = true
+        self.countryTextField.resignFirstResponder()
     }
     
     @IBAction func onBirthdayBtn(_ sender: Any) {
@@ -123,13 +156,22 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         
         if textField.tag == 99{
             //textField.resignFirstResponder()
-            self.countries_view.isHidden = false
+            //self.countries_view.isHidden = false
             scroll.setContentOffset(CGPoint(x: 0, y:  self.countries_view.frame.origin.y), animated: true)
         }
 
     }
+    func donePicker(){
+        if selected_country == nil {
+            self.pickerView(self.pickerView, didSelectRow: 0, inComponent: 0)
+        }
+        
+    self.countryTextField.text = selected_country.country_name
+    self.countryTextField.resignFirstResponder()
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      
         textField.resignFirstResponder()
         return true
     }
@@ -247,7 +289,21 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         self.countryTextField.text = self.countries[indexPath.row].country_name
         self.countries_view.isHidden = true
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selected_country = countries[row]
+        self.countryTextField.text = self.selected_country.country_name
+    }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return countries.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.countries[row].country_name
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

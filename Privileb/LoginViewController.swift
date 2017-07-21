@@ -27,8 +27,13 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
     var user:user?
     var firstTime = true
     var keepMe = false
+    
+    func slidingPanelController(_ panelController: MSSlidingPanelController!, beginsToBringOutSide side: MSSPSideDisplayed) {
+        self.view.endEditing(true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.keyboardDismissMode = .onDrag
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = true
         userNameTextField.delegate = self
         passwordTextField.delegate = self
