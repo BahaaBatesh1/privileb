@@ -146,7 +146,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        scroll.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y), animated: true)
+        scroll.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y - 40), animated: true)
         
         if textField.tag == 100{
             //textField.resignFirstResponder()
@@ -176,10 +176,10 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        scroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-
-    }
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        scroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+//
+//    }
     
     @IBAction func onRegister(_ sender: Any) {
         

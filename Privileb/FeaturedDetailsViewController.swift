@@ -374,7 +374,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                      //   }else{
                             self.descriptionLabel.text = attrStr.string
                         
-                        if ((self.descriptionLabel.text?.characters.count)! > 700){self.bottom_consttraint.constant = 250}
+                        if ((self.descriptionLabel.text?.characters.count)! > 700){self.bottom_consttraint.constant = 300}
                         else
                             if ((self.descriptionLabel.text?.characters.count)! > 250) {
                         self.bottom_consttraint.constant = 150

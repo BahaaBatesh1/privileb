@@ -1468,7 +1468,7 @@ Floor</string>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fzy-vG-4c1">
                                                                     <rect key="frame" x="0.0" y="160" width="355" height="70"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plV-tn-DGU">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plV-tn-DGU">
                                                                             <rect key="frame" x="20" y="6" width="63" height="12"/>
                                                                             <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
@@ -2078,7 +2078,7 @@ Floor</string>
                                                                 <rect key="frame" x="0.0" y="28" width="346" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OQC-ew-9YK" id="r4f-nS-qnA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
@@ -2915,7 +2915,7 @@ offers, latest brands … and more!</string>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s36-oX-VgM">
-                                        <rect key="frame" x="0.0" y="163" width="414.33333333333331" height="681"/>
+                                        <rect key="frame" x="0.0" y="163" width="414.33333333333331" height="581"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Deal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDh-7a-sZ7">
                                                 <rect key="frame" x="13" y="26" width="150" height="16"/>
@@ -3076,7 +3076,7 @@ offers, latest brands … and more!</string>
                                                         <rect key="frame" x="0.0" y="28" width="390" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VNh-mr-Dze" id="WtF-SE-leg">
-                                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -3102,10 +3102,10 @@ offers, latest brands … and more!</string>
                                             <constraint firstAttribute="trailing" secondItem="moS-Kh-pQG" secondAttribute="trailing" constant="15.5" id="Gmm-tY-4fg"/>
                                             <constraint firstItem="oWZ-3G-ChX" firstAttribute="top" secondItem="yjp-Xf-bpO" secondAttribute="bottom" id="I7d-jJ-uCg"/>
                                             <constraint firstItem="hDh-7a-sZ7" firstAttribute="top" secondItem="s36-oX-VgM" secondAttribute="top" constant="26" id="JQ1-pT-Zij"/>
-                                            <constraint firstAttribute="bottom" secondItem="3SC-5j-ETn" secondAttribute="bottom" constant="285" id="KaL-5A-99i"/>
+                                            <constraint firstAttribute="bottom" secondItem="3SC-5j-ETn" secondAttribute="bottom" constant="185" id="KaL-5A-99i"/>
                                             <constraint firstItem="xAI-YL-dVe" firstAttribute="top" secondItem="mDf-Y1-o3E" secondAttribute="bottom" constant="8" id="LEy-tN-5B2"/>
                                             <constraint firstItem="4pB-1T-GCC" firstAttribute="leading" secondItem="wIQ-hC-yz9" secondAttribute="trailing" constant="20" id="LZg-iA-7PJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="moS-Kh-pQG" secondAttribute="bottom" constant="285" id="SBO-tq-upT"/>
+                                            <constraint firstAttribute="bottom" secondItem="moS-Kh-pQG" secondAttribute="bottom" constant="185" id="SBO-tq-upT"/>
                                             <constraint firstAttribute="trailing" secondItem="L7c-cJ-zTS" secondAttribute="trailing" constant="13" id="Tab-fr-9Dz"/>
                                             <constraint firstItem="moS-Kh-pQG" firstAttribute="top" secondItem="xAI-YL-dVe" secondAttribute="bottom" constant="14" id="Vcr-on-Igb"/>
                                             <constraint firstItem="7GV-Bf-1O8" firstAttribute="leading" secondItem="yjp-Xf-bpO" secondAttribute="leading" id="WJl-Mz-jY4"/>
@@ -3137,7 +3137,7 @@ offers, latest brands … and more!</string>
                                 <constraints>
                                     <constraint firstItem="ttf-0S-e7i" firstAttribute="centerX" secondItem="ubN-rJ-X1i" secondAttribute="centerX" id="06c-YH-NFw"/>
                                     <constraint firstItem="xcO-86-pRL" firstAttribute="centerX" secondItem="s36-oX-VgM" secondAttribute="centerX" id="624-47-96X"/>
-                                    <constraint firstAttribute="bottom" secondItem="s36-oX-VgM" secondAttribute="bottom" id="7zi-KT-IwV"/>
+                                    <constraint firstAttribute="bottom" secondItem="s36-oX-VgM" secondAttribute="bottom" constant="-55" id="7zi-KT-IwV"/>
                                     <constraint firstItem="ttf-0S-e7i" firstAttribute="top" secondItem="ubN-rJ-X1i" secondAttribute="top" constant="13" id="JLd-im-ggK"/>
                                     <constraint firstItem="s36-oX-VgM" firstAttribute="top" secondItem="xcO-86-pRL" secondAttribute="bottom" constant="17" id="Z7M-pZ-MVi"/>
                                     <constraint firstItem="s36-oX-VgM" firstAttribute="leading" secondItem="ubN-rJ-X1i" secondAttribute="leading" id="gTc-HV-20m"/>
@@ -3271,7 +3271,7 @@ offers, latest brands … and more!</string>
         <!--BUY CARD-->
         <scene sceneID="AC9-lY-KP2">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ko4-Mh-fhO" customClass="BuyCardViewController" customModule="Privileb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ko4-Mh-fhO" customClass="BuyCardViewController" customModule="Privileb" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7oh-Ug-rNq"/>
                         <viewControllerLayoutGuide type="bottom" id="cgQ-ip-mGc"/>
@@ -3775,7 +3775,7 @@ offers, latest brands … and more!</string>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7A-V3-p0L">
                                                             <rect key="frame" x="0.0" y="160" width="394" height="70"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymW-A5-4zk">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymW-A5-4zk">
                                                                     <rect key="frame" x="20" y="6" width="63" height="12"/>
                                                                     <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
@@ -4057,7 +4057,7 @@ offers, latest brands … and more!</string>
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GJw-Ge-fCi" id="nE6-I7-lSe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqc-cQ-rGD">
@@ -4156,7 +4156,7 @@ offers, latest brands … and more!</string>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgC-B8-r6z">
                                                             <rect key="frame" x="0.0" y="160" width="394" height="70"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOJ-dQ-xJk">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOJ-dQ-xJk">
                                                                     <rect key="frame" x="20" y="6" width="63" height="12"/>
                                                                     <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
@@ -4602,7 +4602,7 @@ offers, latest brands … and more!</string>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailsCollectionCell" id="XIw-ii-Mi7" customClass="ImagesDetailsCollectionViewCell" customModule="Privileb" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="3" width="413" height="395"/>
+                                                        <rect key="frame" x="0.0" y="2.6666666666666665" width="413" height="395"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="413" height="395"/>
@@ -4694,7 +4694,7 @@ offers, latest brands … and more!</string>
                                         <rect key="frame" x="0.0" y="570" width="413" height="650"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqF-Ds-OLe">
-                                                <rect key="frame" x="0.0" y="0.0" width="413" height="66.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="413" height="71.333333333333371"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CP4-as-gFw">
                                                         <rect key="frame" x="20" y="3" width="200" height="29"/>
@@ -4706,7 +4706,7 @@ offers, latest brands … and more!</string>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ov0-Zk-W7Y">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ov0-Zk-W7Y">
                                                         <rect key="frame" x="20" y="35" width="373" height="31.333333333333371"/>
                                                         <string key="text">
 creator, Juliano Asmar, styles ffs.</string>
@@ -4734,7 +4734,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                     <constraint firstItem="NDq-uA-Z9y" firstAttribute="trailing" secondItem="Ov0-Zk-W7Y" secondAttribute="trailing" id="3cW-SR-4M5"/>
                                                     <constraint firstItem="Ov0-Zk-W7Y" firstAttribute="leading" secondItem="tqF-Ds-OLe" secondAttribute="leading" constant="20" id="3jn-iI-Xu0"/>
                                                     <constraint firstItem="NDq-uA-Z9y" firstAttribute="bottom" secondItem="Ov0-Zk-W7Y" secondAttribute="bottom" id="5Sh-Gb-rBK"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Ov0-Zk-W7Y" secondAttribute="bottom" id="CEd-mI-nEY"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Ov0-Zk-W7Y" secondAttribute="bottom" constant="5" id="CEd-mI-nEY"/>
                                                     <constraint firstItem="CP4-as-gFw" firstAttribute="leading" secondItem="tqF-Ds-OLe" secondAttribute="leading" constant="20" id="H4F-kr-nxt"/>
                                                     <constraint firstItem="CP4-as-gFw" firstAttribute="top" secondItem="tqF-Ds-OLe" secondAttribute="top" constant="3" id="KK7-SZ-IQ2"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ov0-Zk-W7Y" secondAttribute="trailing" constant="20" id="Sdf-W4-Y8M"/>
@@ -4742,7 +4742,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNE-Cs-LoX">
-                                                <rect key="frame" x="0.0" y="66.333333333333371" width="413" height="1"/>
+                                                <rect key="frame" x="0.0" y="71.333333333333371" width="413" height="1"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tp-gE-KgX">
                                                         <rect key="frame" x="10" y="0.0" width="393" height="1"/>
@@ -4759,7 +4759,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1b-4w-zxU">
-                                                <rect key="frame" x="0.0" y="67.333333333333371" width="413" height="60"/>
+                                                <rect key="frame" x="0.0" y="72.333333333333371" width="413" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHY-Wx-l6V">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -4816,7 +4816,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-vE-WmI">
-                                                <rect key="frame" x="0.0" y="127.33333333333337" width="413" height="1"/>
+                                                <rect key="frame" x="0.0" y="132.33333333333337" width="413" height="1"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEx-pc-kqh">
                                                         <rect key="frame" x="10" y="0.0" width="393" height="1"/>
@@ -4833,7 +4833,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtY-b6-Vye">
-                                                <rect key="frame" x="0.0" y="128.33333333333337" width="413" height="60"/>
+                                                <rect key="frame" x="0.0" y="133.33333333333337" width="413" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oit-Zp-YCe">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -4878,7 +4878,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDl-1b-xzB">
-                                                <rect key="frame" x="0.0" y="188.33333333333337" width="413" height="1"/>
+                                                <rect key="frame" x="0.0" y="193.33333333333337" width="413" height="1"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SN8-uW-pic">
                                                         <rect key="frame" x="10" y="0.66666666666662877" width="393" height="0.0"/>
@@ -4895,7 +4895,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wm5-V7-hhO">
-                                                <rect key="frame" x="0.0" y="189.33333333333337" width="413" height="60"/>
+                                                <rect key="frame" x="0.0" y="194.33333333333337" width="413" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMT-Wd-cDO">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -4940,7 +4940,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94b-W8-dCc">
-                                                <rect key="frame" x="0.0" y="249.33333333333337" width="413" height="1"/>
+                                                <rect key="frame" x="0.0" y="254.33333333333337" width="413" height="1"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DI4-3X-ALw">
                                                         <rect key="frame" x="10" y="0.0" width="393" height="1"/>
@@ -4957,7 +4957,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lF5-Nl-q8n">
-                                                <rect key="frame" x="0.0" y="250.33333333333337" width="413" height="74"/>
+                                                <rect key="frame" x="0.0" y="255.33333333333337" width="413" height="74"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVF-v2-arH">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="74"/>
@@ -5004,7 +5004,7 @@ Hadath-Baabda Main Road</string>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ihr-d0-l03">
-                                                <rect key="frame" x="0.0" y="324.33333333333337" width="413" height="52"/>
+                                                <rect key="frame" x="0.0" y="329.33333333333337" width="413" height="52"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wsx-4L-pJV">
                                                         <rect key="frame" x="15" y="0.0" width="398" height="46"/>
@@ -5059,7 +5059,7 @@ Hadath-Baabda Main Road</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bC0-nO-C8m">
-                                                <rect key="frame" x="20" y="376.33333333333337" width="373" height="149.99999999999989"/>
+                                                <rect key="frame" x="20" y="381.33333333333337" width="373" height="149.99999999999989"/>
                                                 <subviews>
                                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dl5-xM-pGF">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="149.99999999999989"/>
@@ -5078,7 +5078,7 @@ Hadath-Baabda Main Road</string>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMp-fK-Cbb">
-                                                <rect key="frame" x="20" y="531.33333333333326" width="100" height="30"/>
+                                                <rect key="frame" x="20" y="536.33333333333326" width="100" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="22m-Aa-5xA"/>
                                                     <constraint firstAttribute="height" constant="30" id="RC0-lH-cYC"/>
@@ -5091,7 +5091,7 @@ Hadath-Baabda Main Road</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mru-Xj-FSB">
-                                                <rect key="frame" x="20" y="571.33333333333326" width="373" height="54"/>
+                                                <rect key="frame" x="20" y="576.33333333333326" width="373" height="54"/>
                                                 <state key="normal" image="call_btnview"/>
                                                 <connections>
                                                     <action selector="onCall:" destination="whr-qi-lK5" eventType="touchUpInside" id="g0v-7L-zMI"/>
@@ -5290,7 +5290,7 @@ Hadath-Baabda Main Road</string>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-Tx-gMn">
                                                             <rect key="frame" x="0.0" y="160" width="394" height="70"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR2-dd-MQG">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR2-dd-MQG">
                                                                     <rect key="frame" x="20" y="6" width="63" height="12"/>
                                                                     <color key="backgroundColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
@@ -5849,6 +5849,6 @@ Hadath-Baabda Main Road</string>
     <inferredMetricsTieBreakers>
         <segue reference="0Tk-Jh-gwp"/>
         <segue reference="Vwg-uf-nsA"/>
-        <segue reference="sfw-6F-Ov0"/>
+        <segue reference="O0E-ZI-5d9"/>
     </inferredMetricsTieBreakers>
 </document>

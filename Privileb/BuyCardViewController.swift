@@ -37,7 +37,7 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
   //      tapGesture.cancelsTouchesInView = false
     //    scrollView.addGestureRecognizer(tapGesture)
 
-        scrollView.contentSize=CGSize(width: 414,height: 2300);
+      //  scrollView.contentSize=CGSize(width: 414,height: 2300);
         
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
@@ -62,7 +62,7 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        scrollView.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y + 200), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: (textField.superview?.frame.origin.y )! - 40 ), animated: true)
 
     }
 
@@ -137,11 +137,11 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
         self.navigationController?.dismiss(animated: true, completion: nil)
 
     }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-         }
-    
-    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+//         }
+//    
+//    
     
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
         self.view.endEditing(true)
