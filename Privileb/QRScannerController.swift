@@ -106,7 +106,7 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
                 
                 //here to trigger the service and take the variables from the qr code
                 //var splittedArray = metadataObj.stringValue.components(separatedBy: ":")
-                 serial_number = metadataObj.stringValue
+                 user_id = metadataObj.stringValue
                  //serial_number = splittedArray[1]
                 if(!isScanning){
                     callScan()
@@ -137,7 +137,7 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
                 loader.startAnimating()
                 self.loaderView.isHidden = false
         
-                service.scan_offer(user_id: "", scan_date: NSDate().getToDay(), offer_id: self.offer_id, branch_id: self.branch_id, serial_number: self.serial_number) { (res, status) in
+                service.scan_offer(user_id: self.user_id, scan_date: NSDate().getToDay(), offer_id: self.offer_id, branch_id: self.branch_id, serial_number: "") { (res, status) in
                     if status == "ok" {
                         if res?.status == 1 {
                             self.loader.stopAnimating()

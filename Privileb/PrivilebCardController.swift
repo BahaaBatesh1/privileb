@@ -63,7 +63,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
                 self.buCardView.isHidden = true
                 isHaveCard = true
                 var user_id1 = (userDefaults.value(forKey: "userId") as! Int).description
-                self.secondImage.image = generateQRCodeFromString(user_id: (self.card?.serial_number)! )
+                self.secondImage.image = generateQRCodeFromString(user_id: user_id1 )
             }else{
                 self.myCardView.isHidden = true
                 self.buCardView.isHidden = false
