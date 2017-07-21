@@ -2164,7 +2164,7 @@ Floor</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1936"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-IP-6Lx">
-                                                <rect key="frame" x="0.0" y="743.33333333333348" width="375" height="250"/>
+                                                <rect key="frame" x="0.0" y="743.33333333333337" width="375" height="250"/>
                                                 <subviews>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tDq-Zp-saE">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -4691,7 +4691,7 @@ offers, latest brands … and more!</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp5-ne-3Fg">
-                                        <rect key="frame" x="0.0" y="570" width="413" height="630"/>
+                                        <rect key="frame" x="0.0" y="570" width="413" height="650"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqF-Ds-OLe">
                                                 <rect key="frame" x="0.0" y="0.0" width="413" height="66.333333333333371"/>
@@ -5132,7 +5132,7 @@ Hadath-Baabda Main Road</string>
                                             <constraint firstItem="ihr-d0-l03" firstAttribute="top" secondItem="lF5-Nl-q8n" secondAttribute="bottom" id="pDK-wV-Tz6"/>
                                             <constraint firstItem="lF5-Nl-q8n" firstAttribute="leading" secondItem="wp5-ne-3Fg" secondAttribute="leading" id="pzw-ab-3nV"/>
                                             <constraint firstAttribute="trailing" secondItem="HNE-Cs-LoX" secondAttribute="trailing" id="rOY-EH-YNl"/>
-                                            <constraint firstAttribute="height" constant="630" id="tvD-sv-6FD"/>
+                                            <constraint firstAttribute="height" constant="650" id="tvD-sv-6FD"/>
                                             <constraint firstAttribute="trailing" secondItem="Dm4-vE-WmI" secondAttribute="trailing" id="vTK-Zc-bgw"/>
                                             <constraint firstAttribute="trailing" secondItem="tqF-Ds-OLe" secondAttribute="trailing" id="wyn-bU-ESX"/>
                                             <constraint firstItem="Dm4-vE-WmI" firstAttribute="leading" secondItem="wp5-ne-3Fg" secondAttribute="leading" id="wza-Gf-jm9"/>
@@ -5233,6 +5233,7 @@ Hadath-Baabda Main Road</string>
                     <connections>
                         <outlet property="allDetailsTextView" destination="Cuy-g5-mtR" id="25c-jg-k99"/>
                         <outlet property="alldetailsView" destination="O6k-zV-mkJ" id="Hxn-Pl-wb3"/>
+                        <outlet property="bottom_consttraint" destination="0sa-QG-bTN" id="Jhu-XD-caN"/>
                         <outlet property="branchesCollectionView" destination="wsx-4L-pJV" id="ysh-hE-VV2"/>
                         <outlet property="cateoryLabel" destination="80f-4f-5GD" id="R3W-iI-HfA"/>
                         <outlet property="dateLabel" destination="SwT-dj-yNs" id="Bdg-gg-nHS"/>
