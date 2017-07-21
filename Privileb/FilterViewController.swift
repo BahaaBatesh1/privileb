@@ -188,7 +188,7 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
             return
         }
         self.searchBarResult =  self.searchResult.filter({ (test) -> Bool in
-            return (test.offer_name.lowercased().range(of: searchText.lowercased()) != nil)
+            return (test.offer_name.lowercased().range(of: searchText.lowercased()) != nil || test.retailer_name.lowercased().range(of: searchText.lowercased()) != nil)
         })
     }
     
