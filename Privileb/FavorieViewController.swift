@@ -11,6 +11,7 @@ import UIKit
 class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, UISearchDisplayDelegate{
     var loader: MaterialLoadingIndicator!
 
+    @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var notLoginView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -23,7 +24,12 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     @IBOutlet weak var tableView: UITableView!
     var selectedOffer:favourite?
     var uid :Int?
-
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(FavorieViewController.handleRefresh), for: UIControlEvents.valueChanged)
+        return refreshControl
+    }()
+    var isLoading = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,9 +47,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
             txfSearchField.layer.masksToBounds = true
         }
 
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
+        
         
         if let log = userDefaults.value(forKey: "isLogedIn") as? Bool{
             self.isLogedIn = log
@@ -55,7 +59,26 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
             callService()
         }else{
             self.notLoginView.isHidden = false
+            self.loginBtn.isHidden = false
+            self.loginLabel.isHidden = false
         }
+        
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+            if let log = userDefaults.value(forKey: "isLogedIn") as? Bool{
+                self.isLogedIn = log
+            }
+            
+            if isLogedIn && isLoading == false && self.favorites.count == 0 {
+                self.notLoginView.isHidden = true
+                uid = userDefaults.value(forKey: "userId") as! Int
+                callService()
+            }else{
+                self.notLoginView.isHidden = false
+                self.loginBtn.isHidden = false
+                self.loginLabel.isHidden = false
+            }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -145,6 +168,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     }
     
     func callService()  {
+        isLoading = true
         self.tableView.isHidden = true
         loader.startAnimating()
         self.loaderView.isHidden = false
@@ -152,6 +176,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
             if status == "ok"{
                 if postRes?.status == 1{
                     self.favorites = favs!
+                    self.isLoading = false
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         self.loader.stopAnimating()
@@ -159,9 +184,40 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
                         self.tableView.isHidden = false
                     }
                 }else{
+                    self.isLoading = false
                     self.tableView.isHidden = false
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
+
+                    self.notLoginView.isHidden = false
+                    self.loginBtn.isHidden = true
+                    self.loginLabel.isHidden = true
+                }
+            }else{
+                self.isLoading = false
+                self.tableView.isHidden = false
+                self.loader.stopAnimating()
+                self.loaderView.isHidden = true
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+                print("error")
+            }
+        }
+    }
+    
+    func handleRefresh()  {
+        services.get_favourite_list(user_id: (self.uid?.description)!, date: NSDate().getToDay()) { (favs, status,postRes) in
+            if status == "ok"{
+                if postRes?.status == 1{
+                    self.favorites = favs!
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
+                    }
+                }else{
+                    self.refreshControl.endRefreshing()
                     let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
                     let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
                     let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
@@ -172,14 +228,11 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
                     self.present(alertController, animated: true, completion: nil)
                 }
             }else{
-                self.tableView.isHidden = false
-                self.loader.stopAnimating()
-                self.loaderView.isHidden = true
+                self.refreshControl.endRefreshing()
                 let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                 alertController.addAction(ok)
                 self.present(alertController, animated: true, completion: nil)
-                print("error")
             }
         }
     }

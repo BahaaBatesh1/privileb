@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q6g-Fn-pqp">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -713,6 +713,7 @@
                     <connections>
                         <outlet property="loaderView" destination="UDM-eA-AfU" id="eZg-00-JzF"/>
                         <outlet property="loginBtn" destination="w2F-gA-X3K" id="V3h-LI-2aP"/>
+                        <outlet property="loginLabel" destination="rI7-q0-VeD" id="3DC-BC-pLF"/>
                         <outlet property="notLoginView" destination="hz4-Im-CoI" id="LsL-01-fgM"/>
                         <outlet property="searchBar" destination="GVr-i3-m3r" id="wiy-2s-sdc"/>
                         <outlet property="searchDisplayController" destination="pdL-ti-7CT" id="9RW-K3-OgC"/>
@@ -2078,7 +2079,7 @@ Floor</string>
                                                                 <rect key="frame" x="0.0" y="28" width="346" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OQC-ew-9YK" id="r4f-nS-qnA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
@@ -3076,7 +3077,7 @@ offers, latest brands … and more!</string>
                                                         <rect key="frame" x="0.0" y="28" width="390" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VNh-mr-Dze" id="WtF-SE-leg">
-                                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -4057,7 +4058,7 @@ offers, latest brands … and more!</string>
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GJw-Ge-fCi" id="nE6-I7-lSe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqc-cQ-rGD">
@@ -4602,7 +4603,7 @@ offers, latest brands … and more!</string>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailsCollectionCell" id="XIw-ii-Mi7" customClass="ImagesDetailsCollectionViewCell" customModule="Privileb" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="2.6666666666666665" width="413" height="395"/>
+                                                        <rect key="frame" x="0.0" y="3" width="413" height="395"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="413" height="395"/>
@@ -5847,8 +5848,8 @@ Hadath-Baabda Main Road</string>
         <image name="vertical_view" width="5" height="97"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="UYh-Ff-O9V"/>
         <segue reference="0Tk-Jh-gwp"/>
         <segue reference="Vwg-uf-nsA"/>
-        <segue reference="O0E-ZI-5d9"/>
     </inferredMetricsTieBreakers>
 </document>

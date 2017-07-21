@@ -16,8 +16,16 @@ class AllDealsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     var isLoading = false
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(AllDealsViewController.handleRefresh), for: UIControlEvents.valueChanged)
+        return refreshControl
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.addSubview(self.refreshControl)
+
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
@@ -113,6 +121,40 @@ class AllDealsViewController: UIViewController ,UITableViewDelegate,UITableViewD
                 self.tableView.isHidden = false
                 self.loader.stopAnimating()
                 self.loaderView.isHidden = true
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    func handleRefresh() {
+        services.get_all_offers(country_code: "lb", date: NSDate().getToDay(),onComplete: {
+            (offers , status,postRes) -> Void in
+            if status == "ok"{
+                if postRes?.status == 1 {
+                    self.isLoading = false
+                    self.offers = offers!
+                    AppDelegate.sharedDelegate().filterOffers = offers!
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fillOffers"), object: nil)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
+                    }
+                }else{
+                    self.refreshControl.endRefreshing()
+                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+                        self.callService()
+                    })
+                    alertController.addAction(cancel)
+                    alertController.addAction(tryAgain)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }else{
+                self.refreshControl.endRefreshing()
                 let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                 alertController.addAction(ok)

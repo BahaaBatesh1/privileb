@@ -83,12 +83,19 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
         secondRadio.backgroundColor = UIColor.gray
         firstRadio.backgroundColor = UIColor.white
     }
+    func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
 
     @IBAction func onActivate(_ sender: Any) {
         shouldScroll = false
         let service = services_calls()
         
-        if self.self.firstName.text != "" && self.address.text != "" && self.email.text != "" && self.lastName.text != "" && self.comments.text != "" && self.mobileNumber.text != ""{
+        if self.self.firstName.text != "" && self.address.text != "" && self.email.text != "" && self.lastName.text != "" && self.comments.text != "" && self.mobileNumber.text != "" && isValidEmail(testStr: self.email.text!){
             loader.startAnimating()
             self.loaderView.isHidden = false
             service.buy_card(fname: self.firstName.text!, lname: self.lastName.text!, email: self.email.text!, mobile_number: self.mobileNumber.text!, address: self.address.text!,comments : self.comments.text!, payment_method_id: "1", order_status_id: "1", datetime: NSDate().getToDay()) { (res, status) in

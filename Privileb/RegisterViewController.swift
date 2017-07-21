@@ -320,7 +320,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     }
     
     func validation () -> Bool {
-        if(self.firstNameTextFiled.text == "" || self.addressTextField.text == ""  || self.birhDateTextField.text == "" || self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == "" || self.first_four.text == "" || self.second_four.text == "" || self.third_four.text == "" || self.fourth_four.text == ""){
+        if(self.firstNameTextFiled.text == "" || self.addressTextField.text == ""  || self.birhDateTextField.text == "" || self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == "" || self.first_four.text == "" || self.second_four.text == "" || self.third_four.text == "" || self.fourth_four.text == "" || !isValidEmail(testStr: self.emailTextField.text!)){
                 return false
         }
         else {
@@ -329,7 +329,13 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         }
     
     }
-    
+    func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == self.first_four {
