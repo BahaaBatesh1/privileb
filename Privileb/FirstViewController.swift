@@ -82,6 +82,8 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
             if status == "ok"{
                 if postRes?.status == 1{
                     self.offers = offers!
+                    AppDelegate.sharedDelegate().filterOffers = offers!
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fillOffers"), object: nil)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         self.loader.stopAnimating()

@@ -9,11 +9,17 @@
 import UIKit
 
 class PrivilebViewController: BaseViewController {
-
+    let Notification1 = Notification.Name(rawValue:"fillOffers")
+    var filterBtn :UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let filterBtn = UIBarButtonItem(image: UIImage(named :"filter_mark2"), style: .plain, target: self, action: #selector(PrivilebViewController.onFilter(_:)))
+        filterBtn = UIBarButtonItem(image: UIImage(named :"filter_mark2"), style: .plain, target: self, action: #selector(PrivilebViewController.onFilter(_:)))
         self.navigationItem.rightBarButtonItem = filterBtn
+        filterBtn.isEnabled = false
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:Notification1, object:nil, queue:nil, using:onFinishLoad)
+
         // Do any additional setup after loading the view.
     }
 
@@ -23,7 +29,7 @@ class PrivilebViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
-
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "fillOffers"), object: nil);
     }
     @IBAction func onFilter(_ sender: AnyObject) {
         performSegue(withIdentifier: "filter", sender: self)
@@ -33,7 +39,12 @@ class PrivilebViewController: BaseViewController {
         return .lightContent
     }
 
-
+    func onFinishLoad(notification:Notification)  {
+        DispatchQueue.main.async {
+            self.filterBtn.isEnabled = true
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

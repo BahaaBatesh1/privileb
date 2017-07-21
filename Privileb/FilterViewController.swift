@@ -27,7 +27,8 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
-
+        searchResult = AppDelegate.sharedDelegate().filterOffers
+        resultLabel.text = "\(self.searchResult.count) Offer"
         // Do any additional setup after loading the view.
     }
     override func viewDidDisappear(_ animated: Bool) {

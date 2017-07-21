@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var unSelectedCat : [categoryy] = []
     var unSelectedDis : [district] = []
     
+    var filterOffers : [offer] = []
+
     var current_user : user?
 
     let userDefaults = UserDefaults.standard
