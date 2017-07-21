@@ -168,7 +168,13 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
         }
         return UITableViewCell()
     }
-    /*
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let cell = (self.tableViwe.cellForRow(at: indexPath)) as! SearchLocationTableViewCell
+        self.onCellBtn(cell.cellBtn)
+    }
+    
+       /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
