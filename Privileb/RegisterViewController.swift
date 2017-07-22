@@ -163,6 +163,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     }
     func donePicker(){
         if selected_country == nil {
+            self.addressTextField.becomeFirstResponder()
             self.pickerView(self.pickerView, didSelectRow: 0, inComponent: 0)
         }
         
