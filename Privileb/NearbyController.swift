@@ -23,7 +23,7 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var viewListBtn: UIButton!
     var locationManager = CLLocationManager()
     var currentLocation = CLLocation()
-
+    var gestture : UITapGestureRecognizer!
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
@@ -65,7 +65,7 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
         
         //add gesture to view over viewtype buttons
         
-        let gestture = UITapGestureRecognizer(target: self, action: #selector(NearbyController.onGesture))
+         gestture = UITapGestureRecognizer(target: self, action: #selector(NearbyController.onGesture))
         self.view_type.addGestureRecognizer(gestture)
     }
 
@@ -83,21 +83,62 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
         } else {
             annotationView!.annotation = annotation
         }
-
+        annotationView?.isEnabled = true
+        annotationView?.isUserInteractionEnabled = true
+        
         return annotationView
     }
     
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-       let sender = (view as! OfferAnnotationView)
-        print((sender.annotation as! OfferAnnotation).offer.offer_name)
-        self.sselectedOffer = (sender.annotation as! OfferAnnotation).offer
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        // 1
+        if view.annotation is MKUserLocation
+        {
+            // Don't proceed with custom callout
+            return
+        }
+        // 2
+        let starbucksAnnotation = view.annotation as! OfferAnnotation
+        
+        self.sselectedOffer = starbucksAnnotation.offer
+        let views = Bundle.main.loadNibNamed("OfferMapView", owner: nil, options: nil)
+        let calloutView = views?[0] as! OfferMapView
+        calloutView.isUserInteractionEnabled = true
+        calloutView.cofigureView(offer: starbucksAnnotation.offer)
+        let button = UIButton(frame: calloutView.frame)
+        button.addTarget(self, action: #selector(NearbyController.go_to_details(sender:)), for: .touchUpInside)
+        calloutView.addSubview(button)
+        calloutView.bringSubview(toFront: button)
+        // 3
+        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
+        view.addSubview(calloutView)
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+      //  calloutView.addGestureRecognizer(gestture!)
+        //button.sendActions(for: .touchUpInside)
+      
+
+        
+    }
+    
+    func go_to_details(sender : UIButton){
         performSegue(withIdentifier: "toDetailsFromNear", sender: self)
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
+    
+
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view.isKind(of: OfferAnnotationView.self)
+        {
+            for subview in view.subviews
+            {
+                subview.removeFromSuperview()
+            }
+        }
     }
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

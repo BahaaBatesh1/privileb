@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class OfferMapView: UIView {
 
@@ -15,12 +16,13 @@ class OfferMapView: UIView {
     @IBOutlet weak var offerNameLabel: UILabel!
     @IBOutlet weak var retailerNameLabel: UILabel!
 
-    override func draw(_ rect: CGRect) {
+    override func awakeFromNib() {
         self.containerView.layer.cornerRadius = 5
-        
-    }
- 
+        self.isUserInteractionEnabled = true
 
+    }
+    
+   
     func cofigureView(offer:offer)  {
         self.load_image(urlString: offer.featured_cropped)
         self.offerNameLabel.text = offer.offer_name

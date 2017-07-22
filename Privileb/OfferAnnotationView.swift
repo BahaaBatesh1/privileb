@@ -77,7 +77,7 @@ class OfferAnnotationView: MKAnnotationView {
                     UIView.animate(withDuration: 0.2, animations: {
                         self.customCalloutView!.alpha = 0.0
                     }, completion: { (success) in
-                        self.customCalloutView!.removeFromSuperview()
+                      //  self.customCalloutView!.removeFromSuperview()
                     })
                 } else { self.customCalloutView!.removeFromSuperview() } // just remove it.
             }
@@ -100,5 +100,34 @@ class OfferAnnotationView: MKAnnotationView {
     override func prepareForReuse() { // 5
         super.prepareForReuse()
         self.customCalloutView?.removeFromSuperview()
+    }
+    
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let hitView = super.hitTest(point, with: event)
+        if (hitView != nil)
+        {
+            self.superview?.bringSubview(toFront: self)
+        }
+        return hitView
+    }
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let rect = self.bounds
+        var isInside = rect.contains(point)
+        
+        if (!isInside) {
+            for subview in subviews {
+                isInside = subview.frame.contains(point)
+                
+                if (isInside) {
+                    break
+                }
+            }
+        }
+        
+        print(isInside)
+        
+        return isInside;
+        
     }
 }
