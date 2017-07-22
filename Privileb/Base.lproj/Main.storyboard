@@ -3290,14 +3290,14 @@ offers, latest brands … and more!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shT-ms-F1y">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="88.666666666666671"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXy-rY-aKr">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXy-rY-aKr">
                                                         <rect key="frame" x="20" y="25" width="374" height="49"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="49" id="WaE-f3-yGa"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="ko4-Mh-fhO" id="jxH-TS-Kzf"/>
                                                         </connections>
@@ -3324,14 +3324,14 @@ offers, latest brands … and more!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfi-Mo-Al7">
                                                 <rect key="frame" x="0.0" y="88.666666666666657" width="414" height="88.999999999999972"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3BX-Kl-JGh">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3BX-Kl-JGh">
                                                         <rect key="frame" x="20" y="23" width="374" height="48.999999999999986"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="49" id="F97-1T-6yA"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="ko4-Mh-fhO" id="5UZ-bK-Ujm"/>
                                                         </connections>
@@ -3358,14 +3358,14 @@ offers, latest brands … and more!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qye-1a-9hh">
                                                 <rect key="frame" x="0.0" y="177.66666666666669" width="414" height="88.666666666666686"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cau-Bl-fmj">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cau-Bl-fmj">
                                                         <rect key="frame" x="20" y="23" width="374" height="49.000000000000028"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="49" id="Z4f-tm-nhw"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="ko4-Mh-fhO" id="civ-A4-Bza"/>
                                                         </connections>
@@ -3392,14 +3392,14 @@ offers, latest brands … and more!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dI7-B8-wyz">
                                                 <rect key="frame" x="0.0" y="266.33333333333326" width="414" height="88.666666666666686"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOF-lh-OiA">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOF-lh-OiA">
                                                         <rect key="frame" x="20" y="23" width="374" height="49"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="49" id="Bxq-On-FPD"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="numberPad"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="ko4-Mh-fhO" id="Csw-ge-aXk"/>
                                                         </connections>
@@ -3426,14 +3426,14 @@ offers, latest brands … and more!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vx2-oS-aic">
                                                 <rect key="frame" x="0.0" y="355" width="414" height="88.666666666666686"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XCA-1s-KLi">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XCA-1s-KLi">
                                                         <rect key="frame" x="20" y="23" width="374" height="49"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="49" id="JQC-Xa-mLD"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="ko4-Mh-fhO" id="reQ-mH-Sie"/>
                                                         </connections>
@@ -3473,7 +3473,7 @@ offers, latest brands … and more!</string>
                                                         <rect key="frame" x="20" y="23" width="374" height="65.999999999999943"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="ko4-Mh-fhO" id="Ri2-El-wIp"/>
                                                         </connections>
