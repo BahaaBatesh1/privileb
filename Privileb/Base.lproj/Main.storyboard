@@ -185,7 +185,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7U-zw-iDd">
                                 <rect key="frame" x="0.0" y="676" width="414" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hot lines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPP-ZI-ReM">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPP-ZI-ReM">
                                         <rect key="frame" x="41" y="8" width="80" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="ijE-Xc-aOH"/>
@@ -1151,7 +1151,7 @@ Floor</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="tDq-qh-Y08"/>
                                         </constraints>
-                                        <state key="normal" title="Message">
+                                        <state key="normal" title="Drop us a Message">
                                             <color key="titleColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -1160,7 +1160,7 @@ Floor</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwN-0a-UyS">
                                         <rect key="frame" x="20" y="424" width="374" height="60.000000000000057"/>
-                                        <state key="normal" title="Hot line">
+                                        <state key="normal" title="Hotline">
                                             <color key="titleColor" red="0.83137254900000002" green="0.67450980390000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -2698,7 +2698,7 @@ offers, latest brands … and more!</string>
                                                     <constraint firstAttribute="width" constant="160" id="Mf3-NU-lqF"/>
                                                     <constraint firstAttribute="height" constant="30" id="Ns7-2O-dc8"/>
                                                 </constraints>
-                                                <state key="normal" title="Register for free">
+                                                <state key="normal" title="Register">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -3077,7 +3077,7 @@ offers, latest brands … and more!</string>
                                                         <rect key="frame" x="0.0" y="28" width="390" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VNh-mr-Dze" id="WtF-SE-leg">
-                                                            <rect key="frame" x="0.0" y="0.0" width="390.33333333333331" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
