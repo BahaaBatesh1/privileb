@@ -170,8 +170,13 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let cell = (self.tableViwe.cellForRow(at: indexPath)) as! SearchLocationTableViewCell
-        self.onCellBtn(cell.cellBtn)
+        if tableView == self.tableViwe{
+            let cell = (self.tableViwe.cellForRow(at: indexPath)) as! SearchLocationTableViewCell
+            self.onCellBtn(cell.cellBtn)
+        }else if tableView == self.searchDisplayController?.searchResultsTableView {
+            let cell = (self.searchDisplayController?.searchResultsTableView.cellForRow(at: indexPath)) as! SearchLocationTableViewCell
+            self.onCellBtn(cell.cellBtn)
+        }
     }
     
        /*

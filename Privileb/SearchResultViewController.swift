@@ -92,7 +92,7 @@ class SearchResultViewController: UIViewController , UITableViewDelegate,UITable
                 }else{
                     self.loaderView.isHidden = true
                     self.loader.stopAnimating()
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "There is no offers!", message: postRes?.message, preferredStyle: .alert)
                     let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
                     let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
                         self.callService()
