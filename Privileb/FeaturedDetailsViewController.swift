@@ -309,12 +309,24 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     
     @IBAction func onCall(_ sender: Any) {
         if selectedBranch != nil {
-            if let url = NSURL(string: "tel://" + (self.selectedBranch?.branchPhone!)!) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url as URL, options: ["":""], completionHandler: nil)
-                } else {
-                    _ = UIApplication.shared.openURL(url as URL)
+            if self.selectedBranch?.branchPhone != ""{
+                if let url = NSURL(string: "tel://" + (self.selectedBranch?.branchPhone!)!) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url as URL, options: ["":""], completionHandler: nil)
+                    } else {
+                        _ = UIApplication.shared.openURL(url as URL)
+                        }
+                    }
+            }
+            else if self.selectedBranch?.branchMobile != "" {
+                if let url = NSURL(string: "tel://" + (self.selectedBranch?.branchMobile!)!) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url as URL, options: ["":""], completionHandler: nil)
+                    } else {
+                        _ = UIApplication.shared.openURL(url as URL)
+                    }
                 }
+            
             }
         }
     }
