@@ -227,7 +227,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
         performSegue(withIdentifier: "toBuyCard", sender: self)
     }
     @IBAction func onHotLine(_ sender: Any) {
-        let alertController = UIAlertController(title: "Call hot line", message: "81717272", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Call hotline", message: "81717272", preferredStyle: .alert)
         let call = UIAlertAction(title: "Call", style: .default) { (alert) in
             if let url = NSURL(string: "tel://81717272") {
                 if #available(iOS 10.0, *) {
