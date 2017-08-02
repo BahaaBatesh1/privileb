@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController ,UITextFieldDelegate{
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-        if self.emailTextField.text != "" && self.phoneTextField.text != "" && self.nameTextField.text != "" {
+        if validate(){
             self.loader.startAnimating()
             self.loaderView.isHidden = false
             self.signupBtn.isEnabled = false
@@ -77,7 +77,29 @@ class SignUpViewController: UIViewController ,UITextFieldDelegate{
                     self.present(alertController, animated: true, completion: nil)
                 }
             })
+        }else{
+            let alertController = UIAlertController(title: "Check information!", message: "Please check your Phone number and Email!", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    
+    func validate() -> Bool {
+        if  self.emailTextField.text != "" && self.phoneTextField.text != "" && self.nameTextField.text != "" && self.isValidEmail(testStr: self.emailTextField.text!){
+           return true
+        }else {
+            return false
+        }
+    }
+
+    func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
     
     func configureStyles()  {
