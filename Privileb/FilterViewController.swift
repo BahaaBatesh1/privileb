@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class FilterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UISearchBarDelegate, UISearchDisplayDelegate{
     var fromCat = false
@@ -67,12 +69,13 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
             cell.dateLabel.text = "\(self.searchBarResult![indexPath.row].issue_date!) to \(self.searchBarResult![indexPath.row].expiry_date!)"
             cell.supervisedByLabel.text = self.searchBarResult?[indexPath.row].retailer_name
             cell.offerLabel.text = self.searchBarResult?[indexPath.row].offer_name
-            
-            if self.searchBarResult?[indexPath.row].featured_croppedImage != nil {
-                cell.logoImage.image = self.searchBarResult?[indexPath.row].featured_croppedImage
-            }else{
-                cell.load_image(urlString: (self.searchBarResult?[indexPath.row].featured_cropped)!)
-            }
+            let url = URL(string: (self.searchBarResult?[indexPath.row].featured_cropped)!)
+            cell.logoImage!.kf.setImage(with: url, placeholder: UIImage(named: "enptyCell"), options: nil, progressBlock: nil, completionHandler: nil)
+//            if self.searchBarResult?[indexPath.row].featured_croppedImage != nil {
+//                cell.logoImage.image = self.searchBarResult?[indexPath.row].featured_croppedImage
+//            }else{
+//                cell.load_image(urlString: (self.searchBarResult?[indexPath.row].featured_cropped)!)
+//            }
             cell.sliderLabel.text = self.searchBarResult?[indexPath.row].frequency
             cell.categoryLabel.text = "   " + (self.searchBarResult?[indexPath.row].category)! + "   "
             return cell

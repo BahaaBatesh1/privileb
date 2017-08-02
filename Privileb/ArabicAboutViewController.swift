@@ -43,8 +43,13 @@ class ArabicAboutViewController: UIViewController {
             self.pageLabel.text = attrStr.string
           //  self.load_image(urlString: (about?.image)!)
         }
+        self.pageLabel.setContentOffset(CGPoint.zero, animated: false)
+        self.pageLabel.scrollRangeToVisible(NSMakeRange(0, 0))
+
     }
-    
+    override func viewDidLayoutSubviews() {
+        self.pageLabel.setContentOffset(CGPoint.zero, animated: false)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

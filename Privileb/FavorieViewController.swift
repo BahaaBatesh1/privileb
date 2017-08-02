@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Kingfisher
 
-class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, UISearchDisplayDelegate{
+
+class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, UISearchDisplayDelegate {
     var loader: MaterialLoadingIndicator!
 
     @IBOutlet weak var loginLabel: UILabel!
@@ -24,6 +26,10 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     @IBOutlet weak var tableView: UITableView!
     var selectedOffer:favourite?
     var uid :Int?
+ 
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(FavorieViewController.handleRefresh), for: UIControlEvents.valueChanged)
@@ -33,8 +39,20 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let rect = CGRect(origin: CGPoint(x: 0, y:0), size: CGSize(width: 1, height: 1))
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0).cgColor)
+        context.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.searchBar.backgroundImage = image
+        self.searchBar.isTranslucent = false
+        self.searchBar.barTintColor = UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+        searchBar.layer.borderColor  = UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0).cgColor
         self.tableView.addSubview(self.refreshControl)
-
+        definesPresentationContext = true
+        edgesForExtendedLayout = UIRectEdge()
         loginBtn.layer.cornerRadius = 3
         
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -169,7 +187,9 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
     func callService()  {
         isLoading = true
         self.tableView.isHidden = true

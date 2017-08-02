@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class SearchResultViewController: UIViewController , UITableViewDelegate,UITableViewDataSource{
     var result :[offer] = []
@@ -47,11 +49,10 @@ class SearchResultViewController: UIViewController , UITableViewDelegate,UITable
         cell.supervisedByLabel.text = self.result[indexPath.row].retailer_name
         cell.offerLabel.text = self.result[indexPath.row].offer_name
         
-        if self.result[indexPath.row].featured_croppedImage != nil {
-            cell.logoImage.image = self.result[indexPath.row].featured_croppedImage
-        }else{
-            cell.load_image(urlString: self.result[indexPath.row].featured_cropped)
-        }
+        
+        let url = URL(string: self.result[indexPath.row].featured_cropped)
+        cell.logoImage!.kf.setImage(with: url, placeholder: UIImage(named: "enptyCell"), options: nil, progressBlock: nil, completionHandler: nil)
+        
         cell.sliderLabel.text = self.result[indexPath.row].frequency
         cell.categoryLabel.text = "   " + self.result[indexPath.row].category + "   "
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Kingfisher
 
 class OfferMapView: UIView {
 
@@ -30,21 +31,24 @@ class OfferMapView: UIView {
     }
     func load_image(urlString:String)
     {
-        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
-        let session = URLSession.shared
-        request.httpMethod = "GET"
-        let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-            if error == nil && data != nil {
-                DispatchQueue.main.async(execute: {
-                    if let im = UIImage(data: data!) {
-                        self.offerImageView.image = im
-                    }
-                })
-            }else{
-                self.offerImageView.image = UIImage(named: "")
-            }
-        })
-        task.resume()
+        let url = URL(string: urlString)
+        self.offerImageView!.kf.setImage(with: url, placeholder: UIImage(named: "enptyCell"), options: nil, progressBlock: nil, completionHandler: nil)
+        
+//        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
+//        let session = URLSession.shared
+//        request.httpMethod = "GET"
+//        let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+//            if error == nil && data != nil {
+//                DispatchQueue.main.async(execute: {
+//                    if let im = UIImage(data: data!) {
+//                        self.offerImageView.image = im
+//                    }
+//                })
+//            }else{
+//                self.offerImageView.image = UIImage(named: "")
+//            }
+//        })
+//        task.resume()
     }
 
     

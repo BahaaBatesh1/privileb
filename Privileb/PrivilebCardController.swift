@@ -62,8 +62,10 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
                 self.myCardView.isHidden = false
                 self.buCardView.isHidden = true
                 isHaveCard = true
-                var user_id1 = (userDefaults.value(forKey: "userId") as! Int).description
-                self.secondImage.image = generateQRCodeFromString(user_id: user_id1 )
+                var serial = userDefaults.value(forKey: "serial_number") as! String
+
+                let four_digits : String = (serial.substring(from:(serial.index((serial.endIndex), offsetBy: -4))));
+                self.secondImage.image = generateQRCodeFromString(user_id: four_digits)
             }else{
                 self.myCardView.isHidden = true
                 self.buCardView.isHidden = false
@@ -80,12 +82,12 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.standard
-        let location = CLLocationCoordinate2D(latitude:33.8863655,longitude:35.4928941)
+        let location = CLLocationCoordinate2D(latitude:33.883201,longitude:35.560304)
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegion(center: location, span: span)
         self.mapView.setRegion(region, animated: true)
         let annotation =  MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude:33.8863655 ,longitude:35.4928941)
+        annotation.coordinate = CLLocationCoordinate2D(latitude:33.883201 ,longitude:35.560304)
         self.mapView.addAnnotation(annotation)
 
         
@@ -251,7 +253,7 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
     @IBAction func onGetDirection(_ sender: Any) {
         let alert = UIAlertController(title: "Selection", message: "Select Navigation App", preferredStyle: .actionSheet)
         let gMapsBtn = UIAlertAction(title: "Google maps", style: .default) { (action) in
-            UIApplication.shared.openURL(NSURL(string:"comgooglemaps://?saddr=&daddr=33.8863655,35.4928941&directionsmode=driving")! as URL) // Also from sumesh's answer
+            UIApplication.shared.openURL(NSURL(string:"comgooglemaps://?saddr=&daddr=33.883201,35.560304&directionsmode=driving")! as URL) // Also from sumesh's answer
         }
         let appleMaps = UIAlertAction(title: "Maps", style: .default) { (action) in
             self.openMapForPlace()
@@ -264,8 +266,8 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
     }
     func openMapForPlace() {
         
-        let lat1 : NSString = "33.8863655" as NSString
-        let lng1 : NSString = "35.4928941" as NSString
+        let lat1 : NSString = "33.883201" as NSString
+        let lng1 : NSString = "35.560304" as NSString
         
         let latitude:CLLocationDegrees =  lat1.doubleValue
         let longitude:CLLocationDegrees =  lng1.doubleValue

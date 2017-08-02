@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate{
     @IBOutlet weak var chooseDealTextField: UITextField!
@@ -122,6 +124,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
                     self.userDefaults.setValue("", forKey: "userMail")
                     self.userDefaults.setValue("", forKey: "userType")
                     self.userDefaults.setValue("", forKey: "retailerId")
+                    self.userDefaults.setValue("", forKey: "serial_number")
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "signUp")
                     if #available(iOS 10.0, *) {

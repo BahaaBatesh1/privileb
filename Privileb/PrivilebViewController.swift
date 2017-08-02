@@ -45,6 +45,8 @@ class PrivilebViewController: BaseViewController {
         }
     }
     
+    
+    
     /*
     // MARK: - Navigation
 

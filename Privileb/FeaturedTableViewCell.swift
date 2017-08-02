@@ -61,6 +61,7 @@ class FeaturedTableViewCell: UITableViewCell {
         request.httpMethod = "GET"
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
             if error == nil && data != nil {
+                self.logoImage.image = UIImage(named: "enptyCell")
                 DispatchQueue.main.async(execute: {
                     if let im = UIImage(data: data!) {
                         self.logoImage.image = im
@@ -68,7 +69,7 @@ class FeaturedTableViewCell: UITableViewCell {
                     }
                 })
             }else{
-                self.logoImage.image = UIImage(named: "background")
+                self.logoImage.image = UIImage(named: "enptyCell")
             }
         })
         task.resume()

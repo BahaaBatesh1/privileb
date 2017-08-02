@@ -1,6 +1,8 @@
 import UIKit
 import MapKit
 import Social
+import Kingfisher
+
 class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,MKMapViewDelegate{
     
     @IBOutlet weak var bottom_consttraint: NSLayoutConstraint!
@@ -42,7 +44,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         self.cateoryLabel.sizeToFit()
-        scrollView.contentSize=CGSize(width: 320,height: 2300);
+        scrollView.contentSize=CGSize(width: 320,height: 3000);
         
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
@@ -83,7 +85,6 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         let buttonTitleStr = NSMutableAttributedString(string:"Get direction", attributes:attrs)
         attributedString.append(buttonTitleStr)
         getDirectionBtn.setAttributedTitle(attributedString, for: .normal)
-        
         // Do any additional setup after loading the view.
     }
     
@@ -105,14 +106,13 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     
     @IBAction func onShare(_ sender: Any) {
         let alert = UIAlertController(title: "Selection", message: "Select Share App", preferredStyle: .actionSheet)
-        let gMapsBtn = UIAlertAction(title: "FaceBook", style: .default) { (action) in
+        let gMapsBtn = UIAlertAction(title: "Facebook", style: .default) { (action) in
           //facebook social
             if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 socialController?.setInitialText(self.detailedOffer!.offer_name!)
                 socialController?.add(self.supervisedImage.image)
-                //            socialController.addURL(someNSURLInstance)
-                
+                socialController?.add(NSURL(string: "http://www.privileb.com/offer/" + self.detailedOffer.offer_id.description) as URL!)
                 self.present(socialController!, animated: true, completion: nil)
             }
         }
@@ -122,9 +122,8 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
             if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)) {
                 let socialController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 socialController?.setInitialText(self.detailedOffer!.offer_name!)
-                socialController?.add(self.supervisedImage.image)
-                //            socialController.addURL(someNSURLInstance)
-                
+                socialController?.add(self.detailedOffer.gallery_croppedObject[0].image)
+                socialController?.add(NSURL(string: "http://privileb.com/offer/" + self.detailedOffer.offer_id.description) as URL!)
                 self.present(socialController!, animated: true, completion: nil)
             }
         }
@@ -275,15 +274,20 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailsCollectionCell", for: indexPath) as! ImagesDetailsCollectionViewCell
-            if self.offerImagesObject[indexPath.row].image != nil {
-                DispatchQueue.main.async {
-                    cell.cellImage.image = self.offerImagesObject[indexPath.row].image
-                }
-            }else{
-                DispatchQueue.main.async {
-                    cell.load_image(urlString: self.offerImagesObject[indexPath.row].link)
-                }
-            }
+            
+            let url = URL(string: self.offerImagesObject[indexPath.row].link)
+            cell.cellImage!.kf.setImage(with: url, placeholder: UIImage(named: "enptyCell"), options: nil, progressBlock: nil, completionHandler: nil)
+//
+//            if self.offerImagesObject[indexPath.row].image != nil {
+//                DispatchQueue.main.async {
+//                    
+//                    cell.cellImage.image = self.offerImagesObject[indexPath.row].image
+//                }
+//            }else{
+//                DispatchQueue.main.async {
+//                    cell.load_image(urlString: self.offerImagesObject[indexPath.row].link)
+//                }
+//            }
             return cell
         }
     }
@@ -388,7 +392,10 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                         self.offerImages = self.detailedOffer.gallery_cropped!
                         self.offerImagesObject = self.detailedOffer.gallery_croppedObject
                         self.offerLabel.text = self.detailedOffer.offer_name
-                        self.load_image(urlString: (self.detailedOffer.retailer_logo)!, imageView: self.supervisedImage)
+                        let url = URL(string: (self.detailedOffer.retailer_logo)!)
+
+                        self.supervisedImage!.kf.setImage(with: url, placeholder: UIImage(named: "enptyCell"), options: nil, progressBlock: nil, completionHandler: nil)
+                       // self.load_image(urlString: (self.detailedOffer.retailer_logo)!, imageView: self.supervisedImage)
                         self.validatyValueLabel.text = self.detailedOffer.validity
                         self.loader.stopAnimating()
                         self.loaderView.isHidden = true
@@ -465,4 +472,52 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     @IBAction func onCancelSeeMor(_ sender: Any) {
         self.alldetailsView.isHidden = true
     }
+    
+    func scrollToNearestVisibleCollectionViewCell() {
+        let visibleCenterPositionOfScrollView = Float(self.imagesCollectionView.contentOffset.x + (self.imagesCollectionView!.bounds.size.width / 2))
+        var closestCellIndex = -1
+        var closestDistance: Float = .greatestFiniteMagnitude
+        for i in 0..<self.imagesCollectionView.visibleCells.count {
+            let cell = self.imagesCollectionView.visibleCells[i]
+            let cellWidth = cell.bounds.size.width
+            let cellCenter = Float(cell.frame.origin.x + cellWidth / 2)
+            
+            // Now calculate closest cell
+            let distance: Float = fabsf(visibleCenterPositionOfScrollView - cellCenter)
+            if distance < closestDistance {
+                closestDistance = distance
+                closestCellIndex = self.imagesCollectionView.indexPath(for: cell)!.row
+            }
+        }
+        if closestCellIndex != -1 {
+            self.imagesCollectionView!.scrollToItem(at: IndexPath(row: closestCellIndex, section: 0), at: .centeredHorizontally, animated: false)
+        }
+    }
+    
+    
+ ///////////////
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        scrollToNearestVisibleCollectionViewCell()
+//    }
+////
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if !decelerate {
+//            scrollToNearestVisibleCollectionViewCell()
+//        }
+//    }
+    /////////////////
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        scrollToNearestVisibleCollectionViewCell()
+//
+//    }
+    
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        scrollToNearestVisibleCollectionViewCell()
+//    }
+//    
+//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+//        scrollToNearestVisibleCollectionViewCell()
+//    }
+    
 }

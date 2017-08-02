@@ -231,6 +231,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if status == "ok" {
                             if res?.status == 1 {
                                 self.card = card
+                                self.userDefaults.set(card?.serial_number, forKey: "serial_number")
                             }
                         }
                     })

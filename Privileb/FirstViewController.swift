@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
@@ -63,11 +64,9 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
         cell.supervisedByLabel.text = self.offers[indexPath.row].retailer_name
         cell.offerLabel.text = self.offers[indexPath.row].offer_name
         
-        if self.offers[indexPath.row].featured_croppedImage != nil {
-            cell.logoImage.image = self.offers[indexPath.row].featured_croppedImage
-        }else{
-            cell.load_image(urlString: self.offers[indexPath.row].featured_cropped)
-        }
+        let url = URL(string: self.offers[indexPath.row].featured_cropped)
+        cell.logoImage!.kf.setImage(with: url, placeholder: UIImage(named: "enptyCell"), options: nil, progressBlock: nil, completionHandler: nil)
+        
         cell.sliderLabel.text = self.offers[indexPath.row].frequency
         cell.categoryLabel.text = "   " + self.offers[indexPath.row].category + "   "
         return cell

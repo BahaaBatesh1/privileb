@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import Kingfisher
+
 class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,MKMapViewDelegate,CLLocationManagerDelegate{
     @IBOutlet weak var tableView: UITableView!
     
@@ -152,11 +154,10 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
         cell.dateLabel.text = "\(self.offers[indexPath.row].issue_date!) to \(self.offers[indexPath.row].expiry_date!)"
         cell.supervisedByLabel.text = self.offers[indexPath.row].retailer_name
         cell.offerLabel.text = self.offers[indexPath.row].offer_name
-        if self.offers[indexPath.row].featured_croppedImage != nil {
-            cell.logoImage.image = self.offers[indexPath.row].featured_croppedImage
-        }else{
-            cell.load_image(urlString: self.offers[indexPath.row].featured_cropped)
-        }
+        
+        let url = URL(string: self.offers[indexPath.row].featured_cropped)
+        cell.logoImage!.kf.setImage(with: url, placeholder: UIImage(named: "enptycell"), options: nil, progressBlock: nil, completionHandler: nil)
+        
         cell.sliderLabel.text = self.offers[indexPath.row].frequency
         cell.categoryLabel.text = "   " + self.offers[indexPath.row].category + "   "
 

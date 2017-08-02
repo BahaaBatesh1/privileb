@@ -59,7 +59,7 @@
                                             <constraint firstAttribute="width" constant="60" id="aCt-Y0-7i6"/>
                                             <constraint firstAttribute="height" constant="30" id="gF1-qu-fKh"/>
                                         </constraints>
-                                        <state key="normal" title="Log in">
+                                        <state key="normal" title="Login">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -134,7 +134,7 @@
                                 <rect key="frame" x="0.0" y="111" width="414" height="564"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="gmJ-k9-clx" customClass="MenuTableViewCell" customModule="Privileb" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuCell" id="gmJ-k9-clx" customClass="MenuTableViewCell" customModule="Privileb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gmJ-k9-clx" id="23M-7O-tg6">
@@ -280,7 +280,7 @@
                     <tabBarItem key="tabBarItem" title="Favorite" image="tab_favorite3" selectedImage="favorite_select" id="eox-EZ-DCK"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="gyP-2l-Aye">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="gyP-2l-Aye">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -483,26 +483,25 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVr-i3-m3r">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="cGc-kS-PBr"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="122" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Plh-sw-oPE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="510"/>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" translucent="NO" id="GVr-i3-m3r">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="barTintColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="9pv-A4-QxB" id="cGc-kS-PBr"/>
-                                    </connections>
-                                </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="favoritesimpleCell" rowHeight="130" id="vf8-PE-1z6" customClass="FavoriteSimpleCell" customModule="Privileb" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="130"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="favoritesimpleCell" rowHeight="130" id="vf8-PE-1z6" customClass="FavoriteSimpleCell" customModule="Privileb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vf8-PE-1z6" id="a4D-zP-2Vh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
@@ -629,7 +628,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UDM-eA-AfU">
-                                <rect key="frame" x="67" y="269.66666666666669" width="240" height="128"/>
+                                <rect key="frame" x="67" y="237.66666666666669" width="240" height="128.00000000000006"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="T3Q-BO-She"/>
@@ -637,7 +636,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-Im-CoI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favX2" translatesAutoresizingMaskIntoConstraints="NO" id="EfO-kt-nXr">
                                         <rect key="frame" x="20" y="20" width="335" height="200"/>
@@ -696,13 +695,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="GVr-i3-m3r" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="3Re-l1-bkk"/>
                             <constraint firstItem="UDM-eA-AfU" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="4zD-Ea-ybE"/>
-                            <constraint firstItem="Plh-sw-oPE" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="7EF-JU-u2M"/>
                             <constraint firstItem="hz4-Im-CoI" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="KUh-Y0-owt"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Plh-sw-oPE" secondAttribute="bottom" id="NQd-fD-GaP"/>
                             <constraint firstItem="UDM-eA-AfU" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Spn-gr-2ts"/>
+                            <constraint firstItem="Plh-sw-oPE" firstAttribute="top" secondItem="GVr-i3-m3r" secondAttribute="bottom" id="VyP-b2-apL"/>
+                            <constraint firstItem="GVr-i3-m3r" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="aDz-OT-4YS"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="hz4-Im-CoI" secondAttribute="bottom" id="kOG-eH-b61"/>
                             <constraint firstAttribute="trailing" secondItem="Plh-sw-oPE" secondAttribute="trailing" id="nqC-67-C0s"/>
+                            <constraint firstAttribute="trailing" secondItem="GVr-i3-m3r" secondAttribute="trailing" id="pi3-0I-dEI"/>
                             <constraint firstAttribute="trailing" secondItem="hz4-Im-CoI" secondAttribute="trailing" id="u84-YB-ENm"/>
                             <constraint firstItem="Plh-sw-oPE" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="ugj-Rd-5hB"/>
                             <constraint firstItem="hz4-Im-CoI" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="wUM-jS-bVi"/>
@@ -1453,7 +1455,7 @@ Floor</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
                                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nearByCell" id="owS-Zr-jry" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="nearByCell" id="owS-Zr-jry" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="owS-Zr-jry" id="7of-FD-cCY">
@@ -2075,11 +2077,11 @@ Floor</string>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="country_cell" id="OQC-ew-9YK">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="country_cell" id="OQC-ew-9YK">
                                                                 <rect key="frame" x="0.0" y="28" width="346" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OQC-ew-9YK" id="r4f-nS-qnA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
@@ -3077,7 +3079,7 @@ offers, latest brands … and more!</string>
                                                         <rect key="frame" x="0.0" y="28" width="390" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VNh-mr-Dze" id="WtF-SE-leg">
-                                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -3760,7 +3762,7 @@ offers, latest brands … and more!</string>
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsSearchCell" rowHeight="300" id="Ki6-c8-D3C" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="resultsSearchCell" rowHeight="300" id="Ki6-c8-D3C" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ki6-c8-D3C" id="Lym-rN-r3d">
@@ -3904,7 +3906,7 @@ offers, latest brands … and more!</string>
                                             <outlet property="topView" destination="O7A-V3-p0L" id="ixH-sM-zER"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Simplecell" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="44" id="yHs-k8-ask" customClass="SearchTableViewCell" customModule="Privileb" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Simplecell" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="44" id="yHs-k8-ask" customClass="SearchTableViewCell" customModule="Privileb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="372" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yHs-k8-ask" id="4Fg-uu-GVR">
@@ -4054,11 +4056,11 @@ offers, latest brands … and more!</string>
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchLocationCell" id="GJw-Ge-fCi" customClass="SearchLocationTableViewCell" customModule="Privileb" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchLocationCell" id="GJw-Ge-fCi" customClass="SearchLocationTableViewCell" customModule="Privileb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GJw-Ge-fCi" id="nE6-I7-lSe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqc-cQ-rGD">
@@ -4134,28 +4136,28 @@ offers, latest brands … and more!</string>
                         <viewControllerLayoutGuide type="bottom" id="mRb-fd-A50"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9bN-F8-Gds">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="300" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gei-Si-uwd">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsCell" id="AL5-pb-KdU" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="resultsCell" id="AL5-pb-KdU" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AL5-pb-KdU" id="yrM-MK-Fr8">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYI-Ig-SZl">
-                                                    <rect key="frame" x="10" y="10" width="394" height="280"/>
+                                                    <rect key="frame" x="10" y="10" width="355" height="280"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="kgv-ri-2Oh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="394" height="230"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="kgv-ri-2Oh">
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="230"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgC-B8-r6z">
-                                                            <rect key="frame" x="0.0" y="160" width="394" height="70"/>
+                                                            <rect key="frame" x="0.0" y="160" width="355" height="70"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beuaty ‡ Spa" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOJ-dQ-xJk">
                                                                     <rect key="frame" x="20" y="6" width="63" height="12"/>
@@ -4165,7 +4167,7 @@ offers, latest brands … and more!</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Juliano Asmar Beauty &amp; Spa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJg-zQ-JBP">
-                                                                    <rect key="frame" x="20" y="25" width="374" height="20"/>
+                                                                    <rect key="frame" x="20" y="25" width="335" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="LrY-rK-i3U"/>
                                                                     </constraints>
@@ -4174,7 +4176,7 @@ offers, latest brands … and more!</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Massage Packages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gs6-uP-NIX">
-                                                                    <rect key="frame" x="20" y="45" width="374" height="20"/>
+                                                                    <rect key="frame" x="20" y="45" width="335" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="2ce-Ln-RJb"/>
                                                                     </constraints>
@@ -4197,7 +4199,7 @@ offers, latest brands … and more!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGc-JW-Six">
-                                                            <rect key="frame" x="0.0" y="230" width="394" height="50"/>
+                                                            <rect key="frame" x="0.0" y="230" width="355" height="50"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date" translatesAutoresizingMaskIntoConstraints="NO" id="Qaf-L1-GI8">
                                                                     <rect key="frame" x="10" y="13" width="25" height="25"/>
@@ -4207,7 +4209,7 @@ offers, latest brands … and more!</string>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03/2017 to 09/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBW-q6-cvB">
-                                                                    <rect key="frame" x="42.999999999999986" y="14" width="181.66666666666663" height="21"/>
+                                                                    <rect key="frame" x="43" y="14" width="162.33333333333334" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="Gtx-OA-32E"/>
                                                                     </constraints>
@@ -4216,14 +4218,14 @@ offers, latest brands … and more!</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deals_unlimited3" translatesAutoresizingMaskIntoConstraints="NO" id="hbN-LT-huO">
-                                                                    <rect key="frame" x="274.66666666666669" y="13" width="25" height="25"/>
+                                                                    <rect key="frame" x="255.33333333333331" y="13" width="25" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="25" id="bBh-WK-jDv"/>
                                                                         <constraint firstAttribute="height" constant="25" id="qVH-fB-ku1"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wi-kq-Y7k">
-                                                                    <rect key="frame" x="300.66666666666669" y="15" width="54" height="21"/>
+                                                                    <rect key="frame" x="281.33333333333331" y="15" width="54" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="fA3-hR-yI7"/>
                                                                     </constraints>
@@ -4292,7 +4294,7 @@ offers, latest brands … and more!</string>
                                 </connections>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyn-I7-MFB">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -4341,7 +4343,7 @@ offers, latest brands … and more!</string>
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="featuredCell" id="PKa-8j-1Kw" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="featuredCell" id="PKa-8j-1Kw" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PKa-8j-1Kw" id="ORU-Km-Ek4">
@@ -4692,7 +4694,7 @@ offers, latest brands … and more!</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp5-ne-3Fg">
-                                        <rect key="frame" x="0.0" y="570" width="413" height="650"/>
+                                        <rect key="frame" x="0.0" y="570" width="413" height="736"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqF-Ds-OLe">
                                                 <rect key="frame" x="0.0" y="0.0" width="413" height="71.333333333333371"/>
@@ -4766,7 +4768,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offer_validity3" translatesAutoresizingMaskIntoConstraints="NO" id="edA-qC-Yvf">
-                                                                <rect key="frame" x="17.666666666666664" y="17.666666666666629" width="24.999999999999993" height="25"/>
+                                                                <rect key="frame" x="18" y="18" width="25" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="25" id="6cF-dD-9V0"/>
                                                                     <constraint firstAttribute="height" constant="25" id="oJW-FM-SEV"/>
@@ -4840,7 +4842,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date" translatesAutoresizingMaskIntoConstraints="NO" id="gS8-5C-79E">
-                                                                <rect key="frame" x="17.666666666666664" y="17.666666666666629" width="24.999999999999993" height="25"/>
+                                                                <rect key="frame" x="18" y="18" width="25" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="OMK-ys-Sro"/>
                                                                     <constraint firstAttribute="width" constant="25" id="Oru-0S-htv"/>
@@ -4882,7 +4884,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                 <rect key="frame" x="0.0" y="193.33333333333337" width="413" height="1"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SN8-uW-pic">
-                                                        <rect key="frame" x="10" y="0.66666666666662877" width="393" height="0.0"/>
+                                                        <rect key="frame" x="10" y="0.0" width="393" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
@@ -4902,7 +4904,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deals_unlimited3" translatesAutoresizingMaskIntoConstraints="NO" id="jrA-f2-R9R">
-                                                                <rect key="frame" x="17.666666666666664" y="17.666666666666629" width="24.999999999999993" height="25"/>
+                                                                <rect key="frame" x="18" y="18" width="25" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="8RJ-iN-cm6"/>
                                                                     <constraint firstAttribute="width" constant="25" id="AZF-sV-v26"/>
@@ -4964,7 +4966,7 @@ creator, Juliano Asmar, styles ffs.</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="74"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offer_location3" translatesAutoresizingMaskIntoConstraints="NO" id="DnS-WY-RTU">
-                                                                <rect key="frame" x="17.666666666666664" y="24.666666666666629" width="24.999999999999993" height="25"/>
+                                                                <rect key="frame" x="18" y="25" width="25" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="25" id="BEh-mc-sda"/>
                                                                     <constraint firstAttribute="height" constant="25" id="aYw-BN-j3G"/>
@@ -5091,8 +5093,11 @@ Hadath-Baabda Main Road</string>
                                                     <action selector="onGetDeirection:" destination="whr-qi-lK5" eventType="touchUpInside" id="Oq1-T5-dwQ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mru-Xj-FSB">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mru-Xj-FSB">
                                                 <rect key="frame" x="20" y="576.33333333333326" width="373" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="OgI-Kd-NqX"/>
+                                                </constraints>
                                                 <state key="normal" image="call_btnview"/>
                                                 <connections>
                                                     <action selector="onCall:" destination="whr-qi-lK5" eventType="touchUpInside" id="g0v-7L-zMI"/>
@@ -5126,6 +5131,7 @@ Hadath-Baabda Main Road</string>
                                             <constraint firstItem="cMp-fK-Cbb" firstAttribute="top" secondItem="bC0-nO-C8m" secondAttribute="bottom" constant="5" id="h4e-e3-dhf"/>
                                             <constraint firstItem="X1b-4w-zxU" firstAttribute="leading" secondItem="wp5-ne-3Fg" secondAttribute="leading" id="jjj-eJ-fon"/>
                                             <constraint firstItem="ihr-d0-l03" firstAttribute="leading" secondItem="wp5-ne-3Fg" secondAttribute="leading" id="l66-kL-Gj9"/>
+                                            <constraint firstAttribute="height" constant="736" id="lAh-P5-hNb"/>
                                             <constraint firstItem="94b-W8-dCc" firstAttribute="leading" secondItem="wp5-ne-3Fg" secondAttribute="leading" id="mbW-jc-xk6"/>
                                             <constraint firstItem="X1b-4w-zxU" firstAttribute="top" secondItem="HNE-Cs-LoX" secondAttribute="bottom" id="n4S-WL-ZDU"/>
                                             <constraint firstAttribute="trailing" secondItem="mru-Xj-FSB" secondAttribute="trailing" constant="20" id="nXG-kz-5PQ"/>
@@ -5133,7 +5139,6 @@ Hadath-Baabda Main Road</string>
                                             <constraint firstItem="ihr-d0-l03" firstAttribute="top" secondItem="lF5-Nl-q8n" secondAttribute="bottom" id="pDK-wV-Tz6"/>
                                             <constraint firstItem="lF5-Nl-q8n" firstAttribute="leading" secondItem="wp5-ne-3Fg" secondAttribute="leading" id="pzw-ab-3nV"/>
                                             <constraint firstAttribute="trailing" secondItem="HNE-Cs-LoX" secondAttribute="trailing" id="rOY-EH-YNl"/>
-                                            <constraint firstAttribute="height" constant="650" id="tvD-sv-6FD"/>
                                             <constraint firstAttribute="trailing" secondItem="Dm4-vE-WmI" secondAttribute="trailing" id="vTK-Zc-bgw"/>
                                             <constraint firstAttribute="trailing" secondItem="tqF-Ds-OLe" secondAttribute="trailing" id="wyn-bU-ESX"/>
                                             <constraint firstItem="Dm4-vE-WmI" firstAttribute="leading" secondItem="wp5-ne-3Fg" secondAttribute="leading" id="wza-Gf-jm9"/>
@@ -5275,7 +5280,7 @@ Hadath-Baabda Main Road</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="allDealsCell" id="sWk-x0-jfl" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="allDealsCell" id="sWk-x0-jfl" customClass="FeaturedTableViewCell" customModule="Privileb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sWk-x0-jfl" id="skG-R3-QOm">
@@ -5485,26 +5490,25 @@ Hadath-Baabda Main Road</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B5D-18-wiN">
-                                <rect key="frame" x="20" y="230" width="374" height="496"/>
+                                <rect key="frame" x="20" y="135" width="374" height="591"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="pt7-I3-8vq">
-                                <rect key="frame" x="50" y="30" width="314" height="180"/>
+                                <rect key="frame" x="89" y="30" width="236" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="G8w-qZ-dcs"/>
+                                    <constraint firstAttribute="height" constant="100" id="G8w-qZ-dcs"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pt7-I3-8vq" firstAttribute="leading" secondItem="abY-Zk-z5V" secondAttribute="leading" constant="50" id="C0z-rG-WGQ"/>
-                            <constraint firstItem="B5D-18-wiN" firstAttribute="top" secondItem="pt7-I3-8vq" secondAttribute="bottom" constant="20" id="QW9-4q-MIl"/>
+                            <constraint firstItem="B5D-18-wiN" firstAttribute="top" secondItem="pt7-I3-8vq" secondAttribute="bottom" constant="5" id="QW9-4q-MIl"/>
                             <constraint firstAttribute="trailing" secondItem="B5D-18-wiN" secondAttribute="trailing" constant="20" id="Rmb-Ky-Rea"/>
                             <constraint firstItem="B5D-18-wiN" firstAttribute="leading" secondItem="abY-Zk-z5V" secondAttribute="leading" constant="20" id="cZW-Jt-4hT"/>
-                            <constraint firstAttribute="trailing" secondItem="pt7-I3-8vq" secondAttribute="trailing" constant="50" id="kv9-q2-Jle"/>
                             <constraint firstItem="pt7-I3-8vq" firstAttribute="top" secondItem="wzp-p8-esu" secondAttribute="bottom" constant="10" id="m5W-zG-DI6"/>
+                            <constraint firstItem="pt7-I3-8vq" firstAttribute="centerX" secondItem="abY-Zk-z5V" secondAttribute="centerX" id="xiP-cE-sVr"/>
                             <constraint firstItem="eb3-4X-VpT" firstAttribute="top" secondItem="B5D-18-wiN" secondAttribute="bottom" constant="10" id="yM7-VK-Jv0"/>
                         </constraints>
                     </view>
@@ -5529,13 +5533,13 @@ Hadath-Baabda Main Road</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="GCy-bn-D3w">
-                                <rect key="frame" x="50" y="28" width="314" height="180"/>
+                                <rect key="frame" x="89" y="28" width="236" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="epP-3y-6W0"/>
+                                    <constraint firstAttribute="height" constant="100" id="epP-3y-6W0"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fCM-um-gLf">
-                                <rect key="frame" x="20" y="228" width="374" height="498"/>
+                                <rect key="frame" x="20" y="133" width="374" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -5543,13 +5547,12 @@ Hadath-Baabda Main Road</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="GCy-bn-D3w" secondAttribute="trailing" constant="50" id="Jmi-dM-fwg"/>
-                            <constraint firstItem="fCM-um-gLf" firstAttribute="top" secondItem="GCy-bn-D3w" secondAttribute="bottom" constant="20" id="TuG-i3-gZH"/>
+                            <constraint firstItem="fCM-um-gLf" firstAttribute="top" secondItem="GCy-bn-D3w" secondAttribute="bottom" constant="5" id="TuG-i3-gZH"/>
                             <constraint firstAttribute="trailing" secondItem="fCM-um-gLf" secondAttribute="trailing" constant="20" id="X8v-Lr-xsx"/>
                             <constraint firstAttribute="leadingMargin" secondItem="fCM-um-gLf" secondAttribute="leading" id="cEf-7Q-Sfs"/>
+                            <constraint firstItem="GCy-bn-D3w" firstAttribute="centerX" secondItem="1QH-Le-0UC" secondAttribute="centerX" id="cPB-Lw-jSb"/>
                             <constraint firstItem="Oww-PA-BVo" firstAttribute="top" secondItem="fCM-um-gLf" secondAttribute="bottom" constant="10" id="gtD-cz-ii1"/>
                             <constraint firstItem="GCy-bn-D3w" firstAttribute="top" secondItem="SyQ-vJ-9ys" secondAttribute="bottom" constant="8" id="mvs-H9-sbt"/>
-                            <constraint firstItem="GCy-bn-D3w" firstAttribute="leading" secondItem="1QH-Le-0UC" secondAttribute="leading" constant="50" id="oVp-pz-V16"/>
                         </constraints>
                     </view>
                     <connections>
@@ -5591,13 +5594,13 @@ Hadath-Baabda Main Road</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="EKG-D2-dxn">
-                                <rect key="frame" x="70" y="20" width="274" height="200"/>
+                                <rect key="frame" x="89" y="20" width="236" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="eH5-mO-SNm"/>
+                                    <constraint firstAttribute="height" constant="100" id="eH5-mO-SNm"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QGq-NR-eAY">
-                                <rect key="frame" x="20" y="220" width="374" height="506"/>
+                                <rect key="frame" x="20" y="125" width="374" height="601"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -5605,11 +5608,10 @@ Hadath-Baabda Main Road</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leading" secondItem="EKG-D2-dxn" secondAttribute="leading" constant="-70" id="EOs-7L-Avp"/>
+                            <constraint firstItem="EKG-D2-dxn" firstAttribute="centerX" secondItem="oYS-GT-3g3" secondAttribute="centerX" id="D6B-nd-slI"/>
                             <constraint firstItem="QGq-NR-eAY" firstAttribute="leading" secondItem="oYS-GT-3g3" secondAttribute="leading" constant="20" id="EeG-hX-nEJ"/>
                             <constraint firstItem="EKG-D2-dxn" firstAttribute="top" secondItem="Hz5-EV-XZQ" secondAttribute="bottom" id="tRH-Ra-YNY"/>
-                            <constraint firstItem="QGq-NR-eAY" firstAttribute="top" secondItem="EKG-D2-dxn" secondAttribute="bottom" id="wMf-rY-oLW"/>
-                            <constraint firstAttribute="trailing" secondItem="EKG-D2-dxn" secondAttribute="trailing" constant="70" id="wRM-GJ-4LI"/>
+                            <constraint firstItem="QGq-NR-eAY" firstAttribute="top" secondItem="EKG-D2-dxn" secondAttribute="bottom" constant="5" id="wMf-rY-oLW"/>
                             <constraint firstAttribute="trailing" secondItem="QGq-NR-eAY" secondAttribute="trailing" constant="20" id="xWt-dA-iOz"/>
                             <constraint firstItem="QjT-PH-6dg" firstAttribute="top" secondItem="QGq-NR-eAY" secondAttribute="bottom" constant="10" id="zxW-NR-AEb"/>
                         </constraints>
@@ -5635,13 +5637,13 @@ Hadath-Baabda Main Road</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="lZ6-Ig-4Vl">
-                                <rect key="frame" x="70" y="20" width="274" height="200"/>
+                                <rect key="frame" x="89" y="20" width="236" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="gah-Kl-pum"/>
+                                    <constraint firstAttribute="height" constant="100" id="gah-Kl-pum"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aia-BO-vX7">
-                                <rect key="frame" x="20" y="240" width="374" height="486"/>
+                                <rect key="frame" x="20" y="125" width="374" height="601"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -5650,11 +5652,10 @@ Hadath-Baabda Main Road</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="aia-BO-vX7" secondAttribute="trailing" constant="20" id="0DC-Pm-3Pw"/>
-                            <constraint firstItem="aia-BO-vX7" firstAttribute="top" secondItem="lZ6-Ig-4Vl" secondAttribute="bottom" constant="20" id="DjT-do-8hZ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="aia-BO-vX7" secondAttribute="leading" id="31f-OU-J3x"/>
+                            <constraint firstItem="aia-BO-vX7" firstAttribute="top" secondItem="lZ6-Ig-4Vl" secondAttribute="bottom" constant="5" id="DjT-do-8hZ"/>
+                            <constraint firstItem="lZ6-Ig-4Vl" firstAttribute="centerX" secondItem="BeX-fy-1PT" secondAttribute="centerX" id="L9B-mZ-YRc"/>
                             <constraint firstItem="lZ6-Ig-4Vl" firstAttribute="top" secondItem="o2c-Dz-E1u" secondAttribute="bottom" id="Mkb-XT-thu"/>
-                            <constraint firstItem="lZ6-Ig-4Vl" firstAttribute="leading" secondItem="BeX-fy-1PT" secondAttribute="leadingMargin" constant="50" id="Ope-zk-iIp"/>
-                            <constraint firstAttribute="leading" secondItem="aia-BO-vX7" secondAttribute="leading" constant="-20" id="aNF-4B-YNn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lZ6-Ig-4Vl" secondAttribute="trailing" constant="50" id="dRw-w7-Ccm"/>
                             <constraint firstItem="Lhb-0c-Ae7" firstAttribute="top" secondItem="aia-BO-vX7" secondAttribute="bottom" constant="10" id="v3N-4h-EkG"/>
                         </constraints>
                     </view>
@@ -5703,7 +5704,7 @@ Hadath-Baabda Main Road</string>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-tW-UR1">
-                                <rect key="frame" x="40" y="290" width="334" height="436"/>
+                                <rect key="frame" x="40" y="265" width="334" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -5716,8 +5717,8 @@ Hadath-Baabda Main Road</string>
                             <constraint firstItem="CWP-8N-TA7" firstAttribute="leading" secondItem="RQ2-aX-KOP" secondAttribute="leading" constant="25" id="GSu-B1-K2e"/>
                             <constraint firstItem="CWP-8N-TA7" firstAttribute="top" secondItem="2VU-TG-d6B" secondAttribute="bottom" constant="40" id="PIs-6c-7Tx"/>
                             <constraint firstAttribute="trailing" secondItem="CWP-8N-TA7" secondAttribute="trailing" constant="25" id="R9J-Uq-bN2"/>
-                            <constraint firstItem="olK-Dq-5QR" firstAttribute="top" secondItem="p1D-tW-UR1" secondAttribute="bottom" constant="10" id="d5D-YE-ZHJ"/>
-                            <constraint firstItem="p1D-tW-UR1" firstAttribute="top" secondItem="CWP-8N-TA7" secondAttribute="bottom" constant="30" id="isq-Cd-dWs"/>
+                            <constraint firstItem="olK-Dq-5QR" firstAttribute="top" secondItem="p1D-tW-UR1" secondAttribute="bottom" id="d5D-YE-ZHJ"/>
+                            <constraint firstItem="p1D-tW-UR1" firstAttribute="top" secondItem="CWP-8N-TA7" secondAttribute="bottom" constant="5" id="isq-Cd-dWs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -5748,7 +5749,7 @@ Hadath-Baabda Main Road</string>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UiI-Wx-MQt">
-                                <rect key="frame" x="40" y="280" width="334" height="436"/>
+                                <rect key="frame" x="40" y="265" width="334" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -5760,8 +5761,8 @@ Hadath-Baabda Main Road</string>
                             <constraint firstItem="UiI-Wx-MQt" firstAttribute="leading" secondItem="hvL-9r-E7I" secondAttribute="leadingMargin" constant="20" id="LXz-zR-Bpi"/>
                             <constraint firstAttribute="trailing" secondItem="8Es-Gm-998" secondAttribute="trailing" constant="25" id="a60-Sw-IKq"/>
                             <constraint firstItem="8Es-Gm-998" firstAttribute="top" secondItem="mXy-fQ-lMD" secondAttribute="bottom" constant="40" id="e9H-Ld-TE9"/>
-                            <constraint firstItem="UiI-Wx-MQt" firstAttribute="top" secondItem="8Es-Gm-998" secondAttribute="bottom" constant="20" id="g4R-Jh-BRQ"/>
-                            <constraint firstItem="NMN-0q-fgy" firstAttribute="top" secondItem="UiI-Wx-MQt" secondAttribute="bottom" constant="20" id="iN9-gB-XO4"/>
+                            <constraint firstItem="UiI-Wx-MQt" firstAttribute="top" secondItem="8Es-Gm-998" secondAttribute="bottom" constant="5" id="g4R-Jh-BRQ"/>
+                            <constraint firstItem="NMN-0q-fgy" firstAttribute="top" secondItem="UiI-Wx-MQt" secondAttribute="bottom" id="iN9-gB-XO4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UiI-Wx-MQt" secondAttribute="trailing" constant="20" id="szF-ji-Cjn"/>
                         </constraints>
                     </view>
@@ -5848,8 +5849,8 @@ Hadath-Baabda Main Road</string>
         <image name="vertical_view" width="5" height="97"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="fUZ-cJ-u1v"/>
         <segue reference="UYh-Ff-O9V"/>
-        <segue reference="0Tk-Jh-gwp"/>
-        <segue reference="Vwg-uf-nsA"/>
+        <segue reference="ulK-9a-t3b"/>
     </inferredMetricsTieBreakers>
 </document>

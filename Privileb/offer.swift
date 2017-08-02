@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Kingfisher
+
 class offer {
 
     var retailer_name : String!
@@ -81,6 +83,7 @@ class offer {
         
         if let featured = result["featured"] as? String{
             self.featured = featured
+          
 //            load_image(urlString: featured, onComplete: { (image, status) in
 //                if status == "ok" {
 //                    DispatchQueue.main.async(execute: {
@@ -94,15 +97,9 @@ class offer {
         
         if let featured_cropped = result["featured_cropped"] as? String{
             self.featured_cropped = featured_cropped
-            load_image(urlString: featured_cropped, onComplete: { (image, status) in
-                if status == "ok" {
-                    DispatchQueue.main.async(execute: {
-                        self.featured_croppedImage = image!
-                    })
-                }
-            })
+
         }else{
-            self.featured_cropped = ""
+            self.featured_cropped = "enptyCell"
         }
         
         if let br = result["branches"] as? [[String:Any]]{
@@ -128,6 +125,11 @@ class offer {
         })
         task.resume()
     }
+    
+//    func load_image(){
+//    
+//    
+//    }
 }
 
 //

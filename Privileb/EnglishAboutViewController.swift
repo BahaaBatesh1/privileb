@@ -26,6 +26,13 @@ class EnglishAboutViewController: UIViewController {
            // self.load_image(urlString: (about?.image)!)
         }
         // Do any additional setup after loading the view.
+        self.pageLabel.setContentOffset(CGPoint.zero, animated: false)
+        self.pageLabel.scrollRangeToVisible(NSMakeRange(0, 0))
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+ self.pageLabel.setContentOffset(CGPoint.zero, animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
