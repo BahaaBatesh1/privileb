@@ -4,11 +4,10 @@
 # Xcode
 DerivedData/
 build/
-*.xcuserstate
 xcuserdata/
-*.moved-aside
+*.xcuserstate
+*.xcbkptlist
 *.xcscmblueprint
-*.xccheckout
 
 # CocoaPods
 Pods/
@@ -16,12 +15,6 @@ Pods/
 # SwiftPM
 .build/
 Package.resolved
-
-# Fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
 
 # Secrets (DO NOT COMMIT)
 *.p12
