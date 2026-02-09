@@ -1182,130 +1182,120 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				diff --git a/Privileb.xcodeproj/project.pbxproj b/Privileb.xcodeproj/project.pbxproj
-                index a86e22df0461e35b519ffd8aeb4be8513c7b290c..f9f7b71e3bfd264b8279f18aa7b0adec131ac452 100755
-                --- a/Privileb.xcodeproj/project.pbxproj
-                +++ b/Privileb.xcodeproj/project.pbxproj
-                @@ -1185,114 +1185,114 @@
-                 				SDKROOT = iphoneos;
-                 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-                 				TARGETED_DEVICE_FAMILY = "1,2";
-                 				VALIDATE_PRODUCT = YES;
-                 			};
-                 			name = Release;
-                 		};
-                 		1807C9801EF96D5D003F554F /* Debug */ = {
-                 			isa = XCBuildConfiguration;
-                 			baseConfigurationReference = 2545FE2DD577DF15D46D9C38 /* Pods-Privileb.debug.xcconfig */;
-                 			buildSettings = {
-                 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-                 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-                 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-                 				CLANG_ENABLE_MODULES = YES;
-                 				CODE_SIGN_ENTITLEMENTS = Privileb/Privileb.entitlements;
-                 				CODE_SIGN_IDENTITY = "Apple Development";
-                 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-                 				CODE_SIGN_STYLE = Manual;
-                 				CURRENT_PROJECT_VERSION = 1;
-                 				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
-                 				INFOPLIST_FILE = Privileb/Info.plist;
-                 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-                 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                 				MARKETING_VERSION = 1.0;
-                -				PRODUCT_BUNDLE_IDENTIFIER = com.privileb.cw.card;
-                +				PRODUCT_BUNDLE_IDENTIFIER = com.eventus.privileb;
-                 				PRODUCT_NAME = "$(TARGET_NAME)";
-                 				PROVISIONING_PROFILE_SPECIFIER = PrivilebDev;
-                 				SWIFT_OBJC_BRIDGING_HEADER = "Privileb/Privileb-Bridging-Header.h";
-                 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-                 				SWIFT_VERSION = 4.0;
-                 				TARGETED_DEVICE_FAMILY = 1;
-                 			};
-                 			name = Debug;
-                 		};
-                 		1807C9811EF96D5D003F554F /* Release */ = {
-                 			isa = XCBuildConfiguration;
-                 			baseConfigurationReference = E6716C3786C45CB11613D4A4 /* Pods-Privileb.release.xcconfig */;
-                 			buildSettings = {
-                 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-                 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-                 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-                 				CLANG_ENABLE_MODULES = YES;
-                 				CODE_SIGN_ENTITLEMENTS = Privileb/Privileb.entitlements;
-                 				CODE_SIGN_IDENTITY = "Apple Distribution";
-                 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
-                 				CODE_SIGN_STYLE = Manual;
-                 				CURRENT_PROJECT_VERSION = 1;
-                 				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
-                 				INFOPLIST_FILE = Privileb/Info.plist;
-                 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-                 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                 				MARKETING_VERSION = 1.0;
-                -				PRODUCT_BUNDLE_IDENTIFIER = com.privileb.cw.card;
-                +				PRODUCT_BUNDLE_IDENTIFIER = com.eventus.privileb;
-                 				PRODUCT_NAME = "$(TARGET_NAME)";
-                 				PROVISIONING_PROFILE_SPECIFIER = PrivilebDist;
-                 				SWIFT_OBJC_BRIDGING_HEADER = "Privileb/Privileb-Bridging-Header.h";
-                 				SWIFT_VERSION = 4.0;
-                 				TARGETED_DEVICE_FAMILY = 1;
-                 			};
-                 			name = Release;
-                 		};
-                 		5B5872011F56A88400D660BF /* Debug */ = {
-                 			isa = XCBuildConfiguration;
-                 			baseConfigurationReference = 2C91EC238250A1D183DB900E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
-                 			buildSettings = {
-                 				CODE_SIGN_STYLE = Manual;
-                 				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
-                 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-                 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-                -				PRODUCT_BUNDLE_IDENTIFIER = com.privileb.cw.card.OneSignalNotificationServiceExtension;
-                +				PRODUCT_BUNDLE_IDENTIFIER = com.eventus.privileb.OneSignalNotificationServiceExtension;
-                 				PRODUCT_NAME = "$(TARGET_NAME)";
-                 				PROVISIONING_PROFILE_SPECIFIER = OneSignalNotificationsDev;
-                 				SKIP_INSTALL = YES;
-                 				SWIFT_VERSION = 4.0;
-                 			};
-                 			name = Debug;
-                 		};
-                 		5B5872021F56A88400D660BF /* Release */ = {
-                 			isa = XCBuildConfiguration;
-                 			baseConfigurationReference = DB48DFDBD821E2ED09FF89F6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
-                 			buildSettings = {
-                 				CODE_SIGN_IDENTITY = "Apple Distribution";
-                 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
-                 				CODE_SIGN_STYLE = Manual;
-                 				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
-                 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-                 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-                -				PRODUCT_BUNDLE_IDENTIFIER = com.privileb.cw.card.OneSignalNotificationServiceExtension;
-                +				PRODUCT_BUNDLE_IDENTIFIER = com.eventus.privileb.OneSignalNotificationServiceExtension;
-                 				PRODUCT_NAME = "$(TARGET_NAME)";
-                 				PROVISIONING_PROFILE_SPECIFIER = OneSignalNotifications;
-                 				SKIP_INSTALL = YES;
-                 				SWIFT_VERSION = 4.0;
-                 			};
-                 			name = Release;
-                 		};
-                 /* End XCBuildConfiguration section */
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1807C9801EF96D5D003F554F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2545FE2DD577DF15D46D9C38 /* Pods-Privileb.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Privileb/Privileb.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
+				INFOPLIST_FILE = Privileb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eventus.privileb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = PrivilebDev;
+				SWIFT_OBJC_BRIDGING_HEADER = "Privileb/Privileb-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1807C9811EF96D5D003F554F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6716C3786C45CB11613D4A4 /* Pods-Privileb.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Privileb/Privileb.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
+				INFOPLIST_FILE = Privileb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eventus.privileb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = PrivilebDist;
+				SWIFT_OBJC_BRIDGING_HEADER = "Privileb/Privileb-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5B5872011F56A88400D660BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C91EC238250A1D183DB900E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eventus.privileb.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = OneSignalNotificationsDev;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5B5872021F56A88400D660BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB48DFDBD821E2ED09FF89F6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eventus.privileb.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = OneSignalNotifications;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
 
-                 /* Begin XCConfigurationList section */
-                 		1807C9661EF96D58003F554F /* Build configuration list for PBXProject "Privileb" */ = {
-                 			isa = XCConfigurationList;
-                 			buildConfigurations = (
-                 				1807C97D1EF96D5D003F554F /* Debug */,
-                 				1807C97E1EF96D5D003F554F /* Release */,
-                 			);
-                 			defaultConfigurationIsVisible = 0;
-                 			defaultConfigurationName = Release;
-                 		};
-                 		1807C97F1EF96D5D003F554F /* Build configuration list for PBXNativeTarget "Privileb" */ = {
-                 			isa = XCConfigurationList;
-                 			buildConfigurations = (
-                 				1807C9801EF96D5D003F554F /* Debug */,
-                 				1807C9811EF96D5D003F554F /* Release */,
-                 			);
-
+/* Begin XCConfigurationList section */
+		1807C9661EF96D58003F554F /* Build configuration list for PBXProject "Privileb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1807C97D1EF96D5D003F554F /* Debug */,
+				1807C97E1EF96D5D003F554F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1807C97F1EF96D5D003F554F /* Build configuration list for PBXNativeTarget "Privileb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1807C9801EF96D5D003F554F /* Debug */,
+				1807C9811EF96D5D003F554F /* Release */,
+			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
