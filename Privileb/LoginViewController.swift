@@ -67,7 +67,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         }
         
         
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.hideKeyboard))
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
 
@@ -181,7 +181,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
                         self.loginBtn.isEnabled = true
                         self.loader.stopAnimating()
                         self.loaderView.isHidden = true
-                        let alertController = UIAlertController(title: "Somthing went wrong!", message: user?.response?.message, preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Something went wrong!", message: user?.response?.message, preferredStyle: .alert)
                         let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                         alertController.addAction(ok)
                         self.present(alertController, animated: true, completion: nil)
@@ -221,7 +221,7 @@ class LoginViewController: BaseViewController ,UITextFieldDelegate{
         }
     }
     
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         userNameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         forgetTextField.resignFirstResponder()

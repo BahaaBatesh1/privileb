@@ -17,10 +17,11 @@ class ArabicTermsViewController: UIViewController {
         super.viewDidLoad()
         self.terms = AppDelegate.sharedDelegate().terms
         if terms != nil {
-            let attrStr = try! NSAttributedString(
+            let attrStr =
+            try! NSAttributedString(
                 data: (terms?.description_ar?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                documentAttributes: nil)
+               options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            
             self.pageLabel.textAlignment = .right
             self.pageLabel.text = attrStr.string
             //self.load_image(urlString: (terms?.image)!)
@@ -36,10 +37,11 @@ class ArabicTermsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.terms = AppDelegate.sharedDelegate().terms
         if terms != nil {
-            let attrStr = try! NSAttributedString(
+            let attrStr =
+            try! NSAttributedString(
                 data: (terms?.description_ar?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                documentAttributes: nil)
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            
             self.pageLabel.textAlignment = .right
             self.pageLabel.text = attrStr.string
            // self.load_image(urlString: (terms?.image)!)

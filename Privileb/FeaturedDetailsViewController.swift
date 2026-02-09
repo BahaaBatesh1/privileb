@@ -23,7 +23,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
     @IBOutlet weak var validityLabel: UILabel!
     @IBOutlet weak var favoritBtnRight: UIButton!
     @IBOutlet weak var supervisedImage: UIImageView!
-    @IBOutlet weak var offerImage: UIImageView!
+//    @IBOutlet weak var offerImage: UIImageView!
     @IBOutlet weak var offerLabel: UILabel!
     @IBOutlet weak var cateoryLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -76,13 +76,13 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
         
         callService()
         
-        let attrs = [
-            NSFontAttributeName : UIFont.systemFont(ofSize: 15.0),
-            NSForegroundColorAttributeName : UIColor.black,
-            NSUnderlineStyleAttributeName : 1] as [String : Any]
+        let attrs: [NSAttributedStringKey : Any] = [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15.0),
+            NSAttributedString.Key.foregroundColor : UIColor.black,
+            NSAttributedString.Key.underlineStyle : 1]
         
         let attributedString = NSMutableAttributedString(string:"")
-        let buttonTitleStr = NSMutableAttributedString(string:"Get direction", attributes:attrs)
+        let buttonTitleStr = NSMutableAttributedString(string:"Get direction", attributes: attrs)
         attributedString.append(buttonTitleStr)
         getDirectionBtn.setAttributedTitle(attributedString, for: .normal)
         // Do any additional setup after loading the view.
@@ -370,10 +370,10 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                         self.cateoryLabel.text = subCat
                         self.dateLabel.text = "From \(self.detailedOffer.issue_date!) To \(self.detailedOffer.expiry_date!)"
                         
-                        let attrStr = try! NSAttributedString(
+                        let attrStr =
+                        try! NSAttributedString(
                             data: (self.detailedOffer.offer_description.data(using: String.Encoding.unicode, allowLossyConversion: false)!),
-                            options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                            documentAttributes: nil)
+                           options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
 //                        let myAttribute = [ NSFontAttributeName: UIFont(name: UIFont.systemFontSize.description, size: 18.0)! ]
                         //let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
 
@@ -429,7 +429,7 @@ class FeaturedDetailsViewController: UIViewController ,UICollectionViewDelegate,
                 }else{
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Something went wrong!", message: postRes?.message, preferredStyle: .alert)
                     let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
                     let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
                         self.callService()

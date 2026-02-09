@@ -47,7 +47,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
         self.dealDetails.layer.borderWidth = 1
         
         scrollView.contentSize=CGSize(width: 414,height: 2300)
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BuyCardViewController.hideKeyboard))
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
         
@@ -94,8 +94,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
         
         let attrStr = try! NSAttributedString(
             data: (self.deals[indexPath.row].description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-            options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-            documentAttributes: nil)
+            options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
         
         self.dealDetails.text = attrStr.string
         
@@ -134,7 +133,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
                         appDelegate?.window!?.rootViewController = controller
                     }
                 }else{
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Something went wrong!", message: res?.message, preferredStyle: .alert)
                     let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                     alertController.addAction(ok)
                     self.present(alertController, animated: true, completion: nil)
@@ -183,7 +182,8 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
             scrollView.setContentOffset(CGPoint(x: 0, y: 200), animated: true)
         }
     }
-    func hideKeyboard() {
+    
+    @objc func hideKeyboard() {
         self.firstNumber.resignFirstResponder()
         self.secondNumber.resignFirstResponder()
         self.thirdNumber.resignFirstResponder()
@@ -291,7 +291,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
                     DispatchQueue.main.async {
                         self.loader.stopAnimating()
                         self.loaderView.isHidden = true
-                        let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Something went wrong!", message: res?.message, preferredStyle: .alert)
                         let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                         alertController.addAction(ok)
                         self.present(alertController, animated: true, completion: nil)
@@ -301,7 +301,7 @@ class PartnerViewController: UIViewController ,UITextFieldDelegate,UITableViewDa
                 DispatchQueue.main.async {
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: "Connection Error!", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Something went wrong!", message: "Connection Error!", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                     alertController.addAction(ok)
                     self.present(alertController, animated: true, completion: nil)

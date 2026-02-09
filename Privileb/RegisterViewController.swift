@@ -20,15 +20,15 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     @IBOutlet weak var mobileNumberTextFiled: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
-    @IBOutlet weak var femaleBtn: UIButton!
-    @IBOutlet weak var maleBtn: UIButton!
+//    @IBOutlet weak var femaleBtn: UIButton!
+//    @IBOutlet weak var maleBtn: UIButton!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextFiled: UITextField!
-    @IBOutlet weak var verfyCodeTextFiled: UITextField!
-    @IBOutlet weak var searialTextField: UITextField!
-    @IBOutlet weak var birhDateTextField: GrayTextField!
-    @IBOutlet weak var birthdayPicker: UIDatePicker!
-    @IBOutlet weak var birthdayView: UIView!
+//    @IBOutlet weak var verfyCodeTextFiled: UITextField!
+//    @IBOutlet weak var searialTextField: UITextField!
+//    @IBOutlet weak var birhDateTextField: GrayTextField!
+//    @IBOutlet weak var birthdayPicker: UIDatePicker!
+//    @IBOutlet weak var birthdayView: UIView!
     
     
     @IBOutlet weak var first_four: UITextField!
@@ -57,12 +57,12 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
 
     }
     
-    var birthDate :Date?
+//    var birthDate :Date?
     var loader: MaterialLoadingIndicator!
     var selected_country : country!
     var isMale = false
     var isAgree = false
-    var gender : String = "male"
+//    var gender : String = "male"
     var countries = AppDelegate.sharedDelegate().countries
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,15 +75,15 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         
         
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = true
-        self.maleBtn.layer.cornerRadius = self.maleBtn.layer.frame.width / 2
-        self.maleBtn.layer.borderColor = UIColor.darkGray.cgColor
-        self.maleBtn.layer.borderWidth = 1
-        self.maleBtn.backgroundColor = UIColor.white
-        
-        self.femaleBtn.layer.cornerRadius = self.femaleBtn.layer.frame.width / 2
-        self.femaleBtn.layer.borderColor = UIColor.darkGray.cgColor
-        self.femaleBtn.layer.borderWidth = 1
-        self.femaleBtn.backgroundColor = UIColor.white
+//        self.maleBtn.layer.cornerRadius = self.maleBtn.layer.frame.width / 2
+//        self.maleBtn.layer.borderColor = UIColor.darkGray.cgColor
+//        self.maleBtn.layer.borderWidth = 1
+//        self.maleBtn.backgroundColor = UIColor.white
+//
+//        self.femaleBtn.layer.cornerRadius = self.femaleBtn.layer.frame.width / 2
+//        self.femaleBtn.layer.borderColor = UIColor.darkGray.cgColor
+//        self.femaleBtn.layer.borderWidth = 1
+//        self.femaleBtn.backgroundColor = UIColor.white
 
         self.agressBtn.layer.borderWidth = 1
         self.agressBtn.layer.borderColor = UIColor.darkGray.cgColor
@@ -97,9 +97,9 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         countries_view.layer.backgroundColor = UIColor.lightGray.cgColor
         countries_view.layer.borderWidth = 1
         
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.hideKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        birthdayView.addGestureRecognizer(tapGesture)
+//        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.hideKeyboard))
+//        tapGesture.cancelsTouchesInView = false
+//        birthdayView.addGestureRecognizer(tapGesture)
         scroll.keyboardDismissMode = .onDrag
     
 
@@ -133,26 +133,26 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         self.countryTextField.resignFirstResponder()
     }
     
-    @IBAction func onBirthdayBtn(_ sender: Any) {
-        self.birthdayView.isHidden = false
-    }
-    @IBAction func onChooseBirthDay(_ sender: Any) {
-        self.birthDate = birthdayPicker.date
-        self.birthdayView.isHidden = true
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date1 = dateFormatter.string(from: self.birthDate!)
-        self.birhDateTextField.text = date1
-    }
+//    @IBAction func onBirthdayBtn(_ sender: Any) {
+//        self.birthdayView.isHidden = false
+//    }
+//    @IBAction func onChooseBirthDay(_ sender: Any) {
+//        self.birthDate = birthdayPicker.date
+//        self.birthdayView.isHidden = true
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let date1 = dateFormatter.string(from: self.birthDate!)
+//        self.birhDateTextField.text = date1
+//    }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         scroll.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y - 40), animated: true)
         
-        if textField.tag == 100{
-            //textField.resignFirstResponder()
-            self.birthdayView.isHidden = false
-             scroll.setContentOffset(CGPoint(x: 0, y:  self.birthdayView.frame.origin.y), animated: true)
-        }
+//        if textField.tag == 100{
+//            //textField.resignFirstResponder()
+//            self.birthdayView.isHidden = false
+//             scroll.setContentOffset(CGPoint(x: 0, y:  self.birthdayView.frame.origin.y), animated: true)
+//        }
         
         if textField.tag == 99{
             //textField.resignFirstResponder()
@@ -161,7 +161,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
         }
 
     }
-    func donePicker(){
+    @objc func donePicker(){
         if selected_country == nil {
             self.addressTextField.becomeFirstResponder()
             self.pickerView(self.pickerView, didSelectRow: 0, inComponent: 0)
@@ -194,7 +194,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
                 self.loader.startAnimating()
                 self.loaderView.isHidden = false
                 
-                services.register(datetime: NSDate().getToDay(), fname: firstNameTextFiled.text!, lname: lastNameTextField.text!, serial_number: allSerial as String, birthdate: birhDateTextField.text!, gender: self.gender, country_id: self.selected_country.country_id.description, email: emailTextField.text!, mobile_number: mobileNumberTextFiled.text!, password: passwordTextField.text! , address : self.addressTextField.text!) { (res, status) in
+                services.register(datetime: NSDate().getToDay(), fname: firstNameTextFiled.text!, lname: lastNameTextField.text!, serial_number: allSerial as String, country_id: self.selected_country.country_id.description, email: emailTextField.text!, mobile_number: mobileNumberTextFiled.text!, password: passwordTextField.text! , address : self.addressTextField.text ?? "") { (res, status) in
                     
                     if status == "ok" {
                         if res?.status == 1 {
@@ -259,23 +259,23 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
             self.agressBtn.backgroundColor = UIColor.gray
         }
     }
-    @IBAction func onFemale(_ sender: Any) {
-        self.gender = "female"
-        self.isMale = false
-        self.femaleBtn.backgroundColor = UIColor.gray
-        self.maleBtn.backgroundColor = UIColor.white
-    }
-    @IBAction func onMale(_ sender: Any) {
-        self.gender = "male"
-        self.isMale = true
-        self.femaleBtn.backgroundColor = UIColor.white
-        self.maleBtn.backgroundColor = UIColor.gray
-    }
+//    @IBAction func onFemale(_ sender: Any) {
+//        self.gender = "female"
+//        self.isMale = false
+//        self.femaleBtn.backgroundColor = UIColor.gray
+//        self.maleBtn.backgroundColor = UIColor.white
+//    }
+//    @IBAction func onMale(_ sender: Any) {
+//        self.gender = "male"
+//        self.isMale = true
+//        self.femaleBtn.backgroundColor = UIColor.white
+//        self.maleBtn.backgroundColor = UIColor.gray
+//    }
     
-    func hideKeyboard()  {
-        self.birthdayView.isHidden = true
-        self.birhDateTextField.resignFirstResponder()
-    }
+//    func hideKeyboard()  {
+//        self.birthdayView.isHidden = true
+//        self.birhDateTextField.resignFirstResponder()
+//    }
     /*
     // MARK: - Navigation
 
@@ -321,7 +321,7 @@ class RegisterViewController: BaseViewController ,UITextFieldDelegate , UITableV
     }
     
     func validation () -> Bool {
-        if(self.firstNameTextFiled.text == "" || self.addressTextField.text == ""  || self.birhDateTextField.text == "" || self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == "" || self.first_four.text == "" || self.second_four.text == "" || self.third_four.text == "" || self.fourth_four.text == "" || !isValidEmail(testStr: self.emailTextField.text!)){
+        if(self.firstNameTextFiled.text == "" || /*self.addressTextField.text == ""  || self.birhDateTextField.text == "" ||*/ self.firstNameTextFiled.text == "" || self.lastNameTextField.text == "" || self.countryTextField.text == "" || self.confirmTextField.text == "" || self.mobileNumberTextFiled.text == "" || self.isAgree == false  || self.emailTextField.text == "" || self.passwordTextField.text == "" || self.first_four.text == "" || self.second_four.text == "" || self.third_four.text == "" || self.fourth_four.text == "" || !isValidEmail(testStr: self.emailTextField.text!)){
                 return false
         }
         else {

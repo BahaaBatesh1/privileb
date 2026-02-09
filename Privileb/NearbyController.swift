@@ -123,7 +123,7 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
         
     }
     
-    func go_to_details(sender : UIButton){
+    @objc func go_to_details(sender : UIButton){
         performSegue(withIdentifier: "toDetailsFromNear", sender: self)
     }
     
@@ -228,7 +228,7 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
                         }
                     }
                 }else{
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Something went wrong!", message: postRes?.message, preferredStyle: .alert)
                     let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
                     let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
                         self.callService()
@@ -252,7 +252,7 @@ class NearbyController: BaseViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     
-    func onGesture (){
+    @objc func onGesture (){
         onViewList(self)
     }
     /*

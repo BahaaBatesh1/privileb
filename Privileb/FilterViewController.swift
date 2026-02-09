@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 
-class FilterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UISearchBarDelegate, UISearchDisplayDelegate{
+class FilterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UISearchBarDelegate, UISearchControllerDelegate {
     var fromCat = false
     var selectedCat : [categoryy] = []
     var selectedDis : [district] = []
@@ -22,15 +22,18 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     var searchBarResult:[offer]?
     var selectedOffer:offer?
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var loaderView: UIView!
+    var isSearching = false
     override func viewDidLoad() {
         super.viewDidLoad()
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
         searchResult = AppDelegate.sharedDelegate().filterOffers
-        resultLabel.text = "\(self.searchResult.count) Offer"
+        resultLabel.text = "\(self.searchResult.count) Offers"
+        searchBar.delegate = self
         // Do any additional setup after loading the view.
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -48,28 +51,25 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == self.searchDisplayController?.searchResultsTableView{
-            return 1
-        }else{
-            return 1
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.searchDisplayController?.searchResultsTableView{
+        if isSearching {
             return searchBarResult?.count ?? 0
-        }else{
+        } else {
             return 2
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.searchDisplayController?.searchResultsTableView{
+        if isSearching {
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "resultsSearchCell") as! FeaturedTableViewCell
             cell.dateLabel.text = "\(self.searchBarResult![indexPath.row].issue_date!) to \(self.searchBarResult![indexPath.row].expiry_date!)"
             cell.supervisedByLabel.text = self.searchBarResult?[indexPath.row].retailer_name
             cell.offerLabel.text = self.searchBarResult?[indexPath.row].offer_name
             let url = URL(string: (self.searchBarResult?[indexPath.row].featured_cropped)!)
+            
             cell.logoImage!.kf.setImage(with: url, placeholder: UIImage(named: "enptyCell"), options: nil, progressBlock: nil, completionHandler: nil)
 //            if self.searchBarResult?[indexPath.row].featured_croppedImage != nil {
 //                cell.logoImage.image = self.searchBarResult?[indexPath.row].featured_croppedImage
@@ -95,7 +95,7 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         let lable = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width, height: 50))
-        if tableView != self.searchDisplayController?.searchResultsTableView{
+        if !isSearching {
             lable.text = "SEARCH BY"
             lable.textColor = UIColor.gray
             view.backgroundColor = UIColor(red: 248, green: 248, blue: 248)
@@ -107,14 +107,14 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if tableView != self.searchDisplayController?.searchResultsTableView{
+        if !isSearching {
             return 50
         }
         return 20
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == self.searchDisplayController?.searchResultsTableView{
+        if isSearching {
             return 300
         }else{
             return 44
@@ -122,7 +122,7 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.searchDisplayController?.searchResultsTableView{
+        if isSearching {
             self.selectedOffer = self.searchBarResult?[indexPath.row]
             performSegue(withIdentifier: "toDetailsFromFilter" , sender: self)
         }else{
@@ -151,7 +151,7 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
             let des = segue.destination as! SearchResultViewController
             des.category_ids = self.category_ids
             des.district_ids = self.district_ids
-            des.keyword = (self.searchDisplayController?.searchBar.text)!
+            des.keyword = searchBar.text
         }else if segue.identifier == "toDetailsFromFilter" {
             let des = (segue.destination as! UINavigationController).topViewController as! FeaturedDetailsViewController
             des.offerId = (self.selectedOffer?.offer_id)!
@@ -194,15 +194,29 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.searchBarResult =  self.searchResult.filter({ (test) -> Bool in
             return (test.offer_name.lowercased().range(of: searchText.lowercased()) != nil || test.retailer_name.lowercased().range(of: searchText.lowercased()) != nil)
         })
+        
+        if searchBarResult!.count == 1 {
+            resultLabel.text = "\(self.searchBarResult!.count) Offer"
+        } else {
+            resultLabel.text = "\(self.searchBarResult!.count) Offers"
+        }
     }
     
     
-    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
-        let searchString = controller.searchBar.text
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchString = searchBar.text
         self.filterContentForSearchText(searchText: searchString!)
-        return true
     }
-
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            searchResult = AppDelegate.sharedDelegate().filterOffers
+            resultLabel.text = "\(self.searchResult.count) Offers"
+//            isSearching = false
+//            tableView.reloadData()
+        }
+    }
+    
     @IBAction func onShowResults(_ sender: Any) {
         callService()
     }

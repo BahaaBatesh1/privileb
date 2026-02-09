@@ -56,62 +56,62 @@ class offer_details {
         else{
             self.offer_name = ""
         }
-        if let offer_description = String((result["offer_description"] as? String)!){
+        if let offer_description = result["offer_description"] as? String {
             self.offer_description = offer_description
         }
         else{
             self.offer_description = ""
         }
         
-        if let offer_summary = String((result["offer_summary"] as? String)!){
+        if let offer_summary = result["offer_summary"] as? String {
             self.offer_summary = offer_summary
         }
         else{
             self.offer_summary = ""
         }
-        if let issue_date = String((result["issue_date"] as? String)!){
+        if let issue_date = result["issue_date"] as? String {
             self.issue_date = issue_date
         }
         else{
             self.issue_date = ""
         }
 
-        if let expiry_date = String((result["expiry_date"] as? String)!){
+        if let expiry_date = result["expiry_date"] as? String {
             self.expiry_date = expiry_date
         }
         else{
             self.expiry_date = ""
         }
 
-        if let validity = String((result["validity"] as? String)!){
+        if let validity = result["validity"] as? String {
             self.validity = validity
         }
         else{
             self.validity = ""
         }
 
-        if let frequency = String((result["frequency"] as? String)!){
+        if let frequency = result["frequency"] as? String {
             self.frequency = frequency
         }
         else{
             self.frequency = ""
         }
 
-        if let original_price = String((result["original_price"] as? String)!){
+        if let original_price = result["original_price"] as? String {
             self.original_price = original_price
         }
         else{
             self.original_price = ""
         }
 
-        if let discount_price = String((result["discount_price"] as? String)!){
+        if let discount_price = result["discount_price"] as? String {
             self.discount_price = discount_price
         }
         else{
             self.discount_price = ""
         }
 
-        if let sub_categories = result["sub_category"] as? [[String:Any]]!{
+        if let sub_categories = result["sub_category"] as? [[String:Any]] {
             for sub in sub_categories {
                 self.sub_categories.append(sub_category(result: sub))
             }
@@ -120,7 +120,7 @@ class offer_details {
             self.sub_categories = []
         }
 
-        if let branches = result["branches"] as? [[String:Any]]!{
+        if let branches = result["branches"] as? [[String:Any]] {
             for bran in branches {
                 self.branches.append(branch(result: bran))
             }
@@ -128,70 +128,70 @@ class offer_details {
             self.branches = []
         }
 
-        if let retailer_name = String((result["retailer_name"] as? String)!){
+        if let retailer_name = result["retailer_name"] as? String {
             self.retailer_name = retailer_name
         }
         else{
             self.retailer_name = ""
         }
 
-        if let retailer_logo = String((result["retailer_logo"] as? String)!){
+        if let retailer_logo = result["retailer_logo"] as? String {
             self.retailer_logo = retailer_logo
         }
         else{
             self.retailer_logo = ""
         }
 
-        if let retailer_insta = String((result["retailer_insta"] as? String)!){
+        if let retailer_insta = result["retailer_insta"] as? String {
             self.retailer_insta = retailer_insta
         }
         else{
             self.retailer_insta = ""
         }
 
-        if let retailer_fb = String((result["retailer_fb"] as? String)!){
+        if let retailer_fb = result["retailer_fb"] as? String {
             self.retailer_fb = retailer_fb
         }
         else{
             self.retailer_fb = ""
         }
 
-        if let retailer_twitter = String((result["retailer_twitter"] as? String)!){
+        if let retailer_twitter = result["retailer_twitter"] as? String {
             self.retailer_twitter = retailer_twitter
         }
         else{
             self.retailer_twitter = ""
         }
 
-        if let retailer_website = String((result["retailer_website"] as? String)!){
+        if let retailer_website = result["retailer_website"] as? String {
             self.retailer_website = retailer_website
         }
         else{
             self.retailer_website = ""
         }
 
-        if let description = String((result["description"] as? String)!){
+        if let description = result["description"] as? String {
             self.description = description
         }
         else{
             self.description = ""
         }
 
-        if let currency = result["currency"] as? String{
+        if let currency = result["currency"] as? String {
             self.currency = currency
         }
         else{
             self.currency = ""
         }
 
-        if let url = String((result["url"] as? String)!){
+        if let url = result["url"] as? String {
             self.url = url
         }
         else{
             self.url = ""
         }
 
-        if let gallery = result["gallery"] as? [String]!{
+        if let gallery = result["gallery"] as? [String] {
             for el in gallery {
                 let element = GalaryElement()
                 element.link = el
@@ -204,8 +204,8 @@ class offer_details {
             self.gallery = []
         }
         
-        if let gallery_cropped = result["gallery_cropped"] as? [String]!{
-            if let featured = String((result["featured"] as? String)!){
+        if let gallery_cropped = result["gallery_cropped"] as? [String] {
+            if let featured = result["featured"] as? String {
                 let element = GalaryElement()
                 element.link = featured
                 element.load_image(urlString: featured)
@@ -226,14 +226,14 @@ class offer_details {
         }
 
 
-        if let featured = String((result["featured"] as? String)!){
+        if let featured = result["featured"] as? String {
             self.featured = featured
         }
         else{
             self.featured = ""
         }
         
-        if let featured_cropped = String((result["featured_cropped"] as? String)!){
+        if let featured_cropped = result["featured_cropped"] as? String {
             self.featured_cropped = featured_cropped
         }
         else{

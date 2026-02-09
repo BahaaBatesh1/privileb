@@ -9,10 +9,11 @@
 import UIKit
 
 
-class SearchLocationViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate, UISearchDisplayDelegate {
+class SearchLocationViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate, UISearchControllerDelegate {
     
     
     @IBOutlet weak var tableViwe: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var selectedDes : [district] = []
     var unSelectedDes : [district] = []
     
@@ -22,6 +23,8 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     var searchBarCat:[categoryy]?
     var searchBarDis:[district]?
     var fromCategories = false
+    var isSearching = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +33,7 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
         
         self.unSelectedDes = AppDelegate.sharedDelegate().unSelectedDis
         self.unSelectedCat = AppDelegate.sharedDelegate().unSelectedCat
-        
+        searchBar.delegate = self
         self.selectedCat = AppDelegate.sharedDelegate().selectedCat
         self.selectedDes = AppDelegate.sharedDelegate().selectedDis
 
@@ -57,7 +60,7 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.searchDisplayController?.searchResultsTableView{
+        if isSearching {
             if fromCategories {
                 return self.searchBarCat?.count ?? 0
             }else{
@@ -83,8 +86,8 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         let lable = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width, height: 50))
-        if tableView != self.searchDisplayController?.searchResultsTableView{
-            
+        if !isSearching {
+
             if fromCategories {
                 if section == 0 {
                     lable.text = "SELECTED CATEGORY"
@@ -108,13 +111,13 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if tableView != self.searchDisplayController?.searchResultsTableView{
+        if !isSearching {
             return 50
         }
         return 20
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.searchDisplayController?.searchResultsTableView{
+        if isSearching {
             if fromCategories {
                 if indexPath.section == 0 {
                     let cell = self.tableViwe.dequeueReusableCell(withIdentifier: "searchLocationCell") as! SearchLocationTableViewCell
@@ -170,11 +173,12 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.tableViwe{
+        if isSearching {
             let cell = (self.tableViwe.cellForRow(at: indexPath)) as! SearchLocationTableViewCell
             self.onCellBtn(cell.cellBtn)
-        }else if tableView == self.searchDisplayController?.searchResultsTableView {
-            let cell = (self.searchDisplayController?.searchResultsTableView.cellForRow(at: indexPath)) as! SearchLocationTableViewCell
+            
+        } else if tableView == self.tableViwe{
+            let cell = (self.tableViwe.cellForRow(at: indexPath)) as! SearchLocationTableViewCell
             self.onCellBtn(cell.cellBtn)
         }
     }
@@ -205,7 +209,7 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
             if sender.superview?.tag == 400 {
                 var element = self.searchBarCat?.remove(at: sender.tag)
                 self.selectedCat.append(self.removeFromUnselectedCat(cat: element!)!)
-                self.searchDisplayController?.searchResultsTableView.reloadData()
+                filterContentForSearchText(searchText: searchBar.text ?? "")
             }
             if sender.superview?.tag == 100 {
                 self.unSelectedCat.append(self.selectedCat.remove(at: sender.tag))
@@ -217,7 +221,7 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
             if sender.superview?.tag == 400 {
                 var element = self.searchBarDis?.remove(at: sender.tag)
                 self.selectedDes.append(self.removeFromUnselected(dis: element!)!)
-                self.searchDisplayController?.searchResultsTableView.reloadData()
+                filterContentForSearchText(searchText: searchBar.text ?? "")
             }
             if sender.superview?.tag == 100 {
                 self.unSelectedDes.append(self.selectedDes.remove(at: sender.tag))
@@ -249,16 +253,27 @@ class SearchLocationViewController: UIViewController,UITableViewDataSource,UITab
                 return (test.name.lowercased().range(of: searchText.lowercased()) != nil)
             })
         }
+        
+        isSearching = true
+        tableViwe.reloadData()
+    }
 
-    }
-    
-    
-    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
-        let searchString = controller.searchBar.text
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchString = searchBar.text
         self.filterContentForSearchText(searchText: searchString!)
-        return true
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            isSearching = false
+            tableViwe.reloadData()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        tableViwe.reloadData()
+    }
     
     func removeFromUnselected(dis :district) -> district? {
         var i = 0

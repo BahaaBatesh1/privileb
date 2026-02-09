@@ -19,8 +19,8 @@ class ArabicViewController: UIViewController {
         if binifits != nil {
             let attrStr = try! NSAttributedString(
                 data: (binifits?.description_ar?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                documentAttributes: nil)
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            
             self.pageLabel.textAlignment = .right
             self.pageLabel.text = attrStr.string
             //self.load_image(urlString: (binifits?.image)!)
@@ -35,10 +35,11 @@ class ArabicViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.binifits = AppDelegate.sharedDelegate().binifits
         if binifits != nil {
-            let attrStr = try! NSAttributedString(
+            let attrStr =
+            try! NSAttributedString(
                 data: (binifits?.description_ar?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                documentAttributes: nil)
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            
             self.pageLabel.textAlignment = .right
             self.pageLabel.text = attrStr.string
             //self.load_image(urlString: (binifits?.image)!)

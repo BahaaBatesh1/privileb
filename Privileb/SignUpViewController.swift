@@ -125,7 +125,7 @@ class SignUpViewController: UIViewController ,UITextFieldDelegate{
         }
     }
     
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         nameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         phoneTextField.resignFirstResponder()

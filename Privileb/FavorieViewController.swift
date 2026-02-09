@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 
-class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, UISearchDisplayDelegate {
+class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, UISearchControllerDelegate {
     var loader: MaterialLoadingIndicator!
 
     @IBOutlet weak var loginLabel: UILabel!
@@ -23,6 +23,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     var services = services_calls()
     let userDefaults = UserDefaults.standard
     var isLogedIn = false
+    var isSearching = false
     @IBOutlet weak var tableView: UITableView!
     var selectedOffer:favourite?
     var uid :Int?
@@ -54,19 +55,11 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         definesPresentationContext = true
         edgesForExtendedLayout = UIRectEdge()
         loginBtn.layer.cornerRadius = 3
-        
+        searchBar.delegate = self
         loader = MaterialLoadingIndicator(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         loader.center = CGPoint(x: self.loaderView.frame.width/2, y: self.loaderView.frame.height/2)
         self.loaderView.addSubview(loader)
         (self.slidingPanelController.leftPanelController as! MenuViewController).isFromReg = false
-        if let txfSearchField = self.searchDisplayController?.searchBar.value(forKey: "_searchField") as? UITextField {
-            txfSearchField.borderStyle = .none
-            txfSearchField.backgroundColor = UIColor.white
-            txfSearchField.layer.cornerRadius = 3
-            txfSearchField.layer.masksToBounds = true
-        }
-
-        
         
         if let log = userDefaults.value(forKey: "isLogedIn") as? Bool{
             self.isLogedIn = log
@@ -117,7 +110,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.searchDisplayController!.searchResultsTableView{
+        if isSearching {
             return searchResult?.count ?? 0
         }else{
             return favorites.count
@@ -127,7 +120,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "favoritesimpleCell") as! FavoriteSimpleCell
         
-        if tableView == self.searchDisplayController!.searchResultsTableView{
+        if isSearching {
             cell.cellTitle.text = searchResult?[indexPath.row].offer_name
             cell.superVisedLabel.text = searchResult?[indexPath.row].retailer_name
         }else{
@@ -175,15 +168,28 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         self.searchResult =  favorites.filter({ (test) -> Bool in
             return (test.offer_name.lowercased().range(of: searchText.lowercased()) != nil || test.retailer_name.lowercased().range(of: searchText.lowercased()) != nil)
         })
+        isSearching = true
+        tableView.reloadData()
     }
     
 
-    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
-        let searchString = controller.searchBar.text
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchString = searchBar.text
         self.filterContentForSearchText(searchText: searchString!)
-        return true
     }
-
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            isSearching = false
+            tableView.reloadData()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        tableView.reloadData()
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -230,7 +236,7 @@ class FavorieViewController: BaseViewController ,UITableViewDelegate,UITableView
         }
     }
     
-    func handleRefresh()  {
+    @objc func handleRefresh()  {
         services.get_favourite_list(user_id: (self.uid?.description)!, date: NSDate().getToDay()) { (favs, status,postRes) in
             if status == "ok"{
                 if postRes?.status == 1{

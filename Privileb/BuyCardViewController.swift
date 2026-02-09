@@ -111,7 +111,7 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
                     }else{
                         self.loader.stopAnimating()
                         self.loaderView.isHidden = true
-                        let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Something went wrong!", message: res?.message, preferredStyle: .alert)
                         let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                         alertController.addAction(ok)
                         self.present(alertController, animated: true, completion: nil)
@@ -163,17 +163,17 @@ class BuyCardViewController: UIViewController ,UITextFieldDelegate{
     
 
   
-    func hideKeyboard() {
-        if shouldScroll{
-        self.address.resignFirstResponder()
-        self.comments.resignFirstResponder()
-        self.email.resignFirstResponder()
-        self.firstName.resignFirstResponder()
-        self.lastName.resignFirstResponder()
-        self.mobileNumber.resignFirstResponder()
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        }
-    }
+//    @objc func hideKeyboard() {
+//        if shouldScroll{
+//        self.address.resignFirstResponder()
+//        self.comments.resignFirstResponder()
+//        self.email.resignFirstResponder()
+//        self.firstName.resignFirstResponder()
+//        self.lastName.resignFirstResponder()
+//        self.mobileNumber.resignFirstResponder()
+//        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+//        }
+//    }
     /*
     // MARK: - Navigation
 

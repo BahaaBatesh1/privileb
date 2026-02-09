@@ -19,8 +19,7 @@ class EnglishAboutViewController: UIViewController {
         if about != nil {
             let attrStr = try! NSAttributedString(
                 data: (about?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                documentAttributes: nil)
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
             
             self.pageLabel.text = attrStr.string
            // self.load_image(urlString: (about?.image)!)
@@ -40,8 +39,7 @@ class EnglishAboutViewController: UIViewController {
         if about != nil {
             let attrStr = try! NSAttributedString(
                 data: (about?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                documentAttributes: nil)
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
             
             self.pageLabel.text = attrStr.string
           //  self.load_image(urlString: (about?.image)!)

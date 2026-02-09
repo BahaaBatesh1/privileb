@@ -19,8 +19,9 @@ class EnglishTermsViewController: UIViewController {
         if terms != nil {
             let attrStr = try! NSAttributedString(
                 data: (terms?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
                 documentAttributes: nil)
+            
             self.pageLabel.text = attrStr.string
             //self.load_image(urlString: (terms?.image)!)
         }
@@ -37,7 +38,7 @@ class EnglishTermsViewController: UIViewController {
         if terms != nil {
             let attrStr = try! NSAttributedString(
                 data: (terms?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
                 documentAttributes: nil)
             
             self.pageLabel.text = attrStr.string

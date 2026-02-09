@@ -19,12 +19,11 @@ class ArabicAboutViewController: UIViewController {
         super.viewDidLoad()
         self.about = AppDelegate.sharedDelegate().about
         if about != nil {
-            let style = NSMutableParagraphStyle()
-            style.alignment = NSTextAlignment.right
-            let attrStr = try! NSAttributedString(
+            let attrStr =
+            try! NSAttributedString(
                 data: (about?.description_ar?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSParagraphStyleAttributeName: style],
-                documentAttributes: nil)
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                
             self.pageLabel.text = attrStr.string
            // self.load_image(urlString: (about?.image)!)
         }
@@ -34,12 +33,12 @@ class ArabicAboutViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.about = AppDelegate.sharedDelegate().about
         if about != nil {
-            let style = NSMutableParagraphStyle()
-            style.alignment = NSTextAlignment.right
             let attrStr = try! NSAttributedString(
                 data: (about?.description_ar?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,NSParagraphStyleAttributeName: style],
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
                 documentAttributes: nil)
+            
+            self.pageLabel.textAlignment = .right
             self.pageLabel.text = attrStr.string
           //  self.load_image(urlString: (about?.image)!)
         }

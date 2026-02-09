@@ -111,7 +111,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
 
                     self.loader.stopAnimating()
                     self.loaderView.isHidden = true
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Something went wrong!", message: postRes?.message, preferredStyle: .alert)
                     let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
                     let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
                         self.callService()
@@ -136,7 +136,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
         })
     }
     
-    func handleRefresh()  {
+    @objc func handleRefresh()  {
         services.get_featured_offers(country_code: "lb", date: NSDate().getToDay(),onComplete: {
             (offers , status,postRes) -> Void in
             if status == "ok"{
@@ -150,7 +150,7 @@ class FirstViewController: UIViewController ,UITableViewDelegate,UITableViewData
                     }
                 }else{
                     self.refreshControl.endRefreshing()
-                    let alertController = UIAlertController(title: "Somthing went wrong!", message: postRes?.message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Something went wrong!", message: postRes?.message, preferredStyle: .alert)
                     let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
                     let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { (action) in
                         self.callService()

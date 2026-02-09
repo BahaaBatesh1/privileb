@@ -10,6 +10,7 @@ import UIKit
 
 class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var login_image: UIImageView!
     @IBOutlet weak var registerImage: UIImageView!
     @IBOutlet weak var registerLabel: UILabel!
@@ -79,7 +80,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return isLogedIn ? 9 : 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,19 +119,12 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             cell.cellImage.image = UIImage(named: "contact_us3")
             cell.cellLabel.text = "Contact us"
             break
+        case 8:
+            cell.cellLabel.text = "Delete account"
         default:
             break
         }
         return cell
-    }
-    
- 
-    
-    
-    
-
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-      (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image = (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image?.withRenderingMode(.alwaysOriginal)
     }
     
     
@@ -196,10 +190,29 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             (tab.viewControllers?[2] as! PrivilebCardController).onContact(self)
             rootController.closePanel()
             break
+            
+        case 8:
+            let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to delete this account?", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let confirm = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
+                self.deleteAccount()
+            })
+            alertController.addAction(cancel)
+            alertController.addAction(confirm)
+            self.present(alertController, animated: true, completion: nil)
         default:
             print("")
         }
+        
+        
+        (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image = (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image?.withRenderingMode(.alwaysOriginal)
     }
+    
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image = (tableView.cellForRow(at: indexPath)as! MenuTableViewCell).cellImage.image?.withRenderingMode(.alwaysOriginal)
+    }
+    
     
     @IBAction func onCall(_ sender: Any) {
         
@@ -267,6 +280,7 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             service.logout(user_id: uid.description, onComplete: { (res, status) in
                 if status == "ok" {
                     if res?.status == 1 {
+                        self.isLogedIn = false
                         self.userDefaults.setValue(false, forKey: "isLogedIn")
                         self.userDefaults.setValue("", forKey: "userId")
                         self.userDefaults.setValue("", forKey: "countryId")
@@ -281,8 +295,10 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                         self.registerLabel.text = ""
                         self.loginBtn.setTitle("LogIn", for: .normal)
                         self.loginBtn.isEnabled = true
+                        self.tableView.reloadData()
+                        
                     }else{
-                        let alertController = UIAlertController(title: "Somthing went wrong!", message: res?.message, preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Something went wrong!", message: res?.message, preferredStyle: .alert)
                         let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
                         alertController.addAction(ok)
                         self.present(alertController, animated: true, completion: nil)
@@ -311,22 +327,65 @@ class MenuViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
     
     
-    func OnCalll(){
+    @objc func OnCalll(){
         onCallCharli(self)
     }
     
     
-    func OnCallTaxi() {
+    @objc func OnCallTaxi() {
         onCall(self)
         }
     
     
-    func onlog(){
+    @objc func onlog(){
         onLogin(self);
     }
     
-    func onreg(){
+    @objc func onreg(){
         onRegister(self);
+    }
+    
+    func deleteAccount() {
+        var service = services_calls()
+        service.deleteAccount(onComplete: { (res, status) in
+            if status == "ok" {
+                if res?.status == 1 {
+                    self.isLogedIn = false
+                    self.userDefaults.setValue(false, forKey: "isLogedIn")
+                    self.userDefaults.setValue("", forKey: "userId")
+                    self.userDefaults.setValue("", forKey: "countryId")
+                    self.userDefaults.setValue("", forKey: "userMail")
+                    self.userDefaults.setValue("", forKey: "userType")
+                    self.userDefaults.setValue("", forKey: "userName")
+//                    self.userDefaults.setValue("", forKey: "branch_id")
+                    
+                    self.registerBtn.isHidden = false
+                    self.registerImage.isHidden = false
+                    self.registerLabel.isHidden = true
+                    self.registerLabel.text = ""
+                    self.loginBtn.setTitle("LogIn", for: .normal)
+                    self.loginBtn.isEnabled = true
+                    
+                    let alertController = UIAlertController(title: "Email sent", message: "We've sent you an email to proceed with deleting your account.", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                    self.tableView.reloadData()
+                    
+                } else {
+                    let alertController = UIAlertController(title: "Something went wrong!", message: res?.message, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true, completion: nil)
+                    self.loginBtn.isEnabled = true
+                }
+            }else{
+                let alertController = UIAlertController(title: "Connection error!", message: "Please check internet connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+                alertController.addAction(ok)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
     }
     
     /*

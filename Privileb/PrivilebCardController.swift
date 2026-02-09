@@ -114,8 +114,9 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
         if joinOur != nil {
             let attrStr = try! NSAttributedString(
                 data: (joinOur?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
                 documentAttributes: nil)
+            
             self.joinPageLabel.text = attrStr.string
            // self.load_image(urlString: (joinOur?.image)!)
         }
@@ -153,8 +154,9 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
         if joinOur != nil {
             let attrStr = try! NSAttributedString(
                 data: (joinOur?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
                 documentAttributes: nil)
+            
             self.joinPageLabel.text = attrStr.string
            // self.load_image(urlString: (joinOur?.image)!)
         }
@@ -386,8 +388,8 @@ class PrivilebCardController: BaseViewController ,MFMailComposeViewControllerDel
       //  filter?.setValue(serial_number1, forKey: "inputCorrectionLevel")
 
         
-        let transform = CGAffineTransform(scaleX: 10, y: 10)
-        let output = filter?.outputImage?.applying(transform)
+        let transform = CGAffineTransform(scaleX: 10.0, y: 10.0)
+        let output = filter?.outputImage?.transformed(by: transform)
         if(output != nil){
             return UIImage(ciImage: output!)
         }

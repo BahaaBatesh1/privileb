@@ -31,7 +31,7 @@ class CHViewController: BaseViewController {
         if charity != nil {
             let attrStr = try! NSAttributedString(
                 data: (charity?.description?.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
                 documentAttributes: nil)
             self.descriptionLabel.text = attrStr.string
            // self.load_image(urlString: (charity?.image)!)
@@ -46,12 +46,12 @@ class CHViewController: BaseViewController {
     }
     
 
-    func onFirstImage()  {
+    @objc func onFirstImage()  {
         UIApplication.shared.openURL(NSURL(string: "https://www.kidsfirstassociation.org/")! as URL)
 
     }
     
-    func onsecondImage()  {
+    @objc func onsecondImage()  {
         UIApplication.shared.openURL(NSURL(string: "https://www.facebook.com/LebaneseAssociationforHemophilia/")! as URL)
 
     }

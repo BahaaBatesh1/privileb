@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		139640261F28F5D200A90F8D /* Kingfisher.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1396400C1F28F4F300A90F8D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		13AC3D981F1383CB004A261A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC3D8B1F1383C1004A261A /* Alamofire.framework */; };
-		13AC3D991F1383CB004A261A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC3D8B1F1383C1004A261A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		13AC3D9D1F138D50004A261A /* Partner_offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3D9C1F138D50004A261A /* Partner_offer.swift */; };
 		13AC3DA11F15263E004A261A /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3DA01F15263E004A261A /* Partner.swift */; };
 		13AC3DA51F1657B2004A261A /* CHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3DA41F1657B1004A261A /* CHViewController.swift */; };
@@ -92,6 +90,12 @@
 		18EFFA4A1F01845800A3F2FE /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFFA441F01845800A3F2FE /* TPKeyboardAvoidingScrollView.m */; };
 		18EFFA4B1F01845800A3F2FE /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFFA461F01845800A3F2FE /* TPKeyboardAvoidingTableView.m */; };
 		18EFFA4C1F01845800A3F2FE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFFA481F01845800A3F2FE /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		2E24075E254219BA5A1CB83E /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9915DD68F3FB75F1C3CB6F /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		31CFA458D9F48E71AB1CAA61 /* Pods_Privileb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54593A84749AD34AFBD73DBC /* Pods_Privileb.framework */; };
+		5B5871EF1F56A84800D660BF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5871E21F56A83C00D660BF /* Alamofire.framework */; };
+		5B5871F01F56A84800D660BF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5871E21F56A83C00D660BF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5B5871FB1F56A88400D660BF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5871FA1F56A88400D660BF /* NotificationService.swift */; };
+		5B5871FF1F56A88400D660BF /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B5871F81F56A88400D660BF /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,61 +190,68 @@
 			remoteGlobalIDString = D1ED2D341AD2D09F00CFC3EB;
 			remoteInfo = "Kingfisher-iOS";
 		};
-		13AC3D8A1F1383C1004A261A /* PBXContainerItemProxy */ = {
+		5B5871E11F56A83C00D660BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+			containerPortal = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
 			remoteInfo = "Alamofire iOS";
 		};
-		13AC3D8C1F1383C1004A261A /* PBXContainerItemProxy */ = {
+		5B5871E31F56A83C00D660BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+			containerPortal = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
 			remoteInfo = "Alamofire iOS Tests";
 		};
-		13AC3D8E1F1383C1004A261A /* PBXContainerItemProxy */ = {
+		5B5871E51F56A83C00D660BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+			containerPortal = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
 			remoteInfo = "Alamofire macOS";
 		};
-		13AC3D901F1383C1004A261A /* PBXContainerItemProxy */ = {
+		5B5871E71F56A83C00D660BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+			containerPortal = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
 			remoteInfo = "Alamofire macOS Tests";
 		};
-		13AC3D921F1383C1004A261A /* PBXContainerItemProxy */ = {
+		5B5871E91F56A83C00D660BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+			containerPortal = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4CF626EF1BA7CB3E0011A099;
 			remoteInfo = "Alamofire tvOS";
 		};
-		13AC3D941F1383C1004A261A /* PBXContainerItemProxy */ = {
+		5B5871EB1F56A83C00D660BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+			containerPortal = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4CF626F81BA7CB3E0011A099;
 			remoteInfo = "Alamofire tvOS Tests";
 		};
-		13AC3D961F1383C1004A261A /* PBXContainerItemProxy */ = {
+		5B5871ED1F56A83C00D660BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+			containerPortal = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E4202FE01B667AA100C997FB;
 			remoteInfo = "Alamofire watchOS";
 		};
-		13AC3D9A1F1383CB004A261A /* PBXContainerItemProxy */ = {
+		5B5871F11F56A84800D660BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+			containerPortal = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
 			remoteInfo = "Alamofire iOS";
+		};
+		5B5871FD1F56A88400D660BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1807C9631EF96D58003F554F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B5871F71F56A88400D660BF;
+			remoteInfo = OneSignalNotificationServiceExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -262,16 +273,27 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				13AC3D991F1383CB004A261A /* Alamofire.framework in Embed Frameworks */,
+				5B5871F01F56A84800D660BF /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B5872031F56A88400D660BF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5B5871FF1F56A88400D660BF /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A9915DD68F3FB75F1C3CB6F /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13963FFC1F28F4F200A90F8D /* Kingfisher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kingfisher.xcodeproj; path = "Kingfisher-master/Kingfisher.xcodeproj"; sourceTree = "<group>"; };
-		13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../new new privileb/Privileb/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		13AC3D9C1F138D50004A261A /* Partner_offer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Partner_offer.swift; sourceTree = "<group>"; };
 		13AC3DA01F15263E004A261A /* Partner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
 		13AC3DA41F1657B1004A261A /* CHViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +386,17 @@
 		18EFFA461F01845800A3F2FE /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		18EFFA471F01845800A3F2FE /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		18EFFA481F01845800A3F2FE /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		2545FE2DD577DF15D46D9C38 /* Pods-Privileb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Privileb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Privileb/Pods-Privileb.debug.xcconfig"; sourceTree = "<group>"; };
+		2C91EC238250A1D183DB900E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		54593A84749AD34AFBD73DBC /* Pods_Privileb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Privileb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		5B5871F31F56A85B00D660BF /* Privileb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Privileb.entitlements; sourceTree = "<group>"; };
+		5B5871F81F56A88400D660BF /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B5871FA1F56A88400D660BF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		5B5871FC1F56A88400D660BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BABD86F1F56EBDE007507A8 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_OneSignalNotificationServiceExtension.framework; path = "../../Library/Developer/Xcode/DerivedData/Privileb-eshzlwfcdoxrpbgiafksgbrgwzma/Build/Products/Debug-iphonesimulator/Pods_OneSignalNotificationServiceExtension.framework"; sourceTree = "<group>"; };
+		DB48DFDBD821E2ED09FF89F6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		E6716C3786C45CB11613D4A4 /* Pods-Privileb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Privileb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Privileb/Pods-Privileb.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,7 +404,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13AC3D981F1383CB004A261A /* Alamofire.framework in Frameworks */,
+				5B5871EF1F56A84800D660BF /* Alamofire.framework in Frameworks */,
+				31CFA458D9F48E71AB1CAA61 /* Pods_Privileb.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B5871F51F56A88400D660BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E24075E254219BA5A1CB83E /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,28 +439,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13AC3D801F1383C0004A261A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				13AC3D8B1F1383C1004A261A /* Alamofire.framework */,
-				13AC3D8D1F1383C1004A261A /* Alamofire iOS Tests.xctest */,
-				13AC3D8F1F1383C1004A261A /* Alamofire.framework */,
-				13AC3D911F1383C1004A261A /* Alamofire macOS Tests.xctest */,
-				13AC3D931F1383C1004A261A /* Alamofire.framework */,
-				13AC3D951F1383C1004A261A /* Alamofire tvOS Tests.xctest */,
-				13AC3D971F1383C1004A261A /* Alamofire.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1807C9621EF96D58003F554F = {
 			isa = PBXGroup;
 			children = (
+				5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */,
 				13963FFC1F28F4F200A90F8D /* Kingfisher.xcodeproj */,
-				13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */,
 				1807C9831EF96EE6003F554F /* Privileb-Bridging-Header.h */,
 				1807C96D1EF96D5C003F554F /* Privileb */,
+				5B5871F91F56A88400D660BF /* OneSignalNotificationServiceExtension */,
 				1807C96C1EF96D5C003F554F /* Products */,
+				70ECBF7BEEB1053413F5E496 /* Pods */,
+				3450C4049D45F2A8126BC5E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -426,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				1807C96B1EF96D5C003F554F /* Privileb.app */,
+				5B5871F81F56A88400D660BF /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,6 +465,7 @@
 		1807C96D1EF96D5C003F554F /* Privileb */ = {
 			isa = PBXGroup;
 			children = (
+				5B5871F31F56A85B00D660BF /* Privileb.entitlements */,
 				1807C9931EF9789B003F554F /* Models */,
 				1807C9921EF9788E003F554F /* Utils */,
 				1807C9911EF97888003F554F /* UI */,
@@ -583,6 +616,50 @@
 			name = TKView;
 			sourceTree = "<group>";
 		};
+		3450C4049D45F2A8126BC5E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BABD86F1F56EBDE007507A8 /* Pods_OneSignalNotificationServiceExtension.framework */,
+				0A9915DD68F3FB75F1C3CB6F /* Pods_OneSignalNotificationServiceExtension.framework */,
+				54593A84749AD34AFBD73DBC /* Pods_Privileb.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B5871D71F56A83C00D660BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B5871E21F56A83C00D660BF /* Alamofire.framework */,
+				5B5871E41F56A83C00D660BF /* Alamofire iOS Tests.xctest */,
+				5B5871E61F56A83C00D660BF /* Alamofire.framework */,
+				5B5871E81F56A83C00D660BF /* Alamofire macOS Tests.xctest */,
+				5B5871EA1F56A83C00D660BF /* Alamofire.framework */,
+				5B5871EC1F56A83C00D660BF /* Alamofire tvOS Tests.xctest */,
+				5B5871EE1F56A83C00D660BF /* Alamofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B5871F91F56A88400D660BF /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5B5871FA1F56A88400D660BF /* NotificationService.swift */,
+				5B5871FC1F56A88400D660BF /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
+		70ECBF7BEEB1053413F5E496 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C91EC238250A1D183DB900E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				DB48DFDBD821E2ED09FF89F6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
+				2545FE2DD577DF15D46D9C38 /* Pods-Privileb.debug.xcconfig */,
+				E6716C3786C45CB11613D4A4 /* Pods-Privileb.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,22 +667,43 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1807C97F1EF96D5D003F554F /* Build configuration list for PBXNativeTarget "Privileb" */;
 			buildPhases = (
+				D0FBC709F6073292E3676934 /* [CP] Check Pods Manifest.lock */,
 				1807C9671EF96D58003F554F /* Sources */,
 				1807C9681EF96D58003F554F /* Frameworks */,
 				1807C9691EF96D58003F554F /* Resources */,
 				1832B4201F058D660072E3F0 /* Embed Frameworks */,
 				139640251F28F5A600A90F8D /* Copy Frameworks */,
+				5B5872031F56A88400D660BF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				139640241F28F53A00A90F8D /* PBXTargetDependency */,
-				13AC3D9B1F1383CB004A261A /* PBXTargetDependency */,
+				5B5871F21F56A84800D660BF /* PBXTargetDependency */,
+				5B5871FE1F56A88400D660BF /* PBXTargetDependency */,
 			);
 			name = Privileb;
 			productName = Privileb;
 			productReference = 1807C96B1EF96D5C003F554F /* Privileb.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5B5871F71F56A88400D660BF /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B5872001F56A88400D660BF /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				5661176234B0AC93A83E4CD0 /* [CP] Check Pods Manifest.lock */,
+				5B5871F41F56A88400D660BF /* Sources */,
+				5B5871F51F56A88400D660BF /* Frameworks */,
+				5B5871F61F56A88400D660BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 5B5871F81F56A88400D660BF /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -619,9 +717,22 @@
 				TargetAttributes = {
 					1807C96A1EF96D58003F554F = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = DJ2S4NRWVZ;
+						DevelopmentTeam = 8PJZ4YX77Q;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					5B5871F71F56A88400D660BF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 8PJZ4YX77Q;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -630,6 +741,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -638,8 +750,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 13AC3D801F1383C0004A261A /* Products */;
-					ProjectRef = 13AC3D7F1F1383C0004A261A /* Alamofire.xcodeproj */;
+					ProductGroup = 5B5871D71F56A83C00D660BF /* Products */;
+					ProjectRef = 5B5871D61F56A83C00D660BF /* Alamofire.xcodeproj */;
 				},
 				{
 					ProductGroup = 13963FFD1F28F4F200A90F8D /* Products */;
@@ -649,6 +761,7 @@
 			projectRoot = "";
 			targets = (
 				1807C96A1EF96D58003F554F /* Privileb */,
+				5B5871F71F56A88400D660BF /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -738,53 +851,53 @@
 			remoteRef = 139640211F28F4F300A90F8D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		13AC3D8B1F1383C1004A261A /* Alamofire.framework */ = {
+		5B5871E21F56A83C00D660BF /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Alamofire.framework;
-			remoteRef = 13AC3D8A1F1383C1004A261A /* PBXContainerItemProxy */;
+			remoteRef = 5B5871E11F56A83C00D660BF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		13AC3D8D1F1383C1004A261A /* Alamofire iOS Tests.xctest */ = {
+		5B5871E41F56A83C00D660BF /* Alamofire iOS Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "Alamofire iOS Tests.xctest";
-			remoteRef = 13AC3D8C1F1383C1004A261A /* PBXContainerItemProxy */;
+			remoteRef = 5B5871E31F56A83C00D660BF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		13AC3D8F1F1383C1004A261A /* Alamofire.framework */ = {
+		5B5871E61F56A83C00D660BF /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Alamofire.framework;
-			remoteRef = 13AC3D8E1F1383C1004A261A /* PBXContainerItemProxy */;
+			remoteRef = 5B5871E51F56A83C00D660BF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		13AC3D911F1383C1004A261A /* Alamofire macOS Tests.xctest */ = {
+		5B5871E81F56A83C00D660BF /* Alamofire macOS Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "Alamofire macOS Tests.xctest";
-			remoteRef = 13AC3D901F1383C1004A261A /* PBXContainerItemProxy */;
+			remoteRef = 5B5871E71F56A83C00D660BF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		13AC3D931F1383C1004A261A /* Alamofire.framework */ = {
+		5B5871EA1F56A83C00D660BF /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Alamofire.framework;
-			remoteRef = 13AC3D921F1383C1004A261A /* PBXContainerItemProxy */;
+			remoteRef = 5B5871E91F56A83C00D660BF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		13AC3D951F1383C1004A261A /* Alamofire tvOS Tests.xctest */ = {
+		5B5871EC1F56A83C00D660BF /* Alamofire tvOS Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "Alamofire tvOS Tests.xctest";
-			remoteRef = 13AC3D941F1383C1004A261A /* PBXContainerItemProxy */;
+			remoteRef = 5B5871EB1F56A83C00D660BF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		13AC3D971F1383C1004A261A /* Alamofire.framework */ = {
+		5B5871EE1F56A83C00D660BF /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Alamofire.framework;
-			remoteRef = 13AC3D961F1383C1004A261A /* PBXContainerItemProxy */;
+			remoteRef = 5B5871ED1F56A83C00D660BF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -801,7 +914,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5B5871F61F56A88400D660BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5661176234B0AC93A83E4CD0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0FBC709F6073292E3676934 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Privileb-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1807C9671EF96D58003F554F /* Sources */ = {
@@ -889,6 +1048,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5B5871F41F56A88400D660BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B5871FB1F56A88400D660BF /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -897,10 +1064,15 @@
 			name = "Kingfisher-iOS";
 			targetProxy = 139640231F28F53A00A90F8D /* PBXContainerItemProxy */;
 		};
-		13AC3D9B1F1383CB004A261A /* PBXTargetDependency */ = {
+		5B5871F21F56A84800D660BF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Alamofire iOS";
-			targetProxy = 13AC3D9A1F1383CB004A261A /* PBXContainerItemProxy */;
+			targetProxy = 5B5871F11F56A84800D660BF /* PBXContainerItemProxy */;
+		};
+		5B5871FE1F56A88400D660BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B5871F71F56A88400D660BF /* OneSignalNotificationServiceExtension */;
+			targetProxy = 5B5871FD1F56A88400D660BF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1019,42 +1191,90 @@
 		};
 		1807C9801EF96D5D003F554F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2545FE2DD577DF15D46D9C38 /* Pods-Privileb.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = DJ2S4NRWVZ;
+				CODE_SIGN_ENTITLEMENTS = Privileb/Privileb.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
 				INFOPLIST_FILE = Privileb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = evan.Privileb;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.privileb.cw.card;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = PrivilebDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "Privileb/Privileb-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		1807C9811EF96D5D003F554F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6716C3786C45CB11613D4A4 /* Pods-Privileb.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = DJ2S4NRWVZ;
+				CODE_SIGN_ENTITLEMENTS = Privileb/Privileb.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
 				INFOPLIST_FILE = Privileb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = evan.Privileb;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.privileb.cw.card;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = PrivilebDist;
 				SWIFT_OBJC_BRIDGING_HEADER = "Privileb/Privileb-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5B5872011F56A88400D660BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C91EC238250A1D183DB900E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.privileb.cw.card.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = OneSignalNotificationsDev;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5B5872021F56A88400D660BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB48DFDBD821E2ED09FF89F6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 8PJZ4YX77Q;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.privileb.cw.card.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = OneSignalNotifications;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1075,6 +1295,15 @@
 			buildConfigurations = (
 				1807C9801EF96D5D003F554F /* Debug */,
 				1807C9811EF96D5D003F554F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B5872001F56A88400D660BF /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B5872011F56A88400D660BF /* Debug */,
+				5B5872021F56A88400D660BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

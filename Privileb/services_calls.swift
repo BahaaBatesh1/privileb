@@ -177,14 +177,36 @@ class services_calls {
     
     }
     
-    func register(datetime : String ,fname : String ,lname : String , serial_number : String , birthdate : String , gender : String , country_id : String , email : String , mobile_number : String , password : String ,  address : String ,onComplete: @escaping (postResponse?,String) ->Void){
+    func deleteAccount(onComplete: @escaping (postResponse?,String) -> Void) {
+        if let email = UserDefaults.standard.value(forKey: "userMail") as? String {
+            let parameters: Parameters = ["email": email]
+            
+            Alamofire.request("http://privileb.com/webservices/delete_mail.php", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(){response in
+                switch response.result {
+                    //success
+                case .success( _):
+                    do {
+                        let readableJSON = try JSONSerialization.jsonObject(with: response.data!, options:.allowFragments) as! [String: Any]
+                        self.postRes = postResponse(result: readableJSON)
+                        onComplete(self.postRes, "ok")
+                    } catch(_) {
+                        onComplete(nil,"error")
+                    }            //failure
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+                    onComplete(nil,"error")
+                }}
+        }
+    }
+    
+    func register(datetime : String ,fname : String ,lname : String , serial_number : String, country_id : String , email : String , mobile_number : String , password : String ,  address : String ,onComplete: @escaping (postResponse?,String) ->Void){
         let parameters: Parameters = [
             "datetime": datetime,
             "fname": fname,
             "lname": lname,
             "serial_number": serial_number,
-            "birthdate": birthdate,
-            "gender": gender,
+            "birthdate": "",
+            "gender": "",
             "country_id": country_id,
             "email": email,
             "address": address,
