@@ -1,5 +1,4 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
 platform :ios, '12.0'
 
 target 'OneSignalNotificationServiceExtension' do
@@ -7,7 +6,6 @@ target 'OneSignalNotificationServiceExtension' do
   use_frameworks!
 
   # Pods for OneSignalNotificationServiceExtension
-  pod 'OneSignal', '>= 2.5.2', '< 3.0'
   pod 'OneSignalXCFramework'
 
 end
@@ -18,7 +16,6 @@ target 'Privileb' do
 
   # Pods for Privileb
 
-pod 'OneSignal', '>= 2.5.2', '< 3.0'
   pod 'OneSignalXCFramework'
 
 end
